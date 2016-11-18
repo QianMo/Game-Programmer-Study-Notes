@@ -3,5 +3,12 @@
 
 
 - [《代码整洁之道（Clean Code)》读书笔记](https://github.com/QianMo/Reading-Notes/tree/master/%E3%80%8A%E4%BB%A3%E7%A0%81%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
-
+-代码的整洁之道。
 - [《Effective C# 第二版》读书笔记](https://github.com/QianMo/Reading-Notes/tree/master/%E3%80%8AEffective%20C%23%20%E7%AC%AC%E4%BA%8C%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
+-更好的使用C#。
+- [《游戏编程模式》读书笔记](https://github.com/QianMo/Reading-Notes/tree/master/%E3%80%8A%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)。
+-19种游戏开发中常用的设计总结。
+<br>
+持续更新中。
+
+
