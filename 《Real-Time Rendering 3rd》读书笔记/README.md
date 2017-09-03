@@ -10,7 +10,7 @@
 诚然，《Real-Time Rendering
 3rd》这本书的世界观架构宏大，基本涵盖了计算机图形学的方方面面，可谓包罗万象。概念讲得清楚明了，有丰富的论文引用，可供作为工具书查阅，深入某细分领域继续学习使用。
 
-![https://github.com/QianMo/Programming-Reading-Notes/blob/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/media/1/1.jpg)
+![][https://github.com/QianMo/Programming-Reading-Notes/blob/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/media/1/1.jpg)
 
 当然，如果我们吹毛求疵，那么也可以说，正因这本书包罗万象，由于篇幅受限，就会拥有一个缺点，就是大而不精。由于篇幅，很多知识点到为止，无法展开讲解，缺少更多范例，这就会让初学者读起来理解坡度稍为陡峭。但我们知道，图形学和实时渲染领域的知识浩如烟海，就算是写个字典式的总览，这本书的篇幅也已经达到了惊人的1047页，要是再写详细一些，估计至少得3000页了。
 
@@ -37,7 +37,7 @@
 
 而当我画完这张思维导图的时候，仔细看了看，还真有点“九阴真经总纲”图解的感觉。（建议另存为后放大查看）
 
-![https://pic4.zhimg.com/v2-016edd5c8c47bedcd1253b0d722aebd7_b.png](media/74d1ad759acb60642cd44c3dc393626a.png)
+![][https://pic4.zhimg.com/v2-016edd5c8c47bedcd1253b0d722aebd7_b.png](media/74d1ad759acb60642cd44c3dc393626a.png)
 
 四、包含宝藏的书本主页
 ----------------------
@@ -47,4 +47,4 @@
 地址在这里：[Real-Time Rendering
 Resources](http://link.zhihu.com/?target=http%3A//www.realtimerendering.com/)
 
-![https://pic2.zhimg.com/v2-ee29c822ef82e1ed95a492380fb05ca1_b.png](media/82ebd2d534ca08e0c6c198ddd7cdc2bf.png)
+![][https://pic2.zhimg.com/v2-ee29c822ef82e1ed95a492380fb05ca1_b.png](media/82ebd2d534ca08e0c6c198ddd7cdc2bf.png)
