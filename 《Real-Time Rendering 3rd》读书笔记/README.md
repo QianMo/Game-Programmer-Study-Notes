@@ -61,6 +61,8 @@ Resources](http://www.realtimerendering.com/)
 (二) 第二章 · 图形渲染管线 The Graphics Rendering Pipeline
 ==========================================================
 
+<br />
+
 这篇文章是提炼总结计算机图形学界“九阴真经总纲”一般存在的《Real-Time Rendering
 3rd》系列文章的第二篇。将带来RTR3第二章内容“Chapter 2 The Graphics Rendering
 Pipeline 图形渲染管线”的总结、概括与提炼。
@@ -78,11 +80,11 @@ Pipeline 图形渲染管线”的总结、概括与提炼。
 
 ### 1.章节框架思维导图
 
-![https://pic3.zhimg.com/v2-cb75d595d599428ab7850d9555b36542_b.png](media/dbdfb5ccc6fbc26d4287d92c59e9b9ab.png)
+![](https://pic3.zhimg.com/v2-cb75d595d599428ab7850d9555b36542_b.png)
 
 ### 2.知识结构思维导图
 
-![https://pic1.zhimg.com/v2-e3dea9d5b43dabfc82eabeb2347226e0_b.png](media/5228385db213b40d30c136d08c6759a6.png)
+![](https://pic1.zhimg.com/v2-e3dea9d5b43dabfc82eabeb2347226e0_b.png)
 
 二、核心内容分节提炼
 --------------------
@@ -99,7 +101,7 @@ Pipeline 图形渲染管线”的总结、概括与提炼。
 
 图2.1展示了使用渲染管线步骤。渲染出的图像的位置、形状是由它们的几何形状，环境特性，摄像机位置决定的。而物体的外观由材质特性，光源，纹理和着色模型确定。
 
-![https://pic2.zhimg.com/v2-95d0c4539871746f87294d20626a44c5_b.png](media/b8169bd03015f5f721cee96ba6c46df0.png)
+![](https://pic2.zhimg.com/v2-95d0c4539871746f87294d20626a44c5_b.png)
 
 原书图2.1
 左图中，相机放在棱椎的顶端（四条线段的交汇点），只有可视体内部的图元会被渲染。
@@ -114,7 +116,7 @@ Pipeline 图形渲染管线”的总结、概括与提炼。
 
 如下图：
 
-![https://pic3.zhimg.com/v2-6a59dc34912c43619827b39d4d016bae_b.png](media/86e5882c818989404a876f450c7aa2ab.png)
+![](https://pic3.zhimg.com/v2-6a59dc34912c43619827b39d4d016bae_b.png)
 
 原书图2.2 绘制管线的基本结构包括3个阶段：应用程序、几何、光栅化。
 
@@ -157,7 +159,7 @@ Pipeline 图形渲染管线”的总结、概括与提炼。
 
 如图2.3所示。
 
-![https://pic1.zhimg.com/v2-33ab35eafcbb70cc9a9d87ee2b8fd99c_b.png](media/2acba2a0c7c21cf49380a30277df47a9.png)
+![](https://pic1.zhimg.com/v2-33ab35eafcbb70cc9a9d87ee2b8fd99c_b.png)
 
 原书图2.3 几何阶段细分为的功能阶段管线
 
@@ -179,7 +181,7 @@ Pipeline 图形渲染管线”的总结、概括与提炼。
 
 下图显示了视点变换对相机和模型的影响。
 
-![https://pic1.zhimg.com/v2-31622cb086936661ee538732cedf8d14_b.png](media/135bcf6abee0f3db152a9a26fb279b2b.png)
+![](https://pic1.zhimg.com/v2-31622cb086936661ee538732cedf8d14_b.png)
 
 原书图2.4
 在左图中，摄像机根据用户指定的位置进行放置和定位。在右图中，视点变换从原点沿着Z轴负方向对相机重新定位，这样可以使裁剪和投影操作更简单、更快速。可视范围是一个平截椎体，因此可以认为它是透视模式。
@@ -218,7 +220,7 @@ cube）内，这个单位立方体通常也被称为规范立方体（Canonical 
 
 如下图所示。
 
-![https://pic4.zhimg.com/v2-0b01b92066f57569bed3a800f5035667_b.png](media/df36c92edc7bbaf20d38f6c406bb3f7e.png)
+![](https://pic4.zhimg.com/v2-0b01b92066f57569bed3a800f5035667_b.png)
 
 原书图2.5 左边为正交投影，右边为透视投影
 
@@ -251,7 +253,7 @@ cube）内，这个单位立方体通常也被称为规范立方体（Canonical 
 
 对部分位于视体内部的图元进行裁剪操作，这就是裁剪过程存在的意义。裁剪过程见下图。
 
-![https://pic4.zhimg.com/v2-5a314f5728f67cb1028eaee3846ae04f_b.png](media/c3e263162e45a9c046b5d2a140dea1e8.png)
+![](https://pic4.zhimg.com/v2-5a314f5728f67cb1028eaee3846ae04f_b.png)
 
 原书图2.6
 投影变换后，只对单位立方体内的图元（相应的是视锥内可见图元）继续进行处理，因此，将单位立方体之外的图元剔除掉，保留单位立方体内部的图元，同时沿着单位立方体将与单位立方体相交的图元裁剪掉，因此，就会产生新的图元，同时舍弃旧的图元。
@@ -267,7 +269,7 @@ cube）内，这个单位立方体通常也被称为规范立方体（Canonical 
 假定在一个窗口里对场景进行绘制，窗口的最小坐标为（x1，y1），最大坐标为（x2，y2），其中x1\<x2，y1\<y2。屏幕映射首先进行平移，随后进行缩放，在映射过程中z坐标不受影响。新的x和y坐标称为屏幕坐标系，与z坐标一起（-1≦
 z ≦ 1）进入光栅化阶段。如下图：
 
-![https://pic1.zhimg.com/v2-c86c46582c5ee27bce6818532efb6c20_b.png](media/8fed90dc4c8c84e743ea8d9a268f173d.png)
+![](https://pic1.zhimg.com/v2-c86c46582c5ee27bce6818532efb6c20_b.png)
 
 原书图2.8
 经过投影变换，图元全部位于单位立方体之内，而屏幕映射主要目的就是找到屏幕上对应的坐标
@@ -295,7 +297,7 @@ conversion），即从二维顶点所处的屏幕空间（所有顶点都包含Z
 
 如下图所示:
 
-![https://pic3.zhimg.com/v2-45cb7b00aa8e03202c292723e40b3236_b.png](media/bd5e3dd156cb51c5be87c4924600cf47.png)
+![](https://pic3.zhimg.com/v2-45cb7b00aa8e03202c292723e40b3236_b.png)
 
 原书图2.8 光栅化阶段一般细分为三角形设定，三角形遍历，像素着色和融合四个子阶段。
 
@@ -327,7 +329,7 @@ conversion）。
 
 像素着色阶段是在可编程GPU内执行的，在这一阶段有大量的技术可以使用，其中最常见，最重要的技术之一就是纹理贴图（Texturing）。纹理贴图在书的第六章会详细讲到。简单来说，纹理贴图就是将指定图片“贴”到指定物体上的过程。而指定的图片可以是一维，二维，或者三维的，其中，自然是二维图片最为常见。如下图所示：
 
-![https://pic4.zhimg.com/v2-79dc2c745ac0d46af2eeede676188f47_b.png](media/8a06032a34fcbb941f9978e14704d93f.png)
+![](https://pic4.zhimg.com/v2-79dc2c745ac0d46af2eeede676188f47_b.png)
 
 原书图2.9
 左上角为一没有纹理贴图的飞龙模型。左下角为一贴上图像纹理的飞龙。右图为所用的纹理贴图。
