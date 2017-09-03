@@ -53,6 +53,6 @@
 当然不能忘记书本主页，里面有一大堆图形学和渲染的书籍推荐，也有不少丰富的博文与资源。相信喜欢图形学和实时渲染的你，一定会爱不释手的。
 
 地址在这里：[Real-Time Rendering
-Resources](http://link.zhihu.com/?target=http%3A//www.realtimerendering.com/)
+Resources](http://www.realtimerendering.com/)
 
 ![](https://pic2.zhimg.com/v2-ee29c822ef82e1ed95a492380fb05ca1_b.png)
