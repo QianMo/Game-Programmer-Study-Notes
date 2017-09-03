@@ -37,7 +37,7 @@
 
 而当我画完这张思维导图的时候，仔细看了看，还真有点“九阴真经总纲”图解的感觉。（建议另存为后放大查看）
 
-![][https://pic4.zhimg.com/v2-016edd5c8c47bedcd1253b0d722aebd7_b.png](media/74d1ad759acb60642cd44c3dc393626a.png)
+![](https://pic4.zhimg.com/v2-016edd5c8c47bedcd1253b0d722aebd7_b.pngmedia/74d1ad759acb60642cd44c3dc393626a.png)
 
 四、包含宝藏的书本主页
 ----------------------
