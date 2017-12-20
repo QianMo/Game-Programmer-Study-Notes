@@ -1,6 +1,6 @@
 这是一个收集了我个人在阅读游戏开发相关经典著作过程中所做的读书笔记的repo。涉及图形学、实时渲染、GPU编程、设计模式、软件工程等内容。
 
-![](media/nature-grass-leaf-green.jpg)
+![](nature-grass-leaf-green.jpg)
 
 # 目录
 
