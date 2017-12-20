@@ -9,12 +9,11 @@
 - [《GPU 编程与CG 语言之阳春白雪下里巴人》读书笔记](https://github.com/QianMo/Game-Dev-Reading-Notes/tree/master/%E3%80%8AGPU%20%E7%BC%96%E7%A8%8B%E4%B8%8ECG%20%E8%AF%AD%E8%A8%80%E4%B9%8B%E9%98%B3%E6%98%A5%E7%99%BD%E9%9B%AA%E4%B8%8B%E9%87%8C%E5%B7%B4%E4%BA%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 -GPU 编程与Shader、CG编程的入门良书。
 <br>
-<br>
+
 ## 02、设计模式与架构相关
 
 - [《游戏编程模式》读书笔记](https://github.com/QianMo/Reading-Notes/tree/master/%E3%80%8A%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 -一篇超过万字读书笔记，总结了《游戏编程模式》一书中所有章节与内容的知识梗概。
-<br>
 <br>
 
 ## 03、编程实践与软件工程相关
