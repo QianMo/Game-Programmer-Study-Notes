@@ -2,7 +2,7 @@
 
 # 目录
 
-## 01、渲染与图形学相关相关
+## 01、渲染与图形学相关
 - [《Real-Time Rendering 3rd》读书笔记](https://github.com/QianMo/Programming-Reading-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 -《Real-Time Rendering
 3rd》可谓图形学界“九阴真经总纲”一般的存在，当世武功的心法口诀，尽数记载。此读书笔记是对这本神作一个系统而有特色的总结提炼。
