@@ -156,7 +156,7 @@ MRT)技术，我们可以在一个Pass之内完成所有渲染工作。
 
 	Apply light as a 2D postprocess
 
-	2、一个通用版本的deferred shading过程描述：
+2、一个通用版本的deferred shading过程描述：
 
 	“Standard” deferred shading is a 2-stage process:
 	
