@@ -148,60 +148,46 @@ MRT)技术，我们可以在一个Pass之内完成所有渲染工作。
 
 1、通用版本的延迟着色算法伪代码：
 
-For each object:
+    For each object:
 
-Render to multiple targets
+	Render to multiple targets
 
-For each light:
+	For each light:
 
-Apply light as a 2D postprocess
+	Apply light as a 2D postprocess
 
-2、一个通用版本的deferred shading过程描述：
+	2、一个通用版本的deferred shading过程描述：
 
-“Standard” deferred shading is a 2**-**stage process:
-
-(1) draw (opaque) geometry storing its attributes (i.e. position as depth,
-normals, albedo color, specular color and other material properties) in a number
-of full screen buffers (typically 3 or 4)
-
-(2) **for** each light source, draw its volume and accumulate lit surface color
-into **final** render target
+	“Standard” deferred shading is a 2-stage process:
+	
+	(1) draw (opaque) geometry storing its attributes (i.e. position as depth,
+	normals, albedo color, specular color and other material properties) in a number
+	of full screen buffers (typically 3 or 4)
+	
+	(2) for each light source, draw its volume and accumulate lit surface color
+	into final render target
 
 3、两个Pass的延迟着色算法伪代码：
 
-Two-pass deferred shading algorithm
-
-Pass 1: geometry pass
-
-\- Write visible geometry information to G-buffer
-
-Pass 2: shading pass
-
-For each G-buffer sample, compute shading
-
-\- Read G-buffer data for current sample
-
-\- Accumulate contribution of all lights
-
-\- Output final surface color
+	Two-pass deferred shading algorithm
+	Pass 1: geometry pass
+	- Write visible geometry information to G-buffer
+	Pass 2: shading pass
+	For each G-buffer sample, compute shading
+	- Read G-buffer data for current sample
+	- Accumulate contribution of all lights
+	- Output final surface color
 
 4、多光源的延迟渲染的伪代码：
 
-Many**-**light deferred shading algorithm
-
-For each light:
-
-**-**Generate**/**bind shadow**/**environment maps
-
-**-**Compute light’s contribution **for** each G**-**buffer sample:
-
-For each G**-**buffer sample
-
-**-**Load G**-**buffer data
-
-**-**Evaluate light contribution (may be zero)
-
-**-**Accumulate contribution into frame**-**buffer
+	Many-light deferred shading algorithm
+	For each light:
+	-Generate/bind shadow/environment maps
+	-Compute light’s contribution for each G-buffer sample:
+	For each G-buffer sample
+	-Load G-buffer data
+	-Evaluate light contribution (may be zero)
+	-Accumulate contribution into frame-buffer
 
 可以将这里的多光源计算过程理解为，对每个光源创建一个屏幕空间包围矩形，然后用光照shader渲染这个矩形。
 
@@ -222,11 +208,9 @@ For each G**-**buffer sample
 
 -   Forward Rendering的核心伪代码可以表示为：
 
-For each light:
-
-For each object affected by the light:
-
-framebuffer **+=** object **\*** light
+    	For each light:
+			For each object affected by the light: 
+				framebuffer += object * light
 
 Forward Rendering的管线流程如下：
 
@@ -248,13 +232,10 @@ Forward Rendering的管线流程如下：
 -   Deferred
     Rendering的核心伪代码可以表示如下，上文已经贴出过，这边再次贴出，方便对比：
 
-For each object:
-
-Render to multiple targets
-
-For each light:
-
-Apply light as a 2D postprocess
+    For each object:
+    	Render to multiple targets 
+	For each light:
+    	Apply light as a 2D postprocess
 
 Deferred Rendering的管线流程如下：
 
