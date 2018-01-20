@@ -219,55 +219,32 @@ Whitted-style
 
 用一套光线追踪的伪代码，结束这一节的内容：
 
-for each pixel of the screen
+    for each pixel of the screen
+	{
+		Final color = 0;
+	      	Ray = { starting point, direction };
+	      	Repeat
+		{
+			for each object in the scene
+	          	{
+	                 	determine closest ray object/intersection;
+	          	}
+		        if intersection exists
+	      	        {
+	             		for each light inthe scene
+	             		{
+	                    		if the light is not in shadow of anotherobject
+	                    		{
+	                           			addthis light contribution to computed color;
+	                    		}
+			        }
+		       }
+	      	       Final color = Final color + computed color * previous reflectionfactor;
+	      	       reflection factor = reflection factor * surface reflectionproperty;
+	      	       increment depth;
+	      } until reflection factor is 0 or maximumdepth is reached
+	}
 
-{
-
-Final color = 0;
-
-Ray = { starting point, direction };
-
-Repeat
-
-{
-
-for each object in the scene
-
-{
-
-determine closest ray object/intersection;
-
-}
-
-if intersection exists
-
-{
-
-for each light inthe scene
-
-{
-
-if the light is not in shadow of anotherobject
-
-{
-
-addthis light contribution to computed color;
-
-}
-
-}
-
-}
-
-Final color = Final color + computed color \* previous reflectionfactor;
-
-reflection factor = reflection factor \* surface reflectionproperty;
-
-increment depth;
-
-} until reflection factor is 0 or maximumdepth is reached
-
-}
 
 六、路径追踪 Path Tracing
 =========================
