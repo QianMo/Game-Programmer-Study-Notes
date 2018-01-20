@@ -130,16 +130,17 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
 图4 立体角
 
 立体角ω有如下微分形式：
-
+<div  align="center"> 
  <img src="media/5.jpg" width = "122" height = "71" alt="name" align=center />
-
+</div>
 其中*dA*为面积微元。而面积微元*dA*在球面坐标系下可以写成：
-
+<div  align="center">   
  <img src="media/6.jpg" width = "350" height = "41" alt="name" align=center />
-
+</div>
 因此：
+<div  align="center">   
  <img src="media/7.jpg" width = "220" height = "58" alt="name" align=center />
-
+</div>
 
 2.3 投影面积 Foreshortened Area
 -------------------------------
@@ -147,11 +148,15 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
 投影面积描述了一个物体表面的微小区域在某个视线方向上的可见面积。
 
 对于面积微元A，则沿着与法向夹角为θ方向的A的可见面积为：
+
+<div  align="center">    
  <img src="media/8.jpg" width = "182" height = "47" alt="name" align=center />
+</div>
 
 ![](media/66e11d2f41165001d2bbb09ae9d4ca15.jpg)
 
 图5 投影面积
+
 
 三、BRDF前置知识· 辐射度量学篇
 ==============================
@@ -170,15 +175,22 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
 
 辐射通量（Radiant
 Flux，又译作光通量，辐射功率）描述的是在单位时间穿过截面的光能，或每单位时间的辐射能量，通常用Φ来表示，单位是W，瓦特。
+<div  align="center">    
+ <img src="media/11.jpg" height = "70" alt="name" align=center />
+</div>
 
-![](media/11.jpg)
+
 其中的Q表示辐射能(Radiant energy)，单位是J，焦耳。
 
 3.3 辐射强度/发光强度 Radiant Intensity
 ---------------------------------------
 
 对一个点（比如说点光源）来说，辐射强度表示每单位立体角的辐射通量，用符号I表示，单位  ：
-![](media/12.jpg)
+
+
+<div  align="center">    
+ <img src="media/12.jpg" height = "76" alt="name" align=center />
+</div>
 
 概括一下：辐射强度(Radiant
 intensity，又译作发光强度)，表示每单位立体角的辐射通量，通常用符号I表示，单位  ，瓦特每球面度。
@@ -191,7 +203,10 @@ intensity，又译作发光强度)，表示每单位立体角的辐射通量，�
 一种直观的辐射率的理解方法是：将辐射率理解为物体表面的微面元所接收的来自于某方向光源的单位面积的光通量，因此截面选用垂直于该方向的截面，其面积按阴影面积技术计算。
 
 辐射率的微分形式：
-![](media/13.jpg)
+<div  align="center">    
+<img src="media/13.jpg" height = "90" alt="name" align=center />
+</div>
+
 
 其中：Φ是辐射通量，单位瓦特（W）；Ω是立体角，单位球面度（sr）。
 
@@ -207,7 +222,9 @@ intensity，又译作发光强度)，表示每单位立体角的辐射通量，�
 用符号E表示，单位  ，瓦特每平方米。
 
 辐照度可以写成辐射率（Radiance）在入射光所形成的半球上的积分：
-![](media/14.jpg)
+<div  align="center">    
+<img src="media/14.jpg" height = "70" alt="name" align=center />
+</div>
 
 其中，Ω是入射光所形成的半球。L(ω)是沿ω方向的光亮度。
 
@@ -225,7 +242,9 @@ intensity，又译作发光强度)，表示每单位立体角的辐射通量，�
 
 BRDF的精确定义是出射辐射率的微分（differential outgoing
 radiance）和入射辐照度的微分（differential incoming irradiance）之比：
-![](media/15.jpg)
+<div  align="center">    
+<img src="media/15.jpg" height = "70" alt="name" align=center />
+</div>
 
 要理解这个方程的含义，可以想象一个表面被一个来自围绕着角度**l**的微立体角的入射光照亮，而这个光照效果由表面的辉度dE来决定。
 
@@ -254,7 +273,11 @@ irradiance）之比，描述了入射光线经过某个表面反射后如何在�
 --------------------
 
 这里的讨论仅限于非区域光源，如点光源或方向光源。在这种情况下，BRDF定义可以用非微分形式表示：
-![](media/17.jpg)
+
+<div  align="center">    
+<img src="media/17.jpg" height = "70" alt="name" align=center />
+</div>
+
 其中：
 
 -   EL是光源在垂直于光的方向向量L平面测量的辐照度（irradiance）。
@@ -265,7 +288,10 @@ irradiance）之比，描述了入射光线经过某个表面反射后如何在�
 ------------------
 
 根据上文所了解了BRDF的定义，现在，就很容易得到BRDF是如何用n个非区域光来拟合一般的着色方程的：
-![](media/18.jpg)
+
+<div  align="center">    
+<img src="media/18.jpg" height = "70" alt="name" align=center />
+</div>
 
 其中k是每个光源的索引。使用⊗符号（分段向量乘法），是因为BRDF和辉度（irradiance）都是RGB向量。考虑到入射和出射方向都拥有两个自由度（通常参数化是使用两个角度：相对于表面法线的仰角θ和关于法线的旋转角度*φ*），一般情况下，BRDF是拥有四个标量变量的函数。
 
@@ -291,17 +317,28 @@ Lobe）。它形成了镜面分量。显然，这些波瓣位于入射光的反�
 BRDF的可逆性源自于亥姆霍兹光路可逆性（Helmholtz Recoprpcity Rule）。
 
 BRDF的可逆性即，交换入射光与反射光，并不会改变BRDF的值：
-![](media/19.1.jpg)
+<br>
+<br>
+<div  align="center">    
+<img src="media/19.1.gif" height = "25" alt="name" align=center />
+</div>
 
 5.2 能量守恒性质
 ----------------
 
 BRDF需要遵循能量守恒定律。能量守恒定律指出：入射光的能量与出射光能量总能量应该相等。能量守恒方程如下：
-![](media/20.jpg)
+<div  align="center">    
+<img src="media/20.jpg" height = "45" alt="name" align=center />
+</div>
 由此可知：
-![](media/21.jpg)
+
+<div  align="center">    
+<img src="media/21.jpg" height = "45" alt="name" align=center />
+</div>
 因此BRDF必须满足如下的积分不等式，也就是能量守恒性质：
-![](media/22.1.jpg)
+<div  align="center">    
+<img src="media/22.1.png" height = "55" alt="name" align=center />
+</div>
 
 
 5.3 线性特征
@@ -507,8 +544,10 @@ Function，简写为NDF），D(h)来描述组成表面一点的所有微表面�
 由微平面组成的表面。仅红色微平面的表面法线和半矢量h对齐，能参与从入射光线向量l到视线向量v的光线反射
 
 NDF的定义式：
+<div  align="center">    
+<img src="media/32.jpg" height = "65" alt="name" align=center />
+</div>
 
-![](media/32.jpg)
 
 在微观层面上不规则的表面会造成光的漫反射。例如，模糊的反射是由于光线的散射造成的。而反射的光线并不均匀，因此我们得到的高光反射是模糊的。如下图。
 
@@ -526,7 +565,11 @@ Cook-Torrance模型作为图形学中最早的基于物理的BRDF模型，由Coo
 
 Cook-Torrance微平面着色模型（Cook-Torrance microfacet specular shading
 model），即Microfacet Specular BRDF，定义为：
-![](media/34.jpg)
+
+<div  align="center">    
+<img src="media/34.jpg" height = "75" alt="name" align=center />
+</div>
+
 其中：
 
 -   F为菲涅尔反射函数( Fresnel 函数 )
@@ -579,7 +622,10 @@ attenuation factor），该模型更像是一种经验模型，但还是属于�
 
 各向同性的Ward模型定义为：
 
-![](media/35.jpg)
+<div  align="center">    
+<img src="media/35.jpg" height = "75" alt="name" align=center />
+</div>
+
 
 
 九、BRDF与其引申
