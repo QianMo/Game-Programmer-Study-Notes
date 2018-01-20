@@ -149,11 +149,8 @@ MRT)技术，我们可以在一个Pass之内完成所有渲染工作。
 1、通用版本的延迟着色算法伪代码：
 
     For each object:
-
 	Render to multiple targets
-
-	For each light:
-
+    For each light:
 	Apply light as a 2D postprocess
 
 2、一个通用版本的deferred shading过程描述：
@@ -182,12 +179,12 @@ MRT)技术，我们可以在一个Pass之内完成所有渲染工作。
 
 	Many-light deferred shading algorithm
 	For each light:
-	-Generate/bind shadow/environment maps
-	-Compute light’s contribution for each G-buffer sample:
+	- Generate/bind shadow/environment maps
+	- Compute light’s contribution for each G-buffer sample:
 	For each G-buffer sample
-	-Load G-buffer data
-	-Evaluate light contribution (may be zero)
-	-Accumulate contribution into frame-buffer
+	- Load G-buffer data
+	- Evaluate light contribution (may be zero)
+	- Accumulate contribution into frame-buffer
 
 可以将这里的多光源计算过程理解为，对每个光源创建一个屏幕空间包围矩形，然后用光照shader渲染这个矩形。
 
