@@ -1,6 +1,5 @@
 
 # 【《Real-Time Rendering 3rd》 提炼总结】
-![](BlogPost01/media/1.jpg)
 
 * [1] [【《Real-Time Rendering 3rd》 提炼总结】(一) 全书知识点总览](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost01)
 
@@ -25,3 +24,5 @@
 * [11] [【《Real-Time Rendering 3rd》 提炼总结】(十一) 第十四章 : 游戏开发中的渲染加速算法总结](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost11)
 
 * [12] [【《Real-Time Rendering 3rd》 提炼总结】(十二) 渲染管线优化方法论：从瓶颈定位到优化策略](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost12)
+
+ <img src="BlogPost01/media/1.jpg" height = "400" alt="name" align=center />
