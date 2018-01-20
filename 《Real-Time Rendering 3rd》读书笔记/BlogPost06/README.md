@@ -130,7 +130,8 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
 图4 立体角
 
 立体角ω有如下微分形式：
-![](media/5.jpg)
+
+ <img src="media/5.jpg" width = "122" height = "71" alt="name" align=center />
 
 其中*dA*为面积微元。而面积微元*dA*在球面坐标系下可以写成：
 ![](media/6.jpg)
