@@ -1,12 +1,11 @@
 
 # 【《Real-Time Rendering 3rd》 提炼总结】
- <img src="BlogPost01/media/1.jpg" height = "400" alt="name" align=center />
 
-<br>
+<div  align="center">    
+ <img src="BlogPost01/media/1.jpg" height = "400" alt="name" align=center />
+</div>
 
 ## 目录
-<br>
-
 *  [【《Real-Time Rendering 3rd》 提炼总结】(一) 全书知识点总览](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost01)
 
 *  [【《Real-Time Rendering 3rd》 提炼总结】(二) 第二章 · 图形渲染管线 The Graphics Rendering Pipeline](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost02)
