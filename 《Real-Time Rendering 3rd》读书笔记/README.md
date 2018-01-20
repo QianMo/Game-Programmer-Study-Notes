@@ -1,6 +1,7 @@
 
 # 【《Real-Time Rendering 3rd》 提炼总结】
  《Real-Time Rendering 3rd》可谓图形学界“九阴真经总纲”一般的存在，当世武功的心法口诀，尽数记载。这个系列的读书笔记，是对这本神作一个系统而有特色的总结提炼。
+ 
  <img src="BlogPost01/media/1.jpg" height = "600" alt="name" align=center />
 
 ## 目录
