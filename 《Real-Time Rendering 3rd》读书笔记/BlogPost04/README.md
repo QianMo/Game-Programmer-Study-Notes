@@ -113,8 +113,11 @@ Rendering 3rd》的对应原文与相应文献。
 ### 4.1.1 着色方程的漫反射分量
 
 其中漫反射分量较为简单，书中推导出的对Ldiff的着色方程如下：
-
-![](media/2c7ffb0dbc09aa290878053e34761d8e.jpg)
+<br>
+<br>
+<div  align="center">    
+<img src="media/2c7ffb0dbc09aa290878053e34761d8e.jpg" height = "55" alt="name" align=center />
+</div>
 
 这种类型的漫反射着色也被叫做兰伯特（Lambertian）着色。兰伯特定律指出，对于理想的漫反射表面，出射光亮度与cosθi成正比。注意，这种夹紧型cos因子（clamped
 dot product，可写作max(n·l,
@@ -124,17 +127,25 @@ dot product，可写作max(n·l,
 
 原书中推导出的镜面反射项的着色方程：
 
-![](media/37b890a30181aa7b3e2d8104bc8ec318.jpg)
+<div  align="center">    
+<img src="media/37b890a30181aa7b3e2d8104bc8ec318.jpg" height = "55" alt="name" align=center />
+</div>
 
 #### 4.1.3 着色方程
 
 组合漫反射和镜面反射两个项，得到完整的着色方程，总出射光亮度Lo：
 
-![](media/051d469c265a92e7a10e704460e4cdf2.jpg)
+
+<div  align="center">    
+<img src="media/051d469c265a92e7a10e704460e4cdf2.jpg" height = "55" alt="name" align=center />
+</div>
 
 这个着色方程与“Blinn-Phong”方程类似，“Blinn-Phong”方程是Blinn在1977年首次提出的。主要形式如下：
 
-![](media/da177d97f6e96b285ab35937a917807b.jpg)
+
+<div  align="center">    
+<img src="media/da177d97f6e96b285ab35937a917807b.jpg" height = "55" alt="name" align=center />
+</div>
 
 ## 4.2 三种着色处理方法
 
