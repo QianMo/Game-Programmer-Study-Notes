@@ -1,9 +1,7 @@
 
 # 【《Real-Time Rendering 3rd》 提炼总结】
-
-<div  align="center">    
- <img src="BlogPost01/media/1.jpg" height = "400" alt="name" align=center />
-</div>
+ 《Real-Time Rendering 3rd》可谓图形学界“九阴真经总纲”一般的存在，当世武功的心法口诀，尽数记载。这个系列的读书笔记，是对这本神作一个系统而有特色的总结提炼。
+ <img src="BlogPost01/media/1.jpg" height = "600" alt="name" align=center />
 
 ## 目录
 *  [【《Real-Time Rendering 3rd》 提炼总结】(一) 全书知识点总览](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/BlogPost01)
