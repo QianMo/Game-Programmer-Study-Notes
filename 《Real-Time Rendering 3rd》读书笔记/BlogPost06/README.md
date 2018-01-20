@@ -134,10 +134,11 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
  <img src="media/5.jpg" width = "122" height = "71" alt="name" align=center />
 
 其中*dA*为面积微元。而面积微元*dA*在球面坐标系下可以写成：
-![](media/6.jpg)
+
+ <img src="media/6.jpg" width = "350" height = "41" alt="name" align=center />
 
 因此：
-![](media/7.jpg)
+ <img src="media/7.jpg" width = "220" height = "58" alt="name" align=center />
 
 
 2.3 投影面积 Foreshortened Area
@@ -146,7 +147,7 @@ s/r2 ），单位球的表面积是4π ，所以整个球面的立体角也是4�
 投影面积描述了一个物体表面的微小区域在某个视线方向上的可见面积。
 
 对于面积微元A，则沿着与法向夹角为θ方向的A的可见面积为：
-![](media/8.jpg)
+ <img src="media/8.jpg" width = "182" height = "47" alt="name" align=center />
 
 ![](media/66e11d2f41165001d2bbb09ae9d4ca15.jpg)
 
