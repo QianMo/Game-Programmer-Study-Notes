@@ -9,7 +9,7 @@
 -《Real-Time Rendering
 3rd》可谓图形学界“九阴真经总纲”一般的存在，当世武功的心法口诀，尽数记载。此读书笔记是对这本神作一个系统而有特色的总结提炼。
 
-- [《Real-Time Rendering 3rd》知识网络图](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E7%9F%A5%E8%AF%86%E7%BD%91%E7%BB%9C%E5%9B%BE)
+- [《Real-Time Rendering 3rd》知识网络图谱](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E7%9F%A5%E8%AF%86%E7%BD%91%E7%BB%9C%E5%9B%BE%E8%B0%B1)
 
 - [《GPU 编程与CG 语言之阳春白雪下里巴人》读书笔记](https://github.com/QianMo/Game-Dev-Reading-Notes/tree/master/Content/%E3%80%8AGPU%20%E7%BC%96%E7%A8%8B%E4%B8%8ECG%20%E8%AF%AD%E8%A8%80%E4%B9%8B%E9%98%B3%E6%98%A5%E7%99%BD%E9%9B%AA%E4%B8%8B%E9%87%8C%E5%B7%B4%E4%BA%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 -GPU 编程与Shader、CG编程的入门良书。
