@@ -31,4 +31,20 @@
 
 * [【《Real-Time Rendering 3rd》 提炼总结】(十二) 渲染管线优化方法论：从瓶颈定位到优化策略](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Content/BlogPost12)
 
+<br>
+
+# 【《Real-Time Rendering 3rd》 提炼总结】的合辑PDF电子书版本
+
+<br>
+
+链接： [电子书《《Real-Time Rendering 3rd》提炼总结》](https://github.com/QianMo/Real-Time-Rendering-3rd-Summary-Ebook)
+
+
+# 配套伴侣-实时渲染核心知识网络图解
+
+![](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E7%9F%A5%E8%AF%86%E7%BD%91%E7%BB%9C%E5%9B%BE%E8%B0%B1/Real-Time-Rendering-3rd-Knowledge-Diagram.jpg)
+
+
+
+
 
