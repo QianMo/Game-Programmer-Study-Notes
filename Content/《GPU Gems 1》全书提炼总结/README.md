@@ -246,9 +246,9 @@ texture），从而产生表面的法线图。对每帧渲染法线图，允许�
 
 波的状态定义为水平位置（x，y）和时间（t）的函数：
 
-![ch01_eqn001.jpg](media/f5774585ef3f0c0e08a869f222368a9f.jpg)
+![](media/f5774585ef3f0c0e08a869f222368a9f.jpg)
 
-![fig01-02.jpg](media/ba6a16c60a898c10e8032c9b254e35df.jpg)
+![](media/ba6a16c60a898c10e8032c9b254e35df.jpg)
 
 图 单个波函数的参数
 
