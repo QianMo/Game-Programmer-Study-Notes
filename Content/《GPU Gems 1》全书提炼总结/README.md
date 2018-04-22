@@ -103,11 +103,11 @@ Texture Maps）
 《GPU Gems
 1》英文原版出版于2004年4月，中文版《GPU精粹1》出版于2006年1月。需要说明的是，书中很多内容放到今天，并不过时，仍然很有研究、学习、运用、实践的价值。尤其是水体渲染，皮肤渲染，次表面散射、阴影渲染、后处理相关的章节。
 
-![C:\\Users\\Administrator\\Google 云端硬盘\\【读书笔记】\\【GPU GEM and PRO】\\封面\\d4032b44cf9f4e9233962c8a6c5fac46_2_2_art.jpg](media/9de8a7fd4e07a2a88ca819c03259db5d.jpg)
+![](media/9de8a7fd4e07a2a88ca819c03259db5d.jpg)
 
 图 《GPU Gems 1》封面
 
-![C:\\Users\\Administrator\\Google 云端硬盘\\【读书笔记】\\【GPU GEM and PRO】\\GPU GEM I\\图片\\GPU_Gems_Endpapers.jpg](media/b27d6c11d5181e315ff6570f322709d1.jpg)
+![](media/b27d6c11d5181e315ff6570f322709d1.jpg)
 
 图 全书内容概览图
 
