@@ -1,6 +1,6 @@
 
 
-![](media/cover.jpg)
+![](Media/cover.jpg)
 
 
 
