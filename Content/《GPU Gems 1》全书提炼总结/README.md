@@ -479,6 +479,7 @@ Map）考虑了来自环境的入射光，但不包含由物体引起的阴影�
 
 要解决这个问题，可以生成一个遮挡项，用来近似表达在每个顶点上半球辐射光中，有多大比率场景中其他物体所遮挡。
 
+
 ### 2.4 实现
 
 Dawn
@@ -534,6 +535,7 @@ Face）
 --------------------------------------------------------------------------
 
 <br>
+
 ## 【章节概览】
 
 这章关于巨量自然元素的渲染，特别是对于无尽波动的草地叶片的渲染。作者对Codecreatures
@@ -729,7 +731,7 @@ and Oren 1995）。
 Example 16-1 摘录纳入了环绕照明的皮肤Shader效果的代码（Excerpt from the Skin
 Shader Effect Incorporating Wrap Lighting）
 
-// 为皮肤着色生成2D查找表（Generate 2D lookup table for skin shading）
+	// 为皮肤着色生成2D查找表（Generate 2D lookup table for skin shading）
     
     float4 GenerateSkinLUT(float2 P : POSITION) : COLOR
 
@@ -1002,7 +1004,7 @@ Random Directions with Rejection Sampling）
 
 另外，用图形硬件代替光线追踪软件，有可能加速遮挡信息的计算。
 
-5.3 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
+## 5.3 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
 
 使用环境光遮蔽贴图进行着色的基本思想是：
 可以直接在着色点处使用之前已计算好的，有多少光线能到达表面的，优质的近似值信息。
@@ -1259,8 +1261,11 @@ Perlin噪声（Perlin Noise）
 
 埃尔米特样条（Hermite spline）
 
-九、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
---------------------------------------------------------
+
+<br>
+
+# 九、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
+
 
 ### 【章节概览】
 
@@ -1542,8 +1547,11 @@ Example 11-2 阴影贴图反走样的4采样实现版本代码
 
 透视阴影贴图（ perspective shadow maps）
 
-十四、全方位阴影贴图（Omnidirectional Shadow Mapping）
-------------------------------------------------------
+<br>
+
+
+# 十四、全方位阴影贴图（Omnidirectional Shadow Mapping）
+
 
 ### 【章节概览】
 
@@ -1557,11 +1565,9 @@ Example 11-2 阴影贴图反走样的4采样实现版本代码
 
 -   阴影贴图（shadow mapping）
 
-模板阴影（Stencil Shadows，也被称Shadow Volume，阴影体）作在《Doom
-3》中有所应用，优点是得到大量的GPU支持、独立于光源的种类、产生的阴影质量很高。但缺点是严重依赖于CPU，只能产生清晰的影子，需要很高的填充率，而且不能与硬件（hardware-tessellated）的表面一起使用。
+模板阴影（Stencil Shadows，也被称Shadow Volume，阴影体）作在《Doom 3》中有所应用，优点是得到大量的GPU支持、独立于光源的种类、产生的阴影质量很高。但缺点是严重依赖于CPU，只能产生清晰的影子，需要很高的填充率，而且不能与硬件（hardware-tessellated）的表面一起使用。
 
-阴影贴图（Shadow Mapping,也译作阴影映射）由Lance
-Williams于1978年引入计算机图形学，文章发布当时多数好莱坞电影都在使用这个方法，包括计算机渲染和特效。为了计算阴影，阴影映射在场景几何体上投射特殊的动态创建的纹理。它可以渲染清晰和模糊的影子，以及由不同类型的光源产生的阴影，它还可以与硬件镶嵌的表面以及GPU动画的网格（例如蒙皮网格）一起使用。
+阴影贴图（Shadow Mapping,也译作阴影映射）由Lance Williams于1978年引入计算机图形学，文章发布当时多数好莱坞电影都在使用这个方法，包括计算机渲染和特效。为了计算阴影，阴影映射在场景几何体上投射特殊的动态创建的纹理。它可以渲染清晰和模糊的影子，以及由不同类型的光源产生的阴影，它还可以与硬件镶嵌的表面以及GPU动画的网格（例如蒙皮网格）一起使用。
 
 该文章主要介绍了全方位阴影贴图（Omnidirectional Shadow
 Mapping）方法，该方法有两个主要步骤：
@@ -1572,35 +1578,35 @@ Mapping）方法，该方法有两个主要步骤：
 
 在创建阶段，对所有把阴影投射到阴影贴图纹理上的物体，渲染它们到光源的距离的平方。而在投射结算，渲染所有接受阴影的物体，并比较所渲染的像素到光源的距离的平方。以下为全方位阴影映射算法的伪代码：
 
-for (iLight = 0; iLight \< NumberOfLights; iLight++) 
+	for (iLight = 0; iLight \< NumberOfLights; iLight++) 
+	
+	{
+	
+	  // Fill the shadow map.
+	
+	  for (iObject = 0; iObject \< NumberOfObjects; iObject++)
+	
+	 {
+	
+	    RenderObjectToShadowMap(iLight, iObject);
+	
+	  }
+	
+	  // Lighting and shadow mapping.
+	
+	  for (iObject = 0; iObject \< NumberOfObjects; iObject++) 
+	
+	  {
+	
+	    LightAndShadeObject (iLight, iObject);
+	
+	  }
+	
+	}
 
-{
+![](media/0b975daa48ea7ab00e8e82ac74275661.png)
 
-  // Fill the shadow map.
-
-  for (iObject = 0; iObject \< NumberOfObjects; iObject++)
-
- {
-
-    RenderObjectToShadowMap(iLight, iObject);
-
-  }
-
-  // Lighting and shadow mapping.
-
-  for (iObject = 0; iObject \< NumberOfObjects; iObject++) 
-
-  {
-
-    LightAndShadeObject (iLight, iObject);
-
-  }
-
-}
-
-![“Omnidirectional Shadow Mapping”的图片搜索结果](media/0b975daa48ea7ab00e8e82ac74275661.png)
-
-图 Omnidirectional Shadow Mapping \@Merlin3d
+图 Omnidirectional Shadow Mapping @Merlin3d
 
 ### 【本章配套源代码汇总表】
 
@@ -1621,15 +1627,17 @@ Example 12-3 产生一个软阴影（Making a Softer Shadow）
 
 全方位阴影映射（Omnidirectional Shadow Mapping）
 
-十五、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
----------------------------------------------------------------------------------------------
+<br>
 
-### 【章节概览】
+# 十五、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
+
+
+## 【章节概览】
 
 这章介绍了一种渲染软阴影的技术，称为遮挡区间映射（Occlusion Interval
 Maps），能够正确地在静态场景中渲染出光源沿着预定路径移动时产生的模糊阴影。之所以叫遮挡区间映射，是因为此算法使用纹理贴图来存储这种光源可见、而本身被遮挡的区间。
 
-### 【核心要点】
+## 【核心要点】
 
 对于需现实的加油站的Demo，文章一开始本打算使用一种预计算的可见度技术，例如球谐光照（Spherical
 Harmonic Lighting [Sloan et al.
@@ -1643,24 +1651,24 @@ Maps）技术，通过损失一定运行性能来获得在静态场景上实时�
 Interval
 Maps）可以用作静态光照贴图的替代品，从而实现动态效果，可以得到从日出到日落光照明变化的动态效果。如下图。
 
-![fig13-05.jpg](media/5de7891126c535535204fa96b36916f3.png)
+![](media/5de7891126c535535204fa96b36916f3.png)
 
 图 加油站入口
 
 注意加油站墙上的阴影在图形的左上方有清楚的边界，但是它朝着右下方变得模糊而柔软。这种相联系的清晰和模糊的变化是真实感软阴影的重要性质，而这是由遮挡区间映射得到的。
 
-![fig13-06.jpg](media/8bae93c4dd683d629fa8c1f9a2bb79e6.png)
+![](media/8bae93c4dd683d629fa8c1f9a2bb79e6.png)
 
 图 汽车上方的木板在篷布上形成的阴影
 
 上图中汽车篷布上的木板形成了复杂的阴影。这对算法来说是最坏的情况。这些木头条使得篷布上的遮挡区间映射必须存储在5个不同的纹理中，对于场景中的大多数物体，4个纹理就足以取得所有的阴影。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 13-1使用遮挡区间映射计算软阴影的实现函数（Function for Computing Soft
 Shadows Using Occlusion Interval Maps）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1668,10 +1676,15 @@ Shadows Using Occlusion Interval Maps）
 
 遮挡区间映射（Occlusion Interval Maps）
 
-十六、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
----------------------------------------------------------------
 
-### 【章节概览】
+
+<br>
+
+
+# 十六、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
+
+
+## 【章节概览】
 
 透视阴影贴图（Perspective Shadow Maps, PSMs）是由Stamminger和Drettakis在SIGGRAPH
 2002上提出的一种阴影贴图（Shadow Maps）流派的方法。
@@ -1681,7 +1694,7 @@ Shadows Using Occlusion Interval Maps）
 这章提出了一种优化透视阴影贴图（Perspective Shadow
 Maps）方法的新思路，对其三种缺陷都一一进行了改进。
 
-### 【核心要点】
+## 【核心要点】
 
 这章首先讲到动态阴影的创建，目前主要有两个算法流派：
 
@@ -1692,20 +1705,13 @@ Maps）方法的新思路，对其三种缺陷都一一进行了改进。
 阴影体和阴影贴图算法之间的不同之处在于，是涉及到物体空间（object
 space）还是图像空间（image space）。
 
--   阴影体（Shadow Volumes）是物体空间（Object
-    Space）的阴影算法，通过创建表示阴影遮挡的多边形结构来工作，这意味着我们始终具像素精确但较“硬”的阴影。此方法无法处理没有多边形结构的对象，比如经过alpha测试修改的几何图形或经过位移映射的几何体（displacement
-    mapped
-    geometry）。此外，绘制阴影体需要大量的填充率，这使得很难将它们用于密集场景中的每个对象上，特别是在存在多个灯光时。
+-   阴影体（Shadow Volumes）是物体空间（Object Space）的阴影算法，通过创建表示阴影遮挡的多边形结构来工作，这意味着我们始终具像素精确但较“硬”的阴影。此方法无法处理没有多边形结构的对象，比如经过alpha测试修改的几何图形或经过位移映射的几何体（displacement
+mapped geometry）。此外，绘制阴影体需要大量的填充率，这使得很难将它们用于密集场景中的每个对象上，特别是在存在多个灯光时。
 
--   阴影贴图（Shadow Maps）是图像空间（Image
-    Space）的阴影算法，它可以处理任何物体（如果能够渲染一个物体，就能得到它的阴影），但是存在走样（aliasing，锯齿）的问题。走样时常发生在有较宽或全方位光源的大场景中。问题在于阴影映射中使用的投影变换会改变阴影贴图像素的大小，因此摄像机附近的纹理像素变得非常大。
-    因此，我们必须使用巨大的阴影贴图（四倍于屏幕分辨率或更高）来实现更高的质量。
-    尽管如此，阴影贴图在复杂场景中却比阴影体要快得多。
+-   阴影贴图（Shadow Maps）是图像空间（Image Space）的阴影算法，它可以处理任何物体（如果能够渲染一个物体，就能得到它的阴影），但是存在走样（aliasing，锯齿）的问题。走样时常发生在有较宽或全方位光源的大场景中。问题在于阴影映射中使用的投影变换会改变阴影贴图像素的大小，因此摄像机附近的纹理像素变得非常大。因此，我们必须使用巨大的阴影贴图（四倍于屏幕分辨率或更高）来实现更高的质量。尽管如此，阴影贴图在复杂场景中却比阴影体要快得多。
 
 透视阴影贴图（Perspective Shadow Maps, PSMs）是由Stamminger和Drettakis在SIGGRAPH
-2002上提出的一种阴影贴图（Shadow
-Maps）流派的方法，通过使用在投射后空间（post-projective
-space）中的阴影贴图来去除其中的走样，而在投射后空间中，所有近处的物体都比远处的大。不幸的是，使用原始算法很困难，因为只有要某些情况下才能正常工作。
+2002上提出的一种阴影贴图（Shadow Maps）流派的方法，通过使用在投射后空间（post-projective space）中的阴影贴图来去除其中的走样，而在投射后空间中，所有近处的物体都比远处的大。不幸的是，使用原始算法很困难，因为只有要某些情况下才能正常工作。
 
 以下是透视阴影映射算法的三个主要问题和解决方案：
 
@@ -1721,11 +1727,12 @@ space）中的阴影贴图来去除其中的走样，而在投射后空间中，
 
 解决方案：使用在世界空间中的偏置（而且不再分析双投射矩阵的结果），然后把这个世界空间偏置转换到投射后空间。
 
-![fig14-23.jpg](media/80461ef7339665f0405a11e10ce98031.png)
+![](media/80461ef7339665f0405a11e10ce98031.png)
 
-图 得到的阴影实时渲染结果（多边形10w\~50w个，分辨率1600x1200）。
+图 得到的阴影实时渲染结果（多边形10w ~ 50w个，分辨率1600x1200）。
 
-### 【本章配套源代码汇总表】
+
+## 【本章配套源代码汇总表】
 
 Example 14-1计算立方体阴影纹理坐标（Shader Code for Computing Cube Map Texture
 Coordinates）
@@ -1738,7 +1745,7 @@ PCF）
 Example 14-4 用于紧邻百分比过滤的像素Shader伪代码（Pixel Shader Pseudocode for
 PCF）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1750,42 +1757,44 @@ PCF）
 
 单位立方体裁剪法（Unit Cube Clipping）
 
-十七、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
---------------------------------------------------------------------------
+<br>
 
-### 【章节概览】
+# 十七、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
+
+
+## 【章节概览】
 
 这章讲到了可见性在逐像素渲染光照场景中的作用，也考虑如何使用可见性减少必须渲染的批次数量，从而改善性能。
 
-### 【核心要点】
+## 【核心要点】
 
 如下伪代码说明在一个场景中必须渲染的批次数：
 
-For each visible object
-
-  For each pass in the ambient shader
-
-    For each visible batch in the object
-
-      Render batch
-
-For each visible light
-
-  For each visible shadow caster
-
-    For each pass in the shadow shader
-
-      For each shadow batch in the object
-
-        Render batch
-
-  For each lit visible object
-
-    For each pass in the light shader
-
-      For each visible batch in the object
-
-        Render batch
+	For each visible object
+	
+	  For each pass in the ambient shader
+	
+	    For each visible batch in the object
+	
+	      Render batch
+	
+	For each visible light
+	
+	  For each visible shadow caster
+	
+	    For each pass in the shadow shader
+	
+	      For each shadow batch in the object
+	
+	        Render batch
+	
+	  For each lit visible object
+	
+	    For each pass in the light shader
+	
+	      For each visible batch in the object
+	
+	        Render batch
 
 正如伪代码所述，为了减少批次数，可以进行一些与非可见性相关的优化。最应该优化的是渲染每个光照所必须的通道数。批次数随通道数线性增加，因此，我们应该最小化受限于CPU的游戏通道数。
 
@@ -1796,11 +1805,11 @@ rectangle）限制显卡渲染的面积，解决此问题。
 
 逐像素的照明需要大量的批次数和极高的填充率，所以要减少渲染的物体数和它们影响的屏幕面积。而使用这章中介绍的标准可见性算法和技术，可以充分改善运行性能。
 
-![fig15-01.jpg](media/fc2c00c1db06777ab92c1c859f037e96.jpg)
+![](media/fc2c00c1db06777ab92c1c859f037e96.jpg)
 
 图 不在可见集合中的对象可能会影响渲染场景
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 15-1 说明一个场景中必须渲染的批次数量的伪代码（pseudocode illustrates
 the number of batches that must be rendered in a scene）.
@@ -1808,7 +1817,7 @@ the number of batches that must be rendered in a scene）.
 Example 15-2：快速生成凸包的伪代码（pseudocode for quickly generate the convex
 hull）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 逐像素光照（Per-Pixel Lighting）
 
@@ -1818,18 +1827,18 @@ hull）
 
 批次（Batch）
 
-十八、空间BRDF（Spatial BRDFs）
--------------------------------
+# 十八、空间BRDF（Spatial BRDFs）
 
-### 【章节概览】
+
+## 【章节概览】
 
 这章主要先聊到了空间双向反射分布函数（SBRDF），接着文章讨论了压缩SBRDF表达式，以及由离散光或环境贴图所照明的SBRDF的渲染方法。
 
-### 【核心要点】
+## 【核心要点】
 
 SBRDF是纹理贴图和双向反射分布函数（BRDF）的组合。纹理贴图存储了反射或其他的属性，它们沿着2D表面上的空间变化，而BRDF存储的是表面上单个点的反射，包括从入射角到出射角的全部分布。
 
-![fig18-01.jpg](media/f37e1d72ea9f280da1e41a0550ab047f.png)
+![](media/f37e1d72ea9f280da1e41a0550ab047f.png)
 
 图 SBRDF的定义域
 
@@ -1837,11 +1846,11 @@ SBRDF对标准点光源或方向光源照明的SBRDF表面，文中直接贴图�
 
 SBRDF除了可以用点光源或方向光源照明之外，还可以用环境贴图中所有方向的入射光进行照明。关键是在渲染前用BRDF的一部分卷积环境贴图。对于大多数的BRDF表达式，必须分别处理各个不同的BRDF。但因为一个SBRDF可能有上百万个不同的BRDF，所以这样做不可能。这篇文章采取的的做法是，简单地用一个Phong叶片卷积环境贴图，叶片可以选择不同的镜面指数，如n=0、1、4、16、64、256、这些贴图能存储在不同级别的立方体mipmap中。随后，SBRDF纹素的n值就指细节层次(LOD)，用于在立方体贴图中采样适当mipmap级别。
 
-![fig18-05.jpg](media/8edddd3f5776ead7d573cdb8bc2eb4ad.png)
+![](media/8edddd3f5776ead7d573cdb8bc2eb4ad.png)
 
 图 用蓝色的油漆和铝BRDF得到的SBRDF渲染效果
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 18-1. 用于离散光源的SBRDF片元Shader（An SBRDF Fragment Shader for
 Discrete Lights）
@@ -1850,11 +1859,10 @@ Example 18-2. 使用Phong Lobe来描述环境地图的伪代码（Pseudocode for
 Environment Map with a Phong Lobe）
 
 Example 18-3. 用于环境贴图的SBRDF片元Shader（An SBRDF Fragment Shader for
-Environment Maps
+Environment Maps）
 
-）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 双向反射分布函数（BRDF）
 
@@ -1864,16 +1872,14 @@ Environment Maps
 
 环境贴图（Environment Maps）
 
-十九、基于图像的光照（Image-Based Lighting）
---------------------------------------------
+
+# 十九、基于图像的光照（Image-Based Lighting）
+
 
 ### 【章节概览】
 
-这篇文章打破了当时立方体贴图环境（Cube-Map Environment
-）用法的桎梏，深入研究了更多可能的逼真光照效果。文章主要研究了基于图像的光照（Image-Based
-Lighting，IBL），包括局部化的立方体映射，类似于使用基于图像的局部光照（Localizing
-Image-Based
-Lighting），然后介绍了如何把哪些重要的技巧用于着色模型，包括逼真的反射、阴影和漫反射/环境项。
+这篇文章打破了当时立方体贴图环境（Cube-Map Environment）用法的桎梏，深入研究了更多可能的逼真光照效果。文章主要研究了基于图像的光照（Image-Based Lighting，IBL），包括局部化的立方体映射，类似于使用基于图像的局部光照（Localizing
+Image-Based Lighting），然后介绍了如何把哪些重要的技巧用于着色模型，包括逼真的反射、阴影和漫反射/环境项。
 
 ### 【核心要点】
 
@@ -1882,7 +1888,7 @@ Lighting，IBL）。
 
 在室内环境移动模型时，最好是使用近距离的立方体贴图，距离的大小与当前的房间类似。当模型在房间移动时，根据模型在房间中的位置，适当地放大或缩小放射。这种方法得到的模拟效果使人感到更为可靠和逼真。尤其在包含窗户，屏幕和其他可识别光源的环境中。而只要加入很少的Shader数学就能将反射局部化。具体可以看原文贴出的Shader源码。
 
-![fig19-05.jpg](media/406e4997427e4959de16ad7676327ca1.png)
+![](media/406e4997427e4959de16ad7676327ca1.png)
 
 图 不同位置上的局部反射
 
@@ -1892,7 +1898,7 @@ Lighting，IBL）。
 
 基于图像的光照为复杂的光照计算提供了综合而便宜的替代品，将一点数学加入纹理方法，可以大大拓宽“简单”IBL效果，给3D图像提供更强的的方位感。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 19-1生成世界空间和光照空间坐标的顶点着色器代码（Vertex Shader to
 Generate World-Space and Lighting-Space Coordinates）
@@ -1905,7 +1911,7 @@ Cube Object）
 Example 19-4 用于背景立方体对象的像素着色器代码（Pixel Shader for Background
 Cube Object）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 基于图像的光照（Image-Based Lighting，IBL）
 
@@ -1916,29 +1922,28 @@ Cube Object）
 二十、纹理爆炸（Texture Bombing）
 ---------------------------------
 
-### 【章节概览】
+## 【章节概览】
 
 这章介绍了纹理爆炸（Texture
 Bombing）和相关的细胞技术，它们能在Shader中增加视觉的丰富性，图像的多样性，并减少大块纹理图案的重复性。
 
-### 【核心要点】
+## 【核心要点】
 
 纹理爆炸（Texture
 bombing）是一种程序化技术，它把小块图像以不规则的间隔放置。有助于减少团案的失真。
 
 纹理爆炸的基本思想是把UV空间分为规则的单元栅格。然后使用噪声或者伪随机函数，把一个图像放在任意位置上的各个单元中。最终的结果是在背景上对这些图像的合成。
 
-由于要组合数以百计的图像，因此实际上这种合成（composite
-）图像的方法效率并不高。而程序化（Procedural
+由于要组合数以百计的图像，因此实际上这种合成（composite）图像的方法效率并不高。而程序化（Procedural
 ）计算图像虽好，但是又不适合合成。这篇文章主要讲了图像合成和程序化生成这两种方法，可以发现他们各有优劣。
 
-![fig20-02.jpg](media/1f4929be9428a7031b3cbb41fa74d4f5.png)
+![](media/1f4929be9428a7031b3cbb41fa74d4f5.png)
 
 图 纹理爆炸效果图
 
 很显然，纹理爆炸也可以扩展到3D中，即3D程序化爆炸（Procedural 3D Bombing）
 
-![fig20-08.jpg](media/66a9323f26da5e154bda269c6618326a.png)
+![](media/66a9323f26da5e154bda269c6618326a.png)
 
 图 程序化的3D纹理爆炸效果
 
@@ -1948,9 +1953,10 @@ bombing）是一种程序化技术，它把小块图像以不规则的间隔放�
 
 图 Voronoi区域
 
+
 总之，纹理爆炸和相关的细胞技术可以给Shader增加视觉的多样性。使用存储在纹理中的伪随机数表和一个小程序，可以增大一个图像或一组图像的变化，并减少大块纹理区域的重复。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 20-1 将采样扩展到四个单元格（Extending the Sampling to Four Cells）
 
@@ -1967,7 +1973,7 @@ Example 20-6 程序化3D纹理程序（The Procedural 3D Texture Program）
 
 Example 20-7 计算Voronoi区域（Computing Voronoi Regions）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 纹理爆炸（Texture Bombing）
 
@@ -1975,14 +1981,15 @@ Example 20-7 计算Voronoi区域（Computing Voronoi Regions）
 
 Voronoi区域（Voronoi Region）
 
-二十一、实时辉光（Real-Time Glow）
-----------------------------------
+<br>
 
-### 【章节概览】
+# 二十一、实时辉光（Real-Time Glow）
+
+## 【章节概览】
 
 这章讲到2D光照效果中的辉光（Glow）和光晕（Halo），展示了如何通过图像处理方法完全地改善画面及3D人物的渲染感官。
 
-### 【核心要点】
+## 【核心要点】
 
 光源的辉光（Glow）和光晕（Halo）是自然界导出可见的现象，他们提供了亮度和气氛强烈的视觉信息。
 
@@ -1994,7 +2001,7 @@ et al.
 使用现代图形硬件，可以通过几个简单的渲染操作来再现这些效果。
 这使得我们可以使用明亮而有趣的物体来填满实时渲染的场景，物体会显得更为逼真或更具表现力，并且这是克服图形渲染中传统的低动态范围图形过于平庸的优雅手段之一。
 
-![fig21-02a.jpg](media/ebca3845e4f33120b90c54c7f78f9b32.png)
+![](media/ebca3845e4f33120b90c54c7f78f9b32.png)
 
 图 有辉光和没有辉光的一个Tron 2.0中的角色对比
 
@@ -2002,7 +2009,7 @@ et al.
 
 对于大的辉光源或复杂的辉光形状，要创建辉光，最好对2D场景的渲染进行后处理。这章重点讲到了后处理的实时辉光处理方法。如下图。
 
-![fig21-03.jpg](media/9b0e20d976d449e59dfb54e6a06fada4.png)
+![](media/9b0e20d976d449e59dfb54e6a06fada4.png)
 
 图 场景实时辉光的步骤
 
@@ -2011,19 +2018,17 @@ et al.
 
 渲染后处理辉光的步骤：
 
-1、辉光的指定和渲染
+- 1、辉光的指定和渲染
+- 2、模糊辉光源
+- 3、分步卷积
 
-2、模糊辉光源
-
-3、分步卷积
-
-![fig21-05.jpg](media/781d1c41c19ffd1ba195f399877c3860.png)
+![](media/781d1c41c19ffd1ba195f399877c3860.png)
 
 图 有效地创建模糊的两步分解法
 
 上图展示了如何有效地创建模糊的两步分解法：首先，在一根轴上模糊于（a）中的辉光源的点，产生（b）中所示的中间结果，然后在另一个轴上模糊这个结果，产生显示在（c）中的最终模糊。
 
-![fig21-07a.jpg](media/60fc76a8681ddc527beb31e71b9f9f62.png)
+![](media/60fc76a8681ddc527beb31e71b9f9f62.png)
 
 图 有辉光和无辉光的Tron 2.0中的英雄 Jet
 
@@ -2040,7 +2045,7 @@ filtering ）结果。
 
 总之，屏幕辉光是一种很赞的效果，能够容易地扩展到几乎每一种情形，并且变化多端，通过其还够延伸创建出很多其他的效果。最终的效果虽然细微但却有张力，值得在各种游戏中采用。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 21-1.设置抽样八个邻居的纹理坐标的Direct3D顶点着色器代码（Direct3D Vertex
 Shader to Set Texture Coordinates for Sampling Eight Neighbors）
@@ -2054,7 +2059,7 @@ Program to Establish Neighbor Sampling）
 Example 21-4. 建立邻域采样的Direct3D像素着色器代码（Direct3D Pixel Shader
 Program to Sum Four Weighted Texture Samples）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 辉光（Glow）
 
@@ -2064,14 +2069,18 @@ Program to Sum Four Weighted Texture Samples）
 
 图像处理（Image Processing）
 
-二十二、颜色控制（Color Controls）
-----------------------------------
+<br>
 
-### 【章节概览】
+
+
+# 二十二、颜色控制（Color Controls）
+
+
+## 【章节概览】
 
 这章将在游戏中图像处理的讨论，扩展到技术和艺术上控制颜色的方法和应用，包括将图像从一些的色彩空间中移入移出，以及快速地给任何2D或3D场景加上精美的色调。
 
-### 【核心要点】
+## 【核心要点】
 
 色彩校正（Color Correction）是几乎所有印刷和胶片成像应用的一部分。
 色彩校正可用于将彩色图像从一个色彩空间移动到另一个色彩空间。
@@ -2086,11 +2095,11 @@ Program to Sum Four Weighted Texture Samples）
 
 其中曲线是仿制了化学中的交叉处理（cross-processing）外观，确切地说，就是在C41化合物中处理E6叫绝所产生的假颜色外观。这样的处理已在印刷、电影和电视领域使用多年。
 
-![fig22-03.jpg](media/b95941c57ca75f5ad2a48ff7a453376b.png)
+![](media/b95941c57ca75f5ad2a48ff7a453376b.png)
 
 图 重新创建交叉处理效果的Photoshop曲线
 
-![fig22-04a.jpg](media/b2d6a1dbc10f3a3f6b0b8a24a97df7f2.png)
+![](media/b2d6a1dbc10f3a3f6b0b8a24a97df7f2.png)
 
 图 伪交叉处理 
 
@@ -2110,15 +2119,15 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 
 也就是说，使用每个原始的红、绿和蓝像素的灰度值，确定在梯度纹理中我们寻找的相关位置，然后由梯度纹理本身定义对新颜色的重映射，即由复杂曲线调节所定义的新颜色，如下图。
 
-![fig22-06.jpg](media/d01cd3f0054bd4178d7561b61e7c5f01.png)
+![](media/d01cd3f0054bd4178d7561b61e7c5f01.png)
 
 图 对红、绿、蓝通道重映射结果
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 原文仅存在无编号的代码片段若干，具体详见原文。
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 颜色控制（Color Controls）
 
@@ -2132,18 +2141,22 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 
 图像处理（Image Processing）
 
-二十三、景深 （Depth of Field）
--------------------------------
 
-### 【章节概览】
+<br>
+
+
+# 二十三、景深 （Depth of Field）
+
+
+## 【章节概览】
 
 本章主要介绍如何使用GPU创建实时的景深（Depth of Field）效果。
 
-![相关图片](media/f74d7a2718b91518d938208f750b8b74.png)
+![](media/f74d7a2718b91518d938208f750b8b74.png)
 
 图 实时景深效果 \@Crysis 2
 
-### 【核心要点】
+## 【核心要点】
 
 物体在距离镜头的一个范围之内能够清晰成像（经过聚焦），在那个范围之外（或近或远）则成像模糊，这种效果就是景深。在相机业和电影业中，景深经常用来指示对场景的注意范围，并且提供场景深度的感觉。在本章中，把这个聚焦范围远的区域称为背景（background），在这个范围前的区域称为前景（foreground），而在范围外的面积称为中景（midground）。
 
@@ -2155,11 +2168,11 @@ confusion，CoC）。Coc的直径与透镜尺寸和偏离焦平面的距离成�
 focus），而在这个范围之外的任何东西都是没有对准聚点的（out of
 focus，模糊的）。如下图。
 
-![fig23-01.jpg](media/d3fa2f5dbd2291d8094d263c446db246.png)
+![](media/d3fa2f5dbd2291d8094d263c446db246.png)
 
 图 薄的透镜
 
-![fig23-02.jpg](media/b261554c6c79c1f2e1675e709d1d16e4.png)
+![](media/b261554c6c79c1f2e1675e709d1d16e4.png)
 
 图 模糊圈（circle of confusion）
 
@@ -2178,11 +2191,12 @@ Chakravarty 1981]
 5、反向映射的Z缓冲景深（Reverse-Mapped Z-Buffer Depth of Field）[ Arce and Wloka
 2002, Demers 2003]
 
-### 【本章配套源代码汇总表】
+
+## 【本章配套源代码汇总表】
 
 原文仅存在无编号的代码片段若干，具体详见原文。
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 景深（Depth of Field）
 
@@ -2198,14 +2212,16 @@ Chakravarty 1981]
 
 图像处理（Image Processing）
 
-二十四、高品质的图像滤波（High-Quality Filtering）
---------------------------------------------------
+<br>
 
-### 【章节概览】
+# 二十四、高品质的图像滤波（High-Quality Filtering）
+
+
+## 【章节概览】
 
 这章描述了图像滤波和可以用于任意尺寸图像的效果，并将各种不同的滤波器核心（kernel），在分析计算后应用于各式2D和3D反走样问题中。
 
-### 【核心要点】
+## 【核心要点】
 
 GPU可以提供一些快速滤波的访问纹理的方法，但是仅限于几种类型的纹理过滤，并不是对每种纹素格式都适用。若我们自己建立自己的图像滤波方法，可以得到更好的质量和灵活性，但需要了解硬件和程序滤波之间存在的质量和速率的矛盾。
 
@@ -2229,7 +2245,7 @@ filter），因为模型是一个简单的长方形（所有像素都在盒中�
 3 x
 3的滤波运算，对编入索引的纹素和其临近单元，赋予W00到W22的加权值，先求加权和，然后除以预计算的总和值（Sum）把它们重规范化。
 
-![fig24-01.jpg](media/d96533905192091206ac5345ebee2fda.png)
+![](media/d96533905192091206ac5345ebee2fda.png)
 
 图 中心在W11的3x3滤波核心的像素布局
 
@@ -2237,13 +2253,13 @@ filter），因为模型是一个简单的长方形（所有像素都在盒中�
 3核心做边缘检测，后文也接着讲到了双线性滤波核心（Bilinear Kernel），双立方滤波核心（Bicubic
 Filter Kernel），屏幕对齐的核心（Screen-Aligned Kernels）等内容。
 
-![fig24-04a.jpg](media/74c6f428004569201c375c02f1713f69.png)
+![](media/74c6f428004569201c375c02f1713f69.png)
 
 双线性和双立方滤波的效果。（题外话：不知道为什么，看这个小男孩，莫名觉得长得像冠希哥……）
 
 (a)原始图像，注意眼睛上方的长方形。(b)用线性滤波把矩形的子图像区域放大32倍；(c)用双立方滤波把相同的区域放大32倍。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 24-1. 读取九个纹素来计算一个加权和的着色器代码（Reading Nine Texels to
 Calculate a Weighted Sum）
@@ -2291,7 +2307,7 @@ Variable Stripe Texture）
 Example 24-16 在像素着色器中应用可变条纹纹理（Applying Variable Stripe Texture
 in a Pixel Shader）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 高品质图像滤波（High-Quality Filtering）
 
@@ -2303,29 +2319,31 @@ in a Pixel Shader）
 
 三次滤波（Cubic Filtering）
 
-二十五、用纹理贴图进行快速滤波宽度的计算（Fast Filter-Width Estimates with Texture Maps）
------------------------------------------------------------------------------------------
+<br>
 
-### 【章节概览】
+# 二十五、用纹理贴图进行快速滤波宽度的计算（Fast Filter-Width Estimates with Texture Maps）
+
+
+## 【章节概览】
 
 这章描述基于纹理映射在2D空间中进行快速过滤宽度计算（Fast Filter-Width
 Estimates）的方法。即使硬件profile对复杂函数的局部偏导函数不提供直接支持，基于本文提出的纹理操作技巧，也可以得到结果。
 
-### 【核心要点】
+## 【核心要点】
 
 Cg标准库提供了ddx()和ddy()函数，计算任意量关于x和y像素的导数。换言之，调用ddx(v)，可以求出变量v在x方向的当前像素与下一个像素之间的变化量，调用ddy(v)同样也可以求出y方向的情况。
 
 那么，下面贴出的这个filterwidth()函数，可以很容易地计算任何值在像素之间变化的速率，以及程序纹理说需要过滤的面积。
-
-float filterwidth(float2 v)
-
-{
-
-  float2 fw = max(abs(ddx(v)), abs(ddy(v)));
-
-  return max(fw.x, fw.y);
-
-}
+	
+	float filterwidth(float2 v)
+	
+	{
+	
+	  float2 fw = max(abs(ddx(v)), abs(ddy(v)));
+	
+	  return max(fw.x, fw.y);
+	
+	}
 
 上述filterwidth()函数，仅在支持ddx()和ddy()函数的profile下工作，但可惜的是一些硬件profile不支持这两两个函数。而本文提出的这个trick，可以使用纹理映射硬件，进行与filterwidth()函数本质上相同的运算。
 
@@ -2335,7 +2353,7 @@ float filterwidth(float2 v)
 
 最终，这个trick可以在很多情况下很好的计算滤波宽度，运行性能几乎与基于求导的计算滤波宽度函数filterwidth()相同。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 25-1 抗锯齿棋盘函数（Antialiased Checkerboard Function）
 
@@ -2348,7 +2366,7 @@ Filter Widths Using Mipmaps from Listing 25-2）
 Example 25-4 滤波器宽度函数不容易走样滤波器宽度（Filter-Width Function That Is
 Less Prone to Under-Aliasing Filter Widths）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 快速滤波宽度估算（Fast Filter-Width Estimates）
 
@@ -2356,15 +2374,16 @@ Less Prone to Under-Aliasing Filter Widths）
 
 用纹理计算过滤宽度（Computing Filter Width with Textures）
 
-二十六、OpenEXR图像文件格式（The OpenEXR Image File Format）
-------------------------------------------------------------
+<br>
 
-### 【章节概览】
+# 二十六、OpenEXR图像文件格式（The OpenEXR Image File Format）
+
+## 【章节概览】
 
 这章中，大名鼎鼎的工业光魔公司的Florian Kainz、Rod Bogart和Drwe
 Hess介绍了OpenEXR标准，这是一种当时新的高动态范围图像（HDRI）格式，在计算机成像的顶级电影中正在快速推广。对于基于图像照明的开发者而言，OpenEXR是关键的工具。
 
-### 【核心要点】
+## 【核心要点】
 
 OpenEXR是由工业光魔（ Industrial Light & Magic
 ，ILM ）公司开发的高动态范围图像（ high-dynamic-range image
@@ -2374,7 +2393,7 @@ OpenEXR是由工业光魔（ Industrial Light & Magic
 
 如下图是一张显示相当高的动态范围的场景，场景中左边的油灯的火焰比中间小盘子下的阴影大约亮100000倍。
 
-![fig26-01.jpg](media/38440d033d85c19ef77ba96890ad4d43.png)
+![](media/38440d033d85c19ef77ba96890ad4d43.png)
 
 图 高动态范围场景
 
@@ -2382,7 +2401,7 @@ OpenEXR是由工业光魔（ Industrial Light & Magic
 
 我们可以通过把图像变暗来校正白色和橘色区域，但是如果把原始图像存储在低动态范围文件格式中，如JPEG格式，把它变暗就会产生相当难看的图像。如下图。
 
-![fig26-02.jpg](media/3931c1f9af121e34b437f98117906fd6.png)
+![](media/3931c1f9af121e34b437f98117906fd6.png)
 
 图
 普通文件格式导致明亮的像素值被不可逆地裁剪，使得明亮的区域变灰，并且细节丢失，得到极不自然的效果
@@ -2396,7 +2415,7 @@ OpenEXR是由工业光魔（ Industrial Light & Magic
 
 文章随后还讲到了OpenEXR的文件结构、数据压缩、使用、线性像素值、创建和使用HDR图像相关的内容。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 26-1 读取OpenEXR图像文件（Reading an OpenEXR Image File）
 
@@ -2420,7 +2439,7 @@ Example 26-9 调整调整图像的曝光（Adjusting an Image's Exposure）
 Example 26-10 使用查找表来模拟摄影胶片的外观（Using a Lookup Table to Simulate
 the Look of Photographic Film）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 高动态范围（High-Dynamic-Range , HDR）
 
@@ -2428,7 +2447,9 @@ the Look of Photographic Film）
 
 OpenEXR
 
-![H:\\Desktop\\God-of-War_2018_03-19-18_007.jpg](media/be47b90b234000f802e16fa2ee4e509d.jpg)
+
+
+![](media/be47b90b234000f802e16fa2ee4e509d.jpg)
 
 全文完。
 
