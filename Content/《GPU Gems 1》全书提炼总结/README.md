@@ -353,7 +353,7 @@ Gerstner波（Gerstner Waves）
 
 ## 十年技术变迁： NVIDIA Dawn Demo
 
-最初的Dawn Demo由NVIDIA于2012年发布，而十年之后的2012年，NVIDIA新发布了“A New
+最初的Dawn Demo由NVIDIA于2002年发布，而十年之后的2012年，NVIDIA新发布了“A New
 Dawn”技术Demo。
 
 ![](media/187a016a73bc8bb10203d34505003b28.jpg)
