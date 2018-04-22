@@ -2387,7 +2387,7 @@ Hess介绍了OpenEXR标准，这是一种当时新的高动态范围图像（HDR
 
 OpenEXR是由工业光魔（ Industrial Light & Magic
 ，ILM ）公司开发的高动态范围图像（ high-dynamic-range image
-，HDRI）文件格式。OpenEXR网站是 www.openexr.org，上面有关于此格式的全部细节。
+，HDRI）文件格式。OpenEXR网站是 www.openexr.org ，上面有关于此格式的全部细节。
 
 下图是一个例子，说明了需要HDR存在的原因。
 
