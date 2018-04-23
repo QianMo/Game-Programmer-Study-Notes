@@ -10,7 +10,7 @@
 
 涉及图形学、实时渲染、编程实践、GPU编程、设计模式、软件工程等内容。
 
-Keep Reading , Keep writing.
+Keep Reading , Keep Writing.
 
 # 目录
 
@@ -59,6 +59,7 @@ Keep Reading , Keep writing.
 
 - [《游戏编程模式》读书笔记](https://github.com/QianMo/Reading-Notes/tree/master/Content/%E3%80%8A%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0)
 -一篇超过万字读书笔记，总结了《游戏编程模式》一书中所有章节与内容的知识梗概。
+
 <br>
 
 ## 叁 · 编程实践与软件工程相关
@@ -74,6 +75,6 @@ Keep Reading , Keep writing.
 
 <br>
 <br>
-:anchor: Keep Reading , Keep writing.
+:anchor: Keep Reading , Keep Writing.
 
 
