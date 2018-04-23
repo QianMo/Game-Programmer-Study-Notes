@@ -10,7 +10,7 @@
 
 涉及图形学、实时渲染、编程实践、GPU编程、设计模式、软件工程等内容。
 
-Keep Reading , Keep Writing.
+Keep Reading , Keep Writing , Keep Coding.
 
 # 目录
 
@@ -74,6 +74,6 @@ Keep Reading , Keep Writing.
 
 <br>
 <br>
-:anchor: Keep Reading , Keep Writing.
+:anchor: Keep Reading , Keep Writing , Keep Coding.
 
 
