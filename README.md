@@ -19,7 +19,7 @@ Keep Reading , Keep Writing.
 -《Real-Time Rendering
 3rd》可谓图形学界“九阴真经总纲”一般的存在，当世武功的心法口诀，尽数记载。此读书笔记是对这本神作一个系统而有特色的总结提炼。
 
-  * [一 ) 全书知识点总览](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Content/BlogPost01)
+  * [ #1 全书知识点总览](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Content/BlogPost01)
 
   * [二 ) 第二章 · 图形渲染管线 The Graphics Rendering Pipeline](https://github.com/QianMo/Game-Dev-Study-Notes/tree/master/Content/%E3%80%8AReal-Time%20Rendering%203rd%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/Content/BlogPost02)
 
