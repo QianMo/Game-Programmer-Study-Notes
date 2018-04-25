@@ -6,9 +6,9 @@
 
 # Game-Programmer-Study-Notes
 
-:anchor: 我的游戏程序员生涯的读书笔记合辑（2016~至今）。
+:anchor: 我的游戏程序员生涯的读书笔记合辑（2016年 ~ 至今）。
 
-涉及图形学、实时渲染、编程实践、GPU编程、设计模式、软件工程等内容。
+涉及游戏开发中的图形学、实时渲染、编程实践、GPU编程、设计模式、软件工程等内容。
 
 Keep Reading , Keep Writing , Keep Coding.
 
