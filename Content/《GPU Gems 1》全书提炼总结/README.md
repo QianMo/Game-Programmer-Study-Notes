@@ -304,7 +304,7 @@ Gerstner波早在计算机图形学出现之前就已经被研发了出来，用
 
 ![](media/c19f69f6f4616a11cea94162b17b6428.png)
 
-图 基于Gerstner渲染出的水面 \@Unreal Engine 4
+图 基于Gerstner渲染出的水面 @Unreal Engine 4
 
 ####  1.3.3 波长等参数的选择
 
@@ -339,7 +339,7 @@ water table）。
 
 ![](media/c4a6025c3644aae9a210213a61285a46.jpg)
 
-图 真实感水体渲染效果图 \@Unreal Engine 4
+图 真实感水体渲染效果图 @Unreal Engine 4
 
 ## 【核心要点总结】
 
@@ -543,7 +543,7 @@ demo中首次成形的技术进行了扩展，使其能够高性能的渲染，�
 
 ![](media/000e7d0e677c5cc7aaa92cbfc28e7b44.jpg)
 
-图 Realistic Grass Field \@Giovanni Baer
+图 Realistic Grass Field @Giovanni Baer
 
 ## 【核心内容提炼】
 
@@ -745,9 +745,9 @@ Shader Effect Incorporating Wrap Lighting）
 	
 	    float shininess = 40.0;
 	
-	    float NdotL = P.x \* 2 - 1; // remap from [0, 1] to [-1, 1]
+	    float NdotL = P.x * 2 - 1; // remap from [0, 1] to [-1, 1]
 	
-	    float NdotH = P.y \* 2 - 1;
+	    float NdotH = P.y * 2 - 1;
 	
 	    float NdotL_wrap = (NdotL + wrap) / (1 + wrap); // wrap lighting
 	
@@ -756,19 +756,19 @@ Shader Effect Incorporating Wrap Lighting）
 	    // 在从明到暗的转换中添加颜色色调（add color tint at transition from light to
 		dark）
 	
-	    float scatter = smoothstep(0.0, scatterWidth, NdotL_wrap) \*
+	    float scatter = smoothstep(0.0, scatterWidth, NdotL_wrap) *
 	
-	    smoothstep(scatterWidth \* 2.0, scatterWidth,
+	    smoothstep(scatterWidth * 2.0, scatterWidth,
 	
 	         NdotL_wrap);
 	
 	    float specular = pow(NdotH, shininess);
 	
-	    if (NdotL_wrap \<= 0) specular = 0;
+	    if (NdotL_wrap <= 0) specular = 0;
 	
 	    float4 C;
 	
-	    C.rgb = diffuse + scatter \* scatterColor;
+	    C.rgb = diffuse + scatter * scatterColor;
 	
 	    C.a = specular;
 	
@@ -798,9 +798,9 @@ Shader Effect Incorporating Wrap Lighting）
 		
 		s.y = dot(N, H);
 		
-		half4 light = tex2D(skinLUT, s \* 0.5 + 0.5);
+		half4 light = tex2D(skinLUT, s * 0.5 + 0.5);
 		
-		return diffuseColor \* light.rgb + specularColor \* light.a;
+		return diffuseColor * light.rgb + specularColor * light.a;
 	
 	}
 
@@ -963,7 +963,7 @@ Ambient Occlusion Quantities）
 			
 				avgUnoccluded += ray.direction;
 				
-				\++numUnoccluded;
+				++numUnoccluded;
 			
 			}
 	
@@ -992,11 +992,11 @@ Random Directions with Rejection Sampling）
 		
 		z = RandomFloat(-1, 1);
 		
-		if (x \* x + y \* y + z \* z \> 1) continue; // ignore ones outside unit
+		if (x * x + y * y + z * z > 1) continue; // ignore ones outside unit
 		
 		// sphere
 		
-		if (dot(Vector(x, y, z), N) \< 0) continue; // ignore "down" dirs
+		if (dot(Vector(x, y, z), N) < 0) continue; // ignore "down" dirs
 		
 		return normalize(Vector(x, y, z)); // success!
 	
@@ -1239,15 +1239,11 @@ spline）插值法等方法实现，原文中对此方法的步骤进行了描�
 
 图 四种基于噪声生成的纹理
 
-而另外一个关于噪声的思路是，用体积噪声制造程序式纹理（Procedural texturing using
-volumetric
-noise），这样可以不创建显式的纹理图像，来得到自然的材质。这种方法在当年的大片《指环王》中，已经有了广泛应用。
+而另外一个关于噪声的思路是，用体积噪声制造程序式纹理（Procedural texturing using volumetric noise），这样可以不创建显式的纹理图像，来得到自然的材质。这种方法在当年的大片《指环王》中，已经有了广泛应用。
 
 ### 【本章配套源代码汇总表】
 
-5-1 假设模型是单位半径球体，实现凹凸模式的示例代码（Assuming the model is a
-unit-radius sphere, the expressions that implement these bump patterns sample
-Code）
+5-1 假设模型是单位半径球体，实现凹凸模式的示例代码（Assuming the model is a unit-radius sphere, the expressions that implement these bump patterns sample Code）
 
 ### 【关键词提炼】
 
@@ -1336,29 +1332,29 @@ Example 6-1. 最终的实现Shader代码（The Final Shader）
 
 衍射使这些表面的反射光呈现五彩缤纷的图案，由光盘的精细反射可以看到这一现象。
 
-![H:\\Desktop\\1009220617031556_副本.jpg](media/5561904e298f41f28747bd98b9e7688a.jpg)
+![](media/5561904e298f41f28747bd98b9e7688a.jpg)
 
 图 光盘的衍射
 
 衍射的实现，可以在Shader的顶点着色器上，也可以在片元着色器上，且实现可以在任何网格上进行，只需提供一个“切线向量”，和每顶点的法线及位置。而切线向量提供表面上窄条带的局部方向。对于一个光盘，其为轨道的方向，如下图。
 
-![fig08-05.jpg](media/682310461e6d8b4e23a2984cb2ff34a8.png)
+![](media/682310461e6d8b4e23a2984cb2ff34a8.png)
 
 图 光盘的切线向量
 
 对应给定衍射波长的颜色，可以使用简单近似的彩虹贴图。贴图从紫到红排列，而且提供彩虹的大部分颜色，用三个理想凹凸函数（峰值分别在蓝、绿和红的区域）简单混合而成。
 
-![fig08-06.jpg](media/a0aabb93a265e9d258848657aefa8228.png)
+![](media/a0aabb93a265e9d258848657aefa8228.png)
 
 图 用于shader的彩虹彩色贴图
 
 而最终的衍射颜色是彩色的衍射图案和各项异性高光的简单相加的和。
 
-![fig08-07.jpg](media/aab296674959b3b442794016332e3e4a.png)
+![](media/aab296674959b3b442794016332e3e4a.png)
 
 图 光盘衍射实时的3个快照
 
-![fig08-08.jpg](media/2b00f10637fef6861756d4a5669a8296.png)
+![](media/2b00f10637fef6861756d4a5669a8296.png)
 
 图 用纹理映射各项异性主要方向表面的3个快照
 
@@ -1390,13 +1386,13 @@ Volumes）技术来对阴影进行的渲染。具体思想是在模板（stencil
 
 较其他运算相比，阴影体可以更好地处理许多制作困难的阴影场景，如一个插在万圣节南瓜灯内部的光源。
 
-![D:\\Desktop\\omni.png](media/56c4ee03d16417d5078b278e89f7507c.png)
+![](media/56c4ee03d16417d5078b278e89f7507c.png)
 
 图 阴影体技术可以很好胜任的渲染场景
 
 阴影体的缺点是对那些没能正确表达自身形状的网格的阴影表达效果并不理想。如一些带透明区域的公告板，粒子系统，或带alpha粗糙度的纹理网格（如一片树叶）。这些投影体基于他们的真实网格产生阴影，阴影与物体的真实形状并不匹配。而阴影体的另一个缺点是对带裂缝的网格支持不太好。文中也表示，当时阴影体运行的理想场景是顶部俯视。
 
-![fig09-03.jpg](media/79cbf43848e0dd04f05144b858051dad.png)
+![](media/79cbf43848e0dd04f05144b858051dad.png)
 
 图 模型上的裂缝会让影子穿过空气漏出来
 
@@ -1448,23 +1444,23 @@ Barzel(1997,1999)提出的照明模型编写而成。而该模型的超集已由
 
 大体上，用于电影产品的照明模型会进行两种操作，类似于显示在这里的伪代码：
 
-color illuminationModel()
+	color illuminationModel()
 
-{
+	{
 
-    Computer the surface characteristic
+	    Computer the surface characteristic
 
-    For each light
+	    For each light
 
-    {
+	    {
 
->   Evaluate the light source （评估光源）
+			Evaluate the light source （评估光源）
 
->   Compute the surface response（计算表面响应）
+			Compute the surface response（计算表面响应）
 
-    }
+	    }
 
-}
+	}
 
 首先，通过这些方式计算表面着色信息：运行各种纹理查找（texture
 lookups），在网格上插值（interpolating values over the
@@ -1578,13 +1574,13 @@ Mapping）方法，该方法有两个主要步骤：
 
 在创建阶段，对所有把阴影投射到阴影贴图纹理上的物体，渲染它们到光源的距离的平方。而在投射结算，渲染所有接受阴影的物体，并比较所渲染的像素到光源的距离的平方。以下为全方位阴影映射算法的伪代码：
 
-	for (iLight = 0; iLight \< NumberOfLights; iLight++) 
+	for (iLight = 0; iLight < NumberOfLights; iLight++) 
 	
 	{
 	
 	  // Fill the shadow map.
 	
-	  for (iObject = 0; iObject \< NumberOfObjects; iObject++)
+	  for (iObject = 0; iObject < NumberOfObjects; iObject++)
 	
 	 {
 	
@@ -1594,7 +1590,7 @@ Mapping）方法，该方法有两个主要步骤：
 	
 	  // Lighting and shadow mapping.
 	
-	  for (iObject = 0; iObject \< NumberOfObjects; iObject++) 
+	  for (iObject = 0; iObject < NumberOfObjects; iObject++) 
 	
 	  {
 	
@@ -2154,7 +2150,7 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 
 ![](media/f74d7a2718b91518d938208f750b8b74.png)
 
-图 实时景深效果 \@Crysis 2
+图 实时景深效果 @Crysis 2
 
 ## 【核心要点】
 
