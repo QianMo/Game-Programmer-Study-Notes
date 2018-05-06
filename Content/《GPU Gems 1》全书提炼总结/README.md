@@ -60,42 +60,44 @@
 
 -   五、环境光遮蔽（Ambient Occlusion）
 
+-   六、实时辉光（Real-Time Glow）
+
 <br>
 
 本文将进行提炼总结的次核心内容有：
 
-- 六、水焦散的渲染 （Rendering Water Caustics）
+- 七、水焦散的渲染 （Rendering Water Caustics）
 
-- 七、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
+- 八、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
 
-- 八、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
+- 九、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
 
-- 九、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
+- 十、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
 
-- 十、衍射的模拟（Simulating Diffraction）
+- 十一、衍射的模拟（Simulating Diffraction）
 
-- 十一、高效的阴影体渲染（Efficient Shadow Volume Rendering）
+- 十二、高效的阴影体渲染（Efficient Shadow Volume Rendering）
 
-- 十二、电影级光照（Cinematic Lighting）
+- 十三、电影级光照（Cinematic Lighting）
 
-- 十三、阴影贴图抗锯齿（Shadow Map Antialiasing）
+- 十四、阴影贴图抗锯齿（Shadow Map Antialiasing）
 
-- 十四、全方位阴影映射（Omnidirectional Shadow Mapping）
+- 十五、全方位阴影映射（Omnidirectional Shadow Mapping）
 
-- 十五、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion
+- 十六、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion
 Interval Maps）
 
-- 十六、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
+- 十七、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
 
-- 十七、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
+- 十八、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
 
-- 十八、空间BRDF（Spatial BRDFs）
+- 十九、空间BRDF（Spatial BRDFs）
 
-- 十九、基于图像的光照（Image-Based Lighting）
+- 二十、基于图像的光照（Image-Based Lighting）
 
-- 二十、纹理爆炸（Texture Bombing）
+- 二十一、纹理爆炸（Texture Bombing）
 
-- 二十一、实时辉光（Real-Time Glow）
+
 
 - 二十二、颜色控制（Color Controls）
 
@@ -531,8 +533,8 @@ Face）
 
 <br>
 
-三、无尽波动的草地叶片的渲染（Rendering Countless Blades of Waving Grass）
---------------------------------------------------------------------------
+# 三、无尽波动的草地叶片的渲染（Rendering Countless Blades of Waving Grass）
+
 
 <br>
 
@@ -656,32 +658,34 @@ Example 7-4. 每草体的动画实现Shader代码（Code for Animation per Grass
 <br>
 
 
-
 # 四、次表面散射的实时近似（Real-Time Approximations to Subsurface Scattering）
 
 
 ## 【章节概览】
 
-次表面散射（Subsurface
-Scattering），简称SSS，或3S，是光射入非金属材质后在内部发生散射，最后射出物体并进入视野中产生的现象，即光从表面进入物体经过内部散射，然后又通过物体表面的其他顶点出射的光线传递过程。
+次表面散射（Subsurface Scattering），简称SSS，或3S，是光射入非金属材质后在内部发生散射，最后射出物体并进入视野中产生的现象，即光从表面进入物体经过内部散射，然后又通过物体表面的其他顶点出射的光线传递过程。
 
 ![](media/99b219a60f13be87fb1d5c3a5f5c2640.jpg)
 
-图 次表面散射
-
-![](media/1c3686db3992f649486186984097ab07.jpg)
-
-图 次表面散射
+图 次表面散射原理图示
 
 ![](media/5a62505ea6f9a07ed45da02a56293531.jpg)
 
-图 次表面散射
+图 真实环境中的次表面散射
 
-要产生使人信服的皮肤和其他半透明材质的渲染效果，次表面散射（Subsurface
-Scattering）的渲染效果十分重要。
+要产生使人信服的皮肤和其他半透明材质的渲染效果，次表面散射（Subsurface Scattering）的渲染效果十分重要。
+
+![](media/1a4894b4e922183b08800bf9c0bba975.jpg)
+
+图 有无次表面散射的渲染对比图（左图：使用次表面散射 \| 右图：无次表面散射）
+
+另外需要提出，在《神秘海域4》中皮肤的渲染效果，很令人惊艳。当然，《神秘海域4》中令人惊艳的，远远不止皮肤的渲染。
+
+![](media/62306aa5c58927d62f1c41d7602dabe7.jpg)
+
+图 基于次表面散射的皮肤渲染 @《神秘海域4》
 
 本章即描述了次表面散射的几种实时近似方法，关于皮肤的渲染，也关于近似地去模拟透明材质的几种不同方法。
-
 
 ## 【核心内容提炼】
 
@@ -697,6 +701,10 @@ Scattering）的视觉特性：
 3、光线传入物体越深，就衰减和散射得越严重。
 
 4、对于皮肤来说，在照亮区到阴影区的衔接处，散射往往会引起微弱的倾向于红色的颜色偏移。这是由于光线照亮表皮并进入皮肤，接着被皮下血管和组织散射和吸收，然后从阴影部分离开。且散射在皮肤薄的部位更加明显，比如鼻孔和耳朵周围。
+
+![](media/1c3686db3992f649486186984097ab07.jpg)
+
+图 次表面散射原理图示
 
 ### 4.2 简单的散射近似（Simple Scattering Approximations）
 
@@ -714,7 +722,7 @@ and Oren 1995）。
 
     float diffuse = max(0, dot(L, N));
 
-	float wrap_diffuse = max(0, (dot(L, N) + wrap) / (1 + wrap));
+    float wrap_diffuse = max(0, (dot(L, N) + wrap) / (1 + wrap));
 
 为了在片元函数程序中的计算可以更加高效，上述函数可以直接编码到纹理中，用光线矢量和法线的点积为索引。
 
@@ -725,11 +733,11 @@ and Oren 1995）。
 
 ![](media/8e182c0fd90d8b0be6d988bc0b7eea25.png)
 
-图 （a）没有环绕光照的球体 （b）有环绕光照明的球体（c）有环绕光照明和颜色漂移的球体
-
+图 （a）没有环绕光照的球体 （b）有环绕光照明的球体 （c）有环绕光照明和颜色漂移的球体
 
 Example 16-1 摘录纳入了环绕照明的皮肤Shader效果的代码（Excerpt from the Skin
 Shader Effect Incorporating Wrap Lighting）
+
 
 	// 为皮肤着色生成2D查找表（Generate 2D lookup table for skin shading）
     
@@ -804,7 +812,6 @@ Shader Effect Incorporating Wrap Lighting）
 	
 	}
 
-
 ### 4.3 使用深度贴图模拟吸收（Simulating Absorption Using Depth Maps）
 
 吸收（Absorption）是模拟半透明材质的最重要特性之一。光线在物质中传播得越远，它被散射和吸收得就越厉害。为了模拟这种效果，我们需要测量光在物质中传播的距离。而估算这个距离可以使用深度贴图（Depth
@@ -817,8 +824,10 @@ Mapping)，而且可用于实时渲染。
 
 深度贴图（Depth Maps）技术的思路是：
 
-在第一个通道（first pass）中，我们从光源的视点处渲染场景，存储从光源到某个纹理的距离。然后使用标准的投射纹理贴图（standard
-projective texture mapping），将该图像投射回场景。在渲染通道（rendering pass）中，给定一个需要着色的点，我们可以查询这个纹理，来获得从光线进入表面的点（d_i）到光源间距离，通过从光线到光线离开表面的距离（d_o）里减去这个值，我们便可以获得光线转过物体内部距离长度的一个估计值（S）。如上图。
+在第一个通道（first
+pass）中，我们从光源的视点处渲染场景，存储从光源到某个纹理的距离。然后使用标准的投射纹理贴图（standard
+projective texture mapping），将该图像投射回场景。在渲染通道（rendering
+pass）中，给定一个需要着色的点，我们可以查询这个纹理，来获得从光线进入表面的点（d_i）到光源间距离，通过从光线到光线离开表面的距离（d_o）里减去这个值，我们便可以获得光线转过物体内部距离长度的一个估计值（S）。如上图。
 
 原文中详细分析了此方法的实现过程，也附带了完整的Shader源码，具体细节可以查看原文，这里因为篇幅原因就不展开了。
 
@@ -828,15 +837,19 @@ projective texture mapping），将该图像投射回场景。在渲染通道（
 
 也有一些更高端的模型试图更精确地模拟介质内散射的累积效应。
 
-一种模型是单次散射近似（Single Scattering Approximation），其假设光在材质中只反弹一次，沿着材质内的折射光线，可以计算有多少光子会朝向摄像机散射。当光击中一个粒子的时候，光散射方向的分布用相位函数来描述。而考虑入射点和出射点的菲涅尔效应也很重要。
+一种模型是单次散射近似（Single Scattering
+Approximation），其假设光在材质中只反弹一次，沿着材质内的折射光线，可以计算有多少光子会朝向摄像机散射。当光击中一个粒子的时候，光散射方向的分布用相位函数来描述。而考虑入射点和出射点的菲涅尔效应也很重要。
 
-另一种模型，是近似漫反射（Diffusion Approximation），其用来模拟高散射介质（如皮肤）的多次散射效果。
+另一种模型，是近似漫反射（Diffusion
+Approximation），其用来模拟高散射介质（如皮肤）的多次散射效果。
 
-#### 4.4 纹理空间的漫反射（Texture-Space Diffusion）
+### 4.4 纹理空间的漫反射（Texture-Space Diffusion）
 
 次表面散射最明显的视觉特征之一是模糊的光照效果。其实，3D美术时常在屏幕空间中效仿这个现象，通过在Photoshop中执行Gaussian模糊，然后把模糊图像少量地覆盖在原始图像上，这种“辉光”技术使光照变得柔和。
 
-而在纹理空间中模拟漫反射[Borshukov and Lewis 2003]，即纹理空间漫反射（Texture-Space Diffusion）是可能的，我们可以用顶点程序展开物体的网格，程序使用纹理坐标UV作为顶点的屏幕位置。程序简单地把[0，1]范围的纹理坐标重映射为[-1，1]的规范化的坐标。
+而在纹理空间中模拟漫反射[Borshukov and Lewis
+2003]，即纹理空间漫反射（Texture-Space
+Diffusion）是可能的，我们可以用顶点程序展开物体的网格，程序使用纹理坐标UV作为顶点的屏幕位置。程序简单地把[0，1]范围的纹理坐标重映射为[-1，1]的规范化的坐标。
 
 另外，为了模拟吸收和散射与波长的相关的事实，可以对每个彩色通道分为地改变滤波权重。
 
@@ -850,6 +863,25 @@ projective texture mapping），将该图像投射回场景。在渲染通道（
 
 同样，原文中详细分析了此方法的实现过程，也附带了完整的Shader源码，具体细节可以查看原文，这里因为篇幅原因就不展开了。
 
+再附几张基于次表面散射的皮肤渲染效果图，结束这一节。
+
+![](media/833078cc9e0f84f92200760ece973265.jpg)
+
+图 基于次表面散射的皮肤渲染
+
+![](media/788fa8515f8f75e2e7ebc3895c6ef222.png)
+
+图 基于次表面散射的皮肤渲染 @Unreal Engine 4
+
+![](media/d80656c686f1468e8f8c756d739eaada.jpg)
+
+图 基于次表面散射的皮肤渲染 @《神秘海域4》
+
+![](media/b4bd512d5067f2981cdff2f780efd503.jpg)
+
+图 基于次表面散射的皮肤渲染 @《神秘海域4》
+
+
 
 ## 【核心要点总结】
 
@@ -861,6 +893,8 @@ projective texture mapping），将该图像投射回场景。在渲染通道（
 
 3）基于纹理空间中的漫反射模拟（Texture-Space
 Diffusion），来模拟次表面散射最明显的视觉特征之一——模糊的光照效果。
+
+
 
 ## 【本章配套源代码汇总表】
 
@@ -897,7 +931,6 @@ Blur）
 深度映射（Depth Maps）
 
 
-
 # 五、环境光遮蔽（Ambient Occlusion）
 
 
@@ -908,11 +941,19 @@ Blur）
 环境光遮蔽（Ambient
 Occlusion），简称AO，是一种用于计算场景中每个点对环境光照的曝光程度的一种着色渲染技术。
 
-而文中讲到了如何使用有效的实时环境光遮蔽技术，对物体遮蔽信息及环境进行预处理，综合这些因素给物体创建逼真的光照和阴影。
+本章讲到了如何使用有效的实时环境光遮蔽技术，对物体遮蔽信息及环境进行预处理，综合这些因素给物体创建逼真的光照和阴影。
+
+![](media/40edd773a01ff958638b09b69399c75d.png)
+
+图 有无环境光遮蔽的对比
+
+![](media/55b2c13bbaece3723db27b76cc5d793e.png)
+
+图 有无环境光遮蔽的对比
 
 ## 【核心内容提炼】
 
-### 5.1 概述
+5.1 概述
 
 首先，本文中讲到，环境光遮蔽（Ambient Occlusion）一般而言有两种理解：
 
@@ -926,7 +967,7 @@ Occlusion），简称AO，是一种用于计算场景中每个点对环境光照
 
 另外，这个方法可以扩展为使用环境光作为照明源，用代表各个方向入射光的环境贴图没来决定物体上每个点光的颜色。为了这个特性，除了记录在点上可以看到多少外部环境之外，也记录大部分可以光从哪个方向到达。这两个量有效地定义了从外面进入场景的未被遮挡的方向圆锥体，可以一起用来做为来自环境贴图的极端模糊的查询，模拟着色点上来自感兴趣的方向圆锥体的全部入射照度。
 
-### 5.2 预处理步骤（The Preprocessing Step）
+5.2 预处理步骤（The Preprocessing Step）
 
 给定一个任意的着色模型，环境光遮蔽算法需要知道模型上每点的两个信息：
 
@@ -975,7 +1016,8 @@ Ambient Occlusion Quantities）
 	
 	}
 
-生成这些光线的简单方法是使用拒绝采样法（rejection sampling）：检测在x，y和z为-1到1区间的3D立方体中随机生成的光线，并拒绝不在单位半球中与法线相关的光线。
+生成这些光线的简单方法是使用拒绝采样法（rejection
+sampling）：检测在x，y和z为-1到1区间的3D立方体中随机生成的光线，并拒绝不在单位半球中与法线相关的光线。
 
 能通过这次检测的光线方向可视分布理想的光线方向。列表17-2的伪代码表示出了此方法的实现思路。
 
@@ -1004,7 +1046,7 @@ Random Directions with Rejection Sampling）
 
 另外，用图形硬件代替光线追踪软件，有可能加速遮挡信息的计算。
 
-## 5.3 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
+### 5.3 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
 
 使用环境光遮蔽贴图进行着色的基本思想是：
 可以直接在着色点处使用之前已计算好的，有多少光线能到达表面的，优质的近似值信息。
@@ -1019,8 +1061,7 @@ Random Directions with Rejection Sampling）
 
 ![](media/5c503c8789a7c83da26fcf30a9274004.jpg)
 
-图
-不同量的可见度的近似（左图：由于附近的几何体的遮挡比较严重，这点得到的照度较小；右图：沿着更宽方向的圆锥体，更大量的光能到达这点，照度较左图更大）
+图 不同量的可见度的近似（左图：由于附近的几何体的遮挡比较严重，这点得到的照度较小；右图：沿着更宽方向的圆锥体，更大量的光能到达这点，照度较左图更大）
 
 在预处理中计算的可访问性值告诉我们哪一部分半球可以看到环境贴图，而可见方向的平均值给出一个近似方向，围绕它计算入射光。虽然这个方向可能指向一个实际被遮挡的方向（例如，如果半球的两个独立区域未被遮挡，但其余的部分被遮挡，平均方向可能在这两者之间），但在实践中其通常运行良好。
 
@@ -1032,6 +1073,7 @@ Random Directions with Rejection Sampling）
 
 图 基于此项技术渲染出的对比图
 
+另外需要注意，实时环境光遮蔽的常用廉价方案是预先计算网格表面几个位置的平均可见性值，存储于贴图中，然后将这些值在运行时与图形硬件提供的未遮挡光照相乘。
 
 ## 【核心要点总结】
 
@@ -1073,11 +1115,146 @@ Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definiti
 环境光遮蔽贴图（Ambient Occlusion Maps）
 
 
+# 六、实时辉光（Real-Time Glow）
+
+
+## 【章节概览】
+
+这章讲到2D光照效果中的辉光（Glow）和光晕（Halo），展示了如何通过图像处理方法完全地改善画面及3D人物的渲染感官。
+
+![](media/0c80fe2d09cc2ce0c5a0eb75ee0077e3.jpg)
+
+图 游戏中的Glow结合Bloom，得到出色的画面效果
+
+![](media/fc07f17a1dc048be84b9d3af4da015c9.jpg)
+
+图 Unreal Engine的logo，即是采用了Glow效果
+
+## 【核心内容提炼】
+
+光源的辉光（Glow）和光晕（Halo）是自然界导出可见的现象，他们提供了亮度和气氛强烈的视觉信息。
+
+![(media/f5f190f91977b41c60c2f5f301e05b25.jpg)
+
+图 给强化后的武器加上Glow效果，该武器显得更加强力 \@TERA
+
+![](media/6618fd78de01c723ef6a3dab9608fe0f.jpg)
+
+图 强化武器的Glow效果的演变 \@Lineage II
+
+![](media/287352aae26a0c79bec67e6929f2beeb.jpg)
+
+图 Glow效果 \@Unreal Engine 4
+
+在观看计算机图形、胶片和印刷品时，到达眼睛的光强度是有限的，因此，辨别光源强度的唯一方法是通过它们周围产生的辉光（Glow）和光晕（Halo），具体可以参考[Nakamae
+et al.
+1990]。这些辉光可以再现强烈光线的视觉效果，并使观察者感知非常明亮的光源。即使物体周围的微妙光晕也会让人觉得它比没有光辉的物体更亮。
+
+在日常生活中，这些发光和光晕是由大气中或我们眼中的光散射引起的（Spencer 1995）。
+使用现代图形硬件，可以通过几个简单的渲染操作来再现这些效果。
+这使得我们可以使用明亮而有趣的物体来填满实时渲染的场景，物体会显得更为逼真或更具表现力，并且这是克服图形渲染中传统的低动态范围图形过于平庸的优雅手段之一。
+
+![](media/ebca3845e4f33120b90c54c7f78f9b32.png)
+
+图 有辉光和没有辉光的一个Tron 2.0中的角色对比
+
+有几种方法可以创建场景中的辉光。对于小的类似的点，可以把一个平滑的“辉光”纹理应用到公告牌几何体上，而让公告板几何体在屏幕范围内跟随物体运动。
+
+对于大的辉光源或复杂的辉光形状，要创建辉光，最好对2D场景的渲染进行后处理。这章重点讲到了后处理的实时辉光处理方法。如下图。
+
+![](media/9b0e20d976d449e59dfb54e6a06fada4.png)
+
+图 场景实时辉光的步骤
+
+（a）正常地渲染场景
+（b）涂抹所渲染的辉光源，以产生（c）中的一个辉光纹理，将其加到正常的场景画面中，以产生（d）中最终的辉光效果。
+
+渲染后处理辉光的步骤：
+
+Step 1、辉光的指定和渲染（Specifying and Rendering the Sources of Glow）
+
+Step 2、模糊辉光源（Blurring the Glow Sources）
+
+Step 3、适配分步卷积（Adapting the Separable Convolution）
+
+Step 4、在GPU上进行卷积（Convolution on the GPU）
+
+![](media/781d1c41c19ffd1ba195f399877c3860.png)
+
+图 有效地创建模糊的两步分解法
+
+上图展示了如何有效地创建模糊的两步分解法：首先，在一根轴上模糊于（a）中的辉光源的点，产生（b）中所示的中间结果，然后在另一个轴上模糊这个结果，产生显示在（c）中的最终模糊。
+
+![](media/60fc76a8681ddc527beb31e71b9f9f62.png)
+
+图 有辉光和无辉光的Tron 2.0中的英雄 Jet
+
+（a）用标准方法渲染3D模型
+（b）为一个由美术同学创建的辉光源纹理的渲染，目的是指定辉光面积的图案和强度（c）为将辉光应用到标准的渲染结果后，得到的富有表现力的英雄角色效果。
+
+另外，在辉光中使用的这个卷积和模糊方法还可以用于多种其他效果。它能用来计算景深效果的不同聚焦度，景深的信息可以用来控制模糊度。它也能用来模糊投影的纹理阴影的边缘，并且累积深度阴影映射的接近百分比过滤（percentage-closer
+filtering ）结果。
+
+而大面积的卷积能被应用于一个环境映射，以创建一个近似的辐照度映射，从而得到更逼真的场景照明（Ramamoorthi和Hanrahan
+2001有相关论述）。用大面积的卷积也可以实现许多非真实感渲染技术和其他的特别效果。其中包括镀着霜的玻璃、模拟衍射的透镜摇曳，以及渲染皮肤时用的近似次表面散射。
+
+大片的模糊和卷积能有效地在多种图像硬件上实时地计算，而处理和创建这些效果的代码可以容易地封装成几个C++类或一个小库。
+
+总之，屏幕辉光是一种很赞的效果，能够容易地扩展到几乎每一种情形，并且变化多端，通过其还够延伸创建出很多其他的效果。最终的效果虽然细微但却有张力，值得在各种游戏中采用。
+
+![](media/0a937d9d89e4b5911b2e3217c2e81e1c.jpg)
+
+图 Glow效果 @Unreal Engine 4
+
+![](media/2d0acb97f656e9bdd3fdcdff97d4cc3e.jpg)
+
+![](media/5b51a80706a5ef83e6cc4c200b021624.jpg)
+
+图 有了Glow效果的武器，显得更强力
+
+【核心要点总结】
+
+渲染后处理辉光的步骤：
+
+Step 1、辉光的指定和渲染（Specifying and Rendering the Sources of Glow）
+
+Step 2、模糊辉光源（Blurring the Glow Sources）
+
+Step 3、适配分步卷积（Adapting the Separable Convolution）
+
+Step 4、在GPU上进行卷积（Convolution on the GPU）
+
+## 【本章配套源代码汇总表】
+
+Example 21-1.设置抽样八个邻居的纹理坐标的Direct3D顶点着色器代码（Direct3D Vertex
+Shader to Set Texture Coordinates for Sampling Eight Neighbors）
+
+Example 21-2. 相加八个加权纹理样本的Direct3D像素着色器代码（Direct3D Pixel
+Shader to Sum Eight Weighted Texture Samples）
+
+Example 21-3. 建立邻域采样的Direct3D顶点着色器代码（Direct3D Vertex Shader
+Program to Establish Neighbor Sampling）
+
+Example 21-4. 建立邻域采样的Direct3D像素着色器代码（Direct3D Pixel Shader
+Program to Sum Four Weighted Texture Samples）
+
+## 【关键词提炼】
+
+实时辉光（Real-Time Glow）
+
+光晕（Halo）
+
+后处理（Post-Processing）
+
+图像处理（Image Processing）
+
+
+
 # 下篇 · 次核心内容提炼总结
 
 <br>
 
-# 六、水焦散的渲染 （Rendering Water Caustics）
+# 七、水焦散的渲染 （Rendering Water Caustics）
 
 
 ## 【章节概览】
@@ -1090,8 +1267,7 @@ Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definiti
 
 ## 【核心要点】
 
-水的焦散（Water
-Caustics）的定义：光从弯曲的表面反射或者折射，只聚焦在受光面的某些区域，于是就是产生焦散的现象。
+水的焦散（Water Caustics）的定义：光从弯曲的表面反射或者折射，只聚焦在受光面的某些区域，于是就是产生焦散的现象。
 
 ![](media/dbf31636dde49cc423a1b39afd64b7fc.jpg)
 
@@ -1145,7 +1321,7 @@ Final Render Pass, Showing the Dependent Texture Read Operations）
 折射（Refraction）
 
 
-# 七、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
+# 八、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
 
 
 ## 【章节概览】
@@ -1153,7 +1329,7 @@ Final Render Pass, Showing the Dependent Texture Read Operations）
 这章主要讲到编程人员如何帮助美术同学对混合形状实行控制，从而创建不同的表情。主要是使用顶点Shader通过索引的蒙皮和变形网格对象（morph
 target）来使一个高分辨率网格变形，实现角色表情和动画等效果。也讨论了为实现实时动画而考虑的各种折中方案。
 
-![fig04-01.jpg](media/cafa26f19c54ca597045c5a047c3bb38.jpg)
+![](media/cafa26f19c54ca597045c5a047c3bb38.jpg)
 
 图 Dawn Demo的实时屏幕截图
 
@@ -1202,7 +1378,7 @@ code）
 
 蒙皮（Skinning）
 
-# 八、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
+# 九、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
 
 
 ## 【章节概览】
@@ -1210,7 +1386,7 @@ code）
 这章的作者是奥斯卡得主Ken Perlin。他提出的噪声算法（Perlin
 Noise）已在实时和离线计算机图形学中得到多方面运用。这篇文章详细阐述了最新进展，纠正了最初的两个缺陷，也提供了有效及稳定的框架结构，用于在现代可编程硬件上执行噪声运算。
 
-### 【核心要点】
+## 【核心要点】
 
 首先，噪声函数的目的，是在三维空间中提供一种可以有效率地实现、可重复，伪随机的信号。其信号的能带有限（band-limited），大部分能量集中在一个空间频率附近，而视觉上是各向同性（isotropic）的，统计上不随旋转变化。
 
@@ -1235,17 +1411,17 @@ spline）插值法等方法实现，原文中对此方法的步骤进行了描�
 
 插值的特性以及伪随机斜率场（field of pseudo-random gradients）的特性。
 
-![g](media/9806d02f14c9b03d2f8ddc68859d4b3a.png)
+![](media/9806d02f14c9b03d2f8ddc68859d4b3a.png)
 
 图 四种基于噪声生成的纹理
 
 而另外一个关于噪声的思路是，用体积噪声制造程序式纹理（Procedural texturing using volumetric noise），这样可以不创建显式的纹理图像，来得到自然的材质。这种方法在当年的大片《指环王》中，已经有了广泛应用。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 5-1 假设模型是单位半径球体，实现凹凸模式的示例代码（Assuming the model is a unit-radius sphere, the expressions that implement these bump patterns sample Code）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 Perlin噪声（Perlin Noise）
 
@@ -1260,10 +1436,10 @@ Perlin噪声（Perlin Noise）
 
 <br>
 
-# 九、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
+# 十、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
 
 
-### 【章节概览】
+## 【章节概览】
 
 这章讲述了GeForce FX 5900上市时的Demo
 “Vulcan”中的火焰渲染技术。其中的技术并非真正的物理模拟，而是对当时的工业标准电影《指环王》的离线技术的跟进。通过文中改进，突破了光栅化大量粒子时操作性能的限制，产生了真实可信的火焰图像。
@@ -1272,7 +1448,7 @@ Perlin噪声（Perlin Noise）
 
 图 基于本章方法实现的"Vulcan" Demo的截图
 
-### 【核心要点】
+## 【核心要点】
 
 首先文章尝试了两个方案：
 
@@ -1283,13 +1459,13 @@ flames.），经过试验都未达预期。
 于是改采用视频纹理精灵（video-textured
 sprites ），最终达到预期，并实现出了逼真的火焰，且占用很少的GPU资源。
 
-![fig06-06a.jpg](media/0eb0473ed541e8547426cf3a35610502.png)
+![](media/0eb0473ed541e8547426cf3a35610502.png)
 
 图 用于创建火焰效果的连续镜头
 
 其中，烟的生成使用粒子系统创建一个烟雾生成器。而所需的光照可以采用不同的技术达到，如光线投射。
 
-![fig06-07.jpg](media/dd6d75501f39f36c2eb8c93780683e6f.png)
+![](media/dd6d75501f39f36c2eb8c93780683e6f.png)
 
   
 图 程序式地产生烟
@@ -1298,15 +1474,15 @@ sprites ），最终达到预期，并实现出了逼真的火焰，且占用�
 
 关于使火焰增加多样性，文中使用了水平和垂直翻转（沿着u和v轴）。而使用任意旋转可以更加具表现力。
 
-![fig06-09.jpg](media/ddbfa1d5053cb96aa32fa2dbd78fbc4f.jpg)
+![](media/ddbfa1d5053cb96aa32fa2dbd78fbc4f.jpg)
 
 图 由自定义纹理坐标生成的变体
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 6-1. 最终的实现Shader代码（The Final Shader）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 火焰渲染（Fire Rndering）
 
@@ -1316,15 +1492,15 @@ Example 6-1. 最终的实现Shader代码（The Final Shader）
 
 视频纹理精灵（video-textured sprites ）
 
-十、衍射的模拟（Simulating Diffraction）
-----------------------------------------
+# 十一、衍射的模拟（Simulating Diffraction）
 
-### 【章节概览】
+
+## 【章节概览】
 
 这章讲述了简化的Jos衍射光照模型（最初在SIGGRAPH
 1999上发表），此模型以光的物理性质为基础，将光当做波来进行建模，从而创建出多彩的干涉条纹。
 
-### 【核心要点】
+## 【核心要点】
 
 什么是衍射（Diffraction）？小尺度的表面细节引起反射波彼此干扰，这个现象就是衍射。
 
@@ -1358,26 +1534,27 @@ Example 6-1. 最终的实现Shader代码（The Final Shader）
 
 图 用纹理映射各项异性主要方向表面的3个快照
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 8-1. 衍射的顶点着色器代码（The Diffraction Shader Vertex Program）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 衍射模拟（Simulating Diffraction）
 
 各项异性（Anisotropy）
 
-十一、高效的阴影体渲染（Efficient Shadow Volume Rendering）
------------------------------------------------------------
 
-### 【章节概览】
+# 十二、高效的阴影体渲染（Efficient Shadow Volume Rendering）
+
+
+## 【章节概览】
 
 这章全面讲述了用于实时阴影渲染中常见两种流派之一的阴影体（Shadow
 Volumes）技术，又称模板阴影（Stencil
 Shadows）技术，重点是得到正确的角度的情形，减少几何图形和填充率的消耗。
 
-### 【核心要点】
+## 【核心要点】
 
 当时id software的《Doom 3》就是采用阴影体（Shadow
 Volumes）技术来对阴影进行的渲染。具体思想是在模板（stencil）缓冲标记阴影的像素，把像素分为阴影或照明两种类型，接着调节负责光照的像素程序，使阴影像素的照明贡献度为0。
@@ -1398,7 +1575,7 @@ Volumes）技术来对阴影进行的渲染。具体思想是在模板（stencil
 
 总之，这篇文章对McGuire等人2003年提出的方法进行了很好的描述、分析与实践。而在这篇文章发出之后的若干年，阴影体技术得到了各种进一步地优化与改进。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 9-1 程序结构伪代码（Program Structure Pseudocode）
 
@@ -1416,7 +1593,7 @@ Example 9-6 renderShadowCaps方法（The renderShadowCaps Method）
 
 Example 9-7 renderShadowSides方法（The renderShadowSides Method）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1424,21 +1601,22 @@ Example 9-7 renderShadowSides方法（The renderShadowSides Method）
 
 多通道渲染（Multipass Rendering）
 
-十二、电影级光照（Cinematic Lighting）
---------------------------------------
 
-### 【章节概览】
+# 十三、电影级光照（Cinematic Lighting）
+
+
+## 【章节概览】
 
 本章中介绍了一个的简化的uberlight（可理解为“全能光照”）实现，此光照shader根据Ronen
 Barzel(1997,1999)提出的照明模型编写而成。而该模型的超集已由Pixar动画开发，并应用于《玩具总动员》、《怪物公司》、《海底总动员》等一系列的迪士尼电影中。
 
 本章所对该光照模型的尝试，旨在提供一套全面的光照控制参数，以涵盖灯光美术师日常使用的大部分效果。
 
-![fig10-02.jpg](media/4f66cfe65ba506676cdde671bf7da6da.png)
+![](media/4f66cfe65ba506676cdde671bf7da6da.png)
 
 图 《怪物公司》 中cookies对窗户效果的贡献
 
-### 【核心要点】
+## 【核心要点】
 
 首先，该章中呈现的Shader只模拟光照场景光源的形成和控制，不包括如何模拟表面细节和光反射行为的复杂性。
 
@@ -1474,22 +1652,22 @@ patterns）等。然后在照明物体的每个光源上循环，计算出它的
 下面两幅图说明了uberlight 的使用效果。照明来自Pixar短片“Geri's
 Game”中的人物头部。
 
-![fig10-07a.jpg](media/a78bfaa0fe79b7be546cebed07799194.png)
+![](media/a78bfaa0fe79b7be546cebed07799194.png)
 
 图 （a）Geri
 由一个光源照明；（b）改变光的权重，修改反射高光对比度；（c）改变阴影颜色，加强阴影；（d）改变谷仓形状（类似窗户一样的遮挡物），创建更戏剧化的姿态；（e）使用一块模糊的纹理cookie，丰富图像；（f）夸大透射的cookie的对比，创建像外星人一样的效果
 
-![fig10-08a.jpg](media/efab0e56de0f5ff7bec800a5c0517d9b.png)
+![](media/efab0e56de0f5ff7bec800a5c0517d9b.png)
 
 （a）常态 （b）黑色电影（noir）的高反差 （c）柔和的光线
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 10-1. The Vertex Program for an Uberlight-Like Shader
 
 10-2. The Fragment Program for an Uberlight-Like Shader
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 电影级光照（Cinematic Lighting）
 
@@ -1499,15 +1677,16 @@ Game”中的人物头部。
 
 储存于本地的光照数据（Light Cookies）
 
-十三、阴影贴图抗锯齿（Shadow Map Antialiasing）
------------------------------------------------
 
-### 【章节概览】
+# 十四、阴影贴图抗锯齿（Shadow Map Antialiasing）
+
+
+## 【章节概览】
 
 这章介绍了如何通过邻近百分比过滤方法（Percentage-Closer Filtering ,
 PCF）有效减少阴影贴图的反走样。
 
-### 【核心要点】
+## 【核心要点】
 
 阴影贴图（Shadow
 Map，又译作阴影映射）是渲染阴影的常见方法，也是渲染阴影领域的两大流派之一，但是它存在走样的问题。通常使用高分率的阴影贴图和增加阴影贴图的分辨率来反走样，也就是使用Stamminger和Drettakis
@@ -1527,7 +1706,7 @@ Filtering,PCF）”技术解决走样问题。最初的PCF算法由Reeves等人1
 
 可以看到3幅图中的显示效果区别很明显，图（c）中每像素取16个样本，效果最为出色，达到了反走样的预期。
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 PS:原文中没有对代码片段进行编号，这里的编号为附加。
 
@@ -1535,7 +1714,7 @@ Example 11-1 暴风(Brute Force)算法16采样版本的片元程序实现代码
 
 Example 11-2 阴影贴图反走样的4采样实现版本代码
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 反走样/抗锯齿（Antialiasing）
 
@@ -1546,14 +1725,14 @@ Example 11-2 阴影贴图反走样的4采样实现版本代码
 <br>
 
 
-# 十四、全方位阴影贴图（Omnidirectional Shadow Mapping）
+# 十五、全方位阴影贴图（Omnidirectional Shadow Mapping）
 
 
-### 【章节概览】
+## 【章节概览】
 
 在这章中，把阴影贴图的思路扩展到正确处理全方位的（点）光源中，其中包括了实现细节，也涉及到基本硬件能力不足时的低效运行策略。
 
-### 【核心要点】
+## 【核心要点】
 
 首先，这篇文章也谈到了在实时计算机图形学中产生可见阴影的两个流行方法是：
 
@@ -1604,7 +1783,7 @@ Mapping）方法，该方法有两个主要步骤：
 
 图 Omnidirectional Shadow Mapping @Merlin3d
 
-### 【本章配套源代码汇总表】
+## 【本章配套源代码汇总表】
 
 Example 12-1 全方位阴影映射算法的伪代码（Pseudocode for the Omnidirectional
 Shadow-Mapping Algorithm）
@@ -1613,7 +1792,7 @@ Example 12-2 仅渲染深度（Depth-Only Rendering）
 
 Example 12-3 产生一个软阴影（Making a Softer Shadow）
 
-### 【关键词提炼】
+## 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1625,7 +1804,7 @@ Example 12-3 产生一个软阴影（Making a Softer Shadow）
 
 <br>
 
-# 十五、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
+# 十六、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
 
 
 ## 【章节概览】
@@ -1677,7 +1856,7 @@ Shadows Using Occlusion Interval Maps）
 <br>
 
 
-# 十六、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
+# 十七、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
 
 
 ## 【章节概览】
@@ -1755,7 +1934,7 @@ PCF）
 
 <br>
 
-# 十七、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
+# 十八、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
 
 
 ## 【章节概览】
@@ -1823,7 +2002,7 @@ hull）
 
 批次（Batch）
 
-# 十八、空间BRDF（Spatial BRDFs）
+# 十九、空间BRDF（Spatial BRDFs）
 
 
 ## 【章节概览】
@@ -1869,7 +2048,7 @@ Environment Maps）
 环境贴图（Environment Maps）
 
 
-# 十九、基于图像的光照（Image-Based Lighting）
+# 二十、基于图像的光照（Image-Based Lighting）
 
 
 ### 【章节概览】
@@ -1892,7 +2071,7 @@ Lighting，IBL）。
 
 立方体贴图也能用来决定漫反射光照。Debevec的HDRShop程序能够从映射立方体光照环境积分出全部的漫反射贡献度，那么通过把表面法线带入预先卷积的立方体贴图，能够简单地查询漫反射贡献。
 
-基于图像的光照为复杂的光照计算提供了综合而便宜的替代品，将一点数学加入纹理方法，可以大大拓宽“简单”IBL效果，给3D图像提供更强的的方位感。
+基于图像的光照为复杂的光照计算提供了综合而廉价的替代品，将一点数学加入纹理方法，可以大大拓宽“简单”IBL效果，给3D图像提供更强的的方位感。
 
 ## 【本章配套源代码汇总表】
 
@@ -1915,8 +2094,9 @@ Cube Object）
 
 基于图像的局部光照（Localizing Image-Based Lighting）
 
-二十、纹理爆炸（Texture Bombing）
----------------------------------
+
+# 二十一、纹理爆炸（Texture Bombing）
+
 
 ## 【章节概览】
 
@@ -1979,93 +2159,6 @@ Voronoi区域（Voronoi Region）
 
 <br>
 
-# 二十一、实时辉光（Real-Time Glow）
-
-## 【章节概览】
-
-这章讲到2D光照效果中的辉光（Glow）和光晕（Halo），展示了如何通过图像处理方法完全地改善画面及3D人物的渲染感官。
-
-## 【核心要点】
-
-光源的辉光（Glow）和光晕（Halo）是自然界导出可见的现象，他们提供了亮度和气氛强烈的视觉信息。
-
-在观看计算机图形、胶片和印刷品时，到达眼睛的光强度是有限的，因此，辨别光源强度的唯一方法是通过它们周围产生的辉光（Glow）和光晕（Halo），(Nakamae
-et al.
-1990)。这些辉光可以再现强烈光线的视觉效果，并使观察者感知非常明亮的光源。即使物体周围的微妙光晕也会让人觉得它比没有光辉的物体更亮。
-
-在日常生活中，这些发光和光晕是由大气中或我们眼中的光散射引起的（Spencer 1995）。
-使用现代图形硬件，可以通过几个简单的渲染操作来再现这些效果。
-这使得我们可以使用明亮而有趣的物体来填满实时渲染的场景，物体会显得更为逼真或更具表现力，并且这是克服图形渲染中传统的低动态范围图形过于平庸的优雅手段之一。
-
-![](media/ebca3845e4f33120b90c54c7f78f9b32.png)
-
-图 有辉光和没有辉光的一个Tron 2.0中的角色对比
-
-有几种方法可以创建场景中的辉光。对于小的类似的点，可以把一个平滑的“辉光”纹理应用到公告牌几何体上，而让公告板几何体在屏幕范围内跟随物体运动。
-
-对于大的辉光源或复杂的辉光形状，要创建辉光，最好对2D场景的渲染进行后处理。这章重点讲到了后处理的实时辉光处理方法。如下图。
-
-![](media/9b0e20d976d449e59dfb54e6a06fada4.png)
-
-图 场景实时辉光的步骤
-
-（a）正常地渲染场景
-（b）涂抹所渲染的辉光源，以产生（c）中的一个辉光纹理，将其加到正常的场景画面中，以产生（d）中最终的辉光效果。
-
-渲染后处理辉光的步骤：
-
-- 1、辉光的指定和渲染
-- 2、模糊辉光源
-- 3、分步卷积
-
-![](media/781d1c41c19ffd1ba195f399877c3860.png)
-
-图 有效地创建模糊的两步分解法
-
-上图展示了如何有效地创建模糊的两步分解法：首先，在一根轴上模糊于（a）中的辉光源的点，产生（b）中所示的中间结果，然后在另一个轴上模糊这个结果，产生显示在（c）中的最终模糊。
-
-![](media/60fc76a8681ddc527beb31e71b9f9f62.png)
-
-图 有辉光和无辉光的Tron 2.0中的英雄 Jet
-
-（a）用标准方法渲染3D模型
-（b）为一个由美术同学创建的辉光源纹理的渲染，目的是指定辉光面积的图案和强度（c）为将辉光应用到标准的渲染结果后，得到的富有表现力的英雄角色效果。
-
-另外，在辉光中使用的这个卷积和模糊方法还可以用于多种其他效果。它能用来计算景深效果的不同聚焦度，景深的信息可以用来控制模糊度。它也能用来模糊投影的纹理阴影的边缘，并且累积深度阴影映射的接近百分比过滤（percentage-closer
-filtering ）结果。
-
-而大面积的卷积能被应用于一个环境映射，以创建一个近似的辐照度映射，从而得到更逼真的场景照明（Ramamoorthi和Hanrahan
-2001有相关论述）。用大面积的卷积也可以实现许多非真实感渲染技术和其他的特别效果。其中包括镀着霜的玻璃、模拟衍射的透镜摇曳，以及渲染皮肤时用的近似次表面散射。
-
-且大片的模糊和卷积能有效地在多种图像硬件上实时地计算，而处理和创建这些效果的代码可以容易地封装成几个C++类或一个小库。
-
-总之，屏幕辉光是一种很赞的效果，能够容易地扩展到几乎每一种情形，并且变化多端，通过其还够延伸创建出很多其他的效果。最终的效果虽然细微但却有张力，值得在各种游戏中采用。
-
-## 【本章配套源代码汇总表】
-
-Example 21-1.设置抽样八个邻居的纹理坐标的Direct3D顶点着色器代码（Direct3D Vertex
-Shader to Set Texture Coordinates for Sampling Eight Neighbors）
-
-Example 21-2. 相加八个加权纹理样本的Direct3D像素着色器代码（Direct3D Pixel
-Shader to Sum Eight Weighted Texture Samples）
-
-Example 21-3. 建立邻域采样的Direct3D顶点着色器代码（Direct3D Vertex Shader
-Program to Establish Neighbor Sampling）
-
-Example 21-4. 建立邻域采样的Direct3D像素着色器代码（Direct3D Pixel Shader
-Program to Sum Four Weighted Texture Samples）
-
-## 【关键词提炼】
-
-辉光（Glow）
-
-光晕（Halo）
-
-后处理（Post-Processing）
-
-图像处理（Image Processing）
-
-<br>
 
 
 
