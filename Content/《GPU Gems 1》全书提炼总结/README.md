@@ -538,7 +538,7 @@ water table）。
 
 文中并没有贴图相关代码，但原书配套CD提供了完整的源代码和项目工程，具体代码和工程可以查看：
 
-url待更新
+[https://github.com/QianMo/GPU-Gems-Book-Source-Code/tree/master/GPU-Gems-1-CD-Content/Natural_Effects/Water_Simulation](https://github.com/QianMo/GPU-Gems-Book-Source-Code/tree/master/GPU-Gems-1-CD-Content/Natural_Effects/Water_Simulation)
 
 ## 【关键词提炼】
 
