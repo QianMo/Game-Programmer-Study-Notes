@@ -2497,7 +2497,7 @@ OpenEXR是由工业光魔（ Industrial Light & Magic
 
 而如果原始图像存储在高动态范围文件格式中，如OpenEXR，保存明亮的像素值，而不是把他们裁剪到1.0，然后把图像变暗，就可以产生依旧自然的效果。如下图。
 
-![fig26-03.jpg](media/69c6d71d2ea14454a83640d331bec7b5.png)
+![](media/69c6d71d2ea14454a83640d331bec7b5.png)
 
 图
 上述变暗的图的高动态范围版本。在明亮的区域中显示出了其他细节，颜色看起来很自然
@@ -2536,6 +2536,34 @@ the Look of Photographic Film）
 
 OpenEXR
 
+
+
+
+# Reference
+
+[1]
+<https://cgcookie.deviantart.com/art/Subsurface-Scattering-Tutorial-658412208>
+
+[2] <https://zhuanlan.zhihu.com/p/21247702?refer=graphics>
+
+[3] <https://renderman.pixar.com/resources/RenderMan_20/subsurface.html>
+
+[4] <https://www.davidmiranda.me/unity-skin/>
+
+[5] <https://www.youtube.com/watch?v=OQ3D0Q5BlOs>
+
+[6] <https://www.geforce.com/games-applications/pc-applications/a-new-dawn>
+
+[7]
+<https://www.shroudoftheavatar.com/forum/index.php?threads/on-video-game-graphics.54435/>
+
+[8]
+<https://support.solidangle.com/display/AFMUG/Guide+to+Rendering+Realistic+Skin>
+
+[9] <http://forums.cgsociety.org/showthread.php?p=8310370>
+
+[10]
+<https://www.dualshockers.com/uncharted-4-dev-explains-how-drakes-incredible-shaders-were-made-shows-direct-feed-wip-screenshots/>
 
 
 ![](media/be47b90b234000f802e16fa2ee4e509d.jpg)
