@@ -4,7 +4,7 @@
 ![](media/title.jpg)
 
 
-# 【GPU精粹与Shader编程】(二) 《GPU Gems 1》全书核心内容提炼总结
+# 【GPU精粹与Shader编程】《GPU Gems 1》全书核心内容提炼总结
 
 <br>
 
@@ -14,7 +14,16 @@
 <br>
 
 本文的知乎专栏版本：
+
+上篇：
 [https://zhuanlan.zhihu.com/p/35974789](https://zhuanlan.zhihu.com/p/35974789)
+
+
+
+下篇：
+[https://zhuanlan.zhihu.com/p/36499291](https://zhuanlan.zhihu.com/p/36499291)
+
+
 
 <br>
 
