@@ -4,7 +4,7 @@
 ![](media/title.jpg)
 
 
-# 【GPU精粹与Shader编程】《GPU Gems 1》全书核心内容提炼总结
+# 1. 【GPU精粹与Shader编程】《GPU Gems 1》全书核心内容提炼总结
 
 <br>
 
@@ -23,7 +23,173 @@
 下篇：
 [https://zhuanlan.zhihu.com/p/36499291](https://zhuanlan.zhihu.com/p/36499291)
 
+# 目录 
+<!-- TOC -->
 
+- [1. 【GPU精粹与Shader编程】《GPU Gems 1》全书核心内容提炼总结](#1-gpu精粹与shader编程gpu-gems-1全书核心内容提炼总结)
+- [目录](#目录)
+- [2. 上篇 · 主核心内容提炼总结](#2-上篇-·-主核心内容提炼总结)
+- [3. 一、 用物理模型进行高效的水模拟（Effective Water Simulation from Physical Models）](#3-一-用物理模型进行高效的水模拟effective-water-simulation-from-physical-models)
+    - [3.1. 【内容概览】](#31-内容概览)
+    - [3.2. 【核心内容提炼】](#32-核心内容提炼)
+        - [3.2.1. 背景与范围](#321-背景与范围)
+        - [3.2.2. 水体渲染的思路](#322-水体渲染的思路)
+            - [3.2.2.1. 波的选择](#3221-波的选择)
+            - [3.2.2.2. 法线与切线](#3222-法线与切线)
+        - [3.2.3. 波的几何特征](#323-波的几何特征)
+            - [3.2.3.1. Gerstner波](#3231-gerstner波)
+            - [3.2.3.2. 波长等参数的选择](#3232-波长等参数的选择)
+        - [3.2.4. 波的纹理特征](#324-波的纹理特征)
+        - [3.2.5. 关于深度](#325-关于深度)
+    - [3.3. 【核心要点总结】](#33-核心要点总结)
+    - [3.4. 【关键词提炼】](#34-关键词提炼)
+- [4. 二、Dawn Demo中的皮肤渲染（Skin in the Dawn Demo）](#4-二dawn-demo中的皮肤渲染skin-in-the-dawn-demo)
+    - [4.1. 十年技术变迁： NVIDIA Dawn Demo](#41-十年技术变迁-nvidia-dawn-demo)
+    - [4.2. 【章节概览】](#42-章节概览)
+    - [4.3. 【核心内容提炼】](#43-核心内容提炼)
+        - [4.3.1. 关于皮肤着色](#431-关于皮肤着色)
+        - [4.3.2. 皮肤如何对光进行响应](#432-皮肤如何对光进行响应)
+        - [4.3.3. 场景的照明](#433-场景的照明)
+        - [4.3.4. 实现](#434-实现)
+    - [4.4. 【核心要点总结】](#44-核心要点总结)
+    - [4.5. 【本章配套源代码汇总表】](#45-本章配套源代码汇总表)
+    - [4.6. 【关键词提炼】](#46-关键词提炼)
+- [5. 三、无尽波动的草地叶片的渲染（Rendering Countless Blades of Waving Grass）](#5-三无尽波动的草地叶片的渲染rendering-countless-blades-of-waving-grass)
+    - [5.1. 【章节概览】](#51-章节概览)
+    - [5.2. 【核心内容提炼】](#52-核心内容提炼)
+        - [5.2.1. 概述](#521-概述)
+        - [5.2.2. 草的纹理](#522-草的纹理)
+        - [5.2.3. 草体](#523-草体)
+        - [5.2.4. 草地动画](#524-草地动画)
+    - [5.3. 【核心要点总结】](#53-核心要点总结)
+    - [5.4. 【本章配套源代码汇总表】](#54-本章配套源代码汇总表)
+    - [5.5. 【关键词提炼】](#55-关键词提炼)
+- [6. 四、次表面散射的实时近似（Real-Time Approximations to Subsurface Scattering）](#6-四次表面散射的实时近似real-time-approximations-to-subsurface-scattering)
+    - [6.1. 【章节概览】](#61-章节概览)
+    - [6.2. 【核心内容提炼】](#62-核心内容提炼)
+        - [6.2.1. 次表面散射的视觉特性（The Visual Effects of Subsurface Scattering）](#621-次表面散射的视觉特性the-visual-effects-of-subsurface-scattering)
+        - [6.2.2. 简单的散射近似（Simple Scattering Approximations）](#622-简单的散射近似simple-scattering-approximations)
+        - [6.2.3. 使用深度贴图模拟吸收（Simulating Absorption Using Depth Maps）](#623-使用深度贴图模拟吸收simulating-absorption-using-depth-maps)
+        - [6.2.4. 纹理空间的漫反射（Texture-Space Diffusion）](#624-纹理空间的漫反射texture-space-diffusion)
+    - [6.3. 【核心要点总结】](#63-核心要点总结)
+    - [6.4. 【本章配套源代码汇总表】](#64-本章配套源代码汇总表)
+    - [6.5. 【关键词提炼】](#65-关键词提炼)
+- [7. 五、环境光遮蔽（Ambient Occlusion）](#7-五环境光遮蔽ambient-occlusion)
+    - [7.1. 【章节概览】](#71-章节概览)
+    - [7.2. 【核心内容提炼】](#72-核心内容提炼)
+        - [7.2.1. 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）](#721-使用环境光遮蔽贴图进行渲染rendering-with-ambient-occlusion-maps)
+    - [7.3. 【核心要点总结】](#73-核心要点总结)
+    - [7.4. 【本章配套源代码汇总表】](#74-本章配套源代码汇总表)
+    - [7.5. 【关键词提炼】](#75-关键词提炼)
+- [8. 六、实时辉光（Real-Time Glow）](#8-六实时辉光real-time-glow)
+    - [8.1. 【章节概览】](#81-章节概览)
+    - [8.2. 【核心内容提炼】](#82-核心内容提炼)
+    - [8.3. 【本章配套源代码汇总表】](#83-本章配套源代码汇总表)
+    - [8.4. 【关键词提炼】](#84-关键词提炼)
+- [9. 下篇 · 次核心内容提炼总结](#9-下篇-·-次核心内容提炼总结)
+- [10. 七、水焦散的渲染 （Rendering Water Caustics）](#10-七水焦散的渲染-rendering-water-caustics)
+    - [10.1. 【章节概览】](#101-章节概览)
+    - [10.2. 【核心要点】](#102-核心要点)
+    - [10.3. 【本章配套源代码汇总表】](#103-本章配套源代码汇总表)
+        - [10.3.1. 【关键词提炼】](#1031-关键词提炼)
+- [11. 八、 Dawn Demo中的动画（Animation in the "Dawn" Demo）](#11-八-dawn-demo中的动画animation-in-the-dawn-demo)
+    - [11.1. 【章节概览】](#111-章节概览)
+    - [11.2. 【核心要点】](#112-核心要点)
+    - [11.3. 【本章配套源代码汇总表】](#113-本章配套源代码汇总表)
+    - [11.4. 【关键词提炼】](#114-关键词提炼)
+- [12. 九、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）](#12-九-改良的perlin噪声实现implementing-improved-perlin-noise)
+    - [12.1. 【章节概览】](#121-章节概览)
+    - [12.2. 【核心要点】](#122-核心要点)
+    - [12.3. 【本章配套源代码汇总表】](#123-本章配套源代码汇总表)
+    - [12.4. 【关键词提炼】](#124-关键词提炼)
+- [13. 十、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）](#13-十vulcan-demo中的火焰渲染fire-in-the-vulcan-demo)
+    - [13.1. 【章节概览】](#131-章节概览)
+    - [13.2. 【核心要点】](#132-核心要点)
+    - [13.3. 【本章配套源代码汇总表】](#133-本章配套源代码汇总表)
+    - [13.4. 【关键词提炼】](#134-关键词提炼)
+- [14. 十一、衍射的模拟（Simulating Diffraction）](#14-十一衍射的模拟simulating-diffraction)
+    - [14.1. 【章节概览】](#141-章节概览)
+    - [14.2. 【核心要点】](#142-核心要点)
+    - [14.3. 【本章配套源代码汇总表】](#143-本章配套源代码汇总表)
+    - [14.4. 【关键词提炼】](#144-关键词提炼)
+- [15. 十二、高效的阴影体渲染（Efficient Shadow Volume Rendering）](#15-十二高效的阴影体渲染efficient-shadow-volume-rendering)
+    - [15.1. 【章节概览】](#151-章节概览)
+    - [15.2. 【核心要点】](#152-核心要点)
+    - [15.3. 【本章配套源代码汇总表】](#153-本章配套源代码汇总表)
+    - [15.4. 【关键词提炼】](#154-关键词提炼)
+- [16. 十三、电影级光照（Cinematic Lighting）](#16-十三电影级光照cinematic-lighting)
+    - [16.1. 【章节概览】](#161-章节概览)
+    - [16.2. 【核心要点】](#162-核心要点)
+    - [16.3. 【本章配套源代码汇总表】](#163-本章配套源代码汇总表)
+    - [16.4. 【关键词提炼】](#164-关键词提炼)
+- [17. 十四、阴影贴图抗锯齿（Shadow Map Antialiasing）](#17-十四阴影贴图抗锯齿shadow-map-antialiasing)
+    - [17.1. 【章节概览】](#171-章节概览)
+    - [17.2. 【核心要点】](#172-核心要点)
+    - [17.3. 【本章配套源代码汇总表】](#173-本章配套源代码汇总表)
+    - [17.4. 【关键词提炼】](#174-关键词提炼)
+- [18. 十五、全方位阴影贴图（Omnidirectional Shadow Mapping）](#18-十五全方位阴影贴图omnidirectional-shadow-mapping)
+    - [18.1. 【章节概览】](#181-章节概览)
+    - [18.2. 【核心要点】](#182-核心要点)
+    - [18.3. 【本章配套源代码汇总表】](#183-本章配套源代码汇总表)
+    - [18.4. 【关键词提炼】](#184-关键词提炼)
+- [19. 十六、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）](#19-十六使用遮挡区间映射产生模糊的阴影generating-soft-shadows-using-occlusion-interval-maps)
+    - [19.1. 【章节概览】](#191-章节概览)
+    - [19.2. 【核心要点】](#192-核心要点)
+    - [19.3. 【本章配套源代码汇总表】](#193-本章配套源代码汇总表)
+    - [19.4. 【关键词提炼】](#194-关键词提炼)
+- [20. 十七、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）](#20-十七透视阴影贴图perspective-shadow-maps-care-and-feeding)
+    - [20.1. 【章节概览】](#201-章节概览)
+    - [20.2. 【核心要点】](#202-核心要点)
+    - [20.3. 【本章配套源代码汇总表】](#203-本章配套源代码汇总表)
+    - [20.4. 【关键词提炼】](#204-关键词提炼)
+- [21. 十八、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）](#21-十八逐像素光照的可见性管理managing-visibility-for-per-pixel-lighting)
+    - [21.1. 【章节概览】](#211-章节概览)
+    - [21.2. 【核心要点】](#212-核心要点)
+    - [21.3. 【本章配套源代码汇总表】](#213-本章配套源代码汇总表)
+    - [21.4. 【关键词提炼】](#214-关键词提炼)
+- [22. 十九、空间BRDF（Spatial BRDFs）](#22-十九空间brdfspatial-brdfs)
+    - [22.1. 【章节概览】](#221-章节概览)
+    - [22.2. 【核心要点】](#222-核心要点)
+    - [22.3. 【本章配套源代码汇总表】](#223-本章配套源代码汇总表)
+    - [22.4. 【关键词提炼】](#224-关键词提炼)
+- [23. 二十、基于图像的光照（Image-Based Lighting）](#23-二十基于图像的光照image-based-lighting)
+        - [23.0.1. 【章节概览】](#2301-章节概览)
+        - [23.0.2. 【核心要点】](#2302-核心要点)
+    - [23.1. 【本章配套源代码汇总表】](#231-本章配套源代码汇总表)
+    - [23.2. 【关键词提炼】](#232-关键词提炼)
+- [24. 二十一、纹理爆炸（Texture Bombing）](#24-二十一纹理爆炸texture-bombing)
+    - [24.1. 【章节概览】](#241-章节概览)
+    - [24.2. 【核心要点】](#242-核心要点)
+    - [24.3. 【本章配套源代码汇总表】](#243-本章配套源代码汇总表)
+    - [24.4. 【关键词提炼】](#244-关键词提炼)
+- [25. 二十二、颜色控制（Color Controls）](#25-二十二颜色控制color-controls)
+    - [25.1. 【章节概览】](#251-章节概览)
+    - [25.2. 【核心要点】](#252-核心要点)
+    - [25.3. 【本章配套源代码汇总表】](#253-本章配套源代码汇总表)
+    - [25.4. 【关键词提炼】](#254-关键词提炼)
+- [26. 二十三、景深 （Depth of Field）](#26-二十三景深-depth-of-field)
+    - [26.1. 【章节概览】](#261-章节概览)
+    - [26.2. 【核心要点】](#262-核心要点)
+    - [26.3. 【本章配套源代码汇总表】](#263-本章配套源代码汇总表)
+    - [26.4. 【关键词提炼】](#264-关键词提炼)
+- [27. 二十四、高品质的图像滤波（High-Quality Filtering）](#27-二十四高品质的图像滤波high-quality-filtering)
+    - [27.1. 【章节概览】](#271-章节概览)
+    - [27.2. 【核心要点】](#272-核心要点)
+    - [27.3. 【本章配套源代码汇总表】](#273-本章配套源代码汇总表)
+    - [27.4. 【关键词提炼】](#274-关键词提炼)
+- [28. 二十五、用纹理贴图进行快速滤波宽度的计算（Fast Filter-Width Estimates with Texture Maps）](#28-二十五用纹理贴图进行快速滤波宽度的计算fast-filter-width-estimates-with-texture-maps)
+    - [28.1. 【章节概览】](#281-章节概览)
+    - [28.2. 【核心要点】](#282-核心要点)
+    - [28.3. 【本章配套源代码汇总表】](#283-本章配套源代码汇总表)
+    - [28.4. 【关键词提炼】](#284-关键词提炼)
+- [29. 二十六、OpenEXR图像文件格式（The OpenEXR Image File Format）](#29-二十六openexr图像文件格式the-openexr-image-file-format)
+    - [29.1. 【章节概览】](#291-章节概览)
+    - [29.2. 【核心要点】](#292-核心要点)
+    - [29.3. 【本章配套源代码汇总表】](#293-本章配套源代码汇总表)
+    - [29.4. 【关键词提炼】](#294-关键词提炼)
+- [30. Reference](#30-reference)
+
+<!-- /TOC -->
 
 <br>
 
@@ -196,16 +362,16 @@ PS:配套的不少工程中不仅包含完整的源码，也直接包含经过�
 
 <br>
 
-# 上篇 · 主核心内容提炼总结
+# 2. 上篇 · 主核心内容提炼总结
 
 
 <br>
 
 
-# 一、 用物理模型进行高效的水模拟（Effective Water Simulation from Physical Models）
+# 3. 一、 用物理模型进行高效的水模拟（Effective Water Simulation from Physical Models）
 
 
-## 【内容概览】
+## 3.1. 【内容概览】
 
 本章介绍了在GPU中模拟和渲染大型水体的一些方法，并且提出了改进反射的一些有用技巧。
 
@@ -217,9 +383,9 @@ PS:配套的不少工程中不仅包含完整的源码，也直接包含经过�
 
 图 基于文中水体技术渲染的Uru:Ages Beyond Myst中的场景
 
-## 【核心内容提炼】
+## 3.2. 【核心内容提炼】
 
-### 1.1 背景与范围
+### 3.2.1. 背景与范围
 
 《GPU Gems
 1》出版于2004年，在这几年间，实时渲染技术渐渐从离线渲染领域中分离，自成一派。
@@ -231,7 +397,7 @@ Transform，FFT）库已经能用于顶点和像素着色器中。同时，运�
 
 图 基于快速傅里叶变换的水体渲染
 
-### 1.2 水体渲染的思路
+### 3.2.2. 水体渲染的思路
 
 文中对水体渲染的思路，运行了两个表面模拟：一个用于表面网格的几何波动，另一个是网格上法线图的扰动。这两个模拟本质上是相同的。而水面高度由简单的周期波叠加表示。
 
@@ -241,7 +407,7 @@ texture），从而产生表面的法线图。对每帧渲染法线图，允许�
 
 而直接叠加正弦波产生的波浪有太多的“簸荡（roll）”，而真实的波峰比较尖，波谷比较宽。事实证明，正弦函数有一个简单的变体，可以很好地控制这个效果。
 
-#### 1.2.1 波的选择
+#### 3.2.2.1. 波的选择
 
 对于每个波的组成，有如下几个参数需要选择：
 
@@ -269,7 +435,7 @@ texture），从而产生表面的法线图。对每帧渲染法线图，允许�
 
 为了提供场景动力学的变量，我们将在约束中随机产生这些波的参数，随着时间的变化，我们会不断将某个波淡出，然后再以一组不同的参数将其淡入。且此过程的这些参数是相关联的，必须仔细地产生一套完整的参数组，才能使各个波以可信的方式进行组合。
 
-#### 1.2.2 法线与切线
+#### 3.2.2.2. 法线与切线
 
 因为我们的表面有定义明确的函数，所以可以直接计算任意给定点处的曲面方向，而不是依赖于有限差分技术。
 
@@ -284,7 +450,7 @@ texture），从而产生表面的法线图。对每帧渲染法线图，允许�
 
 ![](media/9cf67c7c7f52f853a6cc8bd2dd1485f3.jpg)
 
-### 1.3 波的几何特征
+### 3.2.3. 波的几何特征
 
 首先文中将几何波限制为4个，因为添加更多的波并不能增加新的概念，只不过增加更多相同的顶点Shader处理指令和常数而已。
 
@@ -300,7 +466,7 @@ texture），从而产生表面的法线图。对每帧渲染法线图，允许�
 
 方向波需要的顶点shader处理指令较少，但是究竟选择何种波需要取决于模拟的场景。对于大的水体，方向波往往更好，因为它们是风吹动产生的波较好的模型。对于较小的池塘的水，产生波的原因不是由于风，而是诸如例如瀑布，水中的鱼，圆形波则更好一些。对于方向波，波的方向是在风向的一定范围内任意绘制的；对于圆形波，波中心是在某些限定的范围内任意绘制的。
 
-####  1.3.2 Gerstner波
+#### 3.2.3.1. Gerstner波
 
 正弦波看起来圆滑，用于渲染平静的，田园诗般的池塘很合适。而对于粗犷的海洋，需要形成较尖的浪头和较宽的浪槽，则可以选择Gerstner波。
 
@@ -317,7 +483,7 @@ Gerstner波早在计算机图形学出现之前就已经被研发了出来，用
 
 图 基于Gerstner渲染出的水面 @Unreal Engine 4
 
-####  1.3.3 波长等参数的选择
+#### 3.2.3.2. 波长等参数的选择
 
 波长等参数的选择方法：
 
@@ -329,7 +495,7 @@ Gerstner波早在计算机图形学出现之前就已经被研发了出来，用
 
 -   波的方向，运动方向与其他参数完全独立，因此可以自由选择。
 
-### 1.4 波的纹理特征
+### 3.2.4. 波的纹理特征
 
 加和到纹理中的波也像上文说到的顶点一样需要参数化，但是其具有不同的约束条件。首先，在纹理中得到宽频谱更为重要。其次，在纹理中更容易形成不像天然波纹的图案。第三，对给定波长只有某些波方向能保证全部纹理的平铺（tiling）。也就是说，不像在世界空间中仅仅需要注意距离，在纹素（texel）中要注意所有的量。
 
@@ -337,7 +503,7 @@ Gerstner波早在计算机图形学出现之前就已经被研发了出来，用
 x
 256分辨率的渲染目标纹理的处理，而不是处理主帧的帧缓冲。实际上，生成法线贴图的填充率所造成的影响小到可以忽略不计。
 
-### 1.5 关于深度
+### 3.2.5. 关于深度
 
 首先，把在顶点上的水深度作为一个输入参数，这样，在着色器碰到岸边这样的微妙区域时，便可以自动进行校正。
 
@@ -352,7 +518,7 @@ water table）。
 
 图 真实感水体渲染效果图 @Unreal Engine 4
 
-## 【核心要点总结】
+## 3.3. 【核心要点总结】
 
 文中提出的水体渲染方法，总结起来有三个要点：
 
@@ -368,7 +534,7 @@ water table）。
 
 url待更新
 
-## 【关键词提炼】
+## 3.4. 【关键词提炼】
 
 水的模拟（Water Simulation）
 
@@ -382,10 +548,10 @@ Gerstner波（Gerstner Waves）
 
 <br>
 
-# 二、Dawn Demo中的皮肤渲染（Skin in the Dawn Demo）
+# 4. 二、Dawn Demo中的皮肤渲染（Skin in the Dawn Demo）
 
 
-## 十年技术变迁： NVIDIA Dawn Demo
+## 4.1. 十年技术变迁： NVIDIA Dawn Demo
 
 最初的Dawn Demo由NVIDIA于2002年发布，而十年之后的2012年，NVIDIA新发布了“A New
 Dawn”技术Demo。
@@ -408,7 +574,7 @@ Dawn”技术Demo。
 
 图 技术指标的对比
 
-## 【章节概览】
+## 4.2. 【章节概览】
 
 这章详细介绍了NVIDIA出品的Dawn
 Dmoe中对精灵人物的着色技术，主要是皮肤的着色技巧。在当时（2002年）NVIDIA创造的此demo的品质，已经成为照片级真实感渲染和实时渲染的代表。
@@ -419,16 +585,16 @@ Dmoe中对精灵人物的着色技术，主要是皮肤的着色技巧。在当�
 
 
 
-## 【核心内容提炼】
+## 4.3. 【核心内容提炼】
 
-### 2.1 关于皮肤着色
+### 4.3.1. 关于皮肤着色
 
 基于多种原因，在计算机图形中模拟皮肤十分困难。在当时，即使是在电影中用高端产品模拟出来的仿真角色，通常也经不起近距离的观察。因为，人类可以从中获得大量非语言来表达的信息，如重心的移动，走动的特别习惯，面部的表情，甚至有些人的皮肤泛红等等。
 
 虽然很少有人能理解像“次表面散射（Subsurface Scattering）”、“轮廓照明（Rim
 Lighting）”这些词汇，但是当把它们渲染错了的时候，几乎任何人都可以指出来。而且除了着色问题外，有时人们会因为皮肤渲染的问题，说皮肤看起来像是塑料做的。
 
-### 2.2 皮肤如何对光进行响应
+### 4.3.2. 皮肤如何对光进行响应
 
 皮肤不像大多数在计算机渲染中建模的表面，因为它是由半透明的表皮、真皮和皮下组织等数层构成的。这可以用次表面散射来模拟。这种现象很普遍，当在太阳面前向上举起手，就能看到穿过皮肤的桔红色的光。
 
@@ -460,7 +626,7 @@ Lighting）,这时，需要皮肤轮廓边缘的光照，或给皮肤边缘加�
 
 图 Dawn的头部前面的切线空间法线贴图（凹凸贴图）
 
-### 2.3 场景的照明
+### 4.3.3. 场景的照明
 
 Dawn Demo中场景的照明使用了基于图像的光照（Image Based Lighting ,
 IBL），创建高动态范围(High-Dynamic
@@ -491,7 +657,7 @@ Map）考虑了来自环境的入射光，但不包含由物体引起的阴影�
 要解决这个问题，可以生成一个遮挡项，用来近似表达在每个顶点上半球辐射光中，有多大比率场景中其他物体所遮挡。
 
 
-### 2.4 实现
+### 4.3.4. 实现
 
 Dawn
 Demo中，毫无悬念地使用顶点着色器和像素着色器进行光照处理，顶点shader的主要功能是将坐标转换到投影空间，并执行那些不能在像素着色器中执行的数学运算。
@@ -500,7 +666,7 @@ Demo中，毫无悬念地使用顶点着色器和像素着色器进行光照处�
 
 文中提供了完整的顶点Shader和像素Shader的源代码，这里因为篇幅原因不再赘述，具体可以参考原文（PS:上文有贴出Web版的英文全书原文的链接）。
 
-## 【核心要点总结】
+## 4.4. 【核心要点总结】
 
 文中采用的皮肤渲染方法，总结起来有三个要点：
 
@@ -511,7 +677,7 @@ Demo中，毫无悬念地使用顶点着色器和像素着色器进行光照处�
 
 3）对皮肤边缘加上光晕，即轮廓照明/边缘光照（Rim Lighting）
 
-## 【本章配套源代码汇总表】
+## 4.5. 【本章配套源代码汇总表】
 
 Example 3-1. 从CPU应用程序接收的每个顶点数据示例代码（The Per-Vertex Data
 Received from the CPU Application）
@@ -525,7 +691,7 @@ Dawn's Face）
 Example 3-4. Dawn脸部的皮肤渲染片元着色器代码（The Fragment Shader for Dawn's
 Face）
 
-## 【关键词提炼】
+## 4.6. 【关键词提炼】
 
 皮肤渲染（Skin Rendering）
 
@@ -542,12 +708,12 @@ Face）
 
 <br>
 
-# 三、无尽波动的草地叶片的渲染（Rendering Countless Blades of Waving Grass）
+# 5. 三、无尽波动的草地叶片的渲染（Rendering Countless Blades of Waving Grass）
 
 
 <br>
 
-## 【章节概览】
+## 5.1. 【章节概览】
 
 这章关于巨量自然元素的渲染，特别是对于无尽波动的草地叶片的渲染。作者对Codecreatures
 demo中首次成形的技术进行了扩展，使其能够高性能的渲染，以更好地适应游戏引擎的需要。
@@ -556,9 +722,9 @@ demo中首次成形的技术进行了扩展，使其能够高性能的渲染，�
 
 图 Realistic Grass Field @Giovanni Baer
 
-## 【核心内容提炼】
+## 5.2. 【核心内容提炼】
 
-### 3.1 概述
+### 5.2.1. 概述
 
 首先，需要意识到，对单个草叶的细节建模意义不大，因为那样大片草地需要的多边形数目会太多。
 
@@ -570,7 +736,7 @@ demo中首次成形的技术进行了扩展，使其能够高性能的渲染，�
 
 而要做到让场景不依赖于摄像机的位置和方向，可以把一些草叶组合起来，表示在一个纹理中，并将多个纹理组合起来，且在结果中单个的多边形不应该引起注意。当观察者四处活动时，通过将草体加入混合操作或者移除混合操作，以在距离范围内增加或删去草体，来保证整个草地的渲染效果具有稳定的视觉质量。
 
-### 3.2 草的纹理
+### 5.2.2. 草的纹理
 
 草的纹理，应该是一些一簇一簇聚集丛生的草，否则，会出现大片的透明区域。
 
@@ -582,7 +748,7 @@ demo中首次成形的技术进行了扩展，使其能够高性能的渲染，�
 
 图 草地纹理的示意图
 
-### 3.3 草体
+### 5.2.3. 草体
 
 这一部分将探讨总结如何对多边形进行组合，并用上文提到的草地纹理进行映射，以模拟出茂密的草地，并且不凸显个别多边形。此技术也保证了单个多边形不可见。
 
@@ -609,7 +775,7 @@ Call中的z-testing/writing，那么就会得到自然而茂密的草地渲染�
 
 图 草地的扩展
 
-### 3.4 草地动画
+### 5.2.4. 草地动画
 
 关于草地的动画，基本思想是以三角函数（尤其是正弦和余弦）为基础进行计算，且计算应该考虑到移动的位置和当前时间、风向和强度。
 
@@ -630,7 +796,7 @@ Call中的z-testing/writing，那么就会得到自然而茂密的草地渲染�
 图 Realistic Grass
 
 
-## 【核心要点总结】
+## 5.3. 【核心要点总结】
 
 1）草的纹理，应选取一簇一簇聚集丛生的草。在透明的alpha通道上画实体草茎。在彩色通道中，用深浅不同的绿色和黄色，区别各个单独的叶片。
 
@@ -645,7 +811,7 @@ Call中的z-testing/writing，便能得到自然而茂密的草地渲染效果�
 
 >   3、每草体的动画（Animation per Grass Object）
 
-## 【本章配套源代码汇总表】
+## 5.4. 【本章配套源代码汇总表】
 
 Example 7-1. 顶点着色器框架（Framework in the Vertex Shader）
 
@@ -656,7 +822,7 @@ Example 7-3. 每顶点动画实现Shader代码（Code for Animation per Vertex�
 
 Example 7-4. 每草体的动画实现Shader代码（Code for Animation per Grass Object）
 
-## 【关键词提炼】
+## 5.5. 【关键词提炼】
 
 草地渲染（Grass Rendering）
 
@@ -667,10 +833,10 @@ Example 7-4. 每草体的动画实现Shader代码（Code for Animation per Grass
 <br>
 
 
-# 四、次表面散射的实时近似（Real-Time Approximations to Subsurface Scattering）
+# 6. 四、次表面散射的实时近似（Real-Time Approximations to Subsurface Scattering）
 
 
-## 【章节概览】
+## 6.1. 【章节概览】
 
 次表面散射（Subsurface Scattering），简称SSS，或3S，是光射入非金属材质后在内部发生散射，最后射出物体并进入视野中产生的现象，即光从表面进入物体经过内部散射，然后又通过物体表面的其他顶点出射的光线传递过程。
 
@@ -696,9 +862,9 @@ Example 7-4. 每草体的动画实现Shader代码（Code for Animation per Grass
 
 本章即描述了次表面散射的几种实时近似方法，关于皮肤的渲染，也关于近似地去模拟透明材质的几种不同方法。
 
-## 【核心内容提炼】
+## 6.2. 【核心内容提炼】
 
-### 4.1 次表面散射的视觉特性（The Visual Effects of Subsurface Scattering）
+### 6.2.1. 次表面散射的视觉特性（The Visual Effects of Subsurface Scattering）
 
 要重现出任何视觉效果，经常的做法是考察这种效果的图像，并把可视的外观分解为其组成要素。在观察半透明物体的相片和图像时，能注意到如下几点，即次表面散射（Subsurface
 Scattering）的视觉特性：
@@ -715,7 +881,7 @@ Scattering）的视觉特性：
 
 图 次表面散射原理图示
 
-### 4.2 简单的散射近似（Simple Scattering Approximations）
+### 6.2.2. 简单的散射近似（Simple Scattering Approximations）
 
 近似散射的比较简单技巧是环绕照明（Warp
 Lighting）。正常情况下，当表面的法线对于光源方向垂直的时候，Lambert漫反射提供的照明度是0。而环绕光照修改漫反射函数，使得光照环绕在物体的周围，越过那些正常时会变黑变暗的点。这减少了漫反射光照明的对比度，从而减少了环境光和所要求的填充光的量。环绕光照是对Oren-Nayar光照模型的一个粗糙的近似。原模型力图更精确地模拟粗糙的不光滑表面（Nayar
@@ -821,7 +987,7 @@ Shader Effect Incorporating Wrap Lighting）
 	
 	}
 
-### 4.3 使用深度贴图模拟吸收（Simulating Absorption Using Depth Maps）
+### 6.2.3. 使用深度贴图模拟吸收（Simulating Absorption Using Depth Maps）
 
 吸收（Absorption）是模拟半透明材质的最重要特性之一。光线在物质中传播得越远，它被散射和吸收得就越厉害。为了模拟这种效果，我们需要测量光在物质中传播的距离。而估算这个距离可以使用深度贴图（Depth
 Maps）技术[Hery 2002]，此技术非常类似于阴影贴图(Shadow
@@ -852,7 +1018,7 @@ Approximation），其假设光在材质中只反弹一次，沿着材质内的�
 另一种模型，是近似漫反射（Diffusion
 Approximation），其用来模拟高散射介质（如皮肤）的多次散射效果。
 
-### 4.4 纹理空间的漫反射（Texture-Space Diffusion）
+### 6.2.4. 纹理空间的漫反射（Texture-Space Diffusion）
 
 次表面散射最明显的视觉特征之一是模糊的光照效果。其实，3D美术时常在屏幕空间中效仿这个现象，通过在Photoshop中执行Gaussian模糊，然后把模糊图像少量地覆盖在原始图像上，这种“辉光”技术使光照变得柔和。
 
@@ -892,7 +1058,7 @@ Diffusion）是可能的，我们可以用顶点程序展开物体的网格，�
 
 
 
-## 【核心要点总结】
+## 6.3. 【核心要点总结】
 
 文中提出的次表面散射的实时近似方法，总结起来有三个要点：
 
@@ -905,7 +1071,7 @@ Diffusion），来模拟次表面散射最明显的视觉特征之一——模�
 
 
 
-## 【本章配套源代码汇总表】
+## 6.4. 【本章配套源代码汇总表】
 
 Example 16-1 摘录纳入了环绕照明的皮肤Shader效果的代码（Excerpt from the Skin
 Shader Effect Incorporating Wrap Lighting）
@@ -927,7 +1093,7 @@ Blur）
 Example 16-7 用于漫反射模糊的片元Shader代码（The Fragment Program for Diffusion
 Blur）
 
-## 【关键词提炼】
+## 6.5. 【关键词提炼】
 
 皮肤渲染（Skin Rendering）
 
@@ -940,10 +1106,10 @@ Blur）
 深度映射（Depth Maps）
 
 
-# 五、环境光遮蔽（Ambient Occlusion）
+# 7. 五、环境光遮蔽（Ambient Occlusion）
 
 
-## 【章节概览】
+## 7.1. 【章节概览】
 
 在某种意义上，这篇文章属于环境光遮蔽的启蒙式文章。
 
@@ -960,7 +1126,7 @@ Occlusion），简称AO，是一种用于计算场景中每个点对环境光照
 
 图 有无环境光遮蔽的对比
 
-## 【核心内容提炼】
+## 7.2. 【核心内容提炼】
 
 5.1 概述
 
@@ -1055,7 +1221,7 @@ Random Directions with Rejection Sampling）
 
 另外，用图形硬件代替光线追踪软件，有可能加速遮挡信息的计算。
 
-### 5.3 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
+### 7.2.1. 使用环境光遮蔽贴图进行渲染（Rendering with Ambient Occlusion Maps）
 
 使用环境光遮蔽贴图进行着色的基本思想是：
 可以直接在着色点处使用之前已计算好的，有多少光线能到达表面的，优质的近似值信息。
@@ -1084,7 +1250,7 @@ Random Directions with Rejection Sampling）
 
 另外需要注意，实时环境光遮蔽的常用廉价方案是预先计算网格表面几个位置的平均可见性值，存储于贴图中，然后将这些值在运行时与图形硬件提供的未遮挡光照相乘。
 
-## 【核心要点总结】
+## 7.3. 【核心要点总结】
 
 给定一个任意的着色模型，环境光遮蔽算法需要知道模型上每点的两个信息：
 
@@ -1100,7 +1266,7 @@ Random Directions with Rejection Sampling）
 
 -   预处理不依赖于光照环境贴图，因此可以轻松使用场景中的动态照明。
 
-## 【本章配套源代码汇总表】
+## 7.4. 【本章配套源代码汇总表】
 
 Example 17-1 计算环境光遮蔽量的基本算法伪代码（Basic Algorithm for Computing
 Ambient Occlusion Quantities）
@@ -1115,7 +1281,7 @@ Example 17-4 latlong( )函数的定义（The latlong() Function Definition）
 
 Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definition）
 
-## 【关键词提炼】
+## 7.5. 【关键词提炼】
 
 环境光遮蔽（Ambient Occlusion）
 
@@ -1124,10 +1290,10 @@ Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definiti
 环境光遮蔽贴图（Ambient Occlusion Maps）
 
 
-# 六、实时辉光（Real-Time Glow）
+# 8. 六、实时辉光（Real-Time Glow）
 
 
-## 【章节概览】
+## 8.1. 【章节概览】
 
 这章讲到2D光照效果中的辉光（Glow）和光晕（Halo），展示了如何通过图像处理方法完全地改善画面及3D人物的渲染感官。
 
@@ -1141,7 +1307,7 @@ Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definiti
 
 
 
-## 【核心内容提炼】
+## 8.2. 【核心内容提炼】
 
 光源的辉光（Glow）和光晕（Halo）是自然界导出可见的现象，他们提供了亮度和气氛强烈的视觉信息。
 
@@ -1235,7 +1401,7 @@ Step 3、适配分步卷积（Adapting the Separable Convolution）
 
 Step 4、在GPU上进行卷积（Convolution on the GPU）
 
-## 【本章配套源代码汇总表】
+## 8.3. 【本章配套源代码汇总表】
 
 Example 21-1.设置抽样八个邻居的纹理坐标的Direct3D顶点着色器代码（Direct3D Vertex
 Shader to Set Texture Coordinates for Sampling Eight Neighbors）
@@ -1249,7 +1415,7 @@ Program to Establish Neighbor Sampling）
 Example 21-4. 建立邻域采样的Direct3D像素着色器代码（Direct3D Pixel Shader
 Program to Sum Four Weighted Texture Samples）
 
-## 【关键词提炼】
+## 8.4. 【关键词提炼】
 
 实时辉光（Real-Time Glow）
 
@@ -1261,14 +1427,14 @@ Program to Sum Four Weighted Texture Samples）
 
 
 
-# 下篇 · 次核心内容提炼总结
+# 9. 下篇 · 次核心内容提炼总结
 
 <br>
 
-# 七、水焦散的渲染 （Rendering Water Caustics）
+# 10. 七、水焦散的渲染 （Rendering Water Caustics）
 
 
-## 【章节概览】
+## 10.1. 【章节概览】
 
 这一章介绍了一种从美学角度出发（aesthetics-driven）来实时渲染水中焦散的方法。
 
@@ -1276,7 +1442,7 @@ Program to Sum Four Weighted Texture Samples）
 
 图 水的焦散效果
 
-## 【核心要点】
+## 10.2. 【核心要点】
 
 水的焦散（Water Caustics）的定义：光从弯曲的表面反射或者折射，只聚焦在受光面的某些区域，于是就是产生焦散的现象。
 
@@ -1312,7 +1478,7 @@ Program to Sum Four Weighted Texture Samples）
 
 
 
-## 【本章配套源代码汇总表】
+## 10.3. 【本章配套源代码汇总表】
 
 Example 2-1. 关于波函数、波函数的梯度以及线平面截距方程的代码示例，（Code Sample
 for the Wave Function, the Gradient of the Wave Function, and the Line-Plane
@@ -1323,7 +1489,7 @@ Final Render Pass, Showing the Dependent Texture Read Operations）
 
 
 
-### 【关键词提炼】
+### 10.3.1. 【关键词提炼】
 
 水焦散渲染（Rendering Water Caustics）
 
@@ -1332,10 +1498,10 @@ Final Render Pass, Showing the Dependent Texture Read Operations）
 折射（Refraction）
 
 
-# 八、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
+# 11. 八、 Dawn Demo中的动画（Animation in the "Dawn" Demo）
 
 
-## 【章节概览】
+## 11.1. 【章节概览】
 
 这章主要讲到编程人员如何帮助美术同学对混合形状实行控制，从而创建不同的表情。主要是使用顶点Shader通过索引的蒙皮和变形网格对象（morph
 target）来使一个高分辨率网格变形，实现角色表情和动画等效果。也讨论了为实现实时动画而考虑的各种折中方案。
@@ -1344,7 +1510,7 @@ target）来使一个高分辨率网格变形，实现角色表情和动画等�
 
 图 Dawn Demo的实时屏幕截图
 
-## 【核心要点】
+## 11.2. 【核心要点】
 
 使用变形目标（Morph Target）是表现复杂网格变形的常用方法。NVIDIA
 Demo团队使用此技术创建的Zoltar等Demo从每秒插值30个网格开始，然后基于累计误差方案（Accumulated
@@ -1366,7 +1532,7 @@ Pose），这个姿势保持胳膊和腿略微分开，并且尽可能避免弯�
 
 图 Dawn的绑定姿势（Bind Pose）
 
-## 【本章配套源代码汇总表】
+## 11.3. 【本章配套源代码汇总表】
 
 Example 4-1 以线性或连续样式运用到变形目标的示例代码（Applying morph targets in
 a linear or serial fashion sample code）
@@ -1379,7 +1545,7 @@ Example 4-3 变形目标的实现示例代码（Morph Target Implementation samp
 Example 4-4 使用四根骨头蒙皮的示例代码（Application of four-bone skinning sample
 code）
 
-## 【关键词提炼】
+## 11.4. 【关键词提炼】
 
 面部表情模拟（Facial Expression Simulation）
 
@@ -1389,15 +1555,15 @@ code）
 
 蒙皮（Skinning）
 
-# 九、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
+# 12. 九、 改良的Perlin噪声实现（Implementing Improved Perlin Noise）
 
 
-## 【章节概览】
+## 12.1. 【章节概览】
 
 这章的作者是奥斯卡得主Ken Perlin。他提出的噪声算法（Perlin
 Noise）已在实时和离线计算机图形学中得到多方面运用。这篇文章详细阐述了最新进展，纠正了最初的两个缺陷，也提供了有效及稳定的框架结构，用于在现代可编程硬件上执行噪声运算。
 
-## 【核心要点】
+## 12.2. 【核心要点】
 
 首先，噪声函数的目的，是在三维空间中提供一种可以有效率地实现、可重复，伪随机的信号。其信号的能带有限（band-limited），大部分能量集中在一个空间频率附近，而视觉上是各向同性（isotropic）的，统计上不随旋转变化。
 
@@ -1428,11 +1594,11 @@ spline）插值法等方法实现，原文中对此方法的步骤进行了描�
 
 而另外一个关于噪声的思路是，用体积噪声制造程序式纹理（Procedural texturing using volumetric noise），这样可以不创建显式的纹理图像，来得到自然的材质。这种方法在当年的大片《指环王》中，已经有了广泛应用。
 
-## 【本章配套源代码汇总表】
+## 12.3. 【本章配套源代码汇总表】
 
 5-1 假设模型是单位半径球体，实现凹凸模式的示例代码（Assuming the model is a unit-radius sphere, the expressions that implement these bump patterns sample Code）
 
-## 【关键词提炼】
+## 12.4. 【关键词提炼】
 
 Perlin噪声（Perlin Noise）
 
@@ -1447,10 +1613,10 @@ Perlin噪声（Perlin Noise）
 
 <br>
 
-# 十、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
+# 13. 十、Vulcan Demo中的火焰渲染（Fire in the "Vulcan" Demo）
 
 
-## 【章节概览】
+## 13.1. 【章节概览】
 
 这章讲述了GeForce FX 5900上市时的Demo
 “Vulcan”中的火焰渲染技术。其中的技术并非真正的物理模拟，而是对当时的工业标准电影《指环王》的离线技术的跟进。通过文中改进，突破了光栅化大量粒子时操作性能的限制，产生了真实可信的火焰图像。
@@ -1459,7 +1625,7 @@ Perlin噪声（Perlin Noise）
 
 图 基于本章方法实现的"Vulcan" Demo的截图
 
-## 【核心要点】
+## 13.2. 【核心要点】
 
 首先文章尝试了两个方案：
 
@@ -1489,11 +1655,11 @@ sprites ），最终达到预期，并实现出了逼真的火焰，且占用�
 
 图 由自定义纹理坐标生成的变体
 
-## 【本章配套源代码汇总表】
+## 13.3. 【本章配套源代码汇总表】
 
 Example 6-1. 最终的实现Shader代码（The Final Shader）
 
-## 【关键词提炼】
+## 13.4. 【关键词提炼】
 
 火焰渲染（Fire Rndering）
 
@@ -1503,15 +1669,15 @@ Example 6-1. 最终的实现Shader代码（The Final Shader）
 
 视频纹理精灵（video-textured sprites ）
 
-# 十一、衍射的模拟（Simulating Diffraction）
+# 14. 十一、衍射的模拟（Simulating Diffraction）
 
 
-## 【章节概览】
+## 14.1. 【章节概览】
 
 这章讲述了简化的Jos衍射光照模型（最初在SIGGRAPH
 1999上发表），此模型以光的物理性质为基础，将光当做波来进行建模，从而创建出多彩的干涉条纹。
 
-## 【核心要点】
+## 14.2. 【核心要点】
 
 什么是衍射（Diffraction）？小尺度的表面细节引起反射波彼此干扰，这个现象就是衍射。
 
@@ -1545,27 +1711,27 @@ Example 6-1. 最终的实现Shader代码（The Final Shader）
 
 图 用纹理映射各项异性主要方向表面的3个快照
 
-## 【本章配套源代码汇总表】
+## 14.3. 【本章配套源代码汇总表】
 
 Example 8-1. 衍射的顶点着色器代码（The Diffraction Shader Vertex Program）
 
-## 【关键词提炼】
+## 14.4. 【关键词提炼】
 
 衍射模拟（Simulating Diffraction）
 
 各项异性（Anisotropy）
 
 
-# 十二、高效的阴影体渲染（Efficient Shadow Volume Rendering）
+# 15. 十二、高效的阴影体渲染（Efficient Shadow Volume Rendering）
 
 
-## 【章节概览】
+## 15.1. 【章节概览】
 
 这章全面讲述了用于实时阴影渲染中常见两种流派之一的阴影体（Shadow
 Volumes）技术，又称模板阴影（Stencil
 Shadows）技术，重点是得到正确的角度的情形，减少几何图形和填充率的消耗。
 
-## 【核心要点】
+## 15.2. 【核心要点】
 
 当时id software的《Doom 3》就是采用阴影体（Shadow
 Volumes）技术来对阴影进行的渲染。具体思想是在模板（stencil）缓冲标记阴影的像素，把像素分为阴影或照明两种类型，接着调节负责光照的像素程序，使阴影像素的照明贡献度为0。
@@ -1586,7 +1752,7 @@ Volumes）技术来对阴影进行的渲染。具体思想是在模板（stencil
 
 总之，这篇文章对McGuire等人2003年提出的方法进行了很好的描述、分析与实践。而在这篇文章发出之后的若干年，阴影体技术得到了各种进一步地优化与改进。
 
-## 【本章配套源代码汇总表】
+## 15.3. 【本章配套源代码汇总表】
 
 Example 9-1 程序结构伪代码（Program Structure Pseudocode）
 
@@ -1604,7 +1770,7 @@ Example 9-6 renderShadowCaps方法（The renderShadowCaps Method）
 
 Example 9-7 renderShadowSides方法（The renderShadowSides Method）
 
-## 【关键词提炼】
+## 15.4. 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1613,10 +1779,10 @@ Example 9-7 renderShadowSides方法（The renderShadowSides Method）
 多通道渲染（Multipass Rendering）
 
 
-# 十三、电影级光照（Cinematic Lighting）
+# 16. 十三、电影级光照（Cinematic Lighting）
 
 
-## 【章节概览】
+## 16.1. 【章节概览】
 
 本章中介绍了一个的简化的uberlight（可理解为“全能光照”）实现，此光照shader根据Ronen
 Barzel(1997,1999)提出的照明模型编写而成。而该模型的超集已由Pixar动画开发，并应用于《玩具总动员》、《怪物公司》、《海底总动员》等一系列的迪士尼电影中。
@@ -1627,7 +1793,7 @@ Barzel(1997,1999)提出的照明模型编写而成。而该模型的超集已由
 
 图 《怪物公司》 中cookies对窗户效果的贡献
 
-## 【核心要点】
+## 16.2. 【核心要点】
 
 首先，该章中呈现的Shader只模拟光照场景光源的形成和控制，不包括如何模拟表面细节和光反射行为的复杂性。
 
@@ -1672,13 +1838,13 @@ Game”中的人物头部。
 
 （a）常态 （b）黑色电影（noir）的高反差 （c）柔和的光线
 
-## 【本章配套源代码汇总表】
+## 16.3. 【本章配套源代码汇总表】
 
 10-1. The Vertex Program for an Uberlight-Like Shader
 
 10-2. The Fragment Program for an Uberlight-Like Shader
 
-## 【关键词提炼】
+## 16.4. 【关键词提炼】
 
 电影级光照（Cinematic Lighting）
 
@@ -1689,15 +1855,15 @@ Game”中的人物头部。
 储存于本地的光照数据（Light Cookies）
 
 
-# 十四、阴影贴图抗锯齿（Shadow Map Antialiasing）
+# 17. 十四、阴影贴图抗锯齿（Shadow Map Antialiasing）
 
 
-## 【章节概览】
+## 17.1. 【章节概览】
 
 这章介绍了如何通过邻近百分比过滤方法（Percentage-Closer Filtering ,
 PCF）有效减少阴影贴图的反走样。
 
-## 【核心要点】
+## 17.2. 【核心要点】
 
 阴影贴图（Shadow
 Map，又译作阴影映射）是渲染阴影的常见方法，也是渲染阴影领域的两大流派之一，但是它存在走样的问题。通常使用高分率的阴影贴图和增加阴影贴图的分辨率来反走样，也就是使用Stamminger和Drettakis
@@ -1717,7 +1883,7 @@ Filtering,PCF）”技术解决走样问题。最初的PCF算法由Reeves等人1
 
 可以看到3幅图中的显示效果区别很明显，图（c）中每像素取16个样本，效果最为出色，达到了反走样的预期。
 
-## 【本章配套源代码汇总表】
+## 17.3. 【本章配套源代码汇总表】
 
 PS:原文中没有对代码片段进行编号，这里的编号为附加。
 
@@ -1725,7 +1891,7 @@ Example 11-1 暴风(Brute Force)算法16采样版本的片元程序实现代码
 
 Example 11-2 阴影贴图反走样的4采样实现版本代码
 
-## 【关键词提炼】
+## 17.4. 【关键词提炼】
 
 反走样/抗锯齿（Antialiasing）
 
@@ -1736,14 +1902,14 @@ Example 11-2 阴影贴图反走样的4采样实现版本代码
 <br>
 
 
-# 十五、全方位阴影贴图（Omnidirectional Shadow Mapping）
+# 18. 十五、全方位阴影贴图（Omnidirectional Shadow Mapping）
 
 
-## 【章节概览】
+## 18.1. 【章节概览】
 
 在这章中，把阴影贴图的思路扩展到正确处理全方位的（点）光源中，其中包括了实现细节，也涉及到基本硬件能力不足时的低效运行策略。
 
-## 【核心要点】
+## 18.2. 【核心要点】
 
 首先，这篇文章也谈到了在实时计算机图形学中产生可见阴影的两个流行方法是：
 
@@ -1794,7 +1960,7 @@ Mapping）方法，该方法有两个主要步骤：
 
 图 Omnidirectional Shadow Mapping @Merlin3d
 
-## 【本章配套源代码汇总表】
+## 18.3. 【本章配套源代码汇总表】
 
 Example 12-1 全方位阴影映射算法的伪代码（Pseudocode for the Omnidirectional
 Shadow-Mapping Algorithm）
@@ -1803,7 +1969,7 @@ Example 12-2 仅渲染深度（Depth-Only Rendering）
 
 Example 12-3 产生一个软阴影（Making a Softer Shadow）
 
-## 【关键词提炼】
+## 18.4. 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1815,15 +1981,15 @@ Example 12-3 产生一个软阴影（Making a Softer Shadow）
 
 <br>
 
-# 十六、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
+# 19. 十六、使用遮挡区间映射产生模糊的阴影（Generating Soft Shadows Using Occlusion Interval Maps）
 
 
-## 【章节概览】
+## 19.1. 【章节概览】
 
 这章介绍了一种渲染软阴影的技术，称为遮挡区间映射（Occlusion Interval
 Maps），能够正确地在静态场景中渲染出光源沿着预定路径移动时产生的模糊阴影。之所以叫遮挡区间映射，是因为此算法使用纹理贴图来存储这种光源可见、而本身被遮挡的区间。
 
-## 【核心要点】
+## 19.2. 【核心要点】
 
 对于需现实的加油站的Demo，文章一开始本打算使用一种预计算的可见度技术，例如球谐光照（Spherical
 Harmonic Lighting [Sloan et al.
@@ -1849,12 +2015,12 @@ Maps）可以用作静态光照贴图的替代品，从而实现动态效果，�
 
 上图中汽车篷布上的木板形成了复杂的阴影。这对算法来说是最坏的情况。这些木头条使得篷布上的遮挡区间映射必须存储在5个不同的纹理中，对于场景中的大多数物体，4个纹理就足以取得所有的阴影。
 
-## 【本章配套源代码汇总表】
+## 19.3. 【本章配套源代码汇总表】
 
 Example 13-1使用遮挡区间映射计算软阴影的实现函数（Function for Computing Soft
 Shadows Using Occlusion Interval Maps）
 
-## 【关键词提炼】
+## 19.4. 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1867,10 +2033,10 @@ Shadows Using Occlusion Interval Maps）
 <br>
 
 
-# 十七、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
+# 20. 十七、透视阴影贴图（Perspective Shadow Maps: Care and Feeding）
 
 
-## 【章节概览】
+## 20.1. 【章节概览】
 
 透视阴影贴图（Perspective Shadow Maps, PSMs）是由Stamminger和Drettakis在SIGGRAPH
 2002上提出的一种阴影贴图（Shadow Maps）流派的方法。
@@ -1880,7 +2046,7 @@ Shadows Using Occlusion Interval Maps）
 这章提出了一种优化透视阴影贴图（Perspective Shadow
 Maps）方法的新思路，对其三种缺陷都一一进行了改进。
 
-## 【核心要点】
+## 20.2. 【核心要点】
 
 这章首先讲到动态阴影的创建，目前主要有两个算法流派：
 
@@ -1918,7 +2084,7 @@ mapped geometry）。此外，绘制阴影体需要大量的填充率，这使�
 图 得到的阴影实时渲染结果（多边形10w ~ 50w个，分辨率1600x1200）。
 
 
-## 【本章配套源代码汇总表】
+## 20.3. 【本章配套源代码汇总表】
 
 Example 14-1计算立方体阴影纹理坐标（Shader Code for Computing Cube Map Texture
 Coordinates）
@@ -1931,7 +2097,7 @@ PCF）
 Example 14-4 用于紧邻百分比过滤的像素Shader伪代码（Pixel Shader Pseudocode for
 PCF）
 
-## 【关键词提炼】
+## 20.4. 【关键词提炼】
 
 阴影渲染（Shadow Rendering）
 
@@ -1945,14 +2111,14 @@ PCF）
 
 <br>
 
-# 十八、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
+# 21. 十八、逐像素光照的可见性管理（Managing Visibility for Per-Pixel Lighting）
 
 
-## 【章节概览】
+## 21.1. 【章节概览】
 
 这章讲到了可见性在逐像素渲染光照场景中的作用，也考虑如何使用可见性减少必须渲染的批次数量，从而改善性能。
 
-## 【核心要点】
+## 21.2. 【核心要点】
 
 如下伪代码说明在一个场景中必须渲染的批次数：
 
@@ -1995,7 +2161,7 @@ rectangle）限制显卡渲染的面积，解决此问题。
 
 图 不在可见集合中的对象可能会影响渲染场景
 
-## 【本章配套源代码汇总表】
+## 21.3. 【本章配套源代码汇总表】
 
 Example 15-1 说明一个场景中必须渲染的批次数量的伪代码（pseudocode illustrates
 the number of batches that must be rendered in a scene）.
@@ -2003,7 +2169,7 @@ the number of batches that must be rendered in a scene）.
 Example 15-2：快速生成凸包的伪代码（pseudocode for quickly generate the convex
 hull）
 
-## 【关键词提炼】
+## 21.4. 【关键词提炼】
 
 逐像素光照（Per-Pixel Lighting）
 
@@ -2013,14 +2179,14 @@ hull）
 
 批次（Batch）
 
-# 十九、空间BRDF（Spatial BRDFs）
+# 22. 十九、空间BRDF（Spatial BRDFs）
 
 
-## 【章节概览】
+## 22.1. 【章节概览】
 
 这章主要先聊到了空间双向反射分布函数（SBRDF），接着文章讨论了压缩SBRDF表达式，以及由离散光或环境贴图所照明的SBRDF的渲染方法。
 
-## 【核心要点】
+## 22.2. 【核心要点】
 
 SBRDF是纹理贴图和双向反射分布函数（BRDF）的组合。纹理贴图存储了反射或其他的属性，它们沿着2D表面上的空间变化，而BRDF存储的是表面上单个点的反射，包括从入射角到出射角的全部分布。
 
@@ -2036,7 +2202,7 @@ SBRDF除了可以用点光源或方向光源照明之外，还可以用环境贴
 
 图 用蓝色的油漆和铝BRDF得到的SBRDF渲染效果
 
-## 【本章配套源代码汇总表】
+## 22.3. 【本章配套源代码汇总表】
 
 Example 18-1. 用于离散光源的SBRDF片元Shader（An SBRDF Fragment Shader for
 Discrete Lights）
@@ -2048,7 +2214,7 @@ Example 18-3. 用于环境贴图的SBRDF片元Shader（An SBRDF Fragment Shader 
 Environment Maps）
 
 
-## 【关键词提炼】
+## 22.4. 【关键词提炼】
 
 双向反射分布函数（BRDF）
 
@@ -2059,15 +2225,15 @@ Environment Maps）
 环境贴图（Environment Maps）
 
 
-# 二十、基于图像的光照（Image-Based Lighting）
+# 23. 二十、基于图像的光照（Image-Based Lighting）
 
 
-### 【章节概览】
+### 23.0.1. 【章节概览】
 
 这篇文章打破了当时立方体贴图环境（Cube-Map Environment）用法的桎梏，深入研究了更多可能的逼真光照效果。文章主要研究了基于图像的光照（Image-Based Lighting，IBL），包括局部化的立方体映射，类似于使用基于图像的局部光照（Localizing
 Image-Based Lighting），然后介绍了如何把哪些重要的技巧用于着色模型，包括逼真的反射、阴影和漫反射/环境项。
 
-### 【核心要点】
+### 23.0.2. 【核心要点】
 
 立方体贴图通常用于创建无限远环境的反射效果。但是使用少量Shader算法，我们可以将物体放置在特定大小和位置的反射环境中，从而提供高质量的基于图像的光照（Image-Based
 Lighting，IBL）。
@@ -2084,7 +2250,7 @@ Lighting，IBL）。
 
 基于图像的光照为复杂的光照计算提供了综合而廉价的替代品，将一点数学加入纹理方法，可以大大拓宽“简单”IBL效果，给3D图像提供更强的的方位感。
 
-## 【本章配套源代码汇总表】
+## 23.1. 【本章配套源代码汇总表】
 
 Example 19-1生成世界空间和光照空间坐标的顶点着色器代码（Vertex Shader to
 Generate World-Space and Lighting-Space Coordinates）
@@ -2097,7 +2263,7 @@ Cube Object）
 Example 19-4 用于背景立方体对象的像素着色器代码（Pixel Shader for Background
 Cube Object）
 
-## 【关键词提炼】
+## 23.2. 【关键词提炼】
 
 基于图像的光照（Image-Based Lighting，IBL）
 
@@ -2106,15 +2272,15 @@ Cube Object）
 基于图像的局部光照（Localizing Image-Based Lighting）
 
 
-# 二十一、纹理爆炸（Texture Bombing）
+# 24. 二十一、纹理爆炸（Texture Bombing）
 
 
-## 【章节概览】
+## 24.1. 【章节概览】
 
 这章介绍了纹理爆炸（Texture
 Bombing）和相关的细胞技术，它们能在Shader中增加视觉的丰富性，图像的多样性，并减少大块纹理图案的重复性。
 
-## 【核心要点】
+## 24.2. 【核心要点】
 
 纹理爆炸（Texture
 bombing）是一种程序化技术，它把小块图像以不规则的间隔放置。有助于减少团案的失真。
@@ -2143,7 +2309,7 @@ bombing）是一种程序化技术，它把小块图像以不规则的间隔放�
 
 总之，纹理爆炸和相关的细胞技术可以给Shader增加视觉的多样性。使用存储在纹理中的伪随机数表和一个小程序，可以增大一个图像或一组图像的变化，并减少大块纹理区域的重复。
 
-## 【本章配套源代码汇总表】
+## 24.3. 【本章配套源代码汇总表】
 
 Example 20-1 将采样扩展到四个单元格（Extending the Sampling to Four Cells）
 
@@ -2160,7 +2326,7 @@ Example 20-6 程序化3D纹理程序（The Procedural 3D Texture Program）
 
 Example 20-7 计算Voronoi区域（Computing Voronoi Regions）
 
-## 【关键词提炼】
+## 24.4. 【关键词提炼】
 
 纹理爆炸（Texture Bombing）
 
@@ -2173,14 +2339,14 @@ Voronoi区域（Voronoi Region）
 
 
 
-# 二十二、颜色控制（Color Controls）
+# 25. 二十二、颜色控制（Color Controls）
 
 
-## 【章节概览】
+## 25.1. 【章节概览】
 
 这章将在游戏中图像处理的讨论，扩展到技术和艺术上控制颜色的方法和应用，包括将图像从一些的色彩空间中移入移出，以及快速地给任何2D或3D场景加上精美的色调。
 
-## 【核心要点】
+## 25.2. 【核心要点】
 
 色彩校正（Color Correction）是几乎所有印刷和胶片成像应用的一部分。
 色彩校正可用于将彩色图像从一个色彩空间移动到另一个色彩空间。
@@ -2223,11 +2389,11 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 
 图 对红、绿、蓝通道重映射结果
 
-## 【本章配套源代码汇总表】
+## 25.3. 【本章配套源代码汇总表】
 
 原文仅存在无编号的代码片段若干，具体详见原文。
 
-## 【关键词提炼】
+## 25.4. 【关键词提炼】
 
 颜色控制（Color Controls）
 
@@ -2245,10 +2411,10 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 <br>
 
 
-# 二十三、景深 （Depth of Field）
+# 26. 二十三、景深 （Depth of Field）
 
 
-## 【章节概览】
+## 26.1. 【章节概览】
 
 本章主要介绍如何使用GPU创建实时的景深（Depth of Field）效果。
 
@@ -2256,7 +2422,7 @@ OutColor.b = tex1D(ColorCorrMap, InColor.b).b;
 
 图 实时景深效果 @Crysis 2
 
-## 【核心要点】
+## 26.2. 【核心要点】
 
 物体在距离镜头的一个范围之内能够清晰成像（经过聚焦），在那个范围之外（或近或远）则成像模糊，这种效果就是景深。在相机业和电影业中，景深经常用来指示对场景的注意范围，并且提供场景深度的感觉。在本章中，把这个聚焦范围远的区域称为背景（background），在这个范围前的区域称为前景（foreground），而在范围外的面积称为中景（midground）。
 
@@ -2292,11 +2458,11 @@ Chakravarty 1981]
 2002, Demers 2003]
 
 
-## 【本章配套源代码汇总表】
+## 26.3. 【本章配套源代码汇总表】
 
 原文仅存在无编号的代码片段若干，具体详见原文。
 
-## 【关键词提炼】
+## 26.4. 【关键词提炼】
 
 景深（Depth of Field）
 
@@ -2314,14 +2480,14 @@ Chakravarty 1981]
 
 <br>
 
-# 二十四、高品质的图像滤波（High-Quality Filtering）
+# 27. 二十四、高品质的图像滤波（High-Quality Filtering）
 
 
-## 【章节概览】
+## 27.1. 【章节概览】
 
 这章描述了图像滤波和可以用于任意尺寸图像的效果，并将各种不同的滤波器核心（kernel），在分析计算后应用于各式2D和3D反走样问题中。
 
-## 【核心要点】
+## 27.2. 【核心要点】
 
 GPU可以提供一些快速滤波的访问纹理的方法，但是仅限于几种类型的纹理过滤，并不是对每种纹素格式都适用。若我们自己建立自己的图像滤波方法，可以得到更好的质量和灵活性，但需要了解硬件和程序滤波之间存在的质量和速率的矛盾。
 
@@ -2359,7 +2525,7 @@ Filter Kernel），屏幕对齐的核心（Screen-Aligned Kernels）等内容。
 
 (a)原始图像，注意眼睛上方的长方形。(b)用线性滤波把矩形的子图像区域放大32倍；(c)用双立方滤波把相同的区域放大32倍。
 
-## 【本章配套源代码汇总表】
+## 27.3. 【本章配套源代码汇总表】
 
 Example 24-1. 读取九个纹素来计算一个加权和的着色器代码（Reading Nine Texels to
 Calculate a Weighted Sum）
@@ -2407,7 +2573,7 @@ Variable Stripe Texture）
 Example 24-16 在像素着色器中应用可变条纹纹理（Applying Variable Stripe Texture
 in a Pixel Shader）
 
-## 【关键词提炼】
+## 27.4. 【关键词提炼】
 
 高品质图像滤波（High-Quality Filtering）
 
@@ -2421,15 +2587,15 @@ in a Pixel Shader）
 
 <br>
 
-# 二十五、用纹理贴图进行快速滤波宽度的计算（Fast Filter-Width Estimates with Texture Maps）
+# 28. 二十五、用纹理贴图进行快速滤波宽度的计算（Fast Filter-Width Estimates with Texture Maps）
 
 
-## 【章节概览】
+## 28.1. 【章节概览】
 
 这章描述基于纹理映射在2D空间中进行快速过滤宽度计算（Fast Filter-Width
 Estimates）的方法。即使硬件profile对复杂函数的局部偏导函数不提供直接支持，基于本文提出的纹理操作技巧，也可以得到结果。
 
-## 【核心要点】
+## 28.2. 【核心要点】
 
 Cg标准库提供了ddx()和ddy()函数，计算任意量关于x和y像素的导数。换言之，调用ddx(v)，可以求出变量v在x方向的当前像素与下一个像素之间的变化量，调用ddy(v)同样也可以求出y方向的情况。
 
@@ -2453,7 +2619,7 @@ Cg标准库提供了ddx()和ddy()函数，计算任意量关于x和y像素的导
 
 最终，这个trick可以在很多情况下很好的计算滤波宽度，运行性能几乎与基于求导的计算滤波宽度函数filterwidth()相同。
 
-## 【本章配套源代码汇总表】
+## 28.3. 【本章配套源代码汇总表】
 
 Example 25-1 抗锯齿棋盘函数（Antialiased Checkerboard Function）
 
@@ -2466,7 +2632,7 @@ Filter Widths Using Mipmaps from Listing 25-2）
 Example 25-4 滤波器宽度函数不容易走样滤波器宽度（Filter-Width Function That Is
 Less Prone to Under-Aliasing Filter Widths）
 
-## 【关键词提炼】
+## 28.4. 【关键词提炼】
 
 快速滤波宽度估算（Fast Filter-Width Estimates）
 
@@ -2476,14 +2642,14 @@ Less Prone to Under-Aliasing Filter Widths）
 
 <br>
 
-# 二十六、OpenEXR图像文件格式（The OpenEXR Image File Format）
+# 29. 二十六、OpenEXR图像文件格式（The OpenEXR Image File Format）
 
-## 【章节概览】
+## 29.1. 【章节概览】
 
 这章中，大名鼎鼎的工业光魔公司的Florian Kainz、Rod Bogart和Drwe
 Hess介绍了OpenEXR标准，这是一种当时新的高动态范围图像（HDRI）格式，在计算机成像的顶级电影中正在快速推广。对于基于图像照明的开发者而言，OpenEXR是关键的工具。
 
-## 【核心要点】
+## 29.2. 【核心要点】
 
 OpenEXR是由工业光魔（ Industrial Light & Magic
 ，ILM ）公司开发的高动态范围图像（ high-dynamic-range image
@@ -2515,7 +2681,7 @@ OpenEXR是由工业光魔（ Industrial Light & Magic
 
 文章随后还讲到了OpenEXR的文件结构、数据压缩、使用、线性像素值、创建和使用HDR图像相关的内容。
 
-## 【本章配套源代码汇总表】
+## 29.3. 【本章配套源代码汇总表】
 
 Example 26-1 读取OpenEXR图像文件（Reading an OpenEXR Image File）
 
@@ -2539,7 +2705,7 @@ Example 26-9 调整调整图像的曝光（Adjusting an Image's Exposure）
 Example 26-10 使用查找表来模拟摄影胶片的外观（Using a Lookup Table to Simulate
 the Look of Photographic Film）
 
-## 【关键词提炼】
+## 29.4. 【关键词提炼】
 
 高动态范围（High-Dynamic-Range , HDR）
 
@@ -2550,7 +2716,7 @@ OpenEXR
 
 
 
-# Reference
+# 30. Reference
 
 [1]
 <https://cgcookie.deviantart.com/art/Subsurface-Scattering-Tutorial-658412208>
