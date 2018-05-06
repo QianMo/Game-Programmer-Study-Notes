@@ -1130,21 +1130,23 @@ Example 17-5 computeBlur( )函数的定义（The computeBlur() Function Definiti
 
 图 Unreal Engine的logo，即是采用了Glow效果
 
+
+
 ## 【核心内容提炼】
 
 光源的辉光（Glow）和光晕（Halo）是自然界导出可见的现象，他们提供了亮度和气氛强烈的视觉信息。
 
-![(media/f5f190f91977b41c60c2f5f301e05b25.jpg)
+![](media/f5f190f91977b41c60c2f5f301e05b25.jpg)
 
-图 给强化后的武器加上Glow效果，该武器显得更加强力 \@TERA
+图 给强化后的武器加上Glow效果，该武器显得更加强力 @TERA
 
 ![](media/6618fd78de01c723ef6a3dab9608fe0f.jpg)
 
-图 强化武器的Glow效果的演变 \@Lineage II
+图 强化武器的Glow效果的演变 @Lineage II
 
 ![](media/287352aae26a0c79bec67e6929f2beeb.jpg)
 
-图 Glow效果 \@Unreal Engine 4
+图 Glow效果 @Unreal Engine 4
 
 在观看计算机图形、胶片和印刷品时，到达眼睛的光强度是有限的，因此，辨别光源强度的唯一方法是通过它们周围产生的辉光（Glow）和光晕（Halo），具体可以参考[Nakamae
 et al.
