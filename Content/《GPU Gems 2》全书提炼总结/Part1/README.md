@@ -1,6 +1,9 @@
 ![](media/title.jpg)
 
-# 【GPU精粹与Shader编程】 《GPU Gems 2》全书核心内容提炼总结
+# 【GPU精粹与Shader编程】 《GPU Gems 2》全书核心内容提炼总结 · 上篇
+
+本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/38411575
 
 
 <br>
@@ -9,7 +12,7 @@
 
 <!-- TOC -->
 
-- [【GPU精粹与Shader编程】 《GPU Gems 2》全书核心内容提炼总结](#gpu精粹与shader编程-gpu-gems-2全书核心内容提炼总结)
+- [【GPU精粹与Shader编程】 《GPU Gems 2》全书核心内容提炼总结 · 上篇](#gpu精粹与shader编程-gpu-gems-2全书核心内容提炼总结-·-上篇)
 - [目录 · 本文核心内容Highlight](#目录-·-本文核心内容highlight)
 - [前言](#前言)
 - [I、核心章节提炼篇](#i核心章节提炼篇)
