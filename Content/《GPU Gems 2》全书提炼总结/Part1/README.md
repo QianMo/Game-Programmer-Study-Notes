@@ -111,7 +111,7 @@ https://zhuanlan.zhihu.com/p/38411575
 
 《GPU Gems 2》这本书除了丰富的内容之外，还有两个特点。
 
-- 《GPU Gems 2》是虚幻引擎之父Tim Sweeney作序。作为Epic Games的创始人，Unreal Engine早期主要开发者，Tim也在序中展示了《GPU Gems 2》出版伊始（2005年3月）时开发完成的Unreal Engine 3。UE3可谓是开创了一个时代。随后包括《新鬼泣》在内的100+款大作（2005年~2015年），都是基于UE3开发。具体列表可见：https://en.wikipedia.org/wiki/List_of_Unreal_Engine_games
+- 虚幻引擎之父Tim Sweeney为《GPU Gems 2》作序。作为Epic Games的创始人，Unreal Engine早期主要开发者，Tim也在序中展示了《GPU Gems 2》出版伊始（2005年3月）时开发完成的Unreal Engine 3。UE3可谓是开创了一个时代。随后包括《新鬼泣》在内的100+款大作（2005年~2015年），都是基于UE3开发。具体列表可见：https://en.wikipedia.org/wiki/List_of_Unreal_Engine_games
 
 
 - 《GPU Gems 2》的中文版是龚大2005年开始翻译的，距今已13年。13年前龚大就已经是图形学业界一线大牛，实在是让人佩服不已。
@@ -1129,4 +1129,8 @@ https://developer.nvidia.com/gpugems/GPUGems2/gpugems2_inside_front_cover.html
     2》的随书CD和源代码可以在这里下载到：
 
  https://github.com/QianMo/GPU-Gems-Book-Source-Code
+
+ - 本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/38411575
+
 
