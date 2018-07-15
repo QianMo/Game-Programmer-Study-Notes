@@ -20,13 +20,11 @@ Engine 中的水体渲染实时画面：
 
 而目前的Cry Engine 5，渲染质量还会更胜一筹。
 
-由于Cry Engine 5已经开源，其水体渲染的具体shader实现代码可以在Cry
-Engine源码中找到，以下是其中Water.cfx源码传送门，感兴趣的朋友不妨了解一下：
+值得开心的是，Cry Engine 5已经开源，其水体渲染的具体shader实现代码可以在Cry Engine源码中找到，以下是其中Water.cfx源码传送门，感兴趣的朋友不妨了解一下：
 
 <https://github.com/CRYTEK/CRYENGINE/blob/26524289c15a660965a447dcb22628643917c820/Engine/Shaders/HWScripts/CryFX/Water.cfx>
 
-值得注意的是，本文中提到的一些渲染水体的策略与思路，在Cry Engine
-5中水体渲染思路中，也有所体现。
+值得注意的是，本文中提到的一些渲染水体的策略与思路，在Cry Engine 5实现水体渲染中，也有所体现。
 
 OK，下面开始正题。
 
@@ -67,7 +65,7 @@ Transformations）
 
 
 # 一、将顶点纹理位移用于水的真实感渲染（Using Vertex Texture Displacement for Realistic Water Rendering）
--------------------------------------------------------------------------------------------------------
+
 
 ## 【章节概览】
 
@@ -94,8 +92,7 @@ Gems2中这篇文章问世期间（2005年），当时最真实的水体渲染�
 
 ### 1.3 水体的表面模拟
 
-水体表面的模型是基于几张高度图（Height
-maps）的叠加，这些高度图在空间和时间上不断重复。每张纹理表示一个“谐波（harmonic）”或“倍频（octave）”频谱，然后这些纹理被叠加到一起，类似傅里叶分析中的做法。
+水体表面的模型是基于几张高度图（Height maps）的叠加，这些高度图在空间和时间上不断重复。每张纹理表示一个“谐波（harmonic）”或“倍频（octave）”频谱，然后这些纹理被叠加到一起，类似傅里叶分析中的做法。
 
 而这些纹理之所以称为高度图，因为其中每个值代表了对应点相对于水平面的高度值。高度图对于美术同学来说创建非常容易，与创建和渲染灰度图一样简单。利用高度图，水的动画参数规约成一些独立的波，美术同学只要绘出它们的形状就可以很容易地控制水的动画。高度图也对顶点纹理有用：因为可以很容易地对顶点进行竖直方向的位移。
 
@@ -107,10 +104,9 @@ maps）的叠加，这些高度图在空间和时间上不断重复。每张纹�
 
 ![](media/0c2737c4173d96953f6157eb2a71682b.jpg)
 
-系数A和B以及求和的项数是由经验决定的，以求达到美学角度上最好的结果，同时减少重复图案的痕迹。在Pacific
-Fighters中，叠加4张高度图用于计算光照，其中最大范围的两张用于位移贴图。这对模拟动态的海洋表面来说已经足够了，可选范围为10cm到40km（10厘米到40千米）之高。
+系数A和B以及求和的项数是由经验决定的，以求达到美学角度上最好的结果，同时减少重复图案的痕迹。在《太平洋战机》中，叠加4张高度图用于计算光照，其中最大范围的两张用于位移贴图。这对模拟动态的海洋表面来说已经足够了，可选范围为10cm到40km（10厘米到40千米）之高。
 
-### 1.4 实现细节
+### 1.4 实现细节概述
 
 可以把所有需要实现的计算分为两部分：
 
@@ -123,7 +119,7 @@ Fighters中，叠加4张高度图用于计算光照，其中最大范围的两�
 ### 1.5 对高度图采样
 
 文中的实现是在每个顶点上对高度图进行采样，并且在顶点程序中计算应该取的位移值。为了计算采样，使用了一个中心在相机位置的径向栅格（radial
-grid），。这个栅格的细分特点是离视点越近则提供越多的细节，如下图所示
+grid）。这个栅格的细分特点是离视点越近则提供越多的细节，如下图所示
 
 ![](media/081c4e549906e1c0393e4e5d9a42618a.jpg)
 
@@ -149,11 +145,11 @@ grid），。这个栅格的细分特点是离视点越近则提供越多的细�
         float4 INP = position;
 
         // Transform to radial grid vertex
-        INP.xy = INP.xy \* (pow(INP.z, 4) \* VOfs.z);
+        INP.xy = INP.xy * (pow(INP.z, 4) * VOfs.z);
 
         // Find displacement map texture coordinates
         // VOfs.xy, DMParameters.x - Height texture offset and scale
-        float2 t = (INP.xy + VOfs.xy) \* DMParameters.x;
+        float2 t = (INP.xy + VOfs.xy) * DMParameters.x;
 
         // Fetch displacement value from texture (lod 0)
         float vDisp = tex2D(tex0, t).x;
@@ -161,7 +157,7 @@ grid），。这个栅格的细分特点是离视点越近则提供越多的细�
         // Scale fetched value from 0..1:
         // DMParameters.y - water level
         // DMParameters.z - wavy amplitude
-        INP.z = DMParameters.y + (vDisp - 0.5) \* DMParameters.z;
+        INP.z = DMParameters.y + (vDisp - 0.5) * DMParameters.z;
 
         // Displace current position with water height
         // and project it
@@ -173,8 +169,7 @@ grid），。这个栅格的细分特点是离视点越近则提供越多的细�
 
 #### 1.6.1 为双线性过滤打包高度值
 
-访问顶点纹理的代价十分昂贵，在旧的GeForce
-6系列的硬件上，一个顶点纹理的访问会在顶点程序中产生明显的延迟。所以比较合适的策略是把顶点程序中访问纹理的次数降到最低。另一方面，过滤纹理值非常必要，否则图像质量就会显著降低。
+访问顶点纹理的代价十分昂贵，在旧的GeForce 6系列的硬件上，一个顶点纹理的访问会在顶点程序中产生明显的延迟。所以比较合适的策略是把顶点程序中访问纹理的次数降到最低。另一方面，过滤纹理值非常必要，否则图像质量就会显著降低。
 
 为了减小插值时纹理访问的次数，可以用一种特别的方法创建纹理，这样使每个纹理包含了一次双线性纹理查找必需的所有数据。因为高度图本质上是单通道的纹理，可以把四个高度值打包到一张四通道纹理的一个纹素内，以实现优化。
 
@@ -187,7 +182,7 @@ grid），。这个栅格的细分特点是离视点越近则提供越多的细�
 以下的伪代码表达了这个方法的实现：
 
     float4 ClipPos = mul(ModelViewProj, INP);
-    float3 b0 = abs(ClipPos.xyz) \< (ClipPos.www \* C0 + C1);
+    float3 b0 = abs(ClipPos.xyz) < (ClipPos.www * C0 + C1);
     if (all(b0))
     {
         // Vertex belongs to visible triangle,
@@ -224,7 +219,7 @@ grid），。这个栅格的细分特点是离视点越近则提供越多的细�
 
 有时渲染渲染因为浮起物或者掉入水中的物体引起的波浪局部的起伏。这对游戏来说尤为重要，因为游戏需要产生类似于爆炸，船的行进痕迹等效果。因为很难继承物理上正确的方法将其用于这个基于高度图的水面模型中来，所以这里只根据经验讨论一些简单的方法。
 
-#### 1.7.1 解析型变形模型（Analytical Deformation Model）
+#### 1.7.1 解析型形变模型（Analytical Deformation Model）
 
 造成局部波浪起伏最简单的方法是把顶点的位移值做成一个解析上的扰动，把扰动和顶点着色器中计算好的顶点位置结合起来。
 
@@ -275,7 +270,7 @@ grid），以及结合了。
 
 ### 2.渲染局部扰动的策略
 
-1.解析型变形模型（Analytical Deformation Model）
+1.解析型形变模型（Analytical Deformation Model）
 
 2.动态位移贴图（Dynamic Displacement Mapping）
 
@@ -286,7 +281,7 @@ grid），以及结合了。
 <https://github.com/QianMo/GPU-Gems-Book-Source-Code/tree/master/GPU-Gems-2-CD-Content/Shading_Lighting_and_Shadows/Ch_18_Using_Vertex_Texture_Displacement_for_Realistic_Water_Rendering>
 
 具体shader代码位于fpWaterDM.cg，vpWaterDM.cg两个文件中。其中也提供了可运行的demo
-exe，其运行截图如下：
+exe，其运行效果如下：
 
 ![](media/1.gif)
 
@@ -347,7 +342,7 @@ PCF）技术，在片段着色器中不断对阴影图自适应地多次采样�
 
 # 三、通用的折射模拟（Generic Refraction）
 
-##【章节概览】
+## 【章节概览】
 
 本章介绍了一种折射的实现方案，思路是对场景中非折射的物体生成一幅图像，把该图像当做纹理，然后对查找该纹理的坐标进行扰动来达到模拟折射的目的。这种技术效率很高，而且很多情况下都有效。
 
@@ -426,7 +421,7 @@ B样条过滤（ B-Spline Filtering）
 
 ![](media/b40c8f8fbeabe9381a3165a50001a96d.jpg)
 
-图 将图像分解成块
+图 将图像分解成tiles
 
 对于最终图像的每一个分块，总体算法如下：
 
@@ -537,12 +532,16 @@ Table，简称LUT）优化这种函数的计算是一种非常好的方法。通
 
 查找表（Lookup Table， LUT）
 
+颜色变换（Color Transformations）
+
+
+<br>
+
 # 九、实现改进的Perlin噪声（Implementing Improved Perlin Noise）
 
 ## 【章节概览】
 
-这章上接《GPU Gems 1》中奥斯卡得主大牛Ken Perlin撰写的第五章（Perlin
-2004），《GPU Gems 1》中Ken
+这章上接《GPU Gems 1》中奥斯卡得主大牛Ken Perlin撰写的第五章[Perlin 2004]，《GPU Gems 1》中Ken
 Perlin的章节讨论了该如何使用3D纹理实现过程噪声的快速近似，在这里描述一个改进噪声算法的GPU实现，其也完全符合用CPU进行实现。
 
 ## 【核心要点】
@@ -579,8 +578,7 @@ Perlin噪声（Improved Perlin Noise）
 
 这章提到的技术是为质量最优的渲染而设计的，对高帧率的实时交互的程序和游戏来说依然显得昂贵，它更适合哪些渲染质量比速度更重要的程序，如医疗和科学图像、照片和电影编辑、图片合成、视频格式转换、专业3D渲染等。它也能用于游戏中与分辨率无关的纹理准备（预处理）当中。
 
-另外，文中还介绍了一种适合用于增强重建图像的锐化过滤方法——冲击过滤冲击过滤（Shock
-Filtering），其能把纹理插值平滑地变换成陡峭的变换。
+另外，文中还介绍了一种适合用于增强重建图像的锐化过滤方法——冲击过滤冲击过滤（Shock Filtering），其能把纹理插值平滑地变换成陡峭的变换。
 
 ![](media/6f1792a2a9f48434d51a2363d52f50d8.jpg)
 
