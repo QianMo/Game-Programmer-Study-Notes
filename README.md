@@ -51,7 +51,7 @@ Keep Reading , Keep Writing , Keep Coding.
 - [《GPU Gems 1》全书提炼总结](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E3%80%8AGPU%20Gems%201%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93) - 计算机图形学与渲染进阶的饕餮盛宴“GPU精粹三部曲”的第一本书。
 
 - [《GPU Gems 2》全书提炼总结 · 上篇](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E3%80%8AGPU%20Gems%202%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part1) - 计算机图形学与渲染进阶的饕餮盛宴“GPU精粹三部曲”的第二本书。虚幻引擎之父Tim Sweeney作序。
-
+- [《GPU Gems 2》全书提炼总结 · 下篇](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E3%80%8AGPU%20Gems%202%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part2) - 关于真实感水体渲染，以及真实感头发渲染、通用的折射模拟、改进的Perlin噪声等内容。
 
 <br>
 
