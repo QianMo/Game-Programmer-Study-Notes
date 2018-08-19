@@ -1,11 +1,12 @@
 
-本文的知乎专栏版本：
-https://zhuanlan.zhihu.com/p/42433792
+
 
 ![](media/title.jpg)
 
 # 《GPU Gems 3》：真实感皮肤渲染技术总结
 
+本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/42433792
 
 《GPU Gems 3》中的“Chapter 14. Advanced Techniques for Realistic Real-Time Skin
 Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会被参考到的主要文章，可谓皮肤渲染技术的集大成者，奠基之作。

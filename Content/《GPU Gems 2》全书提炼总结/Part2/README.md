@@ -1,10 +1,10 @@
 ![](media/title.jpg)
 
-本文的知乎专栏版本：
-https://zhuanlan.zhihu.com/p/40288273
-
 
 # 【GPU精粹与Shader编程】《GPU Gems 2》全书核心内容提炼总结 · 下篇
+
+本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/40288273
 
 本文核心内容为《GPU Gems 2》中讲到的真实感水体渲染，以及真实感头发渲染、通用的折射模拟、改进的Perlin噪声等次核心内容。
 
