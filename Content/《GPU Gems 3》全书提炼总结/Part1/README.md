@@ -1,4 +1,7 @@
 
+本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/42433792
+
 ![](media/title.jpg)
 
 # 《GPU Gems 3》：真实感皮肤渲染技术总结
@@ -10,6 +13,8 @@ Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会�
 本文正好借着对《GPU Gems 3》中此章节进行提炼总结的机会，对真实感皮肤渲染技术，进行一个系统的总结和提炼。
 
 除了对《GPU Gems 3》中该篇文章本身内容的提炼，本文也会在其基础上，结合这些年真实感皮肤渲染技术的发展，聊一些更多的东西。希望能对当前业界真实感皮肤渲染技术的现状与发展，做一个较为全面系统的总结与提炼。
+
+<br>
 
 # 一、总览：皮肤渲染技术发展史
 
@@ -91,6 +96,7 @@ Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会�
 
 图 数字人Siren的皮肤渲染 @UE4
 
+<br>
 
 # 三、皮肤渲染基础理论
 
@@ -169,9 +175,7 @@ BRDF在实现和Torrance-Sparrow模型一样的渲染效果时，计算量要小
 
 ![](media/63fbc374696ae300b599bc496eae5d45.png)
 
-![](media/58f644a4a1ad284b5325057592d6480d.png)
-
-只接受一个标量参数，这个参数的意义是光线入射位置和初设位置的曼哈顿距离。直观的理解就是，BSSRDF尝试将光线在物体表面内部中数千次的散射后所剩余的能量用一个基于入射点和出射点之间距离的函数去近似只接受一个标量参数，这个参数的意义是光线入射位置和初设位置的距离。也就是说，BSSRDF尝试将光线在物体表面内部中数千次的散射后所剩余的能量用一个基于入射点和出射点之间距离的函数去近似。这个近似则是基于几个假设:
+![](media/58f644a4a1ad284b5325057592d6480d.png)只接受一个标量参数，这个参数的意义是光线入射位置和初设位置的曼哈顿距离。直观的理解就是，BSSRDF尝试将光线在物体表面内部中数千次的散射后所剩余的能量用一个基于入射点和出射点之间距离的函数去近似只接受一个标量参数，这个参数的意义是光线入射位置和初设位置的距离。也就是说，BSSRDF尝试将光线在物体表面内部中数千次的散射后所剩余的能量用一个基于入射点和出射点之间距离的函数去近似。这个近似则是基于几个假设:
 
 1.    次表面散射的物体是一个曲率为零的平面
 
@@ -192,13 +196,11 @@ BRDF在实现和Torrance-Sparrow模型一样的渲染效果时，计算量要小
 
 ![](media/b8b926a3f9769073334404ed21726063.png)
 
-其中
+其中![](media/85e555415c5953d9c62f6337802051f8.png)，可以看出和自然指数是有关系的。
 
-![](media/85e555415c5953d9c62f6337802051f8.png)
+<br>
 
-，可以看出和自然指数是有关系的。
-
-#### 3.2.3 BTDF与透射（Transmittance）
+### 3.2.3 BTDF与透射（Transmittance）
 
 有时光线会完全穿过像耳朵这样的薄薄区域。这是因为，光线经过一部分次表面后，最终没有在入射侧进行出射，而是从入射侧另一侧透出来，形成透射（Transmittance）。透过光的手会产生桔红色视觉外观同理。
 
@@ -352,7 +354,10 @@ profile）概念往往一起出现的偶极子（Dipole），多级子（Multipo
 
 关于多极子拟合扩散剖面（diffusion profile）的具体方法，可见论文《Light Diffusion in Multi-Layered Translucent Materials》。<http://jbit.net/~sparky/layered.pdf>
 
-### 4.2 高斯和的扩散剖面（Sum-of-Gaussians Diffusion Profile）
+
+<br>
+
+## 4.2 高斯和的扩散剖面（Sum-of-Gaussians Diffusion Profile）
 
 不难发现，对扩散剖面绘制的轮廓线类似于众所周知的高斯函数e^-r2，如下图。虽然单个高斯分布不能精确地拟合任何扩散分布，但实践表明多个高斯分布在一起可以对扩散剖面提供极好的近似。因此我们可以通过高斯函数来拟合扩散剖面（diffusion profile）。
 
@@ -406,6 +411,8 @@ Matlab通过高斯函数拟合最多可以支持8个高斯函数下图1，而下
 
 图 通过2个高斯函数拟合曲线的例子
 
+<br>
+
 ## 4.3 对皮肤的扩散剖面高斯和拟合（A Sum-of-Gaussians Fit for Skin）
 
 上一节讲到了高斯和的扩散剖面（Sum-of-Gaussians Diffusion Profile），并没有将其运用于皮肤渲染。本节将讲到适于皮肤的高斯和扩散剖面拟合。
@@ -427,9 +434,12 @@ Matlab通过高斯函数拟合最多可以支持8个高斯函数下图1，而下
 这里需要注意的是，对于每个剖面，高斯项的权重和为1.0。这是由于我们是用一个漫反射颜色贴图来定义皮肤的颜色，而不是用一个与之相符的漫反射剖面。通过对这些剖面进行归一化来得到白色的漫反射颜色，确保在散射入射光之后，平均结果能保持白色。然后，将此结果乘以基于图像的颜色贴图以获得肤色的色调即可。
 
 
+<br>
+
 # 五、常规基于模糊的次表面散射方法
 
 
+<br>
 上文提到，扩散剖面（diffusion profile）是描述光线如何在半透明物体中进行扩散和分布的函数。
 
 得到扩散剖面（diffusion profile），即光线是如何在半透明物体中进行扩散和分布之后，接下来就可以对附近的像素进行加权求和，以模拟次表面散射的效果。
@@ -442,7 +452,9 @@ Matlab通过高斯函数拟合最多可以支持8个高斯函数下图1，而下
 
 下面分别对其进行说明。
 
-### 5.1 纹理空间模糊（Texture Space Blur）
+<br>
+
+## 5.1 纹理空间模糊（Texture Space Blur）
 
 纹理空间漫散射（Texture-Space Diffusion），也常被称作Texture Space Blur（纹理空间模糊）方法，由[Borshukov and Lewis 2003]提出，首次用于进行《黑客帝国》续集中的面部渲染技术，可用于精确模拟次表面散射（subsurface scattering）。
 
@@ -479,8 +491,9 @@ Space Blur的技术即为Gems 3中所描述的方案。
     diffuseLight/= norm2;
     diffuseLight*= pow( diffuseCol, 0.5 );
 
+<br>
 
-### 5.2 屏幕空间模糊（Screen Space Blur）[2009]
+## 5.2 屏幕空间模糊（Screen Space Blur）[2009]
 
 屏幕空间模糊（Screen Space Blur） [Jimenez et al.2009]也常被称作屏幕空间次表面散射（Screen Space SubSurfaceScattering）或SSSSS。
 
@@ -507,9 +520,16 @@ Space Blur的技术即为Gems 3中所描述的方案。
 从原理上来说，图像空间的方法和屏幕空间的方法很大程度上都是通过周边像素对当前像素的光照贡献来实现次表面散射的效果，区别不大，方法之间的区别通常只是在于如何去近似扩散剖面（Diffusion Profile），在性能和效果上有一个较好平衡。
 
 
+<br>
+
 # 六、其他皮肤渲染技术
 
+<br>
+
+
 ## 6.1 半透明阴影贴图（Translucent Shadow Maps，TSMs）
+
+<br>
 
 《GPU Gems 3》中，通过改进半透明阴影贴图（Translucent Shadow Maps，TSMs）来实现皮肤渲染中透射效果的模拟。
 
@@ -529,7 +549,12 @@ Space Blur的技术即为Gems 3中所描述的方案。
 
 图 Rendering AAA-QualityCharacters of Project ‘A1’ @ NDC 2016 Programming Session
 
+
+<br>
+
 ## 6.2 预积分的皮肤渲染（Pre-Integrated Skin Rendering）
+
+
 
 预积分的皮肤着色（Pre-Integrated Skin Shading）在《GPU Pro 2》的” Pre-Integrated Skin Shading”一文中正式进入大家的视野。
 
@@ -556,6 +581,8 @@ Diffusion）的渲染效果在肉眼观察下看不出太多差别，但预积�
 
 关于预积分的皮肤渲染（Pre-Integrated Skin Rendering）的更多细节，可见《GPU Pro 2》中的” Pre-Integrated Skin Shading”一文。
 
+<br>
+
 ## 6.3 SSSS,可分离的次表面散射（Separable Subsurface Scattering）
 
 次表面散射（Subsurface Scattering）被称作SSS,或3S，而可分离的次表面散射（Separable Subsurface Scattering）常被人称为SSSS，4S, Separable Subsurface Scattering，是Jimenez等人在2015年提出的新的渲染算法[Jimenez J 2015]。
@@ -578,8 +605,11 @@ Diffusion）的渲染效果在肉眼观察下看不出太多差别，但预积�
 
 ![](media/ee465182af6946df9bd2c7108c0794d2.png)
 
-图《Separable Subsurface Scattering》论文中的SSSS渲染图 @ COMPUTER GRAPHICS
-forum 2015 by Jorge Jimenez \@ Activision-Blizzard
+图《Separable Subsurface Scattering》论文中的SSSS渲染图 @ COMPUTER GRAPHICS forum 2015 by Jorge Jimenez @ Activision-Blizzard
+
+
+<br>
+
 
 ## 6.4 路径追踪次表面散射（Path-Traced Subsurface Scattering）与光线步进（Ray Marching）
 
@@ -597,6 +627,8 @@ forum 2015 by Jorge Jimenez \@ Activision-Blizzard
 
 <https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S11/final_projects/white.pdf>
 
+<br>
+
 ## 6.5 Deferred Single Scattering
 
 另外也有结合延迟渲染的方法，具体思路可见如下PPT:
@@ -605,8 +637,12 @@ forum 2015 by Jorge Jimenez \@ Activision-Blizzard
 
 图 Rendering AAA-QualityCharacters of Project ‘A1’ @ NDC 2016 Programming Session
 
+
+<br>
+
 # 七、本文内容总结
 
+<br>
 
 以下是本文内容总结，即对当前业界真实感皮肤渲染技术的总结：
 
@@ -689,9 +725,10 @@ forum 2015 by Jorge Jimenez \@ Activision-Blizzard
 
 -   等
 
-
+<br>
 
 # 八、参考文献
+<br>
 
 [1] Eugene d'Eon, David Luebke. GPU Gems 3, Chapter 14. Advanced Techniques for Realistic Real-Time Skin Rendering,2007.(<https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch14.html>)
 
