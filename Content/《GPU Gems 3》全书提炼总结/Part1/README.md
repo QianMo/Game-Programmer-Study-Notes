@@ -1,3 +1,6 @@
+
+![](media/title.jpg)
+
 # 《GPU Gems 3》：真实感皮肤渲染技术总结
 
 
@@ -690,8 +693,7 @@ forum 2015 by Jorge Jimenez \@ Activision-Blizzard
 
 # 八、参考文献
 
-[1] Eugene d'Eon, David Luebke. GPU Gems 3, Chapter 14. Advanced Techniques for Realistic Real-Time Skin Rendering
-(https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch14.html)
+[1] Eugene d'Eon, David Luebke. GPU Gems 3, Chapter 14. Advanced Techniques for Realistic Real-Time Skin Rendering,2007.(<https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch14.html>)
 
 [2] Volumetric Skin and Fabric Shading at Framestore , SIGGRAPH 2017 Course: Physically Based Shading in Theory and Practice（<http://blog.selfshadow.com/publications/s2017-shading-course/walster/s2017_pbs_volumetric_notes.pdf>）
 
