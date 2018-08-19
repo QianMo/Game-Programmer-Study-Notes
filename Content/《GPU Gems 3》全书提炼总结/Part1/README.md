@@ -8,6 +8,7 @@
 本文的知乎专栏版本：
 https://zhuanlan.zhihu.com/p/42433792
 
+
 《GPU Gems 3》中的“Chapter 14. Advanced Techniques for Realistic Real-Time Skin
 Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会被参考到的主要文章，可谓皮肤渲染技术的集大成者，奠基之作。
 
@@ -16,6 +17,50 @@ Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会�
 除了对《GPU Gems 3》中该篇文章本身内容的提炼，本文也会在其基础上，结合这些年真实感皮肤渲染技术的发展，聊一些更多的东西。希望能对当前业界真实感皮肤渲染技术的现状与发展，做一个较为全面系统的总结与提炼。
 
 <br>
+
+
+
+# 快捷导航目录
+
+<!-- TOC -->
+
+- [《GPU Gems 3》：真实感皮肤渲染技术总结](#gpu-gems-3真实感皮肤渲染技术总结)
+- [快捷导航目录](#快捷导航目录)
+- [一、总览：皮肤渲染技术发展史](#一总览皮肤渲染技术发展史)
+- [二、近年游戏与渲染业界中的真实感皮肤渲染画面](#二近年游戏与渲染业界中的真实感皮肤渲染画面)
+- [三、皮肤渲染基础理论](#三皮肤渲染基础理论)
+    - [3.1 镜面反射（specular reflection）](#31-镜面反射specular-reflection)
+    - [3.2 次表面散射（Subsurface Scattering）](#32-次表面散射subsurface-scattering)
+        - [3.2.1 半透明材质与次表面散射（Translucent and Subsurface Scattering）](#321-半透明材质与次表面散射translucent-and-subsurface-scattering)
+        - [3.2.2 BRDF与BSSRDF](#322-brdf与bssrdf)
+        - [3.2.3 BTDF与透射（Transmittance）](#323-btdf与透射transmittance)
+        - [3.2.4 关于BRDF、BSSRDF、BTDF、BSDF的关系](#324-关于brdfbssrdfbtdfbsdf的关系)
+- [四、扩散剖面（Diffusion Profile）](#四扩散剖面diffusion-profile)
+        - [4.1 多级子（Multipole）方法](#41-多级子multipole方法)
+    - [4.2 高斯和的扩散剖面（Sum-of-Gaussians Diffusion Profile）](#42-高斯和的扩散剖面sum-of-gaussians-diffusion-profile)
+    - [4.3 对皮肤的扩散剖面高斯和拟合（A Sum-of-Gaussians Fit for Skin）](#43-对皮肤的扩散剖面高斯和拟合a-sum-of-gaussians-fit-for-skin)
+- [五、常规基于模糊的次表面散射方法](#五常规基于模糊的次表面散射方法)
+    - [5.1 纹理空间模糊（Texture Space Blur）](#51-纹理空间模糊texture-space-blur)
+    - [5.2 屏幕空间模糊（Screen Space Blur）[2009]](#52-屏幕空间模糊screen-space-blur2009)
+- [六、其他皮肤渲染技术](#六其他皮肤渲染技术)
+    - [6.1 半透明阴影贴图（Translucent Shadow Maps，TSMs）](#61-半透明阴影贴图translucent-shadow-mapstsms)
+    - [6.2 预积分的皮肤渲染（Pre-Integrated Skin Rendering）](#62-预积分的皮肤渲染pre-integrated-skin-rendering)
+    - [6.3 SSSS,可分离的次表面散射（Separable Subsurface Scattering）](#63-ssss可分离的次表面散射separable-subsurface-scattering)
+    - [6.4 路径追踪次表面散射（Path-Traced Subsurface Scattering）与光线步进（Ray Marching）](#64-路径追踪次表面散射path-traced-subsurface-scattering与光线步进ray-marching)
+    - [6.5 Deferred Single Scattering](#65-deferred-single-scattering)
+- [七、本文内容总结](#七本文内容总结)
+    - [1. 皮肤渲染建模](#1-皮肤渲染建模)
+    - [2. 镜面反射部分](#2-镜面反射部分)
+    - [3. 次表面散射部分](#3-次表面散射部分)
+        - [3.1 扩散剖面（Diffusion Profile）](#31-扩散剖面diffusion-profile)
+        - [3.2 其他皮肤渲染技术](#32-其他皮肤渲染技术)
+    - [4. 皮肤渲染技术发展史](#4-皮肤渲染技术发展史)
+- [八、参考文献](#八参考文献)
+
+<!-- /TOC -->
+
+
+
 
 # 一、总览：皮肤渲染技术发展史
 

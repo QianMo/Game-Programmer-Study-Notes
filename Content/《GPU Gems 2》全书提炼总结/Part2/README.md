@@ -8,6 +8,84 @@ https://zhuanlan.zhihu.com/p/40288273
 
 本文核心内容为《GPU Gems 2》中讲到的真实感水体渲染，以及真实感头发渲染、通用的折射模拟、改进的Perlin噪声等次核心内容。
 
+
+
+# 快捷导航目录
+<!-- TOC -->
+
+- [【GPU精粹与Shader编程】《GPU Gems 2》全书核心内容提炼总结 · 下篇](#gpu精粹与shader编程gpu-gems-2全书核心内容提炼总结-·-下篇)
+- [快捷导航目录](#快捷导航目录)
+- [前言](#前言)
+- [I、核心章节提炼篇](#i核心章节提炼篇)
+- [一、将顶点纹理位移用于水的真实感渲染（Using Vertex Texture Displacement for Realistic Water Rendering）](#一将顶点纹理位移用于水的真实感渲染using-vertex-texture-displacement-for-realistic-water-rendering)
+    - [【章节概览】](#章节概览)
+    - [【核心要点】](#核心要点)
+        - [1.1 水体渲染模型的分析](#11-水体渲染模型的分析)
+        - [1.2 实现思路概览](#12-实现思路概览)
+        - [1.3 水体的表面模拟](#13-水体的表面模拟)
+        - [1.4 实现细节概述](#14-实现细节概述)
+        - [1.5 对高度图采样](#15-对高度图采样)
+        - [1.6 提高渲染质量与优化性能的一些方案](#16-提高渲染质量与优化性能的一些方案)
+            - [1.6.1 为双线性过滤打包高度值](#161-为双线性过滤打包高度值)
+            - [1.6.2 使用分支避免不需要的工作](#162-使用分支避免不需要的工作)
+            - [1.6.3 使用渲染到纹理策略（Render-to-Texture）](#163-使用渲染到纹理策略render-to-texture)
+            - [1.6.4 处理波浪的背面](#164-处理波浪的背面)
+        - [1.7 渲染局部扰动的策略](#17-渲染局部扰动的策略)
+            - [1.7.1 解析型形变模型（Analytical Deformation Model）](#171-解析型形变模型analytical-deformation-model)
+            - [1.7.2 动态位移贴图（Dynamic Displacement Mapping）](#172-动态位移贴图dynamic-displacement-mapping)
+            - [1.7.3 泡沫的生成（Foam Generation）](#173-泡沫的生成foam-generation)
+    - [【核心要点总结】](#核心要点总结)
+        - [1.提高渲染质量与优化性能的方案](#1提高渲染质量与优化性能的方案)
+        - [2.渲染局部扰动的策略](#2渲染局部扰动的策略)
+    - [【配套源代码】](#配套源代码)
+- [【关键词】](#关键词)
+- [II、次核心章节提炼篇](#ii次核心章节提炼篇)
+- [二、利用像素着色器分支的高效模糊边缘阴影（Efficient Soft-Edged Shadows Using](#二利用像素着色器分支的高效模糊边缘阴影efficient-soft-edged-shadows-using)
+    - [【章节概览】](#章节概览-1)
+    - [【核心要点】](#核心要点-1)
+    - [【关键词】](#关键词-1)
+- [三、通用的折射模拟（Generic Refraction）](#三通用的折射模拟generic-refraction)
+    - [【章节概览】](#章节概览-2)
+    - [【核心要点】](#核心要点-2)
+    - [【关键词】](#关键词-2)
+- [四、快速三阶纹理过滤（Fast Third-Order Texture Filtering）](#四快速三阶纹理过滤fast-third-order-texture-filtering)
+    - [【章节概览】](#章节概览-3)
+    - [【核心要点】](#核心要点-3)
+    - [【关键词】](#关键词-3)
+- [五、高质量反走样的光栅化（High-Quality Antialiased Rasterization）](#五高质量反走样的光栅化high-quality-antialiased-rasterization)
+    - [【章节概览】](#章节概览-4)
+    - [【核心要点】](#核心要点-4)
+    - [【关键词】](#关键词-4)
+- [六、快速预过滤线条（Fast Prefiltered Lines）](#六快速预过滤线条fast-prefiltered-lines)
+    - [【核心要点】](#核心要点-5)
+    - [【关键词】](#关键词-5)
+- [七、Nalu Demo中的头发动画与渲染（Hair Animation and Rendering in the Nalu Demo）](#七nalu-demo中的头发动画与渲染hair-animation-and-rendering-in-the-nalu-demo)
+    - [【章节概览】](#章节概览-5)
+    - [【核心要点】](#核心要点-6)
+    - [【关键词】](#关键词-6)
+- [八、使用查找表加速颜色变换（Using Lookup Tables to Accelerate Color](#八使用查找表加速颜色变换using-lookup-tables-to-accelerate-color)
+    - [【章节概览】](#章节概览-6)
+    - [【核心要点】](#核心要点-7)
+    - [【关键词】](#关键词-7)
+- [九、实现改进的Perlin噪声（Implementing Improved Perlin Noise）](#九实现改进的perlin噪声implementing-improved-perlin-noise)
+    - [【章节概览】](#章节概览-7)
+    - [【核心要点】](#核心要点-8)
+    - [【关键词】](#关键词-8)
+- [十、高级高质量过滤（Advanced High-Quality Filtering）](#十高级高质量过滤advanced-high-quality-filtering)
+    - [【章节概览】](#章节概览-8)
+    - [【核心要点】](#核心要点-9)
+    - [【关键词】](#关键词-9)
+- [十一、Mipmap层级测定（Mipmap-Level Measurement）](#十一mipmap层级测定mipmap-level-measurement)
+    - [【章节概览】](#章节概览-9)
+    - [【核心要点】](#核心要点-10)
+- [【关键词】](#关键词-10)
+- [附录：配套资源与源代码下载](#附录配套资源与源代码下载)
+
+<!-- /TOC -->
+
+
+
+
 # 前言
 
 
@@ -33,37 +111,9 @@ Engine 中的水体渲染实时画面：
 OK，下面开始正题。
 
 
-# 目录 · 本文核心内容Highlight
 
 
-本文将进行重点提炼总结《GPU Gems 2》中的主核心内容有：
 
-- 一、将顶点纹理位移用于水的真实感渲染（Using Vertex Texture Displacement for
-Realistic Water Rendering）
-
-本文将进行提炼总结《GPU Gems 2》中的次核心内容有：
-
-- 二、利用像素着色器分支的高效模糊边缘阴影（Efficient Soft-Edged Shadows Using
-Pixel Shader Branching）
-
-- 三、通用的折射模拟（Generic Refraction）
-
-- 四、快速三阶纹理过滤（Fast Third-Order Texture Filtering）
-
-- 五、高质量反走样的光栅化（High-Quality Antialiased Rasterization）
-
-- 六、快速预过滤线条（Fast Prefiltered Lines）
-
-- 七、Nalu Demo中的头发动画与渲染（Hair Animation and Rendering in the Nalu Demo）
-
-- 八、使用查找表加速颜色变换（Using Lookup Tables to Accelerate Color
-Transformations）
-
-- 九、实现改进的Perlin噪声（Implementing Improved Perlin Noise）
-
-- 十、高级高质量过滤（Advanced High-Quality Filtering）
-
-- 十一、Mipmap层级测定（Mipmap-Level Measurement）
 
 # I、核心章节提炼篇
 
