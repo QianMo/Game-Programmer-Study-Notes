@@ -424,7 +424,7 @@ profile）概念往往一起出现的偶极子（Dipole），多级子（Multipo
 
 选择常数1/（2v）使得G（v，r）在用于径向2D模糊时不会使输入图像变暗或变亮（其具有单位脉冲响应（unit impulse response））。
 
-图14-12显示了扩散剖面（diffusion profile）（用于大理石中绿光的散射）和使用两级和四级高斯和的近似剖面。
+下图显示了扩散剖面（diffusion profile）（用于大理石中绿光的散射）和使用两级和四级高斯和的近似剖面。
 
 我们使用[Jensen et al. 2001]中提出的散射参数：
 
