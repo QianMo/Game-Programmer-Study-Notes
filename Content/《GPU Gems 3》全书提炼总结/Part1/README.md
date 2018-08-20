@@ -634,7 +634,7 @@ Diffusion）的渲染效果在肉眼观察下看不出太多差别，但预积�
 
 上文提到，虽然屏幕空间模糊（Screen Space Blur）性能比纹理空间模糊（Texture Space Blur）好很多，但做6个高斯模糊需要12个pass(一个高斯模糊对应一个水平和垂直模糊)。
 
-暴雪的Jorge等人，在GDC 2013,的talk“Next-Generation Character Rendering”（http://www.iryoku.com/images/posts/next-generation-life/Next-Generation-Character-Rendering-Teaser.pptx）中首次展示了SSSS的渲染图，并在2015年通过论文正式提出了SSSS(可分离的次表面散射,Separable Subsurface Scattering)(http://iryoku.com/separable-sss)其通过水平和垂直卷积2个Pass来近似，效率更进一步提升，这是目前游戏里采用的主流技术，Unreal也对其进行了集成。
+暴雪的Jorge等人，在GDC 2013,的talk“Next-Generation Character Rendering”（<http://www.iryoku.com/images/posts/next-generation-life/Next-Generation-Character-Rendering-Teaser.pptx>）中首次展示了SSSS的渲染图，并在2015年通过论文正式提出了SSSS(可分离的次表面散射,Separable Subsurface Scattering)(<http://iryoku.com/separable-sss>)其通过水平和垂直卷积2个Pass来近似，效率更进一步提升，这是目前游戏里采用的主流技术，Unreal也对其进行了集成。
 
 ![](media/16ca4672e73c981be74b70a14ef467b8.png)
 
