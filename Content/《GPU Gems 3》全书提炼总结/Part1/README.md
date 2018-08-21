@@ -509,10 +509,8 @@ Matlab通过高斯函数拟合最多可以支持8个高斯函数下图1，而下
 
 图 用于进行《黑客帝国》续集中的纹理空间模糊（Texture Space Blur）面部渲染方法
 
-GDC 2007有一场来自NVIDIA的talk “Advanced Skin Rendering”（<http://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf>.）中，其采用Texture
-Space Blur的技术即为Gems 3中所描述的方案。
-
-该技术在屏幕空间做了6次高斯模糊，每一个高斯模糊就是偶极子（Dipole）近似所采用的高斯模糊的参数(图9)。Texture Space Blur有一个很严重的问题，Texture一般都在4k，做一次高斯模糊都是很费的操作，更不要说6次高斯模糊。虽然当年这个技术取得的效果很不错，但是因为计算量等原因，很少有人实际去采用。
+GDC 2007有一场来自NVIDIA的talk “Advanced Skin Rendering”（<http://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf>.）中，其采用Texture Space Blur的技术即为Gems 3中所描述的方案。
+该技术在纹理空间做了6次高斯模糊，每一次高斯模糊即为偶极子（Dipole）近似所采用的高斯模糊的参数，如下图。Texture Space Blur有一个很严重的问题，需要较高的纹理分辨率，这导致每做一次高斯模糊都是很费的操作，更不要说6次高斯模糊。虽然当年这个技术取得的效果很不错，但是因为计算量等原因，很少有人实际去采用。
 
 ![](media/d18cbe00b07bf2bff4402d9e5e5ce5ca.jpg)
 
