@@ -9,10 +9,9 @@
 https://zhuanlan.zhihu.com/p/42433792
 
 
-《GPU Gems 3》中的“Chapter 14. Advanced Techniques for Realistic Real-Time Skin
-Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会被参考到的主要文章，可谓皮肤渲染技术的集大成者，奠基之作。
+《GPU Gems 3》中的“Chapter 14. Advanced Techniques for Realistic Real-Time Skin Rendering”一文，自其问世以来，都是皮肤渲染领域经常会被参考到的主要文章，可谓皮肤渲染技术的集大成者，奠基之作。
 
-本文正好借着对《GPU Gems 3》中此章节进行提炼总结的机会，对真实感皮肤渲染技术，进行一个系统的总结和提炼。
+本文正好借着系列文章对《GPU Gems 3》中此章节进行提炼总结的机会，对真实感皮肤渲染技术，进行一个系统的总结和提炼。
 
 除了对《GPU Gems 3》中该篇文章本身内容的提炼，本文也会在其基础上，结合这些年真实感皮肤渲染技术的发展，聊一些更多的东西。希望能对当前业界真实感皮肤渲染技术的现状与发展，做一个较为全面系统的总结与提炼。
 
@@ -95,7 +94,7 @@ Rendering”一文，自其问世以来，都是皮肤渲染领域经常会会�
 
 # 二、近年游戏与渲染业界中的真实感皮肤渲染画面
 
-首先是一个《孤岛惊魂5》中的实机演示视频，有不少人觉得渲染出的画面已经和真人出演的美剧非常相似，主要注意视频中人物的皮肤渲染表现：
+首先是一个《孤岛惊魂5》中的演示视频（预渲染），有不少人觉得渲染出的画面已经和真人出演的美剧非常相似，主要注意视频中人物的皮肤渲染表现：
 
 <https://www.youtube.com/watch?v=4W450G_UR1Q>
 
@@ -425,7 +424,7 @@ profile）概念往往一起出现的偶极子（Dipole），多级子（Multipo
 
 选择常数1/（2v）使得G（v，r）在用于径向2D模糊时不会使输入图像变暗或变亮（其具有单位脉冲响应（unit impulse response））。
 
-图14-12显示了扩散剖面（diffusion profile）（用于大理石中绿光的散射）和使用两级和四级高斯和的近似剖面。
+下图显示了扩散剖面（diffusion profile）（用于大理石中绿光的散射）和使用两级和四级高斯和的近似剖面。
 
 我们使用[Jensen et al. 2001]中提出的散射参数：
 
@@ -437,9 +436,9 @@ profile）概念往往一起出现的偶极子（Dipole），多级子（Multipo
 
 R(r) = 0.070G(0.036, r) + 0.18G(0.14, r) + 0.21G(0.91, r) + 0.29G(7.0, r)
 
-那么，如何这几个高斯函数的权重是和方差？
+那么，如何确定这几个高斯函数的权重和方差？
 
-这是一个很经典的问题，给定一条曲线，如何用多项式或者三角函数去拟合。
+这是一个很经典的问题，即给定一条曲线，如何用多项式或者三角函数去拟合。
 
 自己求解是十分费事的事情，对于经典的问题往往有现成的工具可以直接运用，不用重复造轮子。文章（<http://gad.qq.com/article/detail/33372>）提到，Matlab有一个曲线拟合功能即可满足我们的要求,详见<https://cn.mathworks.com/help/curvefit/gaussian.html>
 
@@ -510,10 +509,8 @@ Matlab通过高斯函数拟合最多可以支持8个高斯函数下图1，而下
 
 图 用于进行《黑客帝国》续集中的纹理空间模糊（Texture Space Blur）面部渲染方法
 
-GDC 2007有一场来自NVIDIA的talk “Advanced Skin Rendering”（<http://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf>.）中，其采用Texture
-Space Blur的技术即为Gems 3中所描述的方案。
-
-该技术在屏幕空间做了6次高斯模糊，每一个高斯模糊就是偶极子（Dipole）近似所采用的高斯模糊的参数(图9)。Texture Space Blur有一个很严重的问题，Texture一般都在4k，做一次高斯模糊都是很费的操作，更不要说6次高斯模糊。虽然当年这个技术取得的效果很不错，但是因为计算量等原因，很少有人实际去采用。
+GDC 2007有一场来自NVIDIA的talk “Advanced Skin Rendering”（<http://developer.download.nvidia.com/presentations/2007/gdc/Advanced_Skin.pdf>.）中，其采用Texture Space Blur的技术即为Gems 3中所描述的方案。
+该技术在纹理空间做了6次高斯模糊，每一次高斯模糊即为偶极子（Dipole）近似所采用的高斯模糊的参数，如下图。Texture Space Blur有一个很严重的问题，需要较高的纹理分辨率，这导致每做一次高斯模糊都是很费的操作，更不要说6次高斯模糊。虽然当年这个技术取得的效果很不错，但是因为计算量等原因，很少有人实际去采用。
 
 ![](media/d18cbe00b07bf2bff4402d9e5e5ce5ca.jpg)
 
@@ -635,7 +632,7 @@ Diffusion）的渲染效果在肉眼观察下看不出太多差别，但预积�
 
 上文提到，虽然屏幕空间模糊（Screen Space Blur）性能比纹理空间模糊（Texture Space Blur）好很多，但做6个高斯模糊需要12个pass(一个高斯模糊对应一个水平和垂直模糊)。
 
-暴雪的Jorge等人，在GDC 2013,的talk“Next-Generation Character Rendering”（http://www.iryoku.com/images/posts/next-generation-life/Next-Generation-Character-Rendering-Teaser.pptx）中首次展示了SSSS的渲染图，并在2015年通过论文正式提出了SSSS(可分离的次表面散射,Separable Subsurface Scattering)(http://iryoku.com/separable-sss)其通过水平和垂直卷积2个Pass来近似，效率更进一步提升，这是目前游戏里采用的主流技术，Unreal也对其进行了集成。
+暴雪的Jorge等人，在GDC 2013,的talk“Next-Generation Character Rendering”（<http://www.iryoku.com/images/posts/next-generation-life/Next-Generation-Character-Rendering-Teaser.pptx>）中首次展示了SSSS的渲染图，并在2015年通过论文正式提出了SSSS(可分离的次表面散射,Separable Subsurface Scattering)(<http://iryoku.com/separable-sss>)其通过水平和垂直卷积2个Pass来近似，效率更进一步提升，这是目前游戏里采用的主流技术，Unreal也对其进行了集成。
 
 ![](media/16ca4672e73c981be74b70a14ef467b8.png)
 
