@@ -17,168 +17,95 @@
 - [《GPU Gems 3》全书核心框架脉络图谱](#gpu-gems-3全书核心框架脉络图谱)
 - [第一部分 几何体（Geometry）](#第一部分-几何体geometry)
 - [第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）](#第1章-使用gpu-生成复杂的程序化地形generating-complex-procedural-terrains-using-the-gpu)
-    - [【本章内容关键词】](#本章内容关键词)
-    - [【本章内容盘点】](#本章内容盘点)
+    - [【关键词】](#关键词)
+    - [【内容盘点】](#内容盘点)
 - [第2章 群体动画渲染（Animated Crowd Rendering）](#第2章-群体动画渲染animated-crowd-rendering)
-    - [【本章内容关键词】](#本章内容关键词-1)
-    - [【本章内容盘点】](#本章内容盘点-1)
+    - [【关键词】](#关键词-1)
+    - [【内容盘点】](#内容盘点-1)
 - [第3章 DirectX 10 中的混合形状（DirectX 10 Blend Shapes: Breaking the Limits）](#第3章-directx-10-中的混合形状directx-10-blend-shapes-breaking-the-limits)
-    - [【本章内容关键词】](#本章内容关键词-2)
-    - [【本章内容盘点】](#本章内容盘点-2)
+    - [【关键词】](#关键词-2)
+    - [【内容盘点】](#内容盘点-2)
 - [第4章 下一代SpeedTree 渲染（Next-Generation SpeedTree Rendering）](#第4章-下一代speedtree-渲染next-generation-speedtree-rendering)
-    - [【本章内容关键词】](#本章内容关键词-3)
-    - [【本章内容盘点】](#本章内容盘点-3)
+    - [【关键词】](#关键词-3)
+    - [【内容盘点】](#内容盘点-3)
 - [第5章 通用自适应网格细化（Generic Adaptive Mesh Refinement）](#第5章-通用自适应网格细化generic-adaptive-mesh-refinement)
-    - [【本章内容关键词】](#本章内容关键词-4)
-    - [【本章内容盘点】](#本章内容盘点-4)
+    - [【关键词】](#关键词-4)
+    - [【内容盘点】](#内容盘点-4)
 - [第6章 对于树的GPU 生成程序式风动画（GPU-Generated Procedural Wind Animations for Trees）](#第6章-对于树的gpu-生成程序式风动画gpu-generated-procedural-wind-animations-for-trees)
-    - [【本章内容关键词】](#本章内容关键词-5)
-    - [【本章内容盘点】](#本章内容盘点-5)
+    - [【关键词】](#关键词-5)
+    - [【内容盘点】](#内容盘点-5)
 - [第7章 GPU 上基于点的变形球可视化（Point-Based Visualization of Metaballs on a GPU）](#第7章-gpu-上基于点的变形球可视化point-based-visualization-of-metaballs-on-a-gpu)
-    - [【本章内容关键词】](#本章内容关键词-6)
-    - [【本章内容盘点】](#本章内容盘点-6)
+    - [【关键词】](#关键词-6)
+    - [【内容盘点】](#内容盘点-6)
 - [第二部分 光照和阴影（Light and Shadows）](#第二部分-光照和阴影light-and-shadows)
 - [第8章 区域求和的差值阴影贴图（Summed-Area Variance Shadow Maps）](#第8章-区域求和的差值阴影贴图summed-area-variance-shadow-maps)
-    - [【本章内容关键词】](#本章内容关键词-7)
-    - [【本章内容盘点】](#本章内容盘点-7)
+    - [【关键词】](#关键词-7)
+    - [【内容盘点】](#内容盘点-7)
 - [第9章 使用全局光照交互电影级重光照（Interactive Cinematic Relighting with Global Illumination）](#第9章-使用全局光照交互电影级重光照interactive-cinematic-relighting-with-global-illumination)
-    - [【本章内容关键词】](#本章内容关键词-8)
-    - [【本章内容盘点】](#本章内容盘点-8)
+    - [【关键词】](#关键词-8)
+    - [【内容盘点】](#内容盘点-8)
 - [第10章 在可编程GPU 上实现并行分割阴影贴图（Parallel-Split Shadow Maps on Programmable GPUs）](#第10章-在可编程gpu-上实现并行分割阴影贴图parallel-split-shadow-maps-on-programmable-gpus)
-    - [【本章内容关键词】](#本章内容关键词-9)
-    - [【本章内容盘点】](#本章内容盘点-9)
+    - [【关键词】](#关键词-9)
+    - [【内容盘点】](#内容盘点-9)
 - [第11章 基于层次化的遮挡剔除和几何着色器的高效鲁棒阴影体（Efficient and Robust Shadow Volumes Using Hierarchical Occlusion Culling and Geometry Shaders）](#第11章-基于层次化的遮挡剔除和几何着色器的高效鲁棒阴影体efficient-and-robust-shadow-volumes-using-hierarchical-occlusion-culling-and-geometry-shaders)
-    - [【本章内容关键词】](#本章内容关键词-10)
-    - [【本章内容盘点】](#本章内容盘点-10)
+    - [【关键词】](#关键词-10)
+    - [【内容盘点】](#内容盘点-10)
 - [第12章 高质量的环境光遮蔽（High-Quality Ambient Occlusion）](#第12章-高质量的环境光遮蔽high-quality-ambient-occlusion)
-    - [【本章内容关键词】](#本章内容关键词-11)
-    - [【本章内容盘点】](#本章内容盘点-11)
+    - [【关键词】](#关键词-11)
+    - [【内容盘点】](#内容盘点-11)
 - [第13章 后处理特效：体积光散射（Volumetric Light Scattering as a Post-Process）](#第13章-后处理特效体积光散射volumetric-light-scattering-as-a-post-process)
-    - [【本章内容关键词】](#本章内容关键词-12)
-    - [【本章内容盘点】](#本章内容盘点-12)
+    - [【关键词】](#关键词-12)
+    - [【内容盘点】](#内容盘点-12)
 - [第三部分 渲染（Rendering）](#第三部分-渲染rendering)
 - [第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）](#第14章-用于真实感实时皮肤渲染的高级技术advanced-techniques-for-realistic-real-time-skin-rendering)
-    - [【本章内容关键词】](#本章内容关键词-13)
-    - [【本章内容盘点】](#本章内容盘点-13)
+    - [【关键词】](#关键词-13)
+    - [【内容盘点】](#内容盘点-13)
 - [第15章 可播放的全方位动作捕捉（Playable Universal Capture）](#第15章-可播放的全方位动作捕捉playable-universal-capture)
-    - [【本章内容关键词】](#本章内容关键词-14)
-    - [【本章内容盘点】](#本章内容盘点-14)
+    - [【关键词】](#关键词-14)
+    - [【内容盘点】](#内容盘点-14)
 - [第16章 Crysis 中植被的程序化动画和着色（Vegetation Procedural Animation and Shading in Crysis）](#第16章-crysis-中植被的程序化动画和着色vegetation-procedural-animation-and-shading-in-crysis)
-    - [【本章内容关键词】](#本章内容关键词-15)
-    - [【本章内容盘点】](#本章内容盘点-15)
+    - [【关键词】](#关键词-15)
+    - [【内容盘点】](#内容盘点-15)
 - [第17章 鲁棒的多镜面反射和折射（Robust Multiple Specular Reflections and Refractions）](#第17章-鲁棒的多镜面反射和折射robust-multiple-specular-reflections-and-refractions)
-    - [【本章内容关键词】](#本章内容关键词-16)
-    - [【本章内容盘点】](#本章内容盘点-16)
+    - [【关键词】](#关键词-16)
+    - [【内容盘点】](#内容盘点-16)
 - [第18章 用于浮雕映射的松散式锥形步进（Relaxed Cone Stepping for Relief Mapping）](#第18章-用于浮雕映射的松散式锥形步进relaxed-cone-stepping-for-relief-mapping)
-    - [【本章内容关键词】](#本章内容关键词-17)
-    - [【本章内容盘点】](#本章内容盘点-17)
+    - [【关键词】](#关键词-17)
+    - [【内容盘点】](#内容盘点-17)
 - [第19章 《Tabula Rasa》中的延迟着色（Deferred Shading in Tabula Rasa）](#第19章-tabula-rasa中的延迟着色deferred-shading-in-tabula-rasa)
-    - [【本章内容关键词】](#本章内容关键词-18)
-    - [【本章内容盘点】](#本章内容盘点-18)
+    - [【关键词】](#关键词-18)
+    - [【内容盘点】](#内容盘点-18)
 - [第20章 基于GPU的重要性采样（GPU-Based Importance Sampling）](#第20章-基于gpu的重要性采样gpu-based-importance-sampling)
-    - [【本章内容关键词】](#本章内容关键词-19)
-    - [【本章内容盘点】](#本章内容盘点-19)
+    - [【关键词】](#关键词-19)
+    - [【内容盘点】](#内容盘点-19)
 - [第四部分 图像效果（Image Effects）](#第四部分-图像效果image-effects)
 - [第21章 真实Impostor（True Impostors）](#第21章-真实impostortrue-impostors)
-    - [【本章内容关键词】](#本章内容关键词-20)
-    - [【本章内容盘点】](#本章内容盘点-20)
+    - [【关键词】](#关键词-20)
+    - [【内容盘点】](#内容盘点-20)
 - [第22章 在GPU上烘焙法线贴图（Baking Normal Maps on the GPU）](#第22章-在gpu上烘焙法线贴图baking-normal-maps-on-the-gpu)
-    - [【本章内容关键词】](#本章内容关键词-21)
-    - [【本章内容盘点】](#本章内容盘点-21)
+    - [【关键词】](#关键词-21)
+    - [【内容盘点】](#内容盘点-21)
 - [第23章 高速的离屏粒子（High-Speed, Off-Screen Particles）](#第23章-高速的离屏粒子high-speed-off-screen-particles)
-    - [【本章内容关键词】](#本章内容关键词-22)
-    - [【本章内容盘点】](#本章内容盘点-22)
+    - [【关键词】](#关键词-22)
+    - [【内容盘点】](#内容盘点-22)
 - [第24章 保持线性的重要性（The Importance of Being Linear）](#第24章-保持线性的重要性the-importance-of-being-linear)
-    - [【本章内容关键词】](#本章内容关键词-23)
-    - [【本章内容盘点】](#本章内容盘点-23)
+    - [【关键词】](#关键词-23)
+    - [【内容盘点】](#内容盘点-23)
 - [第25章 在GPU 上渲染矢量图（Rendering Vector Art on the GPU）](#第25章-在gpu-上渲染矢量图rendering-vector-art-on-the-gpu)
-    - [【本章内容关键词】](#本章内容关键词-24)
-    - [【本章内容盘点】](#本章内容盘点-24)
+    - [【关键词】](#关键词-24)
+    - [【内容盘点】](#内容盘点-24)
 - [第26章 通过颜色进行对象探测：使用 GPU 进行实时视频图像处理（Object Detection by Color: Using the GPU for Real-Time Video Image Processing）](#第26章-通过颜色进行对象探测使用-gpu-进行实时视频图像处理object-detection-by-color-using-the-gpu-for-real-time-video-image-processing)
-    - [【本章内容关键词】](#本章内容关键词-25)
-    - [【本章内容盘点】](#本章内容盘点-25)
+    - [【关键词】](#关键词-25)
+    - [【内容盘点】](#内容盘点-25)
 - [第27章 后处理效果：运动模糊（Motion Blur as a Post-Processing Effect）](#第27章-后处理效果运动模糊motion-blur-as-a-post-processing-effect)
-    - [【本章内容关键词】](#本章内容关键词-26)
-    - [【本章内容盘点】](#本章内容盘点-26)
+    - [【关键词】](#关键词-26)
+    - [【内容盘点】](#内容盘点-26)
 - [第28章 实用景深后期处理（Practical Post-Process Depth of Field）](#第28章-实用景深后期处理practical-post-process-depth-of-field)
-    - [【本章内容关键词】](#本章内容关键词-27)
-    - [【本章内容盘点】](#本章内容盘点-27)
+    - [【关键词】](#关键词-27)
+    - [【内容盘点】](#内容盘点-27)
 - [【GPU精粹三部曲】 Part I • 尾声](#gpu精粹三部曲-part-i-•-尾声)
 
 <!-- /TOC -->
-
-
-
-
-
-
-这28章分别为：
-
-**第一部分 几何体（Geometry）**
-
--   使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）
-
--   群体动画渲染（Animated Crowd Rendering）
-
--   DirectX 10 中的混合形状（DirectX 10 Blend Shapes: Breaking the Limits）
-
--   下一代SpeedTree 渲染（Next-Generation SpeedTree Rendering）
-
--   通用自适应网格细化（Generic Adaptive Mesh Refinement）
-
--   对树的GPU 生成程序式风动画（GPU-Generated Procedural Wind Animations for Trees）
-
--   GPU 上基于点的变形球可视化（Point-Based Visualization of Metaballs on a GPU）
-
-**第二部分 光照和阴影（Light and Shadows）**
-
--   第8章 区域求和的差值阴影贴图（Summed-Area Variance Shadow Maps）
-
--   第9章 使用全局光照交互电影级重光照（Interactive Cinematic Relighting with Global Illumination）
-
--   第10章 在可编程GPU 上实现并行分割阴影贴图（Parallel-Split Shadow Maps on Programmable GPUs）
-
--   第11章 基于层次化的遮挡剔除和几何着色器的高效鲁棒阴影体（Efficient and Robust Shadow Volumes Using Hierarchical Occlusion Culling and Geometry
-    Shaders）
-
--   第12章 高质量的环境光遮蔽（High-Quality Ambient Occlusion）
-
--   第13章 后处理特效：体积光散射（Volumetric Light Scattering as a Post-Process）
-
-**第三部分 渲染（Rendering）**
-
--   第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）
-
--   第15章 可播放的全方位动作捕捉（Playable Universal Capture）
-
--   第16章 Crysis 中植被的程序化动画和着色（Vegetation Procedural Animation and Shading in Crysis）
-
--   第17章 鲁棒的多镜面反射和折射（Robust Multiple Specular Reflections and Refractions）
-
--   第18章 用于浮雕映射的松散式锥形步进（Relaxed Cone Stepping for Relief Mapping）
-
--   第19章 《Tabula Rasa》中的延迟着色（Deferred Shading in Tabula Rasa）
-
--   第20章 基于GPU的重要性采样（GPU-Based Importance Sampling）
-
-**第四部分 图像效果（Image Effects）**
-
--   第21章 真实Impostor（True Impostors）
-
--   第22章 在GPU上烘焙法线贴图（Baking Normal Maps on the GPU）
-
--   第23章 高速的离屏粒子（High-Speed, Off-Screen Particles）
-
--   第24章 保持线性的重要性（The Importance of Being Linear）
-
--   第25章 在GPU 上渲染矢量图（Rendering Vector Art on the GPU）
-
--   第26章 通过颜色进行对象探测：使用 GPU 进行实时视频图像处理（Object Detection by Color: Using the GPU for Real-Time Video Image Processing）
-
--   第27章 后处理效果：运动模糊（Motion Blur as a Post-Processing Effect）
-
--   第28章 实用景深后期处理（Practical Post-Process Depth of Field）
-
 
 
 <br>
@@ -189,17 +116,15 @@
 
 以下是《GPU Gems 3》全书核心章节的思维导图：
 
-![](media/5a6050624c51597793f49889fa1a81ba.png)
+![](media/struct.png)
 
 **PS:原图过大，网页端可能显示并不清晰，建议将原图另存为本地图片后查看**
 
-另外值得注意的是，《GPU Gems 3》出版于2007年8月12日，全书共1008页，共41章。而本文对其中渲染相关的前28章进行了盘点、提炼与总结。
-
-这本书的英文原版已经由NVIDIA开源：
-<https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html>
-
-
-PS:下面的正文中对上述思维导图中的关键词和对应章节的英文原文链接，都进行了列出。因为图片中的文字不方便搜索的原因，正文可以作为一个文字版的索引，方便后续通过此文，对《GPU Gems 3》一书的内容进行检索与对应章节的深入阅读与研究。
+另外值得注意的几点是：
+- 《GPU Gems 3》出版于2007年8月12日，全书共1008页，41章。
+- 《GPU Gems 3》的英文原版已经由NVIDIA开源： https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html
+- 本文对《GPU Gems 3》全书渲染相关的前28章进行了盘点、提炼与总结。
+- 本文正文可以作为一个文字版的索引，方便后续通过此文，对《GPU Gems 3》一书的内容进行快速分类检索与对应章节的深入阅读与研究。
 
 
 OK，下面开始正文。
@@ -213,7 +138,7 @@ OK，下面开始正文。
 # 第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 程序化地形（Procedural Terrains）
 
@@ -223,7 +148,7 @@ OK，下面开始正文。
 
 - 地形生成（Terrain Generation）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 作为《GPU精粹3》的开篇章节，这章给出了一个使用GPU在交互速率下生成复杂程序化三维地形的方法。同样也展示了如何对地形进行纹理映射和着色、如何为地形创建LOD的方案。
 
@@ -297,7 +222,7 @@ OK,回到本章内容中来。
 
 # 第2章 群体动画渲染（Animated Crowd Rendering）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 群体动画渲染（Animated Crowd Rendering）
 
@@ -307,7 +232,7 @@ OK,回到本章内容中来。
 
 - Draw Call降低（Reduce Draw Call）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 使用实例化(instancing)方法，可以通过减少Draw Call、状态更改以及缓冲区更新的数量来减少CPU的开销。
 
@@ -315,7 +240,7 @@ OK,回到本章内容中来。
 
 ![](media/b65a446e2f584b24dbd2288fa7275c1b.jpg)
 
-图2-2动画人群的特写镜头
+图 动画人群的特写镜头
 
 ![](media/823c6c824b0968fb51379630e44a3893.jpg)
 
@@ -342,7 +267,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第3章 DirectX 10 中的混合形状（DirectX 10 Blend Shapes: Breaking the Limits）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 混合形状（blend shapes）
 
@@ -350,7 +275,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 - 缓冲区-模板方法（Buffer-Template Method）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 本章中，作者展示了流输出方法（Stream-Out Method）和缓冲区-模板方法（Buffer-Template Method）两种方法，来突破之前基于GPU加速的混合形状的应用限制。
 
@@ -387,7 +312,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第4章 下一代SpeedTree 渲染（Next-Generation SpeedTree Rendering）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - SpeedTree
 
@@ -399,7 +324,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 - 半透明覆盖算法（Alpha to Coverage）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 众所周知，SpeedTree是Interactive Data Visualization, Inc.(IDV)公司出品的用来实时渲染树木的中间件。
 
@@ -426,7 +351,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第5章 通用自适应网格细化（Generic Adaptive Mesh Refinement）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 自适应网格优化（Adaptive Mesh Refinement）
 
@@ -434,7 +359,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 - 深度标签（Depth-Tagging）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章给出了一个单通道的、具有普通适性的顶点程序，以对任意拓扑形状的网络进行动态的自适应优化。
 
@@ -466,7 +391,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第6章 对于树的GPU 生成程序式风动画（GPU-Generated Procedural Wind Animations for Trees）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 程序式风动画（Procedural Wind Animations）
 
@@ -477,7 +402,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 - 风场（Wind Field）
 
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章描述了一个程序式的方法，可以生成真实受风场影响的树木动画。该方法的主要目标是实现具有大量植被的大型开放环境的模拟和可视化。
 
@@ -485,7 +410,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 ![](media/ff0fabd6160adbe2889004b1386a8099.jpg)
 
-图6-1由三层节点深层结构表示的树结构
+图 由三层节点深层结构表示的树结构
 
 ![](media/c58040a2e1ba5707bbecb700d64f1049.jpg)
 
@@ -493,7 +418,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 ![](media/fdc4c89efa2af38eaef589eb11564d83.jpg)
 
-图6-7影响给定顶点的分支索引列表，其存储在顶点属性中
+图 影响给定顶点的分支索引列表，其存储在顶点属性中
 
 ![](media/3e31023af5f26b3367453961604fec93.jpg)
 
@@ -501,7 +426,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 ![](media/e72a0763e0fe712f08b0954aebaea7ab.jpg)
 
-图6-10 DirectX 10下的GPU过程
+图  DirectX 10下的GPU管线
 
 本章英文原书全文传送门：
 
@@ -513,7 +438,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第7章 GPU 上基于点的变形球可视化（Point-Based Visualization of Metaballs on a GPU）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 元球/变形球（metaball）
 
@@ -526,10 +451,9 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 - 限制粒子（Constraining Particles）
 
 
-## 【本章内容盘点】
+## 【内容盘点】
 
-变形球（metaball），又常译作元球，是计算机图形学中的 n
-维物体。变形球渲染技术最初由 Jim Blinn 于1980年代初提出。
+变形球（metaball），又常译作元球，是计算机图形学中的 n维物体。变形球渲染技术最初由 Jim Blinn 于1980年代初提出。
 
 ![](media/70bfeadf5613b41733fcc2d7c79671fe.gif)
 
@@ -569,7 +493,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第8章 区域求和的差值阴影贴图（Summed-Area Variance Shadow Maps）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 差值阴影贴图（Variance Shadow Maps）
 
@@ -578,7 +502,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 - 百分比临近过滤（Percentage-Closer Filtering）
 
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章主要讨论了阴影贴图过滤和柔和阴影，回顾了差值阴影贴图算法，并解释了如何用它来解决很多常见的阴影贴图问题（如缩变锯齿、偏移及软阴影）。同时还介绍了一种简单且有效的技术，该技术能够显著减少差值阴影贴图（Variance Shadow Maps，VSM）中的light-bleeding失真。最后，文章介绍了一种基于差值阴影贴图（Variance Shadow Maps，VSM）和区域求和表（Summed-Area Tables,SAT）的实时阴影算法。
 
@@ -608,7 +532,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 # 第9章 使用全局光照交互电影级重光照（Interactive Cinematic Relighting with Global Illumination）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 全局光照（Global Illumination）
 
@@ -618,7 +542,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 - 压缩稀疏矩阵（Packing Sparse Matrix Data）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章中介绍了用于电影级光照设计的GPU重光照（Relighting）引擎。该方法对传统的帧缓存方法进行了扩展，支持多次反射的间接光照，可应用于具有高几何复杂性、光泽材质和使用程序化着色器所得到的灵活的直接光照模型的场景。
 
@@ -651,7 +575,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
     }
 
-![(media/a42c764024d783ef2c7980a86a47d28f.jpg)
+![](media/a42c764024d783ef2c7980a86a47d28f.jpg)
 
 图 该文中介绍的系统中使用点光源灯和聚光灯渲染的场景
 
@@ -665,7 +589,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 # 第10章 在可编程GPU 上实现并行分割阴影贴图（Parallel-Split Shadow Maps on Programmable GPUs）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 并行分割阴影贴图（Parallel-split shadow maps，PSSMs）
 
@@ -675,7 +599,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 - 几何着色器克隆(Geometry Shader Cloning)
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 本章提出了一种高级阴影贴图技术——“并行分割阴影贴图（Parallel-Split Shadow
 Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影效果，文章同样展示了在目前的可编程GPU中这种技术的实现细节，提供了多种实现方式。
@@ -700,9 +624,9 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 
 ![](media/2147135beacf619394059f486b27302f.jpg)
 
-图10-8 SSM和Multipass PSSM的比较
+图 SSM和Multipass PSSM的比较
 
-![(media/3e490b660bdd5988fea97956aadef8ae.jpg)
+![](media/3e490b660bdd5988fea97956aadef8ae.jpg)
 
 图 渲染阴影贴图基于几何着色器克隆(Geometry Shader Cloning)的GPU渲染管道
 
@@ -715,7 +639,7 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 # 第11章 基于层次化的遮挡剔除和几何着色器的高效鲁棒阴影体（Efficient and Robust Shadow Volumes Using Hierarchical Occlusion Culling and Geometry Shaders）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 阴影体（Shadow Volumes）
 
@@ -723,7 +647,7 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 
 - 几何着色器（Geometry Shaders）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章通过使用非常规的生成阴影几何体的方法，实现了一种非常鲁棒的阴影体渲染技术，该技术对于复杂的网格模型同样有效。通过结合层次硬件遮挡查询（hierarchical hardware occlusion）和几何着色器，文章同样在那些之前使用模板阴影效果不太好的场景中达到了很高的性能。该方法的实现主要包括，针对低质量网络的鲁棒阴影，使用几何体着色器动态生成阴影体，使用层次化遮挡裁剪提高性能，三个部分。
 
@@ -740,7 +664,7 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 # 第12章 高质量的环境光遮蔽（High-Quality Ambient Occlusion）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 环境光遮蔽（Ambient Occlusion）
 
@@ -748,7 +672,7 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 
 - 波形因子（form factor）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 Buuel在2005年提出了一种新技术来对环境光遮蔽进行近似，所采用的方法是将遮蔽整合到自适应对模型层次的遍历过程中。这种技术在模拟光滑变动的阴影方面效果很好，但对于输入模型，在高质量的应用方面不够鲁棒。
 
@@ -778,7 +702,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 # 第13章 后处理特效：体积光散射（Volumetric Light Scattering as a Post-Process）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 体积光散射（Volumetric Light Scattering）
 
@@ -788,7 +712,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 
 - 屏幕空间遮蔽（Screen-Space Occlusion）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 本章中提出了一种简单的后处理方法，该方法可以产生由于大气中阴影引起的体积光散射效果。我们对已有的日光散射（daylight scattering）的分析模型进行了改进，将体遮挡效果包含在内，并且给出了其在像素着色器中的实现方法。
 
@@ -816,7 +740,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 # 第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 皮肤渲染（Skin Rendering）
 
@@ -826,7 +750,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 
 - Bloom过滤器(Bloom Filter)
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章是《GPU Gems 3》中的核心章节，《GPU Gems 3》书的封面即是选取的本章的渲染效果图。自其问世以来，就成为了皮肤渲染领域经常会被参考到的文章，可谓皮肤渲染技术的集大成者，奠基之作。
 
@@ -840,7 +764,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 
 ![](media/19dcd9f74e4594c0b7245f6195649da3.jpg)
 
-图14-3多层皮肤模型
+图 多层皮肤模型
 
 散射理论（Scattering Theory）方面，文章首先讲到了扩散剖面（diffusion profile）的概念，然后是高斯和的扩散剖面（A Sum-of-Gaussians Diffusion Profile），以及适于皮肤的高斯和（A Sum-of-Gaussians Fit for Skin）。
 
@@ -863,7 +787,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 # 第15章 可播放的全方位动作捕捉（Playable Universal Capture）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 全方位捕捉（Universal Capture）
 
@@ -874,7 +798,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 - 数据捕捉（Data Acquisition）
 
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章讨论了一个全方位捕捉（Universal Capture）的实时实现方法，用于真实感人物角色的动作以及渲染，该方法从电影《黑客帝国》中改进而来。此方法基于对变动漫反射纹理贴图的PCA压缩以及GPU解压缩。而纹理贴图通过当时最先进的脸部特征捕捉系统得到。而结果已经通过测试并应用到高质量的实时原型系统，以及游戏开发中。
 
@@ -907,7 +831,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 # 第16章 Crysis 中植被的程序化动画和着色（Vegetation Procedural Animation and Shading in Crysis）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 植被过程化动画（Vegetation Procedural Animation）
 
@@ -917,7 +841,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 
 - Cry Engine 2
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章阐述了如何以高效且具有真实感的方法处理着色和程序化植被动画。主要介绍了《孤岛危机（Crysis）》中植被的渲染以及程序化动画如何实现（基于Cry
 ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现，因此将风力实现于非植被对象（如衣服和头发）也是有可能的；唯一不同之处在于这些情况下不需要使用主弯曲（main bending）。文中的方法实现了直升机、手雷爆炸、武器火力对植被、衣服和头发的影响，在这些实现中均使用了极为高效的方法。
@@ -926,11 +850,11 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ![](media/2ed083531c323762c004ac1b8aa26a2a.jpg)
 
-图 使用顶点色
+图 顶点色的使用
 
 ![](media/fc4ee42cabc30ea1a779581f66748ad4.jpg)
 
-图16-5次表面纹理贴图
+图 次表面纹理贴图
 
 ![](media/fcb126633f6feb29bea24bbef0495303.jpg)
 
@@ -963,7 +887,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 # 第17章 鲁棒的多镜面反射和折射（Robust Multiple Specular Reflections and Refractions）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 多镜面反射（Multiple Specular Reflections）
 
@@ -971,7 +895,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 - 层次化距离图（Layered Distance Maps）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 本章中，给出了一个鲁棒的算法来计算GPU中的单个和多个反射和折射。
 
@@ -1002,7 +926,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 # 第18章 用于浮雕映射的松散式锥形步进（Relaxed Cone Stepping for Relief Mapping）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 浮雕映射（Relief Mapping）
 
@@ -1010,7 +934,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 - 锥形步进映射(Cone step mapping ,CSM)
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 本章中，描述了一个用于逐片段的置换映射的新的光线场相交(ray-height-field intersection)策略，其结合了锥形步进映射和二分查找两者的优点。
 
@@ -1033,7 +957,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 # 第19章 《Tabula Rasa》中的延迟着色（Deferred Shading in Tabula Rasa）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 延迟着色（Deferred Shading）
 
@@ -1059,7 +983,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 - 动态分支（Dynamic Branching）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 ![](media/749a9e34be8332329d81d439f65fee99.jpg)
 
@@ -1099,7 +1023,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 # 第20章 基于GPU的重要性采样（GPU-Based Importance Sampling）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 渲染方程（Rendering Formulation）
 
@@ -1111,7 +1035,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 - mipmap
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 高动态范围（High-Dynamic-Range ,HDR），结合环境贴图预过滤技术（Environment map prefiltering techniques）（Kautz et al. 2000）结合其他使用小波（wavelets）(Wang et al. 2006)或球面调和函数（spherical harmonics）（Ramamoorthi and Hanrahan 2002）的频空间解决方案，提供了实时的可视化。然而，这种方式过于呆板，因为需要大量的预计算或繁多的代码用于光滑表面反射。
 
@@ -1123,7 +1047,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ![](media/423f8ea0cfc58187894b7c7e05319a54.jpg)
 
-图20-6过滤重要性采样示意图
+图 过滤重要性采样示意图
 
 ![](media/68a4cb059d731f61f985682bea1e6e39.jpg)
 
@@ -1131,7 +1055,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ![](media/c25fc13e5eb1353538bb1d3ce71f3f0f.jpg)
 
-图20-10空间变化的BRDF（Spatially Varying BRDF）设计器
+图 空间变化的BRDF（Spatially Varying BRDF）设计器
 
 本章英文原书全文传送门：
 
@@ -1146,7 +1070,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 # 第21章 真实Impostor（True Impostors）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - Billboard
 
@@ -1155,7 +1079,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 - 半透明impostor (Translucence impostor)
 
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章给出了 “真实impostor（ture imposters）”方法，这是一种向任意场景中加入大量简单模型而不需要渲染大量多边形的方法。这种方法使用了现代着色硬件来执行光线发射到已定义的纹理体积中，且表示非高度场表面数据的多深度层与四边形相关。
 
@@ -1163,7 +1087,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ![](media/1a3babb601de0a5191b2c6fd31067c5a.jpg)
 
-图21-1生成公告板
+图 生成公告板
 
 ![](media/0e4354357e59376128172ca07ef1682b.jpg)
 
@@ -1181,7 +1105,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ![](media/53db87caf0f3a5d9b698b1c9fc1ad2f1.jpg)
 
-图21-5扩展相交测试以支持半透明
+图 扩展相交测试以支持半透明
 
 本章英文原书全文传送门：
 
@@ -1193,13 +1117,13 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 # 第22章 在GPU上烘焙法线贴图（Baking Normal Maps on the GPU）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 法线贴图烘焙（Baking Normal Maps）
 
 - 均匀网格（Uniform Grid）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章分析了传统的基于光线投射的法线贴图投影技术如何在GPU上成功地实现，还阐述了一些其中普遍存在的问题，例如，内存限制和反走样。
 
@@ -1223,7 +1147,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 # 第23章 高速的离屏粒子（High-Speed, Off-Screen Particles）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 粒子系统（Particle System）
 
@@ -1231,7 +1155,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 - 深度降采样（Downsampling Depth）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 粒子效果在游戏中随处可见，大量粒子系统普遍用于烟、火、爆炸、沙尘、和雾。然而若这些粒子填满了屏幕，过度绘制（overdraw）可能几乎会达到无限，并且通常会导致帧速率问题。
 
@@ -1253,7 +1177,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 # 第24章 保持线性的重要性（The Importance of Being Linear）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 颜色空间（Color Space）
 
@@ -1263,7 +1187,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 - 伽马校正（Gamma Correction）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 这章讲到，OpenGL、DirectX以及任何我们书写的着色器，会将所有的纹理输入、光照/材质交互，以及输出当做线性（即、光照强度和，漫反射乘积）来执行数学运算。但假如我们的纹理输入是非线性的，并且用户使用了未校准及未修正的显示器来应用非线性颜色空间变换。而这样会导致各种形式的失真和不精确等问题（如mipmap过滤错误）以及一些粗糙错误（如及不正确的光照渐变）。而适当的gamma修正可能是最简单，花费最小，也是最广泛使用的技术。而为了让读者规避这些问题，文中给出了一系列的解决方法与建议。
 
@@ -1271,7 +1195,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 ![](media/174e23868c1f8f37d73e05979fa15f9b.jpg)
 
-图24-2 显示器的典型响应曲线
+图 显示器的典型响应曲线
 
 ![](media/ad342e76ca4a97a4a6ea2107e097e3a7.jpg)
 
@@ -1287,7 +1211,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 # 第25章 在GPU 上渲染矢量图（Rendering Vector Art on the GPU）
 
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 矢量（Vector）
 
@@ -1295,7 +1219,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 - 三次贝塞尔曲线（cubic Bezier curves）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 矢量（Vector）表示为指定形状的一种分辨率无关的方法，其具有任意大小，可以对内容进行显示而不需要细化（tessellation）以及没有采样失真的优点。
 
@@ -1304,7 +1228,7 @@ Splines）或三次贝塞尔曲线（cubic Bézier curves）。
 
 ![](media/e4e177c4bce95819ed6ea5a09f5042ea.jpg)
 
-图25-4所有参数立方平面曲线可归类为此三种曲线类型之一的某些段的参数化
+图 所有参数立方平面曲线可归类为此三种曲线类型之一的某些段的参数化
 
 ![](media/b82e124e533cdaaad40f56525a1ea69d.jpg)
 
@@ -1323,13 +1247,13 @@ Splines）或三次贝塞尔曲线（cubic Bézier curves）。
 
 # 第26章 通过颜色进行对象探测：使用 GPU 进行实时视频图像处理（Object Detection by Color: Using the GPU for Real-Time Video Image Processing）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 对象探测（Object Detection）
 
 - 图像处理（Image Processing）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 严格意义上并非游戏开发相关，略。
 
@@ -1342,13 +1266,13 @@ Splines）或三次贝塞尔曲线（cubic Bézier curves）。
 
 # 第27章 后处理效果：运动模糊（Motion Blur as a Post-Processing Effect）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 运动模糊（Motion Blur）
 
 - 后处理（Post-Processing Effect）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 在视频游戏中，模拟速度最好的方法之一便是使用运动模糊（Motion
 Blur）。这章中阐述了一种使用在深度缓存中的深度值来计算对象世界空间位置的以实现运动模糊的方法，该方法可以作为一个基础方法使用，并且可以很轻易地整合到游戏引擎中，同时提供了比传统的多路径方法更高的性能。
@@ -1377,13 +1301,13 @@ Blur）。这章中阐述了一种使用在深度缓存中的深度值来计算�
 
 # 第28章 实用景深后期处理（Practical Post-Process Depth of Field）
 
-## 【本章内容关键词】
+## 【关键词】
 
 - 景深（Depth of Field,DoF）
 
 - 后处理（Post-Processing Effect）
 
-## 【本章内容盘点】
+## 【内容盘点】
 
 景深（Depth of field，DOF），也叫焦点范围（focus range）或有效焦距范围（effective focus），是指场景中最近和最远的物体之间出现的可接受的清晰图像的距离。
 
