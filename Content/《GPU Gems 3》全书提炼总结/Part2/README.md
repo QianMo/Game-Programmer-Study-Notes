@@ -1,18 +1,27 @@
 ![](media/title.jpg)
 
-# 一篇文章带你读完《GPU精粹3》
+# 一篇文章带你读完《GPU Gems 3》
+
+本文的知乎专栏版本：
+https://zhuanlan.zhihu.com/p/44671434
+
 
 本文是【GPU精粹与Shader编程】系列的第七篇文章。文章盘点、提炼和总结了《GPU Gems 3》全书总计28章的核心内容。
 
-同时这篇文章，也是【GPU精粹与Shader编程】系列文章对GPU精粹三部曲中《GPU Gems》、《GPU Gems 2》、《GPU Gems 3》组成的第一部曲的完结篇。下篇文章，将开启全新的《GPU Pro》系列。
+同时这篇文章，也是【GPU精粹与Shader编程】系列文章对GPU精粹三部曲中《GPU Gems》、《GPU Gems 2》、《GPU Gems 3》组成的第一部曲的完结篇，是一个短暂的里程碑。
+
+下篇文章，将开启全新的《GPU Pro》系列。
+
+
+![](media/d51868713d19a9460a1f8171d3fa929f.jpg)
 
 <br>
 
  # 快捷导航目录
 <!-- TOC -->
 
-- [一篇文章带你读完《GPU精粹3》](#一篇文章带你读完gpu精粹3)
-- [《GPU Gems 3》全书核心框架脉络图谱](#gpu-gems-3全书核心框架脉络图谱)
+- [一篇文章带你读完《GPU Gems 3》](#一篇文章带你读完gpu-gems-3)
+- [《GPU Gems 3》全书核心框架脉络思维导图](#gpu-gems-3全书核心框架脉络思维导图)
 - [第一部分 几何体（Geometry）](#第一部分-几何体geometry)
 - [第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）](#第1章-使用gpu-生成复杂的程序化地形generating-complex-procedural-terrains-using-the-gpu)
     - [【关键词】](#关键词)
@@ -109,7 +118,7 @@
 <br>
 
 
-# 《GPU Gems 3》全书核心框架脉络图谱
+# 《GPU Gems 3》全书核心框架脉络思维导图
 
 
 以下是《GPU Gems 3》全书核心章节的思维导图：
@@ -1351,4 +1360,4 @@ Blur）。这章中阐述了一种使用在深度缓存中的深度值来计算�
 
 下篇文章，将开启全新的《GPU Pro》系列。
 
-各位，再会。
+再会。
