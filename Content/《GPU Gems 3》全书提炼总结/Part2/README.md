@@ -2,11 +2,9 @@
 
 # 一篇文章带你读完《GPU精粹3》
 
-本文是【GPU精粹与Shader编程】系列的第七篇文章。
+本文是【GPU精粹与Shader编程】系列的第七篇文章。文章盘点、提炼和总结了《GPU Gems 3》全书总计28章的核心内容。
 
-本文盘点、提炼和总结了《GPU Gems 3》全书图形学与渲染相关的总计28章的核心内容。而这篇文章，也是GPU精粹三部曲中《GPU Gems》、《GPU Gems 2》、《GPU Gems 3》组成的第一部曲的完结篇。
-
-下篇文章开始，将开启全新的《GPU Pro》系列。
+同时这篇文章，也是【GPU精粹与Shader编程】系列文章对GPU精粹三部曲中《GPU Gems》、《GPU Gems 2》、《GPU Gems 3》组成的第一部曲的完结篇。下篇文章，将开启全新的《GPU Pro》系列。
 
 <br>
 
@@ -1037,7 +1035,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 ## 【内容盘点】
 
-高动态范围（High-Dynamic-Range ,HDR），结合环境贴图预过滤技术（Environment map prefiltering techniques）（Kautz et al. 2000）结合其他使用小波（wavelets）(Wang et al. 2006)或球面调和函数（spherical harmonics）（Ramamoorthi and Hanrahan 2002）的频空间解决方案，提供了实时的可视化。然而，这种方式过于呆板，因为需要大量的预计算或繁多的代码用于光滑表面反射。
+高动态范围（High-Dynamic-Range ,HDR），结合环境贴图预过滤技术（Environment map prefiltering techniques）（Kautz et al. 2000），以及结合使用小波（wavelets）(Wang et al. 2006)或球面调和函数（spherical harmonics）（Ramamoorthi and Hanrahan 2002）的频空间解决方案，为实时渲染提供了可行的思路。然而，这种方式过于呆板，因为需要大量的预计算或繁多的代码用于光滑表面反射。
 
 这章给出了上述方案的一种替代技术——基于GPU的重要性采样（GPU-Based Importance Sampling），该技术基于蒙特卡罗积分对光滑对象使用基于图像的光照，采用该技术仅需要很少的预计算，并在单个GPU着色器中运算。因此合适于几乎所有需要实时动态改变材质或光照的管线。
 
