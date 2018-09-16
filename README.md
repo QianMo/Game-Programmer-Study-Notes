@@ -54,7 +54,7 @@ Keep Reading , Keep Writing , Keep Coding.
 - [《GPU Gems 2》全书提炼总结 · 下篇](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AGPU%20Gems%202%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part2/README.md) - 关于真实感水体渲染，以及真实感头发渲染、通用的折射模拟、改进的Perlin噪声等内容。
 - [《GPU Gems 3》: 真实感皮肤渲染技术总结](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AGPU%20Gems%203%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part1/README.md) - 对真实感皮肤渲染技术，进行了一个系统的总结和提炼。
 
-- [一篇文章带你读完《GPU Gems 3》](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AGPU%20Gems%203%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part2/README.md) - 盘点、提炼和总结了《GPU Gems 3》全书总计28章的核心内容。
+- [《GPU Gems 3》: 一篇文章带你读完《GPU Gems 3》](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AGPU%20Gems%203%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/Part2/README.md) - 盘点、提炼和总结了《GPU Gems 3》全书总计28章的核心内容。
 
 
 
