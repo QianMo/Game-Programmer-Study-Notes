@@ -15,6 +15,7 @@
 
 - [一篇文章带你读完《GPU精粹3》](#一篇文章带你读完gpu精粹3)
 - [《GPU Gems 3》全书核心框架脉络图谱](#gpu-gems-3全书核心框架脉络图谱)
+- [第一部分 几何体（Geometry）](#第一部分-几何体geometry)
 - [第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）](#第1章-使用gpu-生成复杂的程序化地形generating-complex-procedural-terrains-using-the-gpu)
     - [【本章内容关键词】](#本章内容关键词)
     - [【本章内容盘点】](#本章内容盘点)
@@ -36,7 +37,7 @@
 - [第7章 GPU 上基于点的变形球可视化（Point-Based Visualization of Metaballs on a GPU）](#第7章-gpu-上基于点的变形球可视化point-based-visualization-of-metaballs-on-a-gpu)
     - [【本章内容关键词】](#本章内容关键词-6)
     - [【本章内容盘点】](#本章内容盘点-6)
-- [第Ⅱ部分 光照和阴影（Light and Shadows）](#第ⅱ部分-光照和阴影light-and-shadows)
+- [第二部分 光照和阴影（Light and Shadows）](#第二部分-光照和阴影light-and-shadows)
 - [第8章 区域求和的差值阴影贴图（Summed-Area Variance Shadow Maps）](#第8章-区域求和的差值阴影贴图summed-area-variance-shadow-maps)
     - [【本章内容关键词】](#本章内容关键词-7)
     - [【本章内容盘点】](#本章内容盘点-7)
@@ -55,7 +56,7 @@
 - [第13章 后处理特效：体积光散射（Volumetric Light Scattering as a Post-Process）](#第13章-后处理特效体积光散射volumetric-light-scattering-as-a-post-process)
     - [【本章内容关键词】](#本章内容关键词-12)
     - [【本章内容盘点】](#本章内容盘点-12)
-- [第Ⅲ部分 渲染（Rendering）](#第ⅲ部分-渲染rendering)
+- [第三部分 渲染（Rendering）](#第三部分-渲染rendering)
 - [第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）](#第14章-用于真实感实时皮肤渲染的高级技术advanced-techniques-for-realistic-real-time-skin-rendering)
     - [【本章内容关键词】](#本章内容关键词-13)
     - [【本章内容盘点】](#本章内容盘点-13)
@@ -69,7 +70,7 @@
     - [【本章内容关键词】](#本章内容关键词-16)
     - [【本章内容盘点】](#本章内容盘点-16)
 - [第18章 用于浮雕映射的松散式锥形步进（Relaxed Cone Stepping for Relief Mapping）](#第18章-用于浮雕映射的松散式锥形步进relaxed-cone-stepping-for-relief-mapping)
-        - [【本章内容关键词】](#本章内容关键词-17)
+    - [【本章内容关键词】](#本章内容关键词-17)
     - [【本章内容盘点】](#本章内容盘点-17)
 - [第19章 《Tabula Rasa》中的延迟着色（Deferred Shading in Tabula Rasa）](#第19章-tabula-rasa中的延迟着色deferred-shading-in-tabula-rasa)
     - [【本章内容关键词】](#本章内容关键词-18)
@@ -77,7 +78,7 @@
 - [第20章 基于GPU的重要性采样（GPU-Based Importance Sampling）](#第20章-基于gpu的重要性采样gpu-based-importance-sampling)
     - [【本章内容关键词】](#本章内容关键词-19)
     - [【本章内容盘点】](#本章内容盘点-19)
-- [第Ⅳ部分 图像效果（Image Effects）](#第ⅳ部分-图像效果image-effects)
+- [第四部分 图像效果（Image Effects）](#第四部分-图像效果image-effects)
 - [第21章 真实Impostor（True Impostors）](#第21章-真实impostortrue-impostors)
     - [【本章内容关键词】](#本章内容关键词-20)
     - [【本章内容盘点】](#本章内容盘点-20)
@@ -105,9 +106,6 @@
 - [【GPU精粹三部曲】 Part I • 尾声](#gpu精粹三部曲-part-i-•-尾声)
 
 <!-- /TOC -->
-
-
-
 
 
 
@@ -183,7 +181,7 @@
 
 
 
-
+<br>
 
 
 # 《GPU Gems 3》全书核心框架脉络图谱
@@ -193,18 +191,22 @@
 
 ![](media/5a6050624c51597793f49889fa1a81ba.png)
 
-另外值得注意的是，《GPU Gems 3》出版于2007年8月12日，全书共1008页，41章，而本文对其中渲染相关的前28章进行了盘点、提炼与总结。这本书的英文原版已经由NVIDIA开源：
+另外值得注意的是，《GPU Gems 3》出版于2007年8月12日，全书共1008页，共41章。而本文对其中渲染相关的前28章进行了盘点、提炼与总结。
 
+这本书的英文原版已经由NVIDIA开源：
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_pref01.html>
 
 
-另外，下面的正文中对上述思维导图中的关键词和对应章节的英文原文链接，都进行了列出。因为图片中的文字不方便搜索的原因，正文可以作为一个文字版的索引，方便后续通过此文，对《GPU Gems 3》一书的内容进行检索与对应章节的深入阅读与研究。
+PS:下面的正文中对上述思维导图中的关键词和对应章节的英文原文链接，都进行了列出。因为图片中的文字不方便搜索的原因，正文可以作为一个文字版的索引，方便后续通过此文，对《GPU Gems 3》一书的内容进行检索与对应章节的深入阅读与研究。
 
 
 OK，下面开始正文。
 
-第一部分 几何体（Geometry）
-==========================
+<br>
+
+# 第一部分 几何体（Geometry）
+
+<br>
 
 # 第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）
 
@@ -252,8 +254,7 @@ OK，下面开始正文。
 
 ![](media/0c59fca2969cd395b282c51d43a4b557.jpg)
 
-图 《幽灵行动：荒野》的 32k x 32k x 4
-layer的程序化地形大世界，让其成为了育碧至今地形最大的开放世界游戏
+图 《幽灵行动：荒野》的 32k x 32k x 4 layer的程序化地形大世界，让其成为了育碧至今地形最大的开放世界游戏
 
 ![](media/2c82f47e3a48ad616d658a3963669831.jpg)
 
@@ -290,6 +291,7 @@ OK,回到本章内容中来。
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch01.html>
 
 
+<br>
 
 # 第2章 群体动画渲染（Animated Crowd Rendering）
 
@@ -332,6 +334,8 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch02.html>
 
+
+<br>
 
 # 第3章 DirectX 10 中的混合形状（DirectX 10 Blend Shapes: Breaking the Limits）
 
@@ -376,6 +380,8 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch03.html>
 
 
+<br>
+
 # 第4章 下一代SpeedTree 渲染（Next-Generation SpeedTree Rendering）
 
 
@@ -413,7 +419,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch04.html>
 
-
+<br>
 
 # 第5章 通用自适应网格细化（Generic Adaptive Mesh Refinement）
 
@@ -453,6 +459,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch05.html>
 
+<br>
 
 # 第6章 对于树的GPU 生成程序式风动画（GPU-Generated Procedural Wind Animations for Trees）
 
@@ -499,6 +506,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch06.html>
 
 
+<br>
 
 # 第7章 GPU 上基于点的变形球可视化（Point-Based Visualization of Metaballs on a GPU）
 
@@ -550,9 +558,11 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch07.html>
 
+<br>
 
-# 第Ⅱ部分 光照和阴影（Light and Shadows）
+# 第二部分 光照和阴影（Light and Shadows）
 
+<br>
 
 # 第8章 区域求和的差值阴影贴图（Summed-Area Variance Shadow Maps）
 
@@ -592,6 +602,7 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch08.html>
 
+<br>
 
 # 第9章 使用全局光照交互电影级重光照（Interactive Cinematic Relighting with Global Illumination）
 
@@ -647,6 +658,8 @@ instancing）这项技术适用于实时地渲染数量庞大且彼此独立的�
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch09.html>
 
 
+<br>
+
 # 第10章 在可编程GPU 上实现并行分割阴影贴图（Parallel-Split Shadow Maps on Programmable GPUs）
 
 
@@ -695,6 +708,8 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch10.html>
 
+<br>
+
 # 第11章 基于层次化的遮挡剔除和几何着色器的高效鲁棒阴影体（Efficient and Robust Shadow Volumes Using Hierarchical Occlusion Culling and Geometry Shaders）
 
 
@@ -718,6 +733,7 @@ Maps，PSSMs）”，可以在大型环境中提供抗锯齿和实时的光影�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch11.html>
 
+<br>
 
 # 第12章 高质量的环境光遮蔽（High-Quality Ambient Occlusion）
 
@@ -755,6 +771,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch12.html>
 
+<br>
 
 # 第13章 后处理特效：体积光散射（Volumetric Light Scattering as a Post-Process）
 
@@ -788,10 +805,13 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch13.html>
 
 
-# 第Ⅲ部分 渲染（Rendering）
+<br>
 
+# 第三部分 渲染（Rendering）
 
-#第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）
+<br>
+
+# 第14章 用于真实感实时皮肤渲染的高级技术（Advanced Techniques for Realistic Real-Time Skin Rendering）
 
 
 ## 【本章内容关键词】
@@ -836,6 +856,8 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch14.html>
 
 
+<br>
+
 # 第15章 可播放的全方位动作捕捉（Playable Universal Capture）
 
 
@@ -848,6 +870,7 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 - 主成分分析（Principal Component Analysis， PCA）
 
 - 数据捕捉（Data Acquisition）
+
 
 ## 【本章内容盘点】
 
@@ -876,6 +899,8 @@ normals）的新算法；右下：应用于光滑着色法线的新算法】
 本章英文原书全文传送门：
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch15.html>
+
+<br>
 
 # 第16章 Crysis 中植被的程序化动画和着色（Vegetation Procedural Animation and Shading in Crysis）
 
@@ -932,17 +957,17 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch16.html>
 
 
+<br>
+
 # 第17章 鲁棒的多镜面反射和折射（Robust Multiple Specular Reflections and Refractions）
 
 ## 【本章内容关键词】
 
-多镜面反射（Multiple Specular Reflections）
+- 多镜面反射（Multiple Specular Reflections）
 
-多折射（Multiple Refractions）
+- 多折射（Multiple Refractions）
 
-次要光线追踪（Tracing Secondary Rays）
-
-层次化距离图（Layered Distance Maps）
+- 层次化距离图（Layered Distance Maps）
 
 ## 【本章内容盘点】
 
@@ -971,11 +996,11 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch17.html>
 
-
+<br>
 
 # 第18章 用于浮雕映射的松散式锥形步进（Relaxed Cone Stepping for Relief Mapping）
 
-### 【本章内容关键词】
+## 【本章内容关键词】
 
 - 浮雕映射（Relief Mapping）
 
@@ -1000,6 +1025,8 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 本章英文原书全文传送门：
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch18.html>
+
+<br>
 
 
 # 第19章 《Tabula Rasa》中的延迟着色（Deferred Shading in Tabula Rasa）
@@ -1065,6 +1092,8 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch19.html>
 
 
+<br>
+
 # 第20章 基于GPU的重要性采样（GPU-Based Importance Sampling）
 
 
@@ -1106,11 +1135,14 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch20.html>
 
-# 第Ⅳ部分 图像效果（Image Effects）
 
+<br>
+
+# 第四部分 图像效果（Image Effects）
+
+<br>
 
 # 第21章 真实Impostor（True Impostors）
-
 
 ## 【本章内容关键词】
 
@@ -1119,6 +1151,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 - impostor
 
 - 半透明impostor (Translucence impostor)
+
 
 ## 【本章内容盘点】
 
@@ -1153,6 +1186,7 @@ ENGINE 2）。本章中给出的程序化动画技术使用普通的方式实现
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch21.html>
 
 
+<br>
 
 # 第22章 在GPU上烘焙法线贴图（Baking Normal Maps on the GPU）
 
@@ -1182,6 +1216,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch22.html>
 
+<br>
 
 # 第23章 高速的离屏粒子（High-Speed, Off-Screen Particles）
 
@@ -1211,6 +1246,7 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch23.html>
 
+<br>
 
 # 第24章 保持线性的重要性（The Importance of Being Linear）
 
@@ -1243,6 +1279,8 @@ mapping）。而使用更加复杂的着色器，还可以生成局部环境光�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch24.html>
 
+
+<br>
 
 # 第25章 在GPU 上渲染矢量图（Rendering Vector Art on the GPU）
 
@@ -1279,6 +1317,7 @@ Splines）或三次贝塞尔曲线（cubic Bézier curves）。
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch25.html>
 
+<br>
 
 # 第26章 通过颜色进行对象探测：使用 GPU 进行实时视频图像处理（Object Detection by Color: Using the GPU for Real-Time Video Image Processing）
 
@@ -1297,13 +1336,15 @@ Splines）或三次贝塞尔曲线（cubic Bézier curves）。
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch26.html>
 
 
+<br>
+
 # 第27章 后处理效果：运动模糊（Motion Blur as a Post-Processing Effect）
 
 ## 【本章内容关键词】
 
-运动模糊（Motion Blur）
+- 运动模糊（Motion Blur）
 
-后处理（Post-Processing Effect）
+- 后处理（Post-Processing Effect）
 
 ## 【本章内容盘点】
 
@@ -1330,6 +1371,7 @@ Blur）。这章中阐述了一种使用在深度缓存中的深度值来计算�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch27.html>
 
+<br>
 
 # 第28章 实用景深后期处理（Practical Post-Process Depth of Field）
 
@@ -1372,7 +1414,7 @@ Blur）。这章中阐述了一种使用在深度缓存中的深度值来计算�
 
 <https://developer.nvidia.com/gpugems/GPUGems3/gpugems3_ch28.html>
 
-
+<br>
 
 # 【GPU精粹三部曲】 Part I • 尾声
 
