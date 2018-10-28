@@ -18,7 +18,7 @@
 - [《GPU Pro 1》书本配套源代码](#gpu-pro-1书本配套源代码)
 - [Part I. 游戏渲染技术剖析 Game Postmortems](#part-i-游戏渲染技术剖析-game-postmortems)
     - [一、《孢子（Spore）》中的风格化渲染 | Stylized Rendering in Spore](#一孢子spore中的风格化渲染--stylized-rendering-in-spore)
-        - [1.1 后处理滤波链系统的实现要点](#11-后处理滤波链系统的实现要点)
+        - [1.1 后处理过滤链系统的实现要点](#11-后处理过滤链系统的实现要点)
             - [1.1.1 动态参数（Dynamic parameters）](#111-动态参数dynamic-parameters)
             - [1.1.2 自定义过滤器（Custom filters）](#112-自定义过滤器custom-filters)
         - [1.2 五种屏幕后处理Shader的实现思路](#12-五种屏幕后处理shader的实现思路)
@@ -146,14 +146,14 @@
 
 <br>
 
-### 1.1 后处理滤波链系统的实现要点
+### 1.1 后处理过滤链系统的实现要点
 
 
 过滤链系统实现的方面，分为两个要点：
 
 -   动态参数（Dynamic parameters）
 
--   自定义滤波器（Custom filters）
+-   自定义过滤器（Custom filters）
 
 #### 1.1.1 动态参数（Dynamic parameters）
 
@@ -914,6 +914,9 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 图 轮廓渲染算法的运行效果图，轮廓剪影的实时生成和纹理化。
 
+完整的实现Shader源码可见：
+<https://github.com/QianMo/GPU-Pro-Books-Source-Code/blob/master/GPU-Pro-1/03_Rendering%20Techniques/02_NPReffectsusingtheGeometryShader/NPRGS/NPRGS/Silhouette.fx>
+
 
 ### 6.2 铅笔素描渲染（Pencil Rendering）
 
@@ -1031,6 +1034,10 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 ![](media/007e69cbd0da96706c4a163a201f3c44.png)
 
 图 铅笔渲染效果图
+
+完整的实现Shader源码可见：
+<https://github.com/QianMo/GPU-Pro-Books-Source-Code/blob/master/GPU-Pro-1/03_Rendering%20Techniques/02_NPReffectsusingtheGeometryShader/NPRGS/NPRGS/Pencil.fx>
+
 
 <br>
 
@@ -1741,7 +1748,7 @@ Kuwahara滤波器背后的一般思想是将滤波器内核分成四个重叠一
 
 -   首先，渲染云密度（cloud density）为离屏渲染目标（RT），且云密度是可以由艺术家绘制的标量值。
 
--   接着，对密度贴图（density map）进行模糊处理。
+-  其次，对密度贴图（density map）进行模糊处理。
 
 -   最终，使用模糊的密度贴图来渲染具有散射外观的云层。
 
