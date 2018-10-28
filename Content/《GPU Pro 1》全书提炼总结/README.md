@@ -1,5 +1,6 @@
 ![](media/0e0a560374de76f36e936236ba36e879.jpg)
 
+# 《GPU Pro 1》全书核心内容提炼总结
 
 本文的知乎专栏版本：
 https://zhuanlan.zhihu.com/p/47866903
@@ -18,6 +19,7 @@ https://zhuanlan.zhihu.com/p/47866903
 
 <!-- TOC -->
 
+- [《GPU Pro 1》全书核心内容提炼总结](#gpu-pro-1全书核心内容提炼总结)
 - [全文快捷导航目录](#全文快捷导航目录)
 - [《GPU Pro 1》其书](#gpu-pro-1其书)
 - [《GPU Pro 1》书本配套源代码](#gpu-pro-1书本配套源代码)
