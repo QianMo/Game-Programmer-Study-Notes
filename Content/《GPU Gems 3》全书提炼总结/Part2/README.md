@@ -1,6 +1,6 @@
 ![](media/title.jpg)
-
-# 一篇文章带你读完《GPU Gems 3》
+1
+# 《GPU Gems 3》全书核心内容提炼总结
 
 本文的知乎专栏版本：
 https://zhuanlan.zhihu.com/p/44671434
@@ -20,7 +20,7 @@ https://zhuanlan.zhihu.com/p/44671434
  # 快捷导航目录
 <!-- TOC -->
 
-- [一篇文章带你读完《GPU Gems 3》](#一篇文章带你读完gpu-gems-3)
+- [《GPU Gems 3》全书核心内容提炼总结](#gpu-gems-3全书核心内容提炼总结)
 - [《GPU Gems 3》全书核心框架脉络思维导图](#gpu-gems-3全书核心框架脉络思维导图)
 - [第一部分 几何体（Geometry）](#第一部分-几何体geometry)
 - [第1章 使用GPU 生成复杂的程序化地形（Generating Complex Procedural Terrains Using the GPU）](#第1章-使用gpu-生成复杂的程序化地形generating-complex-procedural-terrains-using-the-gpu)
