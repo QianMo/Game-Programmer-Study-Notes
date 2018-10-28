@@ -228,8 +228,8 @@ Filter），首先渲染画笔描边的法线贴图，用于对传入的场景�
 
     # Water Color Smoothing
     # kScaleX = 0.5, kScaleY = 0.5
-    # offsetX1 = 1.5 \* kScaleX offsetY1 = 1.5 \* kScaleX
-    # offsetX2 = 0.5 \* kScaleX offsetY2 = 0.5 \* kScaleY
+    # offsetX1 = 1.5 * kScaleX offsetY1 = 1.5 * kScaleX
+    # offsetX2 = 0.5 * kScaleX offsetY2 = 0.5 * kScaleY
 
     # Get the taps
     tap0 = tex2D (sceneTex , uv + float2 (-offsetX1 ,-offsetY1 ));
@@ -260,7 +260,7 @@ Filter），首先渲染画笔描边的法线贴图，用于对传入的场景�
     # 8 Bit Filter
     # kNumBits : values between 8 and 20 look good
     half4 source = tex2D (sourceTex , fragIn .uv0 );
-    OUT .color .rgb = round (source .rgb \* kNumBits) / kNumBits ;
+    OUT .color .rgb = round (source .rgb * kNumBits) / kNumBits ;
 
 #### 1.2.4 黑色电影后处理效果 Film Noir Filter
 
