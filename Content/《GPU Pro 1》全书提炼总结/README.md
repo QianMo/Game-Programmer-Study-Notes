@@ -4,65 +4,85 @@
 
 题图来自《荒野大镖客 救赎2》。
 
+
 <br>
 
-# 全文内容总览
+# 全文快捷导航目录
 
 本文将对《GPU Pro 1》全书中游戏开发与渲染相关，相对更具含金量的5个部分，共22章的内容进行提炼与总结，详细列举如下：
 
--   Part I. 游戏渲染技术剖析 Game Postmortems
+<!-- TOC -->
 
-    -   一、《孢子（Spore）》中的风格化渲染 | Stylized Rendering in Spore
+- [全文快捷导航目录](#全文快捷导航目录)
+- [《GPU Pro 1》其书](#gpu-pro-1其书)
+- [《GPU Pro 1》书本配套源代码](#gpu-pro-1书本配套源代码)
+- [Part I. 游戏渲染技术剖析 Game Postmortems](#part-i-游戏渲染技术剖析-game-postmortems)
+    - [一、《孢子（Spore）》中的风格化渲染 | Stylized Rendering in Spore](#一孢子spore中的风格化渲染--stylized-rendering-in-spore)
+        - [1.1 后处理滤波链系统的实现要点](#11-后处理滤波链系统的实现要点)
+            - [1.1.1 动态参数（Dynamic parameters）](#111-动态参数dynamic-parameters)
+            - [1.1.2 自定义过滤器（Custom filters）](#112-自定义过滤器custom-filters)
+        - [1.2 五种屏幕后处理Shader的实现思路](#12-五种屏幕后处理shader的实现思路)
+            - [1.2.1 油画后处理效果 Oil Paint Filter](#121-油画后处理效果-oil-paint-filter)
+            - [1.2.2 水彩画后处理效果 Watercolor Filter](#122-水彩画后处理效果-watercolor-filter)
+            - [1.2.3 8位后处理效果 8-Bit Filter](#123-8位后处理效果-8-bit-filter)
+            - [1.2.4 黑色电影后处理效果 Film Noir Filter](#124-黑色电影后处理效果-film-noir-filter)
+            - [1.2.5 旧电影后处理效果 Old Film Filter](#125-旧电影后处理效果-old-film-filter)
+    - [二、《狂野西部：生死同盟》中的渲染技术 | Rendering Techniques in Call of Juarez: Bound in Blood](#二狂野西部生死同盟中的渲染技术--rendering-techniques-in-call-of-juarez-bound-in-blood)
+    - [三、《正当防卫2》中的大世界制作经验与教训 | Making it Large, Beautiful, Fast,and Consistent: Lessons Learned](#三正当防卫2中的大世界制作经验与教训--making-it-large-beautiful-fastand-consistent-lessons-learned)
+        - [3.1 光照索引 Light indexing](#31-光照索引-light-indexing)
+        - [3.2 阴影系统 Shadowing System](#32-阴影系统-shadowing-system)
+        - [3.3 环境光遮蔽 Ambient Occlusion](#33-环境光遮蔽-ambient-occlusion)
+        - [3.4 其他内容](#34-其他内容)
+    - [四、《矿工战争》中的可破坏体积地形 | Destructible Volumetric Terrain](#四矿工战争中的可破坏体积地形--destructible-volumetric-terrain)
+- [Part II. 渲染技术 Rendering Techniques](#part-ii-渲染技术-rendering-techniques)
+    - [五、基于高度混合的四叉树位移贴图 | Quadtree Displacement Mapping with Height Blending](#五基于高度混合的四叉树位移贴图--quadtree-displacement-mapping-with-height-blending)
+        - [5.1 核心实现Shader代码](#51-核心实现shader代码)
+    - [六、使用几何着色器的NPR效果 | NPR Effects Using the Geometry Shader](#六使用几何着色器的npr效果--npr-effects-using-the-geometry-shader)
+        - [6.1 轮廓渲染（Silhouette Rendering）](#61-轮廓渲染silhouette-rendering)
+        - [6.2 铅笔素描渲染（Pencil Rendering）](#62-铅笔素描渲染pencil-rendering)
+    - [七、后处理Alpha混合 | Alpha Blending as a Post-Process](#七后处理alpha混合--alpha-blending-as-a-post-process)
+        - [7.1 核心实现Shader代码](#71-核心实现shader代码)
+    - [八、虚拟纹理映射简介 | Virtual Texture Mapping 101](#八虚拟纹理映射简介--virtual-texture-mapping-101)
+    - [8.1 核心实现Shader代码](#81-核心实现shader代码)
+        - [8.1.1 MIP 贴图计算的Shader实现 | MIP Map Calculation](#811-mip-贴图计算的shader实现--mip-map-calculation)
+            - [8.1.2 图块ID 的Shader实现 | Tile ID Shader](#812-图块id-的shader实现--tile-id-shader)
+            - [8.1.3 虚拟纹理查找的Shader实现 | Virtual Texture Lookup](#813-虚拟纹理查找的shader实现--virtual-texture-lookup)
+- [Part III、全局光照 Global Illumination](#part-iii全局光照-global-illumination)
+    - [九、基于间接光照的快速，基于模板的多分辨率泼溅 Fast, Stencil-Based Multiresolution Splatting for Indirect Illumination](#九基于间接光照的快速基于模板的多分辨率泼溅-fast-stencil-based-multiresolution-splatting-for-indirect-illumination)
+        - [9.1 实现思路小结](#91-实现思路小结)
+            - [9.1.1 多分辨率泼溅的实现思路 | Multiresolution Splatting Implement](#911-多分辨率泼溅的实现思路--multiresolution-splatting-implement)
+            - [9.1.2 设置可接受模糊 | Setting acceptable blur](#912-设置可接受模糊--setting-acceptable-blur)
+            - [9.1.3 从虚拟点光源收集光照进行泼溅 | Gathering illumination from VPLs for splatting](#913-从虚拟点光源收集光照进行泼溅--gathering-illumination-from-vpls-for-splatting)
+            - [9.1.4 降采样多分辨率照明缓存 | Unsampling the multiresolution illumination buffer.](#914-降采样多分辨率照明缓存--unsampling-the-multiresolution-illumination-buffer)
+            - [9.1.5 并行泼溅求精 | Parallel splat refinement](#915-并行泼溅求精--parallel-splat-refinement)
+            - [9.1.6 最终基于模板的多分辨率泼溅算法](#916-最终基于模板的多分辨率泼溅算法)
+    - [十、屏幕空间定向环境光遮蔽 Screen-Space Directional Occlusion （SSDO）](#十屏幕空间定向环境光遮蔽-screen-space-directional-occlusion-ssdo)
+        - [10.1 核心实现Shader代码](#101-核心实现shader代码)
+            - [10.1.1 屏幕空间定向环境光遮蔽SSDO 的Shader源码](#1011-屏幕空间定向环境光遮蔽ssdo-的shader源码)
+            - [10.1.2 SSDO间接光计算Shader实现代码](#1012-ssdo间接光计算shader实现代码)
+    - [十一、基于几何替代物技术的实时多级光线追踪 | Real-Time Multi-Bounce Ray-Tracing with Geometry Impostors](#十一基于几何替代物技术的实时多级光线追踪--real-time-multi-bounce-ray-tracing-with-geometry-impostors)
+- [Part IV. 图像空间 Image Space](#part-iv-图像空间-image-space)
+    - [十二、 GPU上的各项异性的Kuwahara滤波 | Anisotropic Kuwahara Filtering on the GPU](#十二-gpu上的各项异性的kuwahara滤波--anisotropic-kuwahara-filtering-on-the-gpu)
+        - [12.1 Kuwahara滤波器（Kuwahara Filtering）](#121-kuwahara滤波器kuwahara-filtering)
+        - [12.2 广义Kuwahara滤波器（Generalized Kuwahara Filtering）](#122-广义kuwahara滤波器generalized-kuwahara-filtering)
+        - [12.3 各向异性Kuwahara滤波器（Anisotropic Kuwahara Filtering）](#123-各向异性kuwahara滤波器anisotropic-kuwahara-filtering)
+    - [十三、基于后处理的边缘抗锯齿 | Edge Anti-aliasing by Post-Processing](#十三基于后处理的边缘抗锯齿--edge-anti-aliasing-by-post-processing)
+    - [十四、基于Floyd-Steinberg半色调的环境映射 | Environment Mapping with Floyd-Steinberg Halftoning](#十四基于floyd-steinberg半色调的环境映射--environment-mapping-with-floyd-steinberg-halftoning)
+        - [14.1 核心实现Shader代码](#141-核心实现shader代码)
+    - [十五、用于粒状遮挡剔除的分层项缓冲 | Hierarchical Item Buffers for Granular Occlusion Culling](#十五用于粒状遮挡剔除的分层项缓冲--hierarchical-item-buffers-for-granular-occlusion-culling)
+    - [十六、后期制作中的真实景深 | Realistic Depth of Field in Postproduction](#十六后期制作中的真实景深--realistic-depth-of-field-in-postproduction)
+    - [十七、实时屏幕空间的云层光照 | Real-Time Screen Space Cloud Lighting](#十七实时屏幕空间的云层光照--real-time-screen-space-cloud-lighting)
+        - [17.1 实现方案](#171-实现方案)
+        - [17.2 核心实现Shader代码](#172-核心实现shader代码)
+    - [十八、屏幕空间次表面散射 | Screen-Space Subsurface Scattering](#十八屏幕空间次表面散射--screen-space-subsurface-scattering)
+        - [18.1 核心实现Shader代码](#181-核心实现shader代码)
+- [Part V. 阴影 Shadows](#part-v-阴影-shadows)
+    - [十九、快速传统阴影滤波 | Fast Conventional Shadow Filtering](#十九快速传统阴影滤波--fast-conventional-shadow-filtering)
+    - [二十、混合最小/最大基于平面的阴影贴图 | Hybrid Min/Max Plane-Based Shadow Maps](#二十混合最小最大基于平面的阴影贴图--hybrid-minmax-plane-based-shadow-maps)
+    - [二十一、基于四面体映射实现全向光阴影映射 | Shadow Mapping for Omnidirectional Light Using Tetrahedron Mapping](#二十一基于四面体映射实现全向光阴影映射--shadow-mapping-for-omnidirectional-light-using-tetrahedron-mapping)
+    - [二十二、屏幕空间软阴影 | Screen Space Soft Shadows](#二十二屏幕空间软阴影--screen-space-soft-shadows)
 
-    -   二、《狂野西部：生死同盟》中的渲染技术 | Rendering Techniques in Call of Juarez: Bound in Blood
-
-    -   三、《正当防卫2》中的大世界制作经验与教训 | Making it Large, Beautiful, Fast, and Consistent: Lessons Learned
-
-    -   四、《矿工战争》中的可破坏体积地形 | Destructible Volumetric Terrain
-
--   Part II. 渲染技术 Rendering Techniques
-
-    -   五、基于高度混合的四叉树位移贴图 | Quadtree Displacement Mapping with Height Blending
-
-    -   六、使用几何着色器的NPR效果 | NPR Effects Using the Geometry Shader
-
-    -   七、后处理Alpha混合 | Alpha Blending as a Post-Process
-
-    -   八、虚拟纹理映射简介 | Virtual Texture Mapping 101
-
--   Part III. 全局光照 Global Illumination
-
-    -   九、基于间接光照快速，基于模板的多分辨率泼溅 Fast, Stencil-Based Multiresolution Splatting for Indirect Illumination
-
-    -   十、屏幕空间定向环境光遮蔽 Screen-Space Directional Occlusion （SSDO）
-
-    -   十一、基于几何替代物技术的实时多级光线追踪 | Real-Time Multi-Bounce Ray-Tracing with Geometry Impostors
-
--   Part IV. 图像空间 Image Space
-
-    -   十二、GPU上各项异性的Kuwahara滤波 | Anisotropic Kuwahara Filtering on the GPU
-
-    -   十三、基于后处理的边缘抗锯齿 | Edge Anti-aliasing by Post-Processing
-
-    -   十四、基于Floyd-Steinberg 半色调的环境映射 | Environment Mapping with Floyd-Steinberg Halftoning
-
-    -   十五、用于粒状遮挡剔除的分层项缓冲 | Hierarchical Item Buffers for Granular Occlusion Culling
-
-    -   十六、后期制作中的真实景深 | Realistic Depth of Field in Postproduction
-
-    -   十七、实时屏幕空间的云层光照 | Real-Time Screen Space Cloud Lighting
-
-    -   十八、屏幕空间次表面散射 | Screen-Space Subsurface Scattering
-
--   Part V. 阴影 Shadows
-
-    -   十九、快速传统阴影滤波 | Fast Conventional Shadow Filtering
-
-    -   二十、混合最小/最大基于平面的阴影贴图 | Hybrid Min/Max Plane-Based Shadow Maps
-
-    -   二十一、基于四面体映射实现全向光阴影映射 | Shadow Mapping for Omnidirectional Light Using Tetrahedron Mapping
-
-    -   二十二、屏幕空间软阴影 | Screen Space Soft Shadows
+<!-- /TOC -->
 
 <br>
 
@@ -365,7 +385,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 对于多动态光源的渲染，《正当防卫2》没有使用延迟渲染，而是提出了一种称作光源索引（Light indexing）的方案，该方案可以使用前向渲染渲染大量动态光源，而无需多个pass，或增加draw calls。
 
-### 2.1 光照索引 Light indexing
+### 3.1 光照索引 Light indexing
 
 光照索引（Light indexing）技术的核心思路是：通过RGBA8格式128 x 128的索引纹理将光照信息提供给着色器。
 
@@ -391,7 +411,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 <br>
 
-### 2.2 阴影系统 Shadowing System
+### 3.2 阴影系统 Shadowing System
 
 阴影方面，《正当防卫2》中采用级联阴影映射（cascaded shadow mapping）。并对高性能PC提供软阴影（Soft shadows）选项。虽然在任何情况下都不是物理上的准确，但算法确实会产生真正的软阴影，而不仅仅是在许多游戏中使用的恒定半径模糊阴影。
 
@@ -443,7 +463,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
     }
 
 
-### 2.3 环境光遮蔽 Ambient Occlusion
+### 3.3 环境光遮蔽 Ambient Occlusion
 
 对于环境遮挡（AO），使用了三种不同的技术：
 
@@ -452,7 +472,9 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 -   SSAO [Kajalin 09]
 
 
-其中，美术师生成的环境光遮蔽用于静态模型，由材质属性纹理中的AO通道组成。此外，美术师有时会在关键点放置环境遮挡几何。对于动态对象，我们使用遮挡体（OcclusionVolumes）在底层几何体上投射遮挡阴影，主要是角色和车辆下的地面。而SSAO是PC版本的可选设置，里面使用了一种从深度缓冲导出切线空间的方案。
+其中，美术师生成的环境光遮蔽用于静态模型，由材质属性纹理中的AO通道组成。此外，美术师有时会在关键点放置环境遮挡几何。对于动态对象，使用遮挡体（OcclusionVolumes）在底层几何体上投射遮挡阴影，主要是角色和车辆下的地面。而SSAO是PC版本的可选设置，里面使用了一种从深度缓冲导出切线空间的方案。
+
+其中，SSAO从深度缓冲区导出切线空间的实现Shader代码如下：
 
     // Center sample
     float center = Depth . Sample ( Filter , In. TexCoord . xy ). r;
@@ -502,7 +524,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
     tanX = normalize ( tanX ); tanY = normalize ( tanY );
     float3 normal = normalize ( cross ( tanX , tanY ));
 
-### 2.4 其他内容
+### 3.4 其他内容
 
 这一章的其他内容包括：
 
@@ -521,7 +543,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 ## 四、《矿工战争》中的可破坏体积地形 | Destructible Volumetric Terrain
 
-这篇文章中，主要讲到了游戏《《矿工战争（Miner Wars）》》中基于体素（voxel）的可破坏体积地形技术。
+这篇文章中，主要讲到了游戏《矿工战争（Miner Wars）》中基于体素（voxel）的可破坏体积地形技术。
 
 《矿工战争（Miner Wars）》游戏的主要特征是多维度地形的即时破坏，并且引擎依赖预先计算的数据。
 每个地形变化都会实时计算，消耗尽可能少的内存并且没有明显的延迟。
@@ -722,7 +744,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 <br>
 
-# 六、使用几何着色器的NPR效果 | NPR Effects Using the Geometry Shader
+## 六、使用几何着色器的NPR效果 | NPR Effects Using the Geometry Shader
 
 
 本章的内容关于非真实感渲染（Non-photorrealistic rendering ，NPR）。在这章中，介绍了一组利用GPU几何着色器流水线阶段实现的技术。
@@ -731,7 +753,7 @@ G-buffer是一组屏幕大小的渲染目标（MRT），可以使用现代图形
 
 单通道方法通常使用某种预计算来将邻接信息存储到顶点中[Card and Mitchell 02]，或者使用几何着色器 [Doss 08]，因为可能涉及到查询邻接信息。这些算法在单个渲染过程中生成轮廓，但对象本身仍需要第一个几何通道。
 
-## 6.1 轮廓渲染（Silhouette Rendering）
+### 6.1 轮廓渲染（Silhouette Rendering）
 
 轮廓渲染是大多数NPR效果的基本元素，因为它在物体形状的理解中起着重要作用。在本节中，提出了一种在单个渲染过程中检测，生成和纹理化模型的新方法。
 
@@ -1140,7 +1162,7 @@ SSAM的缺点：
     return tileID ;
 
 
-#### 8.1.3 虚拟纹理查找的Shader实现\| Virtual Texture Lookup
+#### 8.1.3 虚拟纹理查找的Shader实现 | Virtual Texture Lookup
 
     float3 tileEntry = IndTex .Sample (PointSampler , In.UV);
     float actualResolution = exp2(tileEntry .z);
@@ -1306,8 +1328,7 @@ SSAM的缺点：
 
 ![](media/c32e665b609fc1b1ceb2b413aac865e4.png)
 
-图 环境光遮蔽的典型问题示例。由于红色光源被遮挡而绿色光源照亮了点P，我们希望在这里看到一个绿色的阴影。
-但环境遮挡首先计算来自所有方向的光照，因此点P最初为黄色，然后通过某个平均遮挡值进行缩放，从而产生了不正确的棕色。
+图 环境光遮蔽的典型问题示例。由于红色光源被遮挡而绿色光源照亮了点P，我们希望在这里看到一个绿色的阴影。但环境遮挡首先计算来自所有方向的光照，因此点P最初为黄色，然后通过某个平均遮挡值进行缩放，从而产生了不正确的棕色。
 
 本章提出的SSDO算法具体可以总结如下：
 
@@ -1531,7 +1552,7 @@ SSAM的缺点：
 # Part IV. 图像空间 Image Space 
 
 
-## 十二、 GPU上的各项异性的Kuwahara滤波\| Anisotropic Kuwahara Filtering on the GPU
+## 十二、 GPU上的各项异性的Kuwahara滤波 | Anisotropic Kuwahara Filtering on the GPU
 
 
 这章中介绍一种各向异性的Kuwahara滤波器[Kyprianidis et al. 09]。各向异性的Kuwahara滤波器是Kuwahara滤波器的一种广义上的变体，通过调整滤波器的形状，比例和方向以适应输入的局部结构，从而避免了失真。由于这种适应性，定向图像特征被更好地保存和强调，得到了整体更清晰的边缘和更具特色的绘画效果。
@@ -1569,8 +1590,7 @@ Kuwahara滤波器背后的一般思想是将滤波器内核分成四个重叠一
 
 ### 12.3 各向异性Kuwahara滤波器（Anisotropic Kuwahara Filtering）
 
-广义的Kuwahara滤波器未能捕获定向特征并会导致集群的失真。而各向异性的Kuwahara滤波器通过使滤波器适应输入的局部结构来解决这些问题。
-在均匀区域中，滤波器的形状应该是一个圆形，而在各向异性区域中，滤波器应该变成一个椭圆形，其长轴与图像特征的主方向一致。
+广义的Kuwahara滤波器未能捕获定向特征并会导致集群的失真。而各向异性的Kuwahara滤波器通过使滤波器适应输入的局部结构来解决这些问题。在均匀区域中，滤波器的形状应该是一个圆形，而在各向异性区域中，滤波器应该变成一个椭圆形，其长轴与图像特征的主方向一致。
 
 ![](media/5b62cbc4a5323e108f039da9e93b7071.png)
 
@@ -1597,8 +1617,7 @@ Kuwahara滤波器背后的一般思想是将滤波器内核分成四个重叠一
 
 ![](media/f1c42e08dc4acce2e2229d5f5fae40e8.jpg)
 
-图 复杂背景的抗锯齿效果演示。每个放大部分的左侧为4
-MSAA的抗锯齿效果。右侧为本章方法（edge-blur render，边缘模糊抗锯齿）
+图 复杂背景的抗锯齿效果演示。每个放大部分的左侧为4 MSAA的抗锯齿效果。右侧为本章方法（edge-blur render，边缘模糊抗锯齿）
 
 
 
@@ -1687,8 +1706,7 @@ MSAA的抗锯齿效果。右侧为本章方法（edge-blur render，边缘模糊
 
 景深（Depth of field，DOF）是一种典型的摄影效果，其结果是根据摄像机与摄像机的距离而产生不同的聚焦区域。
 
-这章中，提出了一种交互式GPU加速的景深实现方案，其扩展了现有方法的能力，具有自动边缘改进和基于物理的参数。散焦效应通常由模糊半径控制，但也可以由物理特性驱动。此技术支持在图像和序列上使用灰度深度图图像和参数，如焦距，f-stop，subject
-magnitude，相机距离，以及图像的实际深度。
+这章中，提出了一种交互式GPU加速的景深实现方案，其扩展了现有方法的能力，具有自动边缘改进和基于物理的参数。散焦效应通常由模糊半径控制，但也可以由物理特性驱动。此技术支持在图像和序列上使用灰度深度图图像和参数，如焦距，f-stop，subject magnitude，相机距离，以及图像的实际深度。
 
 另外，景深实现中额外的边缘质量改进会产生更逼真和可信的图像。而局部邻域混合算法的缺点是二次计算能力，但这其实可以通过GPU进行补偿。
 
@@ -1702,7 +1720,6 @@ magnitude，相机距离，以及图像的实际深度。
 
 
 ## 十七、实时屏幕空间的云层光照 | Real-Time Screen Space Cloud Lighting
----------------------------------------------------------------------
 
 在创造逼真的虚拟环境时，云是一个重要的视觉元素。实时渲染美丽的云可能非常具有挑战性，因为云在保持交互式帧率的同时会呈现出难以计算的多重散射（multiple scattering）。
 
@@ -1720,10 +1737,9 @@ magnitude，相机距离，以及图像的实际深度。
 
 ### 17.1 实现方案
 
-这章的云层渲染技术可以分为三个pass执行。：
+这章的云层渲染技术可以分为三个pass执行：
 
--   首先，渲染云密度（cloud
-    density）为离屏渲染目标（RT），且云密度是可以由艺术家绘制的标量值。
+-   首先，渲染云密度（cloud density）为离屏渲染目标（RT），且云密度是可以由艺术家绘制的标量值。
 
 -   接着，对密度贴图（density map）进行模糊处理。
 
@@ -1733,21 +1749,15 @@ magnitude，相机距离，以及图像的实际深度。
 
 图 基于这章技术实现的demo截图
 
-在demo中，云层被渲染为一个统一的网格。 云层纹理在每个通道中包含四个密度纹理。
-每个通道代表不同的云层，根据第一个通道中的天气在像素着色器中混合。
-并且也通过滚动纹理坐标UV来实现动画。
+在demo中，云层被渲染为一个统一的网格。 云层纹理在每个通道中包含四个密度纹理。每个通道代表不同的云层，根据第一个通道中的天气在像素着色器中混合。并且也通过滚动纹理坐标UV来实现动画。
 
 总之，这章提出了一种实时渲染的真实感天空的技术。由于云的形状与光源分离，程序化云的生成和程序化动画都可以支持。
 
-需要注意的是，此方法忽略了大气的某些物理特性，以创建更高效的技术。
-例如，不考虑大气的密度，但这个属性对于创造逼真的日落和日出是必要的。也忽略了进入云层的光的颜色。
-在日落或日出的场景中，只有靠近太阳的区域应该明亮而鲜艳地点亮。
-有必要采取更基于物理的方法来模拟太阳和云之间的散射，以获得更自然的结果。
+需要注意的是，此方法忽略了大气的某些物理特性，以创建更高效的技术。例如，不考虑大气的密度，但这个属性对于创造逼真的日落和日出是必要的。也忽略了进入云层的光的颜色。在日落或日出的场景中，只有靠近太阳的区域应该明亮而鲜艳地点亮。有必要采取更基于物理的方法来模拟太阳和云之间的散射，以获得更自然的结果。
 
 ### 17.2 核心实现Shader代码
 
-以下为云层光照像素着色器核心代码;
-注意，常数为大写。此着色器可以通过适当设置SCALE和OFFSET常量来提供平行线或点的模糊：
+以下为云层光照像素着色器核心代码;注意，常数为大写。此着色器可以通过适当设置SCALE和OFFSET常量来提供平行线或点的模糊：
 
     // Pixel shader input
     struct SPSInput 
@@ -1813,15 +1823,9 @@ magnitude，相机距离，以及图像的实际深度。
 
 ![](media/8b3a9dd264b68e76d4d9421a8b83a214.png)
 
-图 屏幕空间次表面散射示例。与纹理空间方法不同，屏幕空间的方法可以很好地适应场景中的对象数量（上图）。
-在不考虑次表面散射的情况下进行渲染会导致石头般的外观（左下图）;次表面散射技术用于创建更柔和的外观，更能好地代表次表面散射效果（右下图）。
+图 屏幕空间次表面散射示例。与纹理空间方法不同，屏幕空间的方法可以很好地适应场景中的对象数量（上图）。在不考虑次表面散射的情况下进行渲染会导致石头般的外观（左下图）;次表面散射技术用于创建更柔和的外观，更能好地代表次表面散射效果（右下图）。
 
-本章提出的次表面散射算法当物体处于中等距离时，提供了与Hable等人的方法[Hable et
-al.
-09]类似的性能，并且随着物体数量的增加能更好地胜任工作。且此方法更好地推广到其他材质。
-在特写镜头中，其确实需要用一些性能去换取更好的质量，但它能够保持原来d'Eon方法的肉感（fleshiness）[d’Eon
-and Luebke 07]。
-但是，在这些特写镜头中，玩家很可能会密切关注角色的脸部，因此值得花费额外的资源来为角色的皮肤提供更好的渲染质量。
+本章提出的次表面散射算法当物体处于中等距离时，提供了与Hable等人的方法[Hable et al.09]类似的性能，并且随着物体数量的增加能更好地胜任工作。且此方法更好地推广到其他材质。在特写镜头中，其确实需要用一些性能去换取更好的质量，但它能够保持原来d'Eon方法的肉感（fleshiness）[d’Eon and Luebke 07]。但是，在这些特写镜头中，玩家很可能会密切关注角色的脸部，因此值得花费额外的资源来为角色的皮肤提供更好的渲染质量。
 
 ### 18.1 核心实现Shader代码
 
