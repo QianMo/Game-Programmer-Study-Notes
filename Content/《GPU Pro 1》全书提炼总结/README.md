@@ -3,7 +3,7 @@
 # 《GPU Pro 1》全书核心内容提炼总结
 
 本文的知乎专栏版本：
-https://zhuanlan.zhihu.com/p/47866903
+https://zhuanlan.zhihu.com/p/47959028
 
 
 本文是【GPU精粹与Shader编程】系列的第八篇文章，全文共两万余字。文章盘点、提炼和总结了《GPU Pro 1》全书总计22章的核心内容。
