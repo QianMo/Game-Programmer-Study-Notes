@@ -422,6 +422,7 @@ Displacement：
 #### 4.5.1.2 Flow Map变体：《堡垒之夜》Flow Map + Distance Fields + Normal Maps
 
 以及《堡垒之夜》中的Flow Map + Distance Fields + Normal Maps [GDC 2019, Technical Artist Bootcamp Distance Fields and Shader Simulation Tricks]
+![](media/fornite-flowmap.png)
 
 <br>
 
