@@ -350,13 +350,13 @@ Navier-Stokes方程如下：
 
 ![](media/c47959a66f114c8dccc845771081a73f.png)
 
--   u是流体速度矢量（fluid velocity vector）
+-   u为流体速度矢量（fluid velocity vector）
 
--   p是流体压力（fluid pressure）
+-   p为流体压力（fluid pressure）
 
--   ρ是流体密度（fluid density）
+-   ρ为流体密度（fluid density）
 
--   ν是运动粘度系数（kinematic viscosity coefficient）
+-   ν为运动粘度系数（kinematic viscosity coefficient）
 
 -   ∇为梯度微分（gradient differential）
 
