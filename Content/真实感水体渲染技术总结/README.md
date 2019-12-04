@@ -393,7 +393,7 @@ Flow Map的核心思想是预烘焙一段移动的轨迹到贴图，以在运行
 
 图 一张典型的Flow Map
 
-flow map的典型使用代码如下所示：
+Flow Map的典型使用代码如下所示：
 ```
 //get and uncompress the flow vector for this pixel
 float2 flowmap = tex2D( FlowMapS, tex0 ).rg * 2.0f - 1.0f;
