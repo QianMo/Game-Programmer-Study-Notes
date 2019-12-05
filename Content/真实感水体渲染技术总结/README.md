@@ -228,6 +228,10 @@ Gerstner 波(Gerstner Wave)也常被称为Trochoidal Wave，在流体动力学�
 
 图 Gerstner Waves波形
 
+![](media/Gerstner-wave3.gif)
+
+图 Gerstner Waves波形
+
 选择一组波矢量ki，振幅Ai，频率ωi和相位φi，对于![](media/7ad644310aae035a960a8ee45d026878.png)，Gerstner Waves的通用公式为：
 
 ![](media/a1444c00510cffa25cd85017195f8748.png)
