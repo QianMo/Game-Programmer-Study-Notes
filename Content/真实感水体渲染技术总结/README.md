@@ -343,7 +343,6 @@ FFT的基本思想是把原始的N点序列，依次分解成一系列的短序�
 
 图 水波小包方法（Water Wave Packets）的原理图示
 
-<https://www.youtube.com/watch?v=lYF-Le3CaxA>
 
 ![](media/a42f7c3ca6ef1c17b8a70f37478b3fa9.jpg)
 图 水波小包方法（Water Wave Packets）
