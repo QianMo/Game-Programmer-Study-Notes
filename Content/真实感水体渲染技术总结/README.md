@@ -679,14 +679,14 @@ col += subsurface;
 
 ![](media/37127e8f88345c7b4603d07bdfcf1169.png)
 
-图 《Crest Ocean System》中基于次表面散射水体表现
+图 《Crest Ocean System》中基于次表面散射近似的水体表现
 
 ![](media/1b8b68602c4341b0635fb65aec3cbe62.png)
 
-图 《盗贼之海（Sea of Thieves）》中基于次表面散射水体表现
+图 《盗贼之海（Sea of Thieves）》中基于次表面散射近似的水体表现
 
 ![](media/SSS.gif)
-图 《盗贼之海（Sea of Thieves）》中基于次表面散射水体表现
+图 《盗贼之海（Sea of Thieves）》中基于次表面散射近似的水体表现
 
 <br>
 
@@ -763,11 +763,11 @@ Tessendorf在其著名的水体渲染paper《Simulating Ocean Water》[Tessendor
 
 
 ![](media/foam.gif)
-图 《盗贼之海》基于雅可比矩阵进行偏移 + 渐进模糊（Progressive Blur）的风格化白沫表现
+图 《盗贼之海》基于雅可比矩阵偏移 + 渐进模糊（Progressive Blur）的风格化白沫表现
 
 <br>
 
-5.2.2 浪尖白沫：[GPU Gems 2] 基于Saturate高度的方法
+### 5.2.2 浪尖白沫：[GPU Gems 2] 基于Saturate高度的方法
 
 《GPU Gems 2》中提出的白沫渲染方案，思路是将一个预先创建的泡沫纹理在高于某一高度H0的顶点上进行混合。泡沫纹理的透明度根据以下公式进行计算：
 
