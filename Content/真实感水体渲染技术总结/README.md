@@ -345,7 +345,7 @@ FFT的基本思想是把原始的N点序列，依次分解成一系列的短序�
 
 
 ![](media/a42f7c3ca6ef1c17b8a70f37478b3fa9.jpg)
-图 水波小包方法（Water Wave Packets）
+图 水波小包方法（Water Wave Packets）渲染效果图
 
 <br>
 
@@ -361,7 +361,7 @@ FFT的基本思想是把原始的N点序列，依次分解成一系列的短序�
 
 ![](media/Water-Surface-Wavelets.png)
 
-图 水面小波方法（Water Surface Wavelets）[SIGGRPAPH 2018]
+图 水面小波方法（Water Surface Wavelets）渲染效果图 [SIGGRPAPH 2018]
 
 
 <br>
