@@ -552,8 +552,10 @@ pos.y += heightMap.eval(uv)
 
 其他的方案相对而言比较小众，都有对应paper，篇幅原因这里就不展开总结了。
 
-这边放一个令人印象深刻的SIGGRAPH 2017上 ,Crest Ocean System基于动态程序形状（Procedural Shape）的水体渲染视频，可以允许玩家和海洋进行互动：
+这边放一个令人印象深刻的SIGGRAPH 2017上 ,Crest Ocean System基于动态程序形状（Procedural Shape）的水体渲染demo，可以允许玩家和海洋进行互动：
 
+
+![](media/crest-2017-procedural-shape.gif)
 
 
 <br>
@@ -867,7 +869,7 @@ demo视频：<https://www.youtube.com/watch?v=tZthI6M07iM>
 
 ![](media/3e4204b7bc0bda540dc68d342a365fda.png)
 
-
+<br>
 
 ## 6.3 UE4 Dynamic Water Project
 
@@ -878,7 +880,7 @@ Dynamic Water Project 是Unreal引擎下一款不错的开源水面交互解决�
 
 <https://github.com/marvelmaster/UE4_Dynamic_Water_Project/tree/master/Reactive_Water_V3_4-20>
 
-![](media/c84317062f5d4cf06961a0c0418eb5cf.png)
+![](media/c84317062f5d4cf06961a0c0418eb5cf.gif)
 
 
 <br>
