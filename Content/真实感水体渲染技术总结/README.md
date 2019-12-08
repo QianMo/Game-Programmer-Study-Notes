@@ -552,7 +552,7 @@ pos.y += heightMap.eval(uv)
 
 其他的方案相对而言比较小众，都有对应paper，篇幅原因这里就不展开总结了。
 
-这边放一个令人印象深刻的SIGGRAPH 2017上 ,Crest Ocean System基于动态程序形状（Procedural Shape）的水体渲染demo，可以允许玩家和海洋进行互动：
+这边放一个令人印象深刻的SIGGRAPH 2017上 ,Crest Ocean System基于动态程序化形状（Procedural Shape）的水体渲染demo，可以允许玩家和海洋进行互动：
 
 
 ![](media/crest-2017-procedural-shape.gif)
@@ -751,7 +751,7 @@ col += subsurface;
 
 ### 5.2.1 浪尖白沫：[Tessendorf 2001] 基于雅克比矩阵的方法
 
-Tessendorf在其著名的水体渲染paper《Simulating Ocean Water》[Tessendorf 2001]中提出了可以基于雅克比行列式（Jacobian）为负的部分作为求解白沫分布区域的方案。据此，即可导出一张或多张标记了波峰白沫区域的Folding Map贴图。
+Tessendorf在其著名的水体渲染paper《Simulating Ocean Water》[Tessendorf 2001]中提出了可以基于雅克比矩阵（Jacobian）为负的部分作为求解白沫分布区域的方案。据此，即可导出一张或多张标记了波峰白沫区域的Folding Map贴图。
 
 ![](media/232609b215fcd8e1df5ef26f7cf9cd28.png)
 
@@ -833,16 +833,16 @@ GDC 2018上《孤岛惊魂5》团队分享的白沫渲染技术也不失为一�
 
 # 六、业界优秀水体渲染开源库盘点
 
-时间来到2019年，已有不少3A级别的水体渲染技术，以免费&开源的方式涌现了出来，这里将进行一个盘点。
+时间来到2019年，已有不少3A级别的水体渲染技术以免费&开源的方式涌现了出来，这里将进行一个盘点。
 
-如果要实现一个高品质水体实时渲染解决方案，以下的这六个开源库，一定能让你事半功倍。
+如果要实现一个高品质的水体实时渲染解决方案，以下的这六个开源库会让你事半功倍。
 
 <br>
 
 # 6.1 Crest Ocean System
 
 
-Unity下开源的高品质海洋渲染框架，已经在两届SIGGRAPH（SIGGRAPH 2017、SIGGRAPH 2019）上进行了技术分享。
+Crest Ocean System是Unity下开源的高品质海洋渲染框架，已经在两届SIGGRAPH（SIGGRAPH 2017、SIGGRAPH 2019）上进行了技术分享。
 
 源代码传送门：<https://github.com/crest-ocean/crest>
 
@@ -887,7 +887,7 @@ Dynamic Water Project 是Unreal引擎下一款不错的开源水面交互解决�
 
 ## 6.4 Ceto Ocean system
 
-Ceto ，Unity引擎下的另一个不错的水体渲染开源库。
+Ceto也是Unity引擎下的另一个不错的水体渲染开源库。
 
 源代码传送门：<https://github.com/Scrawk/Ceto>
 
@@ -897,7 +897,7 @@ Ceto ，Unity引擎下的另一个不错的水体渲染开源库。
 
 ## 6.5 NVIDIA UE4 WaveWorks 
 
-GDC 2017上，NVIDIA和Unreal Engine合作推出的WaveWorks，以集成到Unreal Engine4.15的形式放出（非插件）。
+GDC 2017上，NVIDIA和Unreal Engine合作推出了WaveWorks，以集成到Unreal Engine 4.15引擎中的形式放出。
 
 源代码传送门：<https://github.com/NvPhysX/UnrealEngine/tree/WaveWorks>
 
@@ -912,7 +912,7 @@ demo视频：<https://www.youtube.com/watch?v=DhrNvZLPBGE&list=PLN8o8XBheMDxCCfK
 ## 6.6 Unity LWRP BoatAttack
 
 
-Unity在2018年5月13日开源的基于LWRP的项目，其水体渲染表现令人印象深刻。是Unity下非常优质的水体渲染参考。
+BoatAttack是Unity在2018年5月13日开源的基于LWRP的项目，其水体渲染表现令人印象深刻，可谓是Unity下非常优质的水体渲染参考。
 
 源代码传送门：<https://github.com/Verasl/BoatAttack>
 
