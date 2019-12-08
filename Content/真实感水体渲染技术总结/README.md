@@ -4,7 +4,10 @@
 ![](media/f9337c818762004c902ac45c66f56fc1.jpg)
 
 
-本文将对游戏以及电影业界的真实感水体渲染技术从发展史、知识体系、波形模拟技术以及着色技术等多个方面进行较为系统的总结，文末也对业界优秀的水体实时渲染开源库进行了盘点。
+之前在【GPU精粹与Shader编程】系列中写过一篇[《真实感皮肤渲染技术总结》](media/https://zhuanlan.zhihu.com/p/42433792)，这篇文章则是它的番外篇，主要关注于真实感水体渲染技术。
+
+本文将对游戏开发以及电影业界的真实感水体渲染技术从发展史、知识体系、波形模拟技术以及着色技术等多个方面进行较为系统的总结，文末也对业界优秀的水体实时渲染开源库进行了盘点。
+
 
 
 
@@ -184,7 +187,7 @@ OK，下面开始正文。
 ## 4.1 线性波形叠加方法
 
 
-线性波形叠加方法的主要思路是累加不同的线性波形函数以构造波浪表面。可以将其理解为波动现象在深水中引起水颗粒运动的一种解析解决方案。
+线性波形叠加方法的主要思路是累加不同的线性波形函数以构造波浪表面。可以将其理解为波动现象在深水中引起水颗粒运动的一种解析解。
 
 ![](media/1b5cc8c471c19acaf7c14ef464d620a0.gif)
 
@@ -393,7 +396,7 @@ Navier-Stokes方程如下：
 
 -   欧拉方法（Eularian Method）是一种基于网格的方法。它从研究流体所占据的空间中各个固定点处的运动着手，分析被运动流体所充满的空间中每一个固定点上流体的速度、压强、密度等参数随时间的变化，以及由某一空间点转到另一空间点时这些参数的变化。
 
--   拉格朗日法（Lagrangian Method）是一种基于粒子的方法。它从分析流体各个微粒的运动着手，即研究流体中某一指定微粒的速度、压强、密度等参数随时间的变化，以及研究由一个流体微粒转到其他流体微粒时参数的变化，以此来研究整个流体的运动。最常用的拉格朗日法是光滑粒子流体力学(Smoothed Particle Hydrodynamics，SPH)方法，其核心渲染思想为流体模拟产生粒子，然后多边形化粒子以产生波。
+-   拉格朗日方法（Lagrangian Method）是一种基于粒子的方法。它从分析流体各个微粒的运动着手，即研究流体中某一指定微粒的速度、压强、密度等参数随时间的变化，以及研究由一个流体微粒转到其他流体微粒时参数的变化，以此来研究整个流体的运动。最常用的拉格朗日方法是光滑粒子流体力学(Smoothed Particle Hydrodynamics，SPH)方法，其核心渲染思想为流体模拟产生粒子，然后多边形化粒子以产生波。
 
 ![](media/4fcc2a8b1753a1aabeecb8ab6c0735ee.gif)
 图 基于SPH方法的水体渲染表现
@@ -405,7 +408,7 @@ Navier-Stokes方程如下：
 
 除了独立的两种方法之外，还有结合两者的欧拉-拉格朗日混合方法（Eularian-Lagrangian Hybrid approaches），其主要思想是使用欧拉方法来模拟流体的主体，并使用拉格朗日方法来模拟诸如泡沫，喷雾或气泡之类的细小细节。
 
-FX Guide上有一篇关于电影业界使用流体模拟方法的不错文章，感兴趣的朋友可以了解以下：https://www.fxguide.com/fxfeatured/the-science-of-fluid-sims/
+FX Guide上有一篇关于电影业界使用流体模拟方法的不错文章，感兴趣的朋友可以了解一下：https://www.fxguide.com/fxfeatured/the-science-of-fluid-sims/
 
 另外，也可以采用bake to flipbook方法，将离线的流体模拟，烘焙成flipbook帧动画，用于实时渲染。
 
@@ -765,6 +768,7 @@ Tessendorf在其著名的水体渲染paper《Simulating Ocean Water》[Tessendor
 
 
 ![](media/foam.gif)
+
 图 《盗贼之海》基于雅可比矩阵偏移 + 渐进模糊（Progressive Blur）的风格化白沫表现
 
 <br>
@@ -912,11 +916,11 @@ demo视频：<https://www.youtube.com/watch?v=DhrNvZLPBGE&list=PLN8o8XBheMDxCCfK
 ## 6.6 Unity LWRP BoatAttack
 
 
-BoatAttack是Unity在2018年5月13日开源的基于LWRP的项目，其水体渲染表现令人印象深刻，可谓是Unity下非常优质的水体渲染参考。
+BoatAttack是Unity在2018年5月13日开源的基于LWRP的项目，经历了几个版本的开发周期，具有令人印象深刻的水体表现，可谓是Unity引擎下非常优质的水体渲染参考。
 
 源代码传送门：<https://github.com/Verasl/BoatAttack>
 
-demo视频：<https://www.youtube.com/watch?v=oYFMXy60o70>
+demo视频：<https://www.youtube.com/watch?v=7v9gZK9HqqI>
 
 
 ![](media/b7edd1c78d459d3da3eef13f12fb4624.png)
@@ -947,11 +951,10 @@ demo视频：<https://www.youtube.com/watch?v=oYFMXy60o70>
 [1] FX Guide 2012, Assassins Creed III The tech behind or beneath the action,
 <https://www.fxguide.com/fxfeatured/assassins-creed-iii-the-tech-behind-or-beneath-the-action/>
 
-[2] SIGGRAPH, 2001, Tessendorf J. Simulating ocean water[J]. Simulating nature:
-realistic and interactive techniques., 1(2): 5.
+[2] SIGGRAPH 2001, Tessendorf J. Simulating ocean water[J]. Simulating nature:
+realistic and interactive techniques.
 
-[3] 2010, Yuksel C. Real-time water waves with wave particles[M]. Texas A&M
-University,
+[3] SIGGPRAPH 2019, Multi-resolution Ocean Rendering in Crest Ocean System
 
 [4] GDC 2008, Fast Water Simulation for Games
 
@@ -959,15 +962,13 @@ University,
 
 [6] GDC 2018, Water Rendering in FarCry 5
 
-[7] Jeschke S, Wojtan C. Water wave packets[J]. ACM Transactions on Graphics
-(TOG), 2017, 36(4): 103.
+[7] Jeschke S, Wojtan C. Water wave packets[J]. ACM Transactions on Graphics(TOG), 2017
 
-[8] SIGGPRAPH 2019, Multi-resolution Ocean Rendering in Crest Ocean System
+[8] 2010, Yuksel C. Real-time water waves with wave particles[M]. Texas A&M University
 
 [9] SIGGRAPH 2016, Rendering rapids in Uncharted 4
 
-[10] GDC 2019, Technical Artist Bootcamp Distance Fields and Shader Simulation
-Tricks
+[10] GDC 2019, Technical Artist Bootcamp Distance Fields and Shader Simulation Tricks
 
 [11] <https://zhuanlan.zhihu.com/p/21573239>
 
@@ -975,8 +976,7 @@ Tricks
 
 [13] GPU Gems2, Using Vertex Texture Displacement for Realistic Water Rendering
 
-[14] SIGGRAPH 2013, Oceans on a Shoestring Shape Representation, Meshing and
-Shading
+[14] SIGGRAPH 2013, Oceans on a Shoestring Shape Representation, Meshing and Shading
 
 [15] SIGGRAPH 2018, The Technical Art of Sea of Thieves
 
@@ -992,8 +992,7 @@ Shading
 
 [21] NVIDIA 2004, Ocean Surface Simulation nvidia
 
-[22] GDC 2017, From Shore to Horizon Creating a Practical Tessellation Based
-Solution
+[22] GDC 2017, From Shore to Horizon Creating a Practical Tessellation Based Solution
 
 [23] https://www.tek.com/fft
 
