@@ -322,13 +322,16 @@ FFT的基本思想是把原始的N点序列，依次分解成一系列的短序�
 
 图 具有相同扩散角度的两个相邻波动粒子之间的距离（图片来自[Yuksel 2010]）
 
+另外，Wave Particles方法还可以与现有各种方案进行结合和改进。
+
 2007年Yuksel提出的原版Wave Particles的波动粒子的生成源来自点状的粒子波源。对此，《神秘海域3》对其进行了改进方案。在《神秘海域3》中，并没有使用点状粒子波源，而是在环形区域中放置随机分布的粒子源，以近似开放水域的混沌运动，从而产生一个可平铺的向量位移场（vector displacement field）。
 
 ![](media/wave-particle.gif)
 
 图 《神秘海域3》中基于随机分布wave particles粒子源的波浪模拟方法
 
-另外，Wave Particles方法还可以与现有各种方案结合。如《神秘海域3》中采用Gerstner Wave + Wave Particles的组合，以及《神秘海域4》中采用的多分辨率Wave Particles方案。
+
+《神秘海域4》中则采用了多分辨率Wave Particles方案，从另一个角度对Wave Particles方法进行了改进。
 
 ![](media/89d5f030e13e8a172cb07d6177891e68.png)
 
@@ -338,7 +341,7 @@ FFT的基本思想是把原始的N点序列，依次分解成一系列的短序�
 
 ### 4.3.2 水波小包方法（Water Wave Packets）[SIGGRAPH 2017]
 
-在波动粒子基础上， Jeschke和Wojtan[2017]于SIGGRAPH 2017引入了以理论群速度（theoretical group speed）传播的水波小包（Water wave packets ）方法。该方法继承了基于频谱的方法的优点，如数值稳定性和理论上准确的波速。同时，他们通过将全局余弦波分解成一系列更短的波分量，从而避免了基于频谱的方法的复杂性。
+在波动粒子（Wave Particles）的基础上， Jeschke和Wojtan[2017]于SIGGRAPH 2017引入了以理论群速度（theoretical group speed）传播的水波小包（Water wave packets ）方法。该方法继承了基于频谱的方法的优点，如数值稳定性和理论上准确的波速。同时，他们通过将全局余弦波分解成一系列更短的波分量，从而避免了基于频谱的方法的复杂性。
 
 
 ![](media/wave2017-6.gif)
