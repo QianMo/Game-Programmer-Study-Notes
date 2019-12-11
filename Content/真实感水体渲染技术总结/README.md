@@ -516,7 +516,7 @@ pos.y += heightMap.eval(uv)
 
 ![](media/c7efe9490bfecd9b5d181c43734b6abf.jpg)
 
-图 基于离线FFT烘焙的《刺客信条3》的水面表现
+图 基于离线FFT烘焙的《刺客信条4》的水面表现
 
 ![](media/AC3-offline-FFT.gif)
 
