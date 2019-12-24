@@ -295,7 +295,7 @@
 
 -   Pushdown Automata下推自动机：<https://en.wikipedia.org/wiki/Pushdown_automaton>
 
--   状态模式的Unity版本实现：<https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Creational%20Patterns/Singleton%20Pattern>
+-   状态模式的Unity版本实现：<https://github.com/QianMo/Unity-Design-Pattern/tree/master/Assets/Behavioral%20Patterns/State%20Pattern>
 
 -   本节内容相关的英文原文：<http://gameprogrammingpatterns.com/state.html>
 
