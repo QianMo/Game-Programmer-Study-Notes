@@ -246,7 +246,7 @@ OK，讲了那么多产品级的应用，下面开始正篇吧，实时光线追
 
 ![](media/65d452ab1ebd1992a8948787786c3584.png)
 
-当前业界主流的实时光线追踪技术都普遍采用了**混合渲染管线（Hybrid Rendering Pipeline）**架构。混合渲染管线能充分利用光栅化（Rasterization），计算着色器（Compute Shader）和光线追踪（Ray Tracing）各自的优势，对于管线的每一个渲染阶段，在光栅化，计算着色器和光线追踪中择优使用。
+当前业界主流的实时光线追踪技术都普遍采用了 **混合渲染管线（Hybrid Rendering Pipeline）** 架构。混合渲染管线能充分利用光栅化（Rasterization），计算着色器（Compute Shader）和光线追踪（Ray Tracing）各自的优势，对于管线的每一个渲染阶段，在光栅化，计算着色器和光线追踪中择优使用。
 
 目前主流的混合渲染管线（Hybrid Rendering Pipeline）架构的渲染流程可以总结为：
 
