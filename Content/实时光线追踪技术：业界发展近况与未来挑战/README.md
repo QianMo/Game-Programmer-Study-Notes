@@ -593,29 +593,9 @@ tracing）、射线束（ray bundles），这也就打开了实时光线追踪�
 
 ![](media/07a30fa18436871bb8ef37fc18854134.png)
 
-就未来的光线追踪研究而言，如果涉及到各类光线追踪的技术文献的使用和改进，须对文献的基础约束进行调整，以适应实时渲染的约束，而不仅仅是“正确的光线追踪”。主要的要点在于：
-
--   合理的实时渲染预算：
-
--   每帧光线数量的预算
-
--   每像素光线数量的预算
-
--   固定的帧率预算
-
--   内存预算
-
--   善用 **光照传输缓存（Light Transport Caches）** 技术：
-
--   面元（surfel）
-
--   体素（voxel）
-
--   光照贴图（lightmap）
-
-未来实时光线追踪的一个大方向大概率是对**纹理空间技术（texture space techniques）**和**可变速率光线追踪（variable rate ray tracing）**的探索。如**缓存材质（Caching of material）**和**局部解（partial solutions）**，以及**BRDF拆分（Split the BRDF）**。
-
-而在 **高效采样和积分策略（efficient sampling and integration strategies）** 以及 **重建（reconstruction）** 方面，业界还有很多事情需要去完成。
+就未来的光线追踪研究而言，如果涉及到各类光线追踪的技术文献的使用和改进，须对文献的基础约束进行调整，以适应实时渲染的约束，而不仅仅是“正确的光线追踪”。主要的要点在于制定合理的实时渲染预算以及善用光照传输缓存（Light Transport Caches） 技术。
+另外，未来实时光线追踪的一个大方向大概率是对 **纹理空间技术（texture space techniques）** 和 **可变速率光线追踪（variable rate ray tracing）** 的探索。如缓存材质（Caching of material）和局部解（partial solutions），以及BRDF拆分（Split the BRDF）。
+而在 高效采样和积分策略（efficient sampling and integration strategies） 以及 重建（reconstruction）方面，业界也还有很多事情需要去完成。
 
 <br>
 <br>
