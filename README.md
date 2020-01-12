@@ -59,6 +59,8 @@ Keep Reading , Keep Writing , Keep Coding.
 - [《GPU Pro 1》全书核心内容提炼总结](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E3%80%8AGPU%20Pro%201%E3%80%8B%E5%85%A8%E4%B9%A6%E6%8F%90%E7%82%BC%E6%80%BB%E7%BB%93/README.md) - 盘点、提炼和总结了《GPU Pro 1 》全书总计22章的核心内容。
 - [【真实感水体渲染技术总结】](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E7%9C%9F%E5%AE%9E%E6%84%9F%E6%B0%B4%E4%BD%93%E6%B8%B2%E6%9F%93%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/README.md) - 文章对游戏以及电影业界的真实感水体渲染技术从发展史、知识体系、波形模拟技术以及着色技术等多个方面进行了较为系统的总结，文末也对业界优秀的水体实时渲染开源库进行了盘点。
 
+- [【实时光线追踪技术：业界发展近况与未来挑战】](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E5%AE%9E%E6%97%B6%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%9A%E4%B8%9A%E7%95%8C%E5%8F%91%E5%B1%95%E8%BF%91%E5%86%B5%E4%B8%8E%E6%9C%AA%E6%9D%A5%E6%8C%91%E6%88%98/README.md) - 文章对实时光线追踪技术的发展近况，当前业界面对的挑战，以及未来的研究方向进行了盘点。
+
 
 
 <br>
