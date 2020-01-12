@@ -71,7 +71,7 @@ OK，下面开始正文。
 
 **个人认为，可以将2018年定义为实时光线追踪技术元年。**
 
-这一年，秘密开发了多年的实时光线追踪技术终于在GDC 2018上解开面纱，进入大众视野，引起广泛轰动。
+这一年，秘密开发了多年的实时光线追踪技术终于在GDC 2018上揭开面纱，进入大众视野，并引起广泛轰动。
 
 这一年，微软宣布了DirectX Ray Tracing，DXR的问世；NVIDIA、ILMxLAB、UE4联合发布了基于实时光线追踪的具有电影级视觉效果的《星球大战》短片；NVIDIA发布了RTX Technology Demo以及Project Sol Cinematic Demo Part 1；EA SEED团队带来了PICA PICA实时光线追踪Demo；Remedy的Northlight引擎也带来了Ray Tracing in North Light Demo；Futuremark团队也发布了非常赞的DirectX Raytracing Tech Demo。
 
