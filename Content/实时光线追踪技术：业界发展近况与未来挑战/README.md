@@ -644,6 +644,8 @@ tracing）、射线束（ray bundles），这也就打开了实时光线追踪�
 
 [13] SIGGRAPH 2018, Combining Analytic Direct Illumination and Stochastic Shadows
 
-[14] HPG 2019, Dynamic Many-Light Sampling for Real-Time Ray Tracing
+[14] https://www.digitaltrends.com/computing/games-support-nvidia-ray-tracing/
 
-[15] HPG 2019, Stochastic Lightcuts
+[15] HPG 2019, Dynamic Many-Light Sampling for Real-Time Ray Tracing
+
+[16] HPG 2019, Stochastic Lightcuts
