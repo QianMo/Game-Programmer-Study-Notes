@@ -3,7 +3,7 @@
 
 ![](media/ec782554f31f3c05b1c98545880c7e2c.jpg)
 
-最近看到SIGGRAPH 2019中 EA SEED团队带来的，关于实时光线追踪相关很赞的一篇技术分享[1]。
+最近阅读了SIGGRAPH 2019中 EA SEED团队带来的，关于实时光线追踪相关很赞的一篇技术分享[1]。
 
 本文将以此为引子，对实时光线追踪技术的发展近况，当前业界面对的挑战，以及未来的研究方向进行一个盘点。
 
@@ -602,7 +602,7 @@ tracing）、射线束（ray bundles），这也就打开了实时光线追踪�
 
 -   内存预算
 
--   善用**光照传输缓存（Light Transport Caches）**技术：
+-   善用 **光照传输缓存（Light Transport Caches）** 技术：
 
 -   面元（surfel）
 
@@ -610,9 +610,9 @@ tracing）、射线束（ray bundles），这也就打开了实时光线追踪�
 
 -   光照贴图（lightmap）
 
-未来实时光线追踪的一个大方向是对**纹理空间技术（texture space techniques）**和**可变速率光线追踪（variable rate ray tracing）**的探索。如**缓存材质（Caching of material）**和**局部解（partial solutions）**，以及**BRDF拆分（Split the BRDF）**。
+未来实时光线追踪的一个大方向大概率是对**纹理空间技术（texture space techniques）**和**可变速率光线追踪（variable rate ray tracing）**的探索。如**缓存材质（Caching of material）**和**局部解（partial solutions）**，以及**BRDF拆分（Split the BRDF）**。
 
-而在**高效采样和积分策略（efficient sampling and integration strategies）**以及**重建（reconstruction）**方面，业界还有很多事情需要去完成。
+而在 **高效采样和积分策略（efficient sampling and integration strategies）** 以及 **重建（reconstruction）** 方面，业界还有很多事情需要去完成。
 
 <br>
 <br>
