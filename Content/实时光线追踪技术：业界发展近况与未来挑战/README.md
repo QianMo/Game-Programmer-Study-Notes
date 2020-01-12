@@ -639,3 +639,31 @@ tracing）、射线束（ray bundles），这也就打开了实时光线追踪�
 [1] SIGGRAPH 2019, State-of-the-Art and Challenges in Game Ray Tracing
 
 [2] 题图来自UE4
+
+[3] https://www.youtube.com/watch?v=zeYQ-kPF0iQ
+
+[4] https://www.wired.com/story/exclusive-sony-next-gen-console
+
+[5] https://www.rockpapershotgun.com/2019/04/11/nvidia-gtx-graphics-card-dxr-ray-tracing-driver/
+
+[6] GDC 2018, Experiments with DirectX Raytracing in Remedy’s Northlight Engine
+
+[7] GDC 2018, Shiny Pixels and Beyond: Real-Time Ray Tracing at SEED
+
+[8] SIGGRAPH 2019, Leveraging Ray Tracing Hardware Acceleration In Unity
+
+[9] Epic Games demonstrates real-time ray tracing in Unreal Engine 4 with ILMxLAB and NVIDIA
+
+[10] https://docs.unrealengine.com/en-US/Engine/Rendering/RayTracing/index.html
+
+[11] https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@7.1/manual/Ray-Tracing-Getting-Started.html
+
+[11] https://devblogs.nvidia.com/ignacio-llamas-interview-unearthing-ray-tracing/
+
+[12] GDC 2019, Towards Filmic Quality at 30 FPS: Real-Time Ray Tracing for Practical Game Engine Pipelines
+
+[13] SIGGRAPH 2018, Combining Analytic Direct Illumination and Stochastic Shadows
+
+[14] HPG 2019, Dynamic Many-Light Sampling for Real-Time Ray Tracing
+
+[15] HPG 2019, Stochastic Lightcuts
