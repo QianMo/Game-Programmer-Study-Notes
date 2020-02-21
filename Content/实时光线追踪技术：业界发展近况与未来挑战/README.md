@@ -493,7 +493,7 @@ meshes）来进行光照，非常赞。
 
 ![](media/487aa87eac891248f93343e3a1280c8d.png)
 
-因为像素四阶导数（pixel quad derivatives）只能用于光栅化，所以光线追踪无法自动进行Texture LOD。
+因为从2x2像素块（pixel quad）中求解出的导数（pixel quad derivatives），只能用于光栅化，所以光线追踪无法自动进行Texture LOD。
 
 -   目前的主流方案是依赖于光线差分（Ray Differentials）方法，但其对性能有一定的影响。
 
