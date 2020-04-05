@@ -232,7 +232,7 @@ Box Blur也是线性可分的，如有需要，也可以借助其此性质，如
 
 另外box blur也有不少扩展与变体，比如Tent Blur（两次Box Blur）、Quadratic Blur（三次Box Blur）等，具体本文暂时就不展开了。
 
-其中，Tent Blur也已在XPL中进行了实现，具体可见：https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/TentBlur
+其中，Tent Blur也已在XPL中进行了实现，具体可见：[X-PostProcessing/Effects/TentBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/TentBlur)
 
 
 
@@ -251,7 +251,7 @@ Box Blur也是线性可分的，如有需要，也可以借助其此性质，如
 		return s;
 	}
 
-**完整的Runtime + Shader实现可见：** https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/BoxBlur
+**完整的Runtime + Shader实现可见：** [X-PostProcessing/Effects/BoxBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/BoxBlur)
 
 另外也可以考虑将uv计算放到vertex层。
 
