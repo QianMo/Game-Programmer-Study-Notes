@@ -61,7 +61,7 @@ Keep Reading , Keep Writing , Keep Coding.
 
 - [【实时光线追踪技术：业界发展近况与未来挑战】](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E5%AE%9E%E6%97%B6%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E6%8A%80%E6%9C%AF%EF%BC%9A%E4%B8%9A%E7%95%8C%E5%8F%91%E5%B1%95%E8%BF%91%E5%86%B5%E4%B8%8E%E6%9C%AA%E6%9D%A5%E6%8C%91%E6%88%98/README.md) - 文章对实时光线追踪技术的发展近况，当前业界面对的挑战，以及未来的研究方向进行了盘点。
 
-
+- [【高品质后处理：十种图像模糊算法的总结对比与实现】](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E9%AB%98%E5%93%81%E8%B4%A8%E5%90%8E%E5%A4%84%E7%90%86%EF%BC%9A%E5%8D%81%E7%A7%8D%E5%9B%BE%E5%83%8F%E6%A8%A1%E7%B3%8A%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%AE%9E%E7%8E%B0/README.md) - 文章对后处理管线中会使用到的十种模糊算法进行了总结和对比盘点，以及提供了这十种模糊算法对应的Unity Post Processing Stack v2版本的实现
 
 <br>
 
