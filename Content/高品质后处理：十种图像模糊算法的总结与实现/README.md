@@ -35,7 +35,7 @@
 另外，本文暂不涉及运动模糊（Motion Blur），因为其主要作用于帧之间的运动变化，不属于静态型模糊。还有一些其他的模糊算法由于不太适用于实时渲染，本文也暂不涉及，如Moving Averages filter。
 
 
-下面先放一组采用了模糊算法的后处理的实时渲染截图，然后开始我们的正文。
+下面先放一组使用了依赖于模糊算法的后处理特效的实时渲染截图，然后开始我们的正文。
 
 ![](media/6b40938cfddc691005bb05822a5c398e.jpg)
 
@@ -179,7 +179,7 @@ N维空间高斯模糊方程可以表示为：
 	}
 
 
-篇幅原因，在这里以及后文中，对应后处理的Runtime + Shader的完整的实现就不贴了，但会给出XPL中的实现链接。
+篇幅原因，在这里以及后文中，对应后处理的Runtime + Shader的完整的实现就不贴了，但会给出X-PostProcessing Libray中的完整实现链接。
 
 **完整的Runtime + Shader实现可见**：
 https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GaussianBlur
@@ -579,6 +579,7 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 ![](media/ef8abce69b1e9f7987f0e9d203d9e690.png)
 
 其思路是基于随机uv进行采样的抖动，以对粗粒度的模糊进行模拟。核心算法的Shader实现如下：
+
 	float Rand(float2 n)
 	{
 		return sin(dot(n, half2(1233.224, 1743.335)));
@@ -602,8 +603,11 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 		return finalColor / _Iteration;
 	}
 
+**粒状模糊（Grainy Blur）完整的Runtime + Shader实现可见：**
+https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GrainyBlur
 
-对模糊半径（Blur Radius）参数的调节，可以控制粒状模糊的程度：
+
+对模糊半径（Blur Radius）参数的调节，也可以控制粒状模糊的程度：
 
 ![](media/0c68c66628bfa24d6a4a60b291bf364b.gif)
 
@@ -703,7 +707,7 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 
 本文开头已经提到，模糊算法在后处理渲染领域占据着非常重要的地位。很多产品级后处理的实现，都会直接或间接依赖于一种或多种图像模糊算法。后处理管线中所采用的模糊算法的优劣，决定了产品最终的渲染品质和消耗的性能大小。
 
-让我们重新看一下这十种模糊算法的横向对比，相信此时的你，已经有了更全局的理解，以及你的选择。
+让我们重新看一下这十种模糊算法的横向对比，相信此时，大家对这十种模糊算法已经有了更全面的理解，以及自己的选择。
 
 ![](media/b82ba2aaa60f290da438450a86ccb48f.png)
 
