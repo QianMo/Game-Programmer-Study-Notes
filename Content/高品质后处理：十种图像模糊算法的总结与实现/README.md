@@ -311,7 +311,7 @@ Kawase Blur渲染效果接近高斯模糊，但具有更好的性能：
 # 四、双重模糊（Dual Blur）
 
 
-Dual Kawase Blur，简称Dual Blur，是SIGGRAPH 2015上ARM团队提出的一种衍生自Kawase Blur的算法。其由两种不同的Blur Kernel构成，如下图所示。
+Dual Kawase Blur，简称Dual Blur，是SIGGRAPH 2015上ARM团队提出的一种衍生自Kawase Blur的模糊算法。其由两种不同的Blur Kernel构成，如下图所示。
 
 ![](media/dbd46f6ebbe1a64e080f2667b55cdd8e.png)
 
@@ -319,7 +319,7 @@ Dual Kawase Blur，简称Dual Blur，是SIGGRAPH 2015上ARM团队提出的一种
 
 ![](media/2ebf4981ecdc7d4c81bf5c2f02edfb31.png)
 
-由于灵活的升降采样带来了blit RT所需计算量的减少等原因， Dual Kawase Blur相较于上文中提到的Gauusian Blur、Box Blur、Kawase Blur等Blur算法更好的性能，下图是相同条件下的性能对比。
+由于灵活的升降采样带来了blit RT所需计算量的减少等原因， Dual Kawase Blur相较于上文中提到的Gauusian Blur、Box Blur、Kawase Blur等Blur算法,有更好的性能，下图是相同条件下的性能对比。
 
 ![](media/c995ed9cebd5b0e2760b0556f36b2149.png)
 
