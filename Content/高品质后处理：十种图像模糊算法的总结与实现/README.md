@@ -1,19 +1,14 @@
 ![](media/b05cff0fb8d1036d1972f82d35c4da6f.jpg)
 
-# 高品质后处理：十种图像模糊算法的总结对比与实现
+# 高品质后处理：十种图像模糊算法的总结与实现
 
 <br>
 
-后处理（Post-Processing）渲染技术，在游戏开发领域是提升游戏最终画面呈现品质的重要渲染流程。后处理渲染技术的好坏，往往决定了游戏画面是否能够达到令人惊艳的级别。
+后处理（Post-Processing），在图形学和游戏开发等领域是提升最终画面呈现品质的重要渲染技术。后处理渲染技术的好坏，往往决定了游戏画面是否能够达到令人惊艳的级别。
 
-而本文将进行总结对比的十种模糊算法，在后处理渲染领域占据着非常重要的地位。很多产品级后处理的实现，都会直接或间接依赖于这些算法中的一种或多种。
+而本文将进行总结的十种模糊算法，在后处理渲染领域中占据着重要的地位。很多产品级后处理的实现，都会直接或间接依赖于这些算法中的一种或多种。
 
-无论是基于高斯模糊（Gaussian
-Blur）或其改进算法的Bloom特效，还是基于径向模糊（Radial Blur）的Sun Shaft（God
-Ray），或是基于方向模糊（Directional Blur）的镜头眩光光晕（Glare Lens
-Flare），抑或是景深（Depth of Field）特效中摄影级失焦感的散景模糊（Bokeh
-Blur）。
-
+无论是基于高斯模糊（Gaussian Blur）或其改进算法的Bloom特效，还是基于径向模糊（Radial Blur）的Sun Shaft（God Ray），或是基于方向模糊（Directional Blur）的镜头眩光光晕（Glare Lens Flare），抑或是景深（Depth of Field）特效中摄影级失焦感的散景模糊（Bokeh Blur）。
 
 
 ![](media/6b40938cfddc691005bb05822a5c398e.jpg)
@@ -36,7 +31,7 @@ Blur）。
 
 图 Tom Clancys The Division中的基于散景模糊（Bokeh Blur）的景深
 
-这里也放一个《赛博朋克:霓虹中国(CyberNeon)》的视频（A站源贴：https://www.artstation.com/artwork/Z5RkbZ ），其中对于赛博朋克风夜中国风城市的展现，如果缺少了Bloom和Glare Lens Flare等依赖于本文讲到的模糊算法的后处理特效，展现出来的品质将少了很多韵味：
+这里也放一个《赛博朋克:霓虹中国(CyberNeon)》的视频（ArtStation原贴：https://www.artstation.com/artwork/Z5RkbZ），其中对于赛博朋克风夜中国风城市的展现，如果缺少了Bloom和Glare Lens Flare等依赖于本文讲到的模糊算法的后处理特效，展现出来的品质将少了很多韵味：
 
 <https://www.youtube.com/watch?v=CZ4MOBSx2xw>
 
@@ -203,7 +198,7 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 
 ![](media/ef3648c8276d045ffcd8b58b7b23e624.gif)
 
-对模糊半径（Blur Radius）参数的调节，可以控制模糊的程度：
+对模糊半径（Blur Radius）参数的调节，可以控制高斯模糊的程度：
 
 ![](media/f5668bf755f6b60c22c596220253d3e8.gif)
 
@@ -307,7 +302,7 @@ Kawase Blur渲染效果接近高斯模糊，但具有更好的性能：
 
 ![](media/KawaseBlur-1.gif)
 
-同样，对模糊半径（Blur Radius）参数的调节，可以控制模糊的程度：
+同样，对模糊半径（Blur Radius）参数的调节，可以控制Kawase模糊的程度：
 
 ![](media/KawaseBlur-2.gif)
 
@@ -384,7 +379,7 @@ Dual Kawase Blur最终的模糊效果截图如下，可以看到其与高斯模�
 
 ![](media/734619e4f5594f567b6009d25ebb7c60.gif)
 
-同样，对模糊半径（Blur Radius）参数的调节，可以控制模糊的程度：
+同样，对模糊半径（Blur Radius）参数的调节，可以控制Dual Kawase Blur模糊的程度：
 
 ![](media/7c81e8b40e8c86a286003012a2ef7eea.gif)
 
@@ -400,10 +395,7 @@ Dual Kawase Blur最终的模糊效果截图如下，可以看到其与高斯模�
 
 图 不同相机参数下得到的不同散景模糊（Bokeh Blur）
 
-散景（Bokeh）在摄影学中被称为焦外成像，而在光学上被称为Circle of Confusion,
-CoC（弥散圆/散光圈/散射圆盘 ），即下图橙色Image Plane
-中的蓝色C所示区域。由于不同的物距（物体到镜头的距离）投影到镜头所形成的焦点不同，但Image
-Plane 只能放在某个点上，所以就形成了Circle of Confusion, CoC（弥散圆）。
+散景（Bokeh）在摄影学中被称为焦外成像，而在光学上被称为Circle of Confusion, CoC（弥散圆/散光圈/散射圆盘 ），即下图橙色Image Plane 中的蓝色C所示区域。由于不同的物距（物体到镜头的距离）投影到镜头所形成的焦点不同，但Image Plane 只能放在某个点上，所以就形成了Circle of Confusion, CoC（弥散圆）。
 
 ![](media/96f4ff7c533d389d523cddea4a62f2e6.jpg)
 
@@ -612,7 +604,7 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 	}
 
 
-对模糊半径（Blur Radius）参数的调节，可以控制模糊的程度：
+对模糊半径（Blur Radius）参数的调节，可以控制粒状模糊的程度：
 
 ![](media/0c68c66628bfa24d6a4a60b291bf364b.gif)
 
@@ -664,11 +656,7 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 # 十、方向模糊（Directional Blur）
 
 
-方向模糊（Directional Blur）可以看做是径向模糊（Radial Blur）的一个变体。
-
-![](media/7623f49a2849b081d674afffa3201fee.png)
-
-方向模糊（Directional Blur）主要思路是传入一个角度，然后在runtime层计算出对应的矢量方向：
+方向模糊（Directional Blur）可以看做是径向模糊（Radial Blur）的一个变体。其主要思路是传入一个角度，然后在runtime层计算出对应的矢量方向：
 
 	float sinVal = (Mathf.Sin(settings.Angle) * settings.BlurRadius * 0.05f) / settings.Iteration;
 	float cosVal = (Mathf.Cos(settings.Angle) * settings.BlurRadius * 0.05f) / settings.Iteration;
@@ -696,6 +684,8 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/DirectionalBlur
 
 
+方向模糊后处理的渲染效果如下：
+![](media/7623f49a2849b081d674afffa3201fee.png)
 
 同样，对模糊半径（Blur Radius）参数的调节，可以控制模糊的程度：
 
@@ -711,8 +701,6 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 
 # 总结
 
-
-本文对后处理中所采用模糊算法的总结到这里已接近尾声。
 
 本文开头已经提到，模糊算法在后处理渲染领域占据着非常重要的地位。很多产品级后处理的实现，都会直接或间接依赖于一种或多种图像模糊算法。后处理管线中所采用的模糊算法的优劣，决定了产品最终的渲染品质和消耗的性能大小。
 
