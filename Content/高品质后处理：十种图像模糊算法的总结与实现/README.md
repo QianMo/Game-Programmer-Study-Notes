@@ -6,10 +6,38 @@
 
 后处理（Post-Processing），在图形学和游戏开发等领域是提升最终画面呈现品质的重要渲染技术。后处理渲染技术的好坏，往往决定了游戏画面是否能够达到令人惊艳的级别。
 
-而本文将进行总结的十种模糊算法，在后处理渲染领域中占据着重要的地位。很多产品级后处理的实现，都会直接或间接依赖于这些算法中的一种或多种。
+模糊算法在后处理渲染领域中占据着重要的地位。很多产品级后处理的实现，都会直接或间接依赖于这些算法中的一种或多种。无论是基于高斯模糊（Gaussian Blur）或其改进算法的Bloom特效，还是基于径向模糊（Radial Blur）的Sun Shaft（God Ray），或是基于方向模糊（Directional Blur）的镜头眩光光晕（Glare Lens Flare），抑或是景深（Depth of Field）特效中摄影级失焦感的散景模糊（Bokeh Blur），都以模糊算法作为重要的支撑。所以说，后处理中所采用模糊算法的优劣，决定了后处理管线最终的渲染品质和消耗性能的多少。
 
-无论是基于高斯模糊（Gaussian Blur）或其改进算法的Bloom特效，还是基于径向模糊（Radial Blur）的Sun Shaft（God Ray），或是基于方向模糊（Directional Blur）的镜头眩光光晕（Glare Lens Flare），抑或是景深（Depth of Field）特效中摄影级失焦感的散景模糊（Bokeh Blur）。
 
+本文将对后处理管线中会使用到的如下十种模糊算法进行总结、对比和盘点，以及提供了这十种模糊算法以及其衍生算法对应的Unity Post Processing Stack v2版本的具体实现：
+
+-   高斯模糊（Gaussian Blur）
+
+-   方框模糊（Box Blur）
+
+-   Kawase模糊（Kawase Blur）
+
+-   双重模糊（Dual Blur）
+
+-   散景模糊（Bokeh Blur）
+
+-   移轴模糊（Tilt Shift Blur）
+
+-   光圈模糊（Iris Blur）
+
+-   粒状模糊（Grainy Blur）
+
+-   径向模糊（Radial Blur）
+
+-   方向模糊（Directional Blur）
+
+
+可以看到，本文将进行总结的这十种模糊算法，在后处理渲染领域中占据着重要的地位。很多产品级后处理的实现，都会直接或间接依赖于这些算法中的一种或多种。
+
+另外，本文暂不涉及运动模糊（motion blur），因为其主要作用于帧之间的运动变化，不属于静态型模糊。还有一些其他的模糊算法由于不太适用于实时渲染，本文也暂不涉及，如Moving Averages filter。
+
+
+下面先放一组采用了模糊算法的后处理的实时渲染截图。
 
 ![](media/6b40938cfddc691005bb05822a5c398e.jpg)
 
@@ -40,33 +68,7 @@
 ![](media/f20159279e99b4174740875b9e33a28b.jpg)
 
 
-上述这些依赖于后处理渲染的画面里，其后处理特效中所采用模糊算法的优劣，决定了后处理管线最终的渲染品质和消耗性能的多少。
 
-本文将对后处理管线中会使用到的如下十种模糊算法进行总结和对比盘点，以及提供了这十种模糊算法对应的Unity Post Processing Stack v2版本的具体实现：
-
--   高斯模糊（Gaussian Blur）
-
--   方框模糊（Box Blur）
-
--   Kawase模糊（Kawase Blur）
-
--   双重模糊（Dual Blur）
-
--   散景模糊（Bokeh Blur）
-
--   移轴模糊（Tilt Shift Blur）
-
--   光圈模糊（Iris Blur）
-
--   粒状模糊（Grainy Blur）
-
--   径向模糊（Radial Blur）
-
--   方向模糊（Directional Blur）
-
-需要注意的是，本文暂不涉及运动模糊（motion blur）这种属于另一套框架的模糊算法，因为其主要作用于帧之间的运动变化，不属于静态型模糊。
-
-另外，还有一些其他的模糊算法，由于不太适用于实时渲染，本文也暂不涉及，如Moving Averages filter。
 
 <br>
 
@@ -232,7 +234,7 @@ Box Blur也是线性可分的，如有需要，也可以借助其此性质，如
 
 另外box blur也有不少扩展与变体，比如Tent Blur（两次Box Blur）、Quadratic Blur（三次Box Blur）等，具体本文暂时就不展开了。
 
-其中，Tent Blur也已在XPL中进行了实现，具体可见：[X-PostProcessing/Effects/TentBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/TentBlur)
+其中，Tent Blur也已在XPL中进行了实现，具体可见：[https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/TentBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/TentBlur)
 
 
 
@@ -251,7 +253,7 @@ Box Blur也是线性可分的，如有需要，也可以借助其此性质，如
 		return s;
 	}
 
-**完整的Runtime + Shader实现可见：** [X-PostProcessing/Effects/BoxBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/BoxBlur)
+**完整的Runtime + Shader实现可见：** [https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/BoxBlur](https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/BoxBlur)
 
 另外也可以考虑将uv计算放到vertex层。
 
