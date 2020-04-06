@@ -159,7 +159,7 @@ N维空间高斯模糊方程可以表示为：
 
 ![](media/1ad248b2a04bfe2d3791a3c89cd88656.png)
 
-实现方面，可以采用经过线性分解的高斯核的方案，且用乒乓RT交互blit的方法。高对应的Fragment Shader的实现为：
+实现方面，可以采用经过线性分解的高斯核的方案，且用乒乓RT交互blit的方法。高斯模糊对应的Fragment Shader的实现为：
 
 	float4 FragGaussianBlur(v2f i): SV_Target
 	{
@@ -179,7 +179,7 @@ N维空间高斯模糊方程可以表示为：
 
 篇幅原因，在这里以及后文中，对应后处理的Runtime + Shader的完整的实现就不贴了，但会给出X-PostProcessing Libray中的完整实现链接。
 
-**完整的Runtime + Shader实现可见**：
+**完整的高斯模糊Runtime + Shader实现可见**：
 https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GaussianBlur
 
 
@@ -604,6 +604,8 @@ https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProc
 **粒状模糊（Grainy Blur）完整的Runtime + Shader实现可见：**
 https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GrainyBlur
 
+这边是一个模糊半径更大的粒状模糊（Grainy Blur）的渲染效果：
+![](media/61.1.png)
 
 对模糊半径（Blur Radius）参数的调节，也可以控制粒状模糊的程度：
 
