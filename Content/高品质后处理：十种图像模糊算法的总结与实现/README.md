@@ -39,7 +39,7 @@
 
 ![](media/6b40938cfddc691005bb05822a5c398e.jpg)
 
-图《巫师3》 中基于径向模糊（Radial Blur）的Sun Shaft
+图《巫师2》 中基于径向模糊（Radial Blur）的Sun Shaft
 
 ![](media/130ec1a6dbdee035c956306b98b39bcb.jpg)
 
