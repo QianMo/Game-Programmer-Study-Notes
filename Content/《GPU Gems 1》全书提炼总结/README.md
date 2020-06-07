@@ -896,7 +896,7 @@ Scattering）的视觉特性：
 
 ### 4.2 简单的散射近似（Simple Scattering Approximations）
 
-近似散射的比较简单技巧是环绕照明（Warp
+近似散射的比较简单技巧是环绕照明（Wrap
 Lighting）。正常情况下，当表面的法线对于光源方向垂直的时候，Lambert漫反射提供的照明度是0。而环绕光照修改漫反射函数，使得光照环绕在物体的周围，越过那些正常时会变黑变暗的点。这减少了漫反射光照明的对比度，从而减少了环境光和所要求的填充光的量。环绕光照是对Oren-Nayar光照模型的一个粗糙的近似。原模型力图更精确地模拟粗糙的不光滑表面（Nayar
 and Oren 1995）。
 
@@ -1075,7 +1075,7 @@ Diffusion）是可能的，我们可以用顶点程序展开物体的网格，�
 
 文中提出的次表面散射的实时近似方法，总结起来有三个要点：
 
-1） 基于环绕照明（Warp Lighting）的简单散射近似，Oren-Nayar光照模型。
+1） 基于环绕照明（Wrap Lighting）的简单散射近似，Oren-Nayar光照模型。
 
 2） 使用深度贴图来模拟半透明材质的最重要特性之一——吸收（Absorption）。
 
@@ -1114,7 +1114,7 @@ Blur）
 
 纹理空间漫反射（Texture-Space Diffusion）
 
-环绕照明（Warp Lighting）
+环绕照明（Wrap Lighting）
 
 深度映射（Depth Maps）
 
