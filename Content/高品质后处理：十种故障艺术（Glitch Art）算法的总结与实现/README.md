@@ -220,7 +220,7 @@ Split后处理特效，以满足不同情形下RGB颜色抖动风格的需要。
 
 对于基础版本的实现，第一步，基于uv和噪声函数生成方格块。可以使用floor方法（对输入参数向下取整）以及低成本的噪声生成函数randomNoise进行实现，代码仅需一句：
 
-half2 block = randomNoise(floor(i.texcoord * _BlockSize));
+	half2 block = randomNoise(floor(i.texcoord * _BlockSize));
 
 基于这句代码可以生成随机强度的均匀Block图块：
 
@@ -240,11 +240,11 @@ half displaceNoise = pow(block.x, 8.0) * pow(block.x, 3.0);
 
 第三步，将经过强度二次筛选的Block图块强度值，作为噪声强度的系数，分别对G和B颜色通道进行采样。实现如下：
 
-        half ColorR = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord).r;
-		half ColorG = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + float2(displaceNoise * 0.05 * randomNoise(7.0), 0.0)).g;
-		half ColorB = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord - float2(displaceNoise * 0.05 * randomNoise(13.0), 0.0)).b;
+	half ColorR = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord).r;
+	half ColorG = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + float2(displaceNoise * 0.05 * randomNoise(7.0), 0.0)).g;
+	half ColorB = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord - float2(displaceNoise * 0.05 * randomNoise(13.0), 0.0)).b;
 
-		return half4(ColorR, ColorG, ColorB, 1.0);
+	return half4(ColorR, ColorG, ColorB, 1.0);
 
 
 可以得到如下基础的错位图块故障（Image Block Glitch）的渲染表现：
