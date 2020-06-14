@@ -238,7 +238,7 @@ half displaceNoise = pow(block.x, 8.0) * pow(block.x, 3.0);
 
 
 
-第三步，将经过强度二次筛选的Block图块强度值，作为噪声强度的系数，二次分别对G和B颜色通道进行采样。实现如下：
+第三步，将经过强度二次筛选的Block图块强度值，作为噪声强度的系数，分别对G和B颜色通道进行采样。实现如下：
 
         half ColorR = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord).r;
 		half ColorG = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.texcoord + float2(displaceNoise * 0.05 * randomNoise(7.0), 0.0)).g;
@@ -427,6 +427,10 @@ float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
 最终的渲染表现如下：
 
 ![](media/4b96ce25c89d300d3bb7245bd8af2eec.gif)
+
+除了水平方向的Line Block，竖直方向的表现也独具特色:
+
+![](media/921033407f4f0713f0d65926908dd8fd.gif)
 
 当然，也可以将上述渲染效果与原始场景图进行插值混合，得到不同强度的渲染表现。
 
