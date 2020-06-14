@@ -878,8 +878,6 @@ https://scholarworks.gsu.edu/cgi/viewcontent.cgi?article=1081&context=communicat
 Evolutionary and Biologically Inspired Music and Art. Springer, Berlin,
 Heidelberg, 2013: 109-120.
 
-https://d1wqtxts1xzle7.cloudfront.net/37208625/denheijer.pdf?1428161845=&response-content-disposition=inline%3B+filename%3DEvolving_Glitch_Art.pdf&Expires=1592103013&Signature=ALEQnwm3cGh2JGtylF50XOTQAl1fwJ2CrCNACn\~Ykzu578Jc0AabIvseCm4n6io0bWs0nz6BXgGaxV6nTahFLoPPLERPZvqVntY9U6Ex4kzUfqgFukCSivL082zV4WsmaiGzGafU6KP7C80rg7Voi3yt4TF2Bh4rs0Doz2MRm6BDQnzy8VdyrH4cMFzmysaluaGfcCb4KfKE6Y5FC0hEYzWS8E6Y2jB11xJbDSTs7QyZz\~nvpQ2vq5mgiVfWaB04frCV3PLLTKPmyTUSm9yiYyWhIZoNjJYmFng1y09wMjBuNQwxSVIVP9OiGBeygqVAhd5JjJGvCbKHjIIYzUFpFA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
-
 [3] https://zh.wikipedia.org/wiki/%E8%B5%9B%E5%8D%9A%E6%9C%8B%E5%85%8B
 
 [4] https://github.com/keijiro/KinoGlitch
