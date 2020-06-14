@@ -40,7 +40,7 @@
 
 <br>
 
-# 关于XPL: Unity引擎的高品质后处理库
+# 关于XPL : Unity引擎的高品质后处理库
 
 
 另外，本文涉及的十种故障艺术（Glitch Art）后处理的实现源码，都收录于本人开源的后处理算法库XPL中。
@@ -51,7 +51,7 @@ X-PostProcessing Libray，简称XPL，是本人开发的Unity引擎下的高品�
 
 ![](media/debda36941aa6564c6b8b8b38ef9d318.jpg)
 
-截止本文发表，目前已以开源的形式放出了17种图像模糊后处理算法、10种像素化型后处理算法、9种边缘检测型后处理算法、17种故障艺术型后处理算法。而随着后续更多内容的公开，X-PostProcessing
+截止本文发表，目前已以开源的形式放出了17种图像模糊型后处理算法、10种像素化型后处理算法、9种边缘检测型后处理算法、17种故障艺术型后处理算法。而随着后续更多内容的公开，X-PostProcessing
 Libray将成型为一个具有100+种后处理特效的高品质后处理开源算法库。
 
 <br>
@@ -85,7 +85,7 @@ Libray将成型为一个具有100+种后处理特效的高品质后处理开源�
 
 图 《看门狗2》中的故障艺术表现形式 @ Ubisoft
 
-这里也放一段包含各种故障艺术（Glitch Art）元素的《赛博朋克2077》 2019 E3展预告片段：
+这里也放一段包含多种故障艺术（Glitch Art）元素的《赛博朋克2077》 2019 E3展预告片段：
 
 【《赛博朋克2077》 2019 E3展预告片段】 <https://www.youtube.com/watch?v=qIcTM8WXFjk>
 
@@ -168,7 +168,7 @@ RGB颜色分离故障（RGB Split Glitch），实现算法的主要要点在于�
 
 ![](media/97fa0c1b7f14497c48ae9574e7d7ea8f.gif)
 
-详细实现源码可见：
+此版本的实现源码可见：
 
 <https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GlitchRGBSplitV2>
 
@@ -222,7 +222,7 @@ Split后处理特效，以满足不同情形下RGB颜色抖动风格的需要。
 
 half2 block = randomNoise(floor(i.texcoord * _BlockSize));
 
-这句代码可以生成随机强度的均匀Block图块：
+基于这句代码可以生成随机强度的均匀Block图块：
 
 ![](media/a0ff7e1c447a3416e1466f75b1ca0a9b.gif)
 
@@ -252,7 +252,7 @@ half displaceNoise = pow(block.x, 8.0) * pow(block.x, 3.0);
 ![](media/d6248833de3a7111dbca499cdc955df9.gif)
 
 
-以上基础错位图块故障（Image Block Glitch）实现的完整源代码可见：
+以上基础版本的错位图块故障（Image Block Glitch）实现的完整源代码可见：
 
 <https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GlitchImageBlockV3>
 
@@ -294,7 +294,7 @@ half displaceNoise = pow(block.x, 8.0) * pow(block.x, 3.0);
 	}
 
 
-最终表现如下：
+对应的渲染表现如下：
 
 ![](media/ce0f22d2a51d470b499b27bb3da10d3a.gif)
 
@@ -390,8 +390,10 @@ float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
     blockLine_random = sign(blockLine_random) * saturate((abs(blockLine_random) - _Amount) / (0.4));
     blockLine_random = lerp(0, blockLine_random, _Offset);	
 
+可以得到如下的渲染表现：
 
 ![](media/1689ba7c27383f6db417dd35b764cdf3.gif)
+
 
 接着，通过随机梯度的非等宽线条，去抖动uv采样生成源色调的blockLine Glitch：
 
@@ -399,6 +401,8 @@ float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
 		float2 uv_blockLine = uv;
 		uv_blockLine = saturate(uv_blockLine + float2(0.1 * blockLine_random, 0));
 		float4 blockLineColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, abs(uv_blockLine));
+
+对应的渲染表现如下：
 
 
 ![](media/4d170f6ed0453120c2f5b3a3b7b4c1a2.gif)
@@ -424,7 +428,7 @@ float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
 
 ![](media/4b96ce25c89d300d3bb7245bd8af2eec.gif)
 
-当然还可以将上述渲染效果与原始场景图进行插值混合，得到不同强度的渲染表现。
+当然，也可以将上述渲染效果与原始场景图进行插值混合，得到不同强度的渲染表现。
 
 XPL中实现的错位线条故障（Line Block Glitch）后处理，有7个可供定制调节的参数：
 
@@ -521,6 +525,10 @@ XPL中实现的错位线条故障（Line Block Glitch）后处理，有7个可�
 得到的渲染表现如下：
 
 ![](media/f6645202c3717b8609086b3e92a3a750.gif)
+
+也可以从竖直方向进行uv的抖动：
+![](media/39.1.gif)
+
 
 扫描线抖动故障（Scan Line Jitter Glitch）完整的实现源代码可见:
 
@@ -651,7 +659,6 @@ Noise最终的渲染表现：
 # 八、屏幕跳跃故障（Screen Jump Glitch）
 
 
-![](media/33fb0f93f870af94fac2e0f944202d54.gif)
 
 屏幕跳跃故障（Screen Jump Glitch）的算法原理在于取经过时间校正后的uv数值的小数部分，并于原始uv插值，得到均匀梯度式扰动屏幕空间uv，再用此uv进行采样即可得到跳动画面的表现。核心实现Shader代码如下：
 
@@ -684,9 +691,9 @@ Noise最终的渲染表现：
 
 ![](media/496be98975fbb3dfda2acb0ed5e0e15b.gif)
 
-屏幕跳跃故障（Screen Jump Glitch）详细的实现源码可见：
+屏幕跳跃故障（Screen Jump Glitch）完整的实现源码可见：
 
-<https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GlitchScreenShake>
+<https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GlitchScreenJump>
 
 <br>
 
@@ -729,6 +736,12 @@ Noise最终的渲染表现：
 
 
 ![](media/d287de98424bf1b8de486bf69ad697a4.gif)
+
+
+
+屏幕抖动故障（Screen Shake Glitch）完整的实现源码可见：
+
+<https://github.com/QianMo/X-PostProcessing-Library/tree/master/Assets/X-PostProcessing/Effects/GlitchScreenShake>
 
 
 <br>
@@ -794,7 +807,7 @@ OK，回到我们的波动抖动故障（Wave Jitter Glitch）后处理中来。
 			strength = 0.5 + 0.5 *cos(_Time.y * _Frequency);
 		#endif
 		
-		// --------------------------------Prepare UV----------------------------
+		// Prepare UV
 		float uv_y = i.texcoord.y * _Resolution.y;
 		float noise_wave_1 = snoise(float2(uv_y * 0.01, _Time.y * _Speed * 20)) * (strength * _Amount * 32.0);
 		float noise_wave_2 = snoise(float2(uv_y * 0.02, _Time.y * _Speed * 10)) * (strength * _Amount * 4.0);
@@ -803,11 +816,11 @@ OK，回到我们的波动抖动故障（Wave Jitter Glitch）后处理中来。
 
 		float rgbSplit_uv_x = (_RGBSplit * 50 + (20.0 * strength + 1.0)) * noise_wave_x / _Resolution.x;
 
-		// -------------------------------Sample RGB Color------------------------------
-		float4 colorG = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, float2(uv_x, i.texcoord.y));
-		float4 colorRB = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, float2(uv_x + rgbSplit_uv_x, i.texcoord.y));
+		// Sample RGB Color
+		half4 colorG = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, float2(uv_x, i.texcoord.y));
+		half4 colorRB = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, float2(uv_x + rgbSplit_uv_x, i.texcoord.y));
 		
-		return  float4(colorRB.r, colorG.g, colorRB.b, colorRB.a + colorG.a);
+		return  half4(colorRB.r, colorG.g, colorRB.b, colorRB.a + colorG.a);
 	}
 
 得到的渲染表现如下：
