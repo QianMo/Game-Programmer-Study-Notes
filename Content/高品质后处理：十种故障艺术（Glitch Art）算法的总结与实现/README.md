@@ -13,7 +13,7 @@
 
 <br>
 
-本文对十种主流故障艺术（Glitch Art）系列后处理算法的原理和实现方式进行了总结，对故障艺术风格的算法实现要点进行了提炼，并提供了对应算法在Unity引擎下的一个或多个版本的实现源码。
+而本文，对十种主流故障艺术（Glitch Art）系列后处理算法的原理和实现方式进行了总结，对故障艺术风格的算法实现要点进行了提炼，并提供了对应算法在Unity引擎下的一个或多个版本的实现源码。
 
 这十种故障艺术（Glitch Art）后处理特效分别为：
 
@@ -377,7 +377,7 @@ half displaceNoise = pow(block.x, 8.0) * pow(block.x, 3.0);
 
 接着，使用如下代码，将均匀渐变线条转为随机梯度的等宽线条：
 
-float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
+	float uv_randomTrunc = 6.0 * trunc(_TimeX, 24.0 * uv_trunc);
 
 ![](media/2ef9438939a81cafa257cffbdbe493a9.gif)
 
@@ -643,12 +643,9 @@ Glitch）的主要思路，在于用noise去扰动原先场景图的颜色值。
     }
 
 
-渲染表现如下：
 
-![](media/cf20339e06bc8a52c2c6573dd9261682.gif)
+最终，将noise扰动和随机灰度抖动两个特性相结合，得到Glitch Analog Noise最终的渲染表现：
 
-最终，将noise扰动和随机灰度抖动两个特性相结合，得到Glitch Analog
-Noise最终的渲染表现：
 
 ![](media/9c0fad40cdfd5f8a9891274b3c562cc5.gif)
 
@@ -663,6 +660,8 @@ Noise最终的渲染表现：
 # 八、屏幕跳跃故障（Screen Jump Glitch）
 
 
+
+![](media/48.gif)
 
 屏幕跳跃故障（Screen Jump Glitch）的算法原理在于取经过时间校正后的uv数值的小数部分，并于原始uv插值，得到均匀梯度式扰动屏幕空间uv，再用此uv进行采样即可得到跳动画面的表现。核心实现Shader代码如下：
 
@@ -835,7 +834,7 @@ OK，回到我们的波动抖动故障（Wave Jitter Glitch）后处理中来。
 
 ![](media/2e43dee0491aaba8ee822bcf2ee45312.gif)
 
-波动抖动故障 ( Glitch Tile Jitter) 后处理特效可调参数也比较丰富，XPL内实现的此特效的可调参数面板如下：
+波动抖动故障（Wave Jitter Glitch） 后处理特效可调参数也比较丰富，XPL内实现的此特效的可调参数面板如下：
 
 ![](media/7921e7f2d840a0ab22ffc5c203c5a0f1.png)
 
