@@ -68,6 +68,11 @@ Keep Reading , Keep Writing , Keep Coding.
 - [【高品质后处理：十种故障艺术（Glitch Art）算法的总结与实现】](https://github.com/QianMo/Game-Programmer-Study-Notes/blob/master/Content/%E9%AB%98%E5%93%81%E8%B4%A8%E5%90%8E%E5%A4%84%E7%90%86%EF%BC%9A%E5%8D%81%E7%A7%8D%E6%95%85%E9%9A%9C%E8%89%BA%E6%9C%AF%EF%BC%88Glitch%20Art%EF%BC%89%E7%AE%97%E6%B3%95%E7%9A%84%E6%80%BB%E7%BB%93%E4%B8%8E%E5%AE%9E%E7%8E%B0/README.md) - 本文对十种主流故障艺术（Glitch Art）系列后处理算法的原理和实现方式进行了总结，对故障艺术风格的算法实现要点进行了提炼，并提供了对应算法在Unity引擎下的一个或多个版本的实现源码。
 
 
+- [【两件 Big Thing：天美跨平台3A大作全球招聘令 & RTR4中译版出版时间预告】](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E5%A4%A9%E7%BE%8E%E8%B7%A8%E5%B9%B3%E5%8F%B03A%E5%A4%A7%E4%BD%9C%E5%85%A8%E7%90%83%E6%8B%9B%E8%81%98%E4%BB%A4%E4%B8%8ERTR4%E4%B8%AD%E8%AF%91%E7%89%88%E5%87%BA%E7%89%88%E6%97%B6%E9%97%B4%E9%A2%84%E5%91%8A/README.md) - 这篇文章聊到了两件Big Thing：天美战略级跨平台3A大作全球招聘令
+，以及《Real-Time Rendering 4th》中译版预计将在2021年内出版
+
+
+
 <br>
 
 ## 贰 · 游戏设计模式、软件架构与编程实践
