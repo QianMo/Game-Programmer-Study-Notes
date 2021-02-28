@@ -1,6 +1,10 @@
-![](media/703a0e8ac5a665bb6a1c0af769c23ad4.jpg)
+
 
 # 两件 Big Thing：天美跨平台3A大作全球招聘令 & RTR4中译版出版时间预告
+
+![](media/703a0e8ac5a665bb6a1c0af769c23ad4.jpg)
+
+本文的知乎专栏版本：https://zhuanlan.zhihu.com/p/353527484
 
 
 <BR>
@@ -234,3 +238,5 @@ OK，两件Big Thing说完了。还是回到最初的话题，天美战略级跨
 “曾经我如此苍老，如今才风华正茂。”
 
 是的，加入我们一起做国产3A，或许正是风华正茂的开始。
+
+![](media/703a0eXXc5a665bb6a1c0af769c23ad4.jpg)
