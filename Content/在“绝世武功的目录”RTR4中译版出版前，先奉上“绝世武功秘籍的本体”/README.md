@@ -1,6 +1,13 @@
 
-
 <br>
+
+本文的知乎专栏版本：https://zhuanlan.zhihu.com/p/418196347
+
+
+
+![](media/rtr4.jpg)
+
+
 
 本文提供了图形学全网学习资料的“半壁江山”——《Real-Time Rendering 4th》2000多份参考文献合集的开源Github Repo地址，以及更新了RTR4中译版的预期出版时间。
 
@@ -119,7 +126,10 @@ https://codeload.github.com/QianMo/Real-Time-Rendering-4th-Bibliography-Collecti
 
 # 招聘信息
 
-对了，天美开放世界3A的全球热招依然在进行中，尤其是图形研发岗。具体可见
+对了，天美开放世界3A的全球热招依然在进行中，尤其是图形研发岗。
+简历请发送至williammao#tencent.com
+
+具体细节可见：
 https://zhuanlan.zhihu.com/p/353527484
 
 

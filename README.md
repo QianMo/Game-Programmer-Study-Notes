@@ -69,8 +69,10 @@ Keep Reading , Keep Writing , Keep Coding.
 
 
 - [【两件 Big Thing：天美跨平台3A大作全球招聘令 & RTR4中译版出版时间预告】](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E5%A4%A9%E7%BE%8E%E8%B7%A8%E5%B9%B3%E5%8F%B03A%E5%A4%A7%E4%BD%9C%E5%85%A8%E7%90%83%E6%8B%9B%E8%81%98%E4%BB%A4%E4%B8%8ERTR4%E4%B8%AD%E8%AF%91%E7%89%88%E5%87%BA%E7%89%88%E6%97%B6%E9%97%B4%E9%A2%84%E5%91%8A/README.md) - 这篇文章聊到了两件Big Thing：天美战略级跨平台3A大作全球招聘令
-，以及《Real-Time Rendering 4th》中译版预计将在2021年内出版
+，以及《Real-Time Rendering 4th》中译版预计将在2022年出版
 
+
+- [【在“绝世武功的目录”RTR4中译版出版前，先奉上“绝世武功秘籍的本体”】](https://github.com/QianMo/Game-Programmer-Study-Notes/tree/master/Content/%E5%9C%A8%E2%80%9C%E7%BB%9D%E4%B8%96%E6%AD%A6%E5%8A%9F%E7%9A%84%E7%9B%AE%E5%BD%95%E2%80%9DRTR4%E4%B8%AD%E8%AF%91%E7%89%88%E5%87%BA%E7%89%88%E5%89%8D%EF%BC%8C%E5%85%88%E5%A5%89%E4%B8%8A%E2%80%9C%E7%BB%9D%E4%B8%96%E6%AD%A6%E5%8A%9F%E7%A7%98%E7%B1%8D%E7%9A%84%E6%9C%AC%E4%BD%93%E2%80%9D) - 这篇文章提供了图形学全网学习资料的“半壁江山”——《Real-Time Rendering 4th》2000多份参考文献合集的开源Github Repo地址，以及更新了RTR4中译版的预期出版时间。
 
 
 <br>
